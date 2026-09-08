@@ -55,170 +55,6 @@
   <section class="relative pt-12 pb-20 px-6 md:px-12 rounded-b-[60px] overflow-hidden text-white text-center z-10">
     <div class="max-w-4xl mx-auto flex flex-col items-center">
       
-      <!-- Logo Principal de PlayUp actualizado -->
-      <img
-        id="logoPrincipal"
-        src="WhatsApp%20Image%202026-09-07%20at%205.03.27%20PM_3.jpeg"
-        onerror="this.src='https://placehold.co/800x500/ff007b/ffffff?text=PlayUp'"
-        alt="PlayUp Logo"
-        class="w-full max-w-xl object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-8 transform hover:scale-105 transition duration-500"
-      />
-      
-      <p class="text-4xl md:text-5xl mt-2 font-black drop-shadow-2xl bg-white/30 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
-        <span class="text-red-500">¡</span><span class="text-blue-500">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-500">e</span>
-        <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
-        <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-500">r</span><span class="text-purple-500">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
-      </p>
-
-      <p class="mt-8 text-3xl md:text-4xl leading-relaxed font-black max-w-3xl text-white drop-shadow-xl text-shadow-lg p-6 bg-white/10 rounded-[30px] border-2 border-white/30 backdrop-blur-md">
-        <span class="text-yellow-300">Encuentra</span> los <span class="text-pink-400">mejores</span> <span class="text-blue-400">juguetes</span> de <span class="text-green-400">niños</span>, <span class="text-purple-400">niñas</span> y <span class="text-teal-300">bebés y accesorios</span> al <span class="text-orange-400">instante.</span>
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-6 mt-10">
-        <a href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-400 to-green-600 text-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3 border-4 border-white">
-          <i class="fab fa-whatsapp text-3xl"></i> WhatsApp
-        </a>
-        <a href="https://www.tiktok.com/@playupjuguetera?_r=1&_t=ZS-96gz5Rhr1lw" target="_blank" class="bg-black text-white border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3">
-          <i class="fab fa-tiktok text-3xl"></i> TikTok
-        </a>
-        <a href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3 group">
-          <i class="fas fa-map-marker-alt text-3xl group-hover:animate-bounce"></i> Ubicación
-        </a>
-        <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3">
-          <i class="fas fa-magic"></i> Modo Admin
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section id="adminPanel" class="max-w-7xl mx-auto px-6 pt-4 pb-8 hidden transition-all duration-500 relative z-10">
-    <div class="bg-white/90 backdrop-blur-lg text-purple-900 rounded-[40px] p-8 shadow-2xl border-4 border-yellow-400 flex flex-wrap justify-between items-center gap-6">
-      <div>
-        <h2 class="text-4xl font-bold flex items-center gap-3">
-          <i class="fas fa-crown text-yellow-500"></i> Panel de María
-        </h2>
-        <p class="text-xl mt-2 font-semibold">Tus cambios se guardarán permanentemente en tu nube.</p>
-      </div>
-      <div class="flex gap-4 flex-wrap">
-        <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
-        <button onclick="document.getElementById('inputPortada').click()" id="btnPortada" class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-2 border-white px-6 py-4 rounded-3xl text-xl font-bold hover:scale-105 transition shadow-2xl flex items-center gap-2">
-          <i class="fas fa-image"></i> Cambiar Portada
-        </button>
-        <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-2 border-white px-8 py-4 rounded-3xl text-2xl font-bold hover:scale-105 transition shadow-2xl flex items-center gap-2">
-          <i class="fas fa-plus-circle"></i> + Añadir Juguete
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="max-w-7xl mx-auto px-6 pt-8 pb-4 relative z-10">
-    <div class="flex flex-wrap justify-center gap-6">
-      <button onclick="filtrarCategoria('todos')" id="btn-todos" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-yellow-400 text-purple-900 border-4 border-white">
-        ✨ Todos
-      </button>
-      <button onclick="filtrarCategoria('ninos')" id="btn-ninos" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
-        🚀 Juguetes de Niños
-      </button>
-      <button onclick="filtrarCategoria('ninas')" id="btn-ninas" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
-        🦄 Juguetes de Niñas
-      </button>
-      <button onclick="filtrarCategoria('bebes')" id="btn-bebes" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
-        🍼 Juguetes de Bebé y Accesorios
-      </button>
-      <button onclick="filtrarCategoria('didacticos')" id="btn-didacticos" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
-        🧩 Juguetes Didácticos
-      </button>
-      <button onclick="filtrarCategoria('peluches')" id="btn-peluches" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
-        🧸 Peluches
-      </button>
-    </div>
-  </section>
-
-  <section id="seccionPresupuesto" class="max-w-7xl mx-auto px-6 pb-6 relative z-10 transition-all duration-500">
-    <div class="bg-white/20 backdrop-blur-xl rounded-[30px] p-4 md:p-6 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
-      <span class="text-white font-black text-xl drop-shadow-md mr-2 flex items-center gap-2">
-        <i class="fas fa-wallet text-yellow-300 text-2xl"></i> Presupuesto:
-      </span>
-      <button onclick="filtrarPresupuesto('todos')" id="btn-precio-todos" class="px-5 py-2 rounded-full text-lg font-bold bg-green-500 text-white border-2 border-white shadow-md transform hover:scale-105 transition scale-105">Cualquiera</button>
-      <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 30 a 50</button>
-      <button onclick="filtrarPresupuesto('rango2')" id="btn-precio-rango2" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 60 a 100</button>
-      <button onclick="filtrarPresupuesto('rango3')" id="btn-precio-rango3" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 110 a 160</button>
-      <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 170 a más</button>
-    </div>
-  </section>
-
-  <section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
-    <div id="loadingIndicator" class="text-center py-10">
-      <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
-      <p class="text-white text-xl mt-4 font-bold">Cargando inventario de PlayUp...</p>
-    </div>
-    <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-      <!-- Los juguetes se mostrarán aquí conectándose a la nube -->
-    </div>
-  </section>
-
-  <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
-      <button onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-400 hover:text-red-500 text-4xl transition z-10 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-md">
-        <i class="fas fa-times"></i>
-      </button>
-      <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlayUp Store - ¡Sube la diversión!</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
-    
-    body { 
-      font-family: 'Fredoka', sans-serif; 
-    }
-
-    /* Fondo mágico estrellado animado */
-    .bg-magical {
-      background: linear-gradient(-45deg, #0019ff, #d600ff, #ff007b, #ff7b00);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      position: relative;
-    }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Estrellitas en el fondo */
-    .stars {
-      background-image: 
-        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0));
-      background-repeat: repeat;
-      background-size: 200px 200px;
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.4;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .bubbly-text {
-      text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
-    }
-  </style>
-</head>
-<body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
-  <div class="stars fixed"></div>
-
-  <section class="relative pt-12 pb-20 px-6 md:px-12 rounded-b-[60px] overflow-hidden text-white text-center z-10">
-    <div class="max-w-4xl mx-auto flex flex-col items-center">
-      
       <!-- Logo Principal de PlayUp -->
       <img
         id="logoPrincipal"
@@ -421,7 +257,6 @@
     import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // TUS LLAVES REALES DE FIREBASE
     const firebaseConfig = {
       apiKey: "AIzaSyAcNULVUiPKmTtWulmqrQjzYEKyaS-s5iY",
       authDomain: "playup-539e9.firebaseapp.com",
@@ -530,16 +365,18 @@
 
     inicializarTienda();
 
-    // Compresión ultra segura para adaptarla a Firestore (máximo ahorro de espacio)
+    // Compresión súper avanzada para garantizar que cualquier imagen pase sin problemas
     function comprimirImagenParaLaNube(file) {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         const reader = new FileReader();
+        reader.onerror = () => reject(new Error("No se pudo leer el archivo."));
         reader.onload = (e) => {
           const img = new Image();
+          img.onerror = () => reject(new Error("El archivo no es una imagen válida."));
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const MAX_WIDTH = 350; 
-            const MAX_HEIGHT = 350;
+            const MAX_WIDTH = 300; 
+            const MAX_HEIGHT = 300;
             let width = img.width; 
             let height = img.height;
             if (width > height) { 
@@ -551,8 +388,8 @@
             canvas.height = height;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
-            // Calidad al 40% comprimida para garantizar que no supere el tamaño máximo permitido por Firestore
-            resolve(canvas.toDataURL('image/jpeg', 0.4));
+            // Calidad al 30% comprimida y liviana para Firestore
+            resolve(canvas.toDataURL('image/jpeg', 0.3));
           };
           img.src = e.target.result;
         };
@@ -566,7 +403,7 @@
 
       const btn = document.getElementById('btnPortada');
       const htmlOriginal = btn.innerHTML;
-      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Subiendo...`;
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Comprimiendo...`;
       btn.disabled = true;
 
       try {
@@ -575,7 +412,7 @@
         alert("¡Portada actualizada con éxito en tu nube! 🎉");
       } catch (error) {
         console.error("Error al subir portada:", error);
-        alert("La imagen es muy pesada. Por favor, elige otra foto más ligera.");
+        alert("Ocurrió un problema procesando la imagen. Intenta con otra foto.");
       } finally {
         btn.innerHTML = htmlOriginal;
         btn.disabled = false;
@@ -824,7 +661,7 @@
 
       const btnGuardar = document.getElementById('btnGuardarProd');
       btnGuardar.disabled = true;
-      btnGuardar.innerText = "⏳ Guardando en la nube...";
+      btnGuardar.innerText = "⏳ Comprimiendo y guardando...";
 
       try {
         const idActual = document.getElementById('productoId').value;
@@ -863,7 +700,7 @@
         window.cerrarModalAdmin();
       } catch (error) {
         console.error("Error al guardar:", error);
-        alert("Ocurrió un error guardando el juguete. Las imágenes son muy pesadas para la base de datos gratuita. Intenta con fotos más pequeñas.");
+        alert("Ocurrió un error guardando el juguete. Intenta seleccionando una foto un poco más pequeña.");
       } finally {
         btnGuardar.disabled = false;
         btnGuardar.innerText = "Guardar Juguete";
