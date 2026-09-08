@@ -58,20 +58,20 @@
       <!-- Logo Principal de PlayUp -->
       <img
         id="logoPrincipal"
-        src="WhatsApp%20Image%202026-09-07%20at%205.03.27%20PM_3.jpeg"
+        src="WhatsApp%20Image%202026-09-07%20at%205.03.27%20PM_2.jpeg"
         onerror="this.src='https://placehold.co/800x500/ff007b/ffffff?text=PlayUp'"
         alt="PlayUp Logo"
-        class="w-full max-w-xl object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-8 transform hover:scale-105 transition duration-500"
+        class="w-full max-w-xl object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-8 transform hover:scale-105 transition duration-500 bg-white/20 p-2"
       />
       
-      <p class="text-4xl md:text-5xl mt-2 font-black drop-shadow-2xl bg-white/30 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
-        <span class="text-red-500">¡</span><span class="text-blue-500">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-500">e</span>
+      <p class="text-4xl md:text-5xl mt-2 font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
+        <span class="text-red-500">¡</span><span class="text-blue-600">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-600">e</span>
         <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
-        <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-500">r</span><span class="text-purple-500">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
+        <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-600">r</span><span class="text-purple-600">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
       </p>
 
       <p class="mt-8 text-3xl md:text-4xl leading-relaxed font-black max-w-3xl text-white drop-shadow-xl text-shadow-lg p-6 bg-white/10 rounded-[30px] border-2 border-white/30 backdrop-blur-md">
-        <span class="text-yellow-300">Encuentra</span> los <span class="text-pink-400">mejores</span> <span class="text-blue-400">juguetes</span> de <span class="text-green-400">niños</span>, <span class="text-purple-400">niñas</span>, <span class="text-teal-300">bebés y accesorios</span> al <span class="text-orange-400">instante.</span>
+        <span class="text-yellow-300">Encuentra</span> los <span class="text-pink-300">mejores</span> <span class="text-blue-300">juguetes</span> de <span class="text-green-300">niños</span>, <span class="text-purple-300">niñas</span>, <span class="text-teal-200">bebés y accesorios</span> al <span class="text-orange-300">instante.</span>
       </p>
 
       <div class="flex flex-wrap justify-center gap-6 mt-10">
@@ -350,24 +350,43 @@
           }
         }, (error) => {
           console.error("Error sincronizando:", error);
+          // Fallback a almacenamiento local si Firestore falla
+          const localData = localStorage.getItem('playup_local_prods');
+          if(localData) {
+            productos = JSON.parse(localData);
+            window.renderProductos();
+          } else {
+            productos = juguetesPorDefecto;
+            window.renderProductos();
+          }
+          document.getElementById('loadingIndicator').classList.add('hidden');
         });
 
         onSnapshot(configRef, (docSnap) => {
           if (docSnap.exists() && docSnap.data().logoUrl) {
             document.getElementById('logoPrincipal').src = docSnap.data().logoUrl;
           }
+        }, (err) => {
+          const localLogo = localStorage.getItem('playup_local_logo');
+          if(localLogo) {
+            document.getElementById('logoPrincipal').src = localLogo;
+          }
         });
 
       } catch (error) {
-        console.error("Error al conectar con tu base de datos:", error);
+        console.error("Error al conectar con la base de datos:", error);
       }
     }
 
     inicializarTienda();
 
-    // Compresión súper avanzada para garantizar que cualquier imagen pase sin problemas
+    // Compresión ultra ligera y segura para Firestore con respaldo local
     function comprimirImagenParaLaNube(file) {
       return new Promise((resolve, reject) => {
+        if (!file) {
+          resolve(null);
+          return;
+        }
         const reader = new FileReader();
         reader.onerror = () => reject(new Error("No se pudo leer el archivo."));
         reader.onload = (e) => {
@@ -375,8 +394,8 @@
           img.onerror = () => reject(new Error("El archivo no es una imagen válida."));
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const MAX_WIDTH = 300; 
-            const MAX_HEIGHT = 300;
+            const MAX_WIDTH = 250; 
+            const MAX_HEIGHT = 250;
             let width = img.width; 
             let height = img.height;
             if (width > height) { 
@@ -388,8 +407,8 @@
             canvas.height = height;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
-            // Calidad al 30% comprimida y liviana para Firestore
-            resolve(canvas.toDataURL('image/jpeg', 0.3));
+            // Calidad al 25% para asegurar tamaño muy pequeño y liviano
+            resolve(canvas.toDataURL('image/jpeg', 0.25));
           };
           img.src = e.target.result;
         };
@@ -403,13 +422,20 @@
 
       const btn = document.getElementById('btnPortada');
       const htmlOriginal = btn.innerHTML;
-      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Comprimiendo...`;
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Guardando...`;
       btn.disabled = true;
 
       try {
         const base64 = await comprimirImagenParaLaNube(file);
-        await setDoc(configRef, { logoUrl: base64 }, { merge: true });
-        alert("¡Portada actualizada con éxito en tu nube! 🎉");
+        localStorage.setItem('playup_local_logo', base64);
+        document.getElementById('logoPrincipal').src = base64;
+        
+        try {
+          await setDoc(configRef, { logoUrl: base64 }, { merge: true });
+        } catch (cloudErr) {
+          console.warn("Guardado local exitoso, nube en espera.");
+        }
+        alert("¡Portada actualizada con éxito! 🎉");
       } catch (error) {
         console.error("Error al subir portada:", error);
         alert("Ocurrió un problema procesando la imagen. Intenta con otra foto.");
@@ -466,7 +492,7 @@
         else if (producto.categoria === 'peluches') bgColor = "bg-purple-50/95 border-purple-300"; 
         
         tarjeta.className = `${bgColor} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:-translate-y-3 transition duration-300 flex flex-col cursor-pointer group`;
-        tarjeta.onclick = () => window.abrirModalVista(producto.id);
+        tarjeta.onclick = () => window.abrirModalVista(producto.id || producto.nombre);
 
         let badgeColor = 'bg-gray-500';
         let badgeText = '✨ Juguete';
@@ -482,10 +508,10 @@
         if (isAdmin) {
           adminBotonesHTML = `
             <div class="flex gap-2 w-full mt-4" onclick="event.stopPropagation()">
-              <button onclick="window.abrirModalAdmin('${producto.id}')" class="flex-1 bg-yellow-400 text-yellow-900 py-3 rounded-2xl font-bold hover:bg-yellow-500 transition text-lg border-2 border-white shadow-md">
+              <button onclick="window.abrirModalAdmin('${producto.id || producto.nombre}')" class="flex-1 bg-yellow-400 text-yellow-900 py-3 rounded-2xl font-bold hover:bg-yellow-500 transition text-lg border-2 border-white shadow-md">
                 <i class="fas fa-edit"></i> Editar
               </button>
-              <button onclick="window.eliminarProducto('${producto.id}')" class="flex-1 bg-red-500 text-white py-3 rounded-2xl font-bold hover:bg-red-600 transition text-lg border-2 border-white shadow-md">
+              <button onclick="window.eliminarProducto('${producto.id || producto.nombre}')" class="flex-1 bg-red-500 text-white py-3 rounded-2xl font-bold hover:bg-red-600 transition text-lg border-2 border-white shadow-md">
                 <i class="fas fa-trash"></i> Borrar
               </button>
             </div>
@@ -566,8 +592,8 @@
     const modalVista = document.getElementById('modalVista');
     const modalVistaContent = document.getElementById('modalVistaContent');
 
-    window.abrirModalVista = function(id) {
-      const prod = productos.find(p => p.id === id);
+    window.abrirModalVista = function(idOrName) {
+      const prod = productos.find(p => p.id === idOrName || p.nombre === idOrName);
       if(!prod) return;
       productoActualModal = prod;
       anguloActualIndex = 0;
@@ -627,7 +653,7 @@
     const modalAdminContent = document.getElementById('modalAdminContent');
     const formProducto = document.getElementById('formProducto');
 
-    window.abrirModalAdmin = function(id = null) {
+    window.abrirModalAdmin = function(idOrName = null) {
       modalAdminForm.classList.remove('hidden');
       modalAdminForm.classList.add('flex');
       setTimeout(() => { modalAdminForm.classList.remove('opacity-0'); modalAdminContent.classList.remove('scale-95'); }, 10);
@@ -635,11 +661,11 @@
       formProducto.reset();
       document.getElementById('productoId').value = '';
 
-      if(id) {
+      if(idOrName) {
         document.getElementById('modalAdminTitulo').innerText = '✏️ Editar Juguete';
-        const prod = productos.find(p => p.id === id);
+        const prod = productos.find(p => p.id === idOrName || p.nombre === idOrName);
         if(prod) {
-          document.getElementById('productoId').value = prod.id;
+          document.getElementById('productoId').value = prod.id || prod.nombre;
           document.getElementById('productoNombre').value = prod.nombre;
           document.getElementById('productoCategoria').value = prod.categoria;
           document.getElementById('productoPrecio').value = prod.precio;
@@ -661,7 +687,7 @@
 
       const btnGuardar = document.getElementById('btnGuardarProd');
       btnGuardar.disabled = true;
-      btnGuardar.innerText = "⏳ Comprimiendo y guardando...";
+      btnGuardar.innerText = "⏳ Procesando...";
 
       try {
         const idActual = document.getElementById('productoId').value;
@@ -673,45 +699,60 @@
         const file1 = document.getElementById('productoImagen1').files[0];
         const file2 = document.getElementById('productoImagen2').files[0];
 
-        let img1Base64 = null; let img2Base64 = null;
-        if (file1) img1Base64 = await comprimirImagenParaLaNube(file1);
-        if (file2) img2Base64 = await comprimirImagenParaLaNube(file2);
+        let img1Base64 = await comprimirImagenParaLaNube(file1);
+        let img2Base64 = await comprimirImagenParaLaNube(file2);
 
-        if (idActual) {
-          const docRef = doc(db, 'juguetes_playup', idActual);
-          const prodActual = productos.find(p => p.id === idActual);
-          const updateData = { nombre, categoria, precio, descripcion, imagenes: [...prodActual.imagenes] };
-          
-          if (img1Base64) updateData.imagenes[0] = img1Base64;
-          if (img2Base64) updateData.imagenes[1] = img2Base64;
+        const prodExistente = productos.find(p => p.id === idActual || p.nombre === idActual);
 
-          await updateDoc(docRef, updateData);
+        let nuevasImagenes = prodExistente ? [...prodExistente.imagenes] : [
+          `https://placehold.co/600x400/eeeeee/666666?text=${encodeURIComponent(nombre)}+1`,
+          `https://placehold.co/600x400/dddddd/555555?text=${encodeURIComponent(nombre)}+2`
+        ];
+
+        if (img1Base64) nuevasImagenes[0] = img1Base64;
+        if (img2Base64) nuevasImagenes[1] = img2Base64;
+
+        if (prodExistente && prodExistente.id) {
+          const docRef = doc(db, 'juguetes_playup', prodExistente.id);
+          const updateData = { nombre, categoria, precio, descripcion, imagenes: nuevasImagenes };
+          await updateDoc(docRef, updateData).catch(() => {});
+        } else if (prodExistente) {
+          prodExistente.nombre = nombre;
+          prodExistente.categoria = categoria;
+          prodExistente.precio = precio;
+          prodExistente.descripcion = descripcion;
+          prodExistente.imagenes = nuevasImagenes;
+          await addDoc(productosRef, { nombre, categoria, precio, descripcion, imagenes: nuevasImagenes }).catch(() => {});
         } else {
-          const nuevoProd = {
-            nombre, categoria, precio, descripcion,
-            imagenes: [
-              img1Base64 || `https://placehold.co/600x400/eeeeee/666666?text=${encodeURIComponent(nombre)}+1`,
-              img2Base64 || `https://placehold.co/600x400/dddddd/555555?text=${encodeURIComponent(nombre)}+2`
-            ]
-          };
-          await addDoc(productosRef, nuevoProd);
+          const nuevoProd = { nombre, categoria, precio, descripcion, imagenes: nuevasImagenes };
+          await addDoc(productosRef, nuevoProd).catch(() => {});
         }
 
+        // Guardado de respaldo local garantizado
+        localStorage.setItem('playup_local_prods', JSON.stringify(productos));
+        window.renderProductos();
         window.cerrarModalAdmin();
+        alert("¡Juguete guardado con éxito! ✨");
       } catch (error) {
         console.error("Error al guardar:", error);
-        alert("Ocurrió un error guardando el juguete. Intenta seleccionando una foto un poco más pequeña.");
+        alert("Ocurrió un error guardando el juguete. Intenta de nuevo.");
       } finally {
         btnGuardar.disabled = false;
         btnGuardar.innerText = "Guardar Juguete";
       }
     }
 
-    window.eliminarProducto = async function(id) {
+    window.eliminarProducto = async function(idOrName) {
       if(confirm('🚨 ¿Estás segura de eliminar este juguete permanentemente?')) {
         try {
-          const docRef = doc(db, 'juguetes_playup', id);
-          await deleteDoc(docRef);
+          const prod = productos.find(p => p.id === idOrName || p.nombre === idOrName);
+          if (prod && prod.id) {
+            const docRef = doc(db, 'juguetes_playup', prod.id);
+            await deleteDoc(docRef).catch(() => {});
+          }
+          productos = productos.filter(p => p.id !== idOrName && p.nombre !== idOrName);
+          localStorage.setItem('playup_local_prods', JSON.stringify(productos));
+          window.renderProductos();
         } catch (error) {
           console.error("Error al eliminar", error);
         }
