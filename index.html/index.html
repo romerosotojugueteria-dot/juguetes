@@ -44,19 +44,6 @@
       z-index: 0;
     }
 
-    /* Clases para letras coloridas animadas */
-    .text-rainbow {
-      background-image: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: rainbow-animation 5s linear infinite;
-      background-size: 200% 100%;
-    }
-
-    @keyframes rainbow-animation {
-        to { background-position: 200% center; }
-    }
-
     .bubbly-text {
       text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
     }
@@ -68,7 +55,7 @@
   <section class="relative pt-12 pb-20 px-6 md:px-12 rounded-b-[60px] overflow-hidden text-white text-center z-10">
     <div class="max-w-4xl mx-auto flex flex-col items-center">
       
-      <!-- Logo Principal de PlayUp actualizado a la última imagen -->
+      <!-- Logo Principal de PlayUp actualizado -->
       <img
         id="logoPrincipal"
         src="WhatsApp%20Image%202026-09-07%20at%205.03.27%20PM_3.jpeg"
@@ -267,32 +254,35 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, doc, collection, addDoc, updateDoc, deleteDoc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // Variables globales inyectadas por el sistema
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'playup-store-default';
-    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-        // Mock config por si se ejecuta fuera del entorno inmersivo
-        apiKey: "mock", authDomain: "mock", projectId: "mock", storageBucket: "mock", messagingSenderId: "mock", appId: "mock"
+    // TUS LLAVES REALES DE FIREBASE
+    const firebaseConfig = {
+      apiKey: "AIzaSyAcNULVUiPKmTtWulmqrQjzYEKyaS-s5iY",
+      authDomain: "playup-539e9.firebaseapp.com",
+      projectId: "playup-539e9",
+      storageBucket: "playup-539e9.firebasestorage.app",
+      messagingSenderId: "446767107451",
+      appId: "1:446767107451:web:41d0cbe466f9264d4b01de",
+      measurementId: "G-VCFXMXKJY6"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // Estado global de la tienda
     let currentUser = null;
     let productos = [];
     let isAdmin = false;
     let categoriaActual = 'todos';
     let presupuestoActual = 'todos';
     
-    // Referencia a la colección en la nube donde vivirá el inventario de PlayUp
-    const productosRef = collection(db, 'artifacts', appId, 'public', 'data', 'juguetes');
-    const configRef = doc(db, 'artifacts', appId, 'public', 'data', 'configuracion', 'tienda');
+    // Referencias a la base de datos
+    const productosRef = collection(db, 'juguetes_playup');
+    const configRef = doc(db, 'configuracion_playup', 'portada');
 
-    // Juguetes de ejemplo por si la base de datos está totalmente vacía
+    // Juguetes por defecto si la base de datos está vacía
     const juguetesPorDefecto = [
       {
         nombre: 'Set de Bloques Castillo Mágico',
@@ -323,50 +313,36 @@
           'https://placehold.co/600x400/a7f3d0/064e3b?text=Gimnasio+Bebe',
           'https://placehold.co/600x400/6ee7b7/064e3b?text=Gimnasio+Lado'
         ]
-      },
-      {
-        nombre: 'Cubo Rubik Profesional',
-        categoria: 'didacticos',
-        precio: '80',
-        descripcion: 'Cubo de velocidad con giros suaves, ideal para desarrollar agilidad mental.',
-        imagenes: [
-          'https://placehold.co/600x400/fdba74/c2410c?text=Cubo+Rubik',
-          'https://placehold.co/600x400/fb923c/c2410c?text=Cubo+Rubik+Lado'
-        ]
-      },
-      {
-        nombre: 'Oso Perezoso Gigante',
-        categoria: 'peluches',
-        precio: '190',
-        descripcion: 'Peluche súper suave e hipoalergénico, tamaño gigante de 80cm.',
-        imagenes: [
-          'https://placehold.co/600x400/e9d5ff/6b21a8?text=Oso+Peluche',
-          'https://placehold.co/600x400/d8b4fe/6b21a8?text=Oso+Peluche+Atras'
-        ]
       }
     ];
 
     async function inicializarTienda() {
       try {
-        if (typeof __initial_auth_token !== 'undefined') {
-          await signInWithCustomToken(auth, __initial_auth_token);
-        } else {
-          await signInAnonymously(auth);
-        }
-        currentUser = auth.currentUser;
-        
+        // Asegurar autenticación anónima robusta con reintento y listener
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            currentUser = user;
+          } else {
+            try {
+              const cred = await signInAnonymously(auth);
+              currentUser = cred.user;
+            } catch (authErr) {
+              console.error("Error en auth anónima:", authErr);
+            }
+          }
+        });
+
         let cargaInicial = true;
 
-        // Escuchar cambios en vivo desde Firebase
+        // Escuchar cambios de productos en tiempo real
         onSnapshot(productosRef, async (snapshot) => {
           document.getElementById('loadingIndicator').classList.add('hidden');
           
           let datosNube = [];
-          snapshot.forEach(doc => {
-            datosNube.push({ id: doc.id, ...doc.data() });
+          snapshot.forEach(docSnap => {
+            datosNube.push({ id: docSnap.id, ...docSnap.data() });
           });
 
-          // Si la tienda está completamente vacía la primera vez que se abre, la llenamos de ejemplos
           if (datosNube.length === 0 && cargaInicial) {
             cargaInicial = false;
             for (let jug of juguetesPorDefecto) {
@@ -378,10 +354,10 @@
             window.renderProductos();
           }
         }, (error) => {
-          console.error("Hubo un error cargando los juguetes:", error);
+          console.error("Error sincronizando:", error);
         });
 
-        // Escuchar cambios en la foto de portada desde la nube
+        // Escuchar logo de portada
         onSnapshot(configRef, (docSnap) => {
           if (docSnap.exists() && docSnap.data().logoUrl) {
             document.getElementById('logoPrincipal').src = docSnap.data().logoUrl;
@@ -389,7 +365,7 @@
         });
 
       } catch (error) {
-        console.error("Error al conectar con la base de datos:", error);
+        console.error("Error al conectar con tu base de datos:", error);
       }
     }
 
@@ -398,9 +374,7 @@
     window.subirNuevaPortada = async function(event) {
       const file = event.target.files[0];
       if (!file) return;
-      if (!currentUser) { alert("Error de conexión a la nube. Intenta recargar la página."); return; }
 
-      // Cambiar temporalmente el botón a un estado de carga
       const btn = document.getElementById('btnPortada');
       const htmlOriginal = btn.innerHTML;
       btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Subiendo...`;
@@ -408,16 +382,15 @@
 
       try {
         const base64 = await comprimirImagenParaLaNube(file);
-        // Guardar la nueva portada en la base de datos
         await setDoc(configRef, { logoUrl: base64 }, { merge: true });
-        alert("¡Portada actualizada con éxito! 🎉");
+        alert("¡Portada actualizada con éxito en tu nube! 🎉");
       } catch (error) {
         console.error("Error al subir portada:", error);
         alert("Hubo un error al guardar la portada.");
       } finally {
         btn.innerHTML = htmlOriginal;
         btn.disabled = false;
-        event.target.value = ""; // Limpiar input para permitir subir la misma si se desea cambiar de nuevo
+        event.target.value = "";
       }
     }
 
@@ -467,7 +440,6 @@
         else if (producto.categoria === 'peluches') bgColor = "bg-purple-50/95 border-purple-300"; 
         
         tarjeta.className = `${bgColor} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:-translate-y-3 transition duration-300 flex flex-col cursor-pointer group`;
-        
         tarjeta.onclick = () => window.abrirModalVista(producto.id);
 
         let badgeColor = 'bg-gray-500';
@@ -557,12 +529,12 @@
         document.getElementById('adminPanel').classList.remove('hidden');
         document.getElementById('btnAdminLogin').classList.add('hidden');
         window.renderProductos();
+        alert('¡Bienvenida, María! Modo administradora activado.');
       } else if (pass !== null) {
         alert('Contraseña incorrecta.');
       }
     }
 
-    // Modales de Vista
     let productoActualModal = null;
     let anguloActualIndex = 0;
     const modalVista = document.getElementById('modalVista');
@@ -658,7 +630,6 @@
       setTimeout(() => { modalAdminForm.classList.add('hidden'); modalAdminForm.classList.remove('flex'); }, 300);
     }
 
-    // Comprime la imagen seleccionada del teléfono para que ocupe muy poco espacio en la base de datos
     function comprimirImagenParaLaNube(file) {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -673,7 +644,7 @@
             canvas.width = width; canvas.height = height;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
-            resolve(canvas.toDataURL('image/jpeg', 0.6)); // Comprime para base de datos
+            resolve(canvas.toDataURL('image/jpeg', 0.6));
           };
           img.src = e.target.result;
         };
@@ -683,7 +654,6 @@
 
     window.guardarProducto = async function(event) {
       event.preventDefault();
-      if (!currentUser) { alert("Error de conexión a la nube. Intenta recargar la página."); return; }
 
       const btnGuardar = document.getElementById('btnGuardarProd');
       btnGuardar.disabled = true;
@@ -704,8 +674,7 @@
         if (file2) img2Base64 = await comprimirImagenParaLaNube(file2);
 
         if (idActual) {
-          // Actualizar producto existente en la nube
-          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'juguetes', idActual);
+          const docRef = doc(db, 'juguetes_playup', idActual);
           const prodActual = productos.find(p => p.id === idActual);
           const updateData = { nombre, categoria, precio, descripcion, imagenes: [...prodActual.imagenes] };
           
@@ -714,7 +683,6 @@
 
           await updateDoc(docRef, updateData);
         } else {
-          // Crear nuevo producto en la nube
           const nuevoProd = {
             nombre, categoria, precio, descripcion,
             imagenes: [
@@ -727,8 +695,8 @@
 
         window.cerrarModalAdmin();
       } catch (error) {
-        console.error("Error al guardar el producto:", error);
-        alert("Ocurrió un error guardando el juguete. Por favor, revisa tu conexión.");
+        console.error("Error al guardar:", error);
+        alert("Ocurrió un error guardando el juguete. Revisa tu conexión.");
       } finally {
         btnGuardar.disabled = false;
         btnGuardar.innerText = "Guardar Juguete";
@@ -736,10 +704,9 @@
     }
 
     window.eliminarProducto = async function(id) {
-      if(!currentUser) return;
-      if(confirm('🚨 ¿Estás segura de eliminar este juguete permanentemente de la tienda?')) {
+      if(confirm('🚨 ¿Estás segura de eliminar este juguete permanentemente?')) {
         try {
-          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'juguetes', id);
+          const docRef = doc(db, 'juguetes_playup', id);
           await deleteDoc(docRef);
         } catch (error) {
           console.error("Error al eliminar", error);
@@ -748,6 +715,9 @@
     }
 
     window.filtrarCategoria('todos');
+  </script>
+</body>
+</html>
   </script>
 </body>
 </html>
