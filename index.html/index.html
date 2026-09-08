@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlayUp Store - ¡Sube la diversión!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+    
+    body { 
+      font-family: 'Fredoka', sans-serif; 
+    }
+
+    /* Fondo mágico estrellado animado */
+    .bg-magical {
+      background: linear-gradient(-45deg, #0019ff, #d600ff, #ff007b, #ff7b00);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Estrellitas en el fondo */
+    .stars {
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Clases para letras coloridas animadas */
+    .text-rainbow {
+      background-image: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: rainbow-animation 5s linear infinite;
+      background-size: 200% 100%;
+    }
+
+    @keyframes rainbow-animation {
+        to { background-position: 200% center; }
+    }
+
+    .bubbly-text {
+      text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
+  <div class="stars fixed"></div>
+
+  <section class="relative pt-12 pb-20 px-6 md:px-12 rounded-b-[60px] overflow-hidden text-white text-center z-10">
+    <div class="max-w-4xl mx-auto flex flex-col items-center">
+      
+      <!-- Logo Principal de PlayUp actualizado a la última imagen -->
+      <img
+        id="logoPrincipal"
+        src="WhatsApp%20Image%202026-09-07%20at%205.03.27%20PM_3.jpeg"
+        onerror="this.src='https://placehold.co/800x500/ff007b/ffffff?text=PlayUp'"
+        alt="PlayUp Logo"
+        class="w-full max-w-xl object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-8 transform hover:scale-105 transition duration-500"
+      />
+      
+      <p class="text-4xl md:text-5xl mt-2 font-black drop-shadow-2xl bg-white/30 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
+        <span class="text-red-500">¡</span><span class="text-blue-500">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-500">e</span>
+        <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
+        <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-500">r</span><span class="text-purple-500">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
+      </p>
+
+      <p class="mt-8 text-3xl md:text-4xl leading-relaxed font-black max-w-3xl text-white drop-shadow-xl text-shadow-lg p-6 bg-white/10 rounded-[30px] border-2 border-white/30 backdrop-blur-md">
+        <span class="text-yellow-300">Encuentra</span> los <span class="text-pink-400">mejores</span> <span class="text-blue-400">juguetes</span> de <span class="text-green-400">niños</span>, <span class="text-purple-400">niñas</span> y <span class="text-teal-300">bebés</span> al <span class="text-orange-400">instante.</span>
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6 mt-10">
+        <a href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-400 to-green-600 text-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3 border-4 border-white">
+          <i class="fab fa-whatsapp text-3xl"></i> WhatsApp
+        </a>
+        <a href="https://www.tiktok.com/@playupjuguetera?_r=1&_t=ZS-96gz5Rhr1lw" target="_blank" class="bg-black text-white border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3">
+          <i class="fab fa-tiktok text-3xl"></i> TikTok
+        </a>
+        <a href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3 group">
+          <i class="fas fa-map-marker-alt text-3xl group-hover:animate-bounce"></i> Ubicación
+        </a>
+        <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3">
+          <i class="fas fa-magic"></i> Modo Admin
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="adminPanel" class="max-w-7xl mx-auto px-6 pt-4 pb-8 hidden transition-all duration-500 relative z-10">
+    <div class="bg-white/90 backdrop-blur-lg text-purple-900 rounded-[40px] p-8 shadow-2xl border-4 border-yellow-400 flex flex-wrap justify-between items-center gap-6">
+      <div>
+        <h2 class="text-4xl font-bold flex items-center gap-3">
+          <i class="fas fa-crown text-yellow-500"></i> Panel de María
+        </h2>
+        <p class="text-xl mt-2 font-semibold">Tus cambios se guardarán permanentemente en la nube.</p>
+      </div>
+      <div class="flex gap-4 flex-wrap">
+        <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
+        <button onclick="document.getElementById('inputPortada').click()" id="btnPortada" class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-2 border-white px-6 py-4 rounded-3xl text-xl font-bold hover:scale-105 transition shadow-2xl flex items-center gap-2">
+          <i class="fas fa-image"></i> Cambiar Portada
+        </button>
+        <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-2 border-white px-8 py-4 rounded-3xl text-2xl font-bold hover:scale-105 transition shadow-2xl flex items-center gap-2">
+          <i class="fas fa-plus-circle"></i> + Añadir Juguete
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 pt-8 pb-4 relative z-10">
+    <div class="flex flex-wrap justify-center gap-6">
+      <button onclick="filtrarCategoria('todos')" id="btn-todos" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-yellow-400 text-purple-900 border-4 border-white">
+        ✨ Todos
+      </button>
+      <button onclick="filtrarCategoria('ninos')" id="btn-ninos" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
+        🚀 Juguetes de Niños
+      </button>
+      <button onclick="filtrarCategoria('ninas')" id="btn-ninas" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
+        🦄 Juguetes de Niñas
+      </button>
+      <button onclick="filtrarCategoria('bebes')" id="btn-bebes" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
+        🍼 Juguetes de Bebé y Accesorios
+      </button>
+      <button onclick="filtrarCategoria('didacticos')" id="btn-didacticos" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
+        🧩 Didácticos
+      </button>
+      <button onclick="filtrarCategoria('peluches')" id="btn-peluches" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
+        🧸 Peluches
+      </button>
+    </div>
+  </section>
+
+  <section id="seccionPresupuesto" class="max-w-7xl mx-auto px-6 pb-6 relative z-10 transition-all duration-500">
+    <div class="bg-white/20 backdrop-blur-xl rounded-[30px] p-4 md:p-6 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
+      <span class="text-white font-black text-xl drop-shadow-md mr-2 flex items-center gap-2">
+        <i class="fas fa-wallet text-yellow-300 text-2xl"></i> Presupuesto:
+      </span>
+      <button onclick="filtrarPresupuesto('todos')" id="btn-precio-todos" class="px-5 py-2 rounded-full text-lg font-bold bg-green-500 text-white border-2 border-white shadow-md transform hover:scale-105 transition scale-105">Cualquiera</button>
+      <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 30 a 50</button>
+      <button onclick="filtrarPresupuesto('rango2')" id="btn-precio-rango2" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 60 a 100</button>
+      <button onclick="filtrarPresupuesto('rango3')" id="btn-precio-rango3" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 110 a 160</button>
+      <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-lg font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white shadow-md transform hover:scale-105 transition">Bs. 170 a más</button>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
+    <div id="loadingIndicator" class="text-center py-10">
+      <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
+      <p class="text-white text-xl mt-4 font-bold">Cargando inventario de PlayUp...</p>
+    </div>
+    <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
+      <!-- Los juguetes se mostrarán aquí conectándose a la nube -->
+    </div>
+  </section>
+
+  <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
+      <button onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-400 hover:text-red-500 text-4xl transition z-10 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-md">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="text-center mb-4 mt-2">
+        <span id="detalleCategoriaBadge" class="px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider text-white shadow-md"></span>
+        <h3 id="detalleNombre" class="text-4xl font-bold text-purple-900 mt-4 leading-tight"></h3>
+      </div>
+
+      <!-- Visor Principal -->
+      <div class="relative h-72 md:h-[400px] bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
+        <img id="imagenPrincipal" src="" alt="Vista del Juguete" class="w-full h-full object-contain bg-white transition duration-300">
+      </div>
+
+      <!-- Miniaturas -->
+      <div class="flex justify-center gap-6 mb-6">
+        <button onclick="cambiarAngulo(0)" id="thumb0" class="w-24 h-24 rounded-2xl overflow-hidden border-4 border-pink-500 shadow-lg focus:outline-none transition hover:scale-105 bg-white">
+          <img id="imgThumb0" src="" class="w-full h-full object-cover">
+        </button>
+        <button onclick="cambiarAngulo(1)" id="thumb1" class="w-24 h-24 rounded-2xl overflow-hidden border-4 border-transparent opacity-60 hover:opacity-100 hover:scale-105 shadow-lg focus:outline-none transition bg-white">
+          <img id="imgThumb1" src="" class="w-full h-full object-cover">
+        </button>
+      </div>
+
+      <p id="detalleDescripcion" class="text-gray-700 text-xl text-center mb-6 px-4 font-medium"></p>
+
+      <div class="flex flex-wrap justify-between items-center gap-4 border-t-4 border-gray-100 pt-6">
+        <div id="detallePrecio" class="text-4xl font-bold text-pink-600 drop-shadow-sm"></div>
+        <a id="detalleBtnWhatsApp" href="#" target="_blank" class="bg-gradient-to-r from-green-400 to-green-600 text-white px-8 py-4 rounded-3xl text-xl font-bold hover:scale-105 transition shadow-[0_10px_20px_rgba(0,128,0,0.3)] flex items-center gap-2 border-2 border-white">
+          <i class="fab fa-whatsapp text-3xl"></i> ¡Lo quiero!
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalAdminForm" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-8 w-full max-w-lg shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-purple-500" id="modalAdminContent">
+      <div class="flex justify-between items-center mb-6">
+        <h3 id="modalAdminTitulo" class="text-3xl font-bold text-purple-600">Añadir Juguete</h3>
+        <button onclick="cerrarModalAdmin()" class="text-gray-400 hover:text-red-500 text-4xl transition">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+      
+      <form id="formProducto" onsubmit="guardarProducto(event)" class="space-y-4 max-h-[75vh] overflow-y-auto pr-2">
+        <input type="hidden" id="productoId">
+        
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1 text-lg">Nombre del Juguete</label>
+          <input type="text" id="productoNombre" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-5 py-3 outline-none transition font-semibold text-lg">
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1 text-lg">Categoría</label>
+          <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-5 py-3 outline-none transition font-semibold text-lg">
+            <option value="ninos">🚀 Juguetes de Niños</option>
+            <option value="ninas">🦄 Juguetes de Niñas</option>
+            <option value="bebes">🍼 Juguetes de Bebé y Accesorios</option>
+            <option value="didacticos">🧩 Juguetes Didácticos</option>
+            <option value="peluches">🧸 Peluches</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1 text-lg">Precio (Solo número)</label>
+          <div class="relative">
+            <span class="absolute left-5 top-3.5 font-bold text-gray-500 text-lg">Bs.</span>
+            <input type="number" id="productoPrecio" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl pl-16 pr-5 py-3 outline-none transition font-semibold text-lg">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1 text-lg">Descripción</label>
+          <textarea id="productoDescripcion" required rows="2" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-5 py-3 outline-none transition font-semibold text-lg resize-none"></textarea>
+        </div>
+
+        <div class="p-4 bg-blue-50 rounded-2xl border-2 border-blue-200">
+          <label class="block text-blue-700 font-bold mb-2 text-lg">📸 Imagen 1 (Frente)</label>
+          <input type="file" id="productoImagen1" accept="image/*" class="w-full text-blue-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-blue-200 file:text-blue-800 hover:file:bg-blue-300 transition cursor-pointer">
+        </div>
+
+        <div class="p-4 bg-pink-50 rounded-2xl border-2 border-pink-200">
+          <label class="block text-pink-700 font-bold mb-2 text-lg">📸 Imagen 2 (Otro ángulo)</label>
+          <input type="file" id="productoImagen2" accept="image/*" class="w-full text-pink-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-pink-200 file:text-pink-800 hover:file:bg-pink-300 transition cursor-pointer">
+        </div>
+
+        <button type="submit" id="btnGuardarProd" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-2xl font-bold py-4 rounded-3xl hover:opacity-90 transition shadow-xl mt-6 border-2 border-white">
+          Guardar Juguete
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, collection, addDoc, updateDoc, deleteDoc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Variables globales inyectadas por el sistema
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'playup-store-default';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+        // Mock config por si se ejecuta fuera del entorno inmersivo
+        apiKey: "mock", authDomain: "mock", projectId: "mock", storageBucket: "mock", messagingSenderId: "mock", appId: "mock"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Estado global de la tienda
+    let currentUser = null;
+    let productos = [];
+    let isAdmin = false;
+    let categoriaActual = 'todos';
+    let presupuestoActual = 'todos';
+    
+    // Referencia a la colección en la nube donde vivirá el inventario de PlayUp
+    const productosRef = collection(db, 'artifacts', appId, 'public', 'data', 'juguetes');
+    const configRef = doc(db, 'artifacts', appId, 'public', 'data', 'configuracion', 'tienda');
+
+    // Juguetes de ejemplo por si la base de datos está totalmente vacía
+    const juguetesPorDefecto = [
+      {
+        nombre: 'Set de Bloques Castillo Mágico',
+        categoria: 'ninas',
+        precio: '280',
+        descripcion: 'Hermoso castillo armable con luces y figuras pequeñas incluidas.',
+        imagenes: [
+          'https://placehold.co/600x400/ff99cc/ffffff?text=Castillo+Frente',
+          'https://placehold.co/600x400/ff66aa/ffffff?text=Castillo+Atras'
+        ]
+      },
+      {
+        nombre: 'Auto de Carreras RC',
+        categoria: 'ninos',
+        precio: '150',
+        descripcion: 'Auto deportivo veloz, recargable, perfecto para exteriores.',
+        imagenes: [
+          'https://placehold.co/600x400/99ccff/ffffff?text=Auto+Frente',
+          'https://placehold.co/600x400/66a3ff/ffffff?text=Auto+Lado'
+        ]
+      },
+      {
+        nombre: 'Gimnasio Musical Interactivo',
+        categoria: 'bebes',
+        precio: '320',
+        descripcion: 'Alfombra suave con piano musical y sonajeros para la estimulación.',
+        imagenes: [
+          'https://placehold.co/600x400/a7f3d0/064e3b?text=Gimnasio+Bebe',
+          'https://placehold.co/600x400/6ee7b7/064e3b?text=Gimnasio+Lado'
+        ]
+      },
+      {
+        nombre: 'Cubo Rubik Profesional',
+        categoria: 'didacticos',
+        precio: '80',
+        descripcion: 'Cubo de velocidad con giros suaves, ideal para desarrollar agilidad mental.',
+        imagenes: [
+          'https://placehold.co/600x400/fdba74/c2410c?text=Cubo+Rubik',
+          'https://placehold.co/600x400/fb923c/c2410c?text=Cubo+Rubik+Lado'
+        ]
+      },
+      {
+        nombre: 'Oso Perezoso Gigante',
+        categoria: 'peluches',
+        precio: '190',
+        descripcion: 'Peluche súper suave e hipoalergénico, tamaño gigante de 80cm.',
+        imagenes: [
+          'https://placehold.co/600x400/e9d5ff/6b21a8?text=Oso+Peluche',
+          'https://placehold.co/600x400/d8b4fe/6b21a8?text=Oso+Peluche+Atras'
+        ]
+      }
+    ];
+
+    async function inicializarTienda() {
+      try {
+        if (typeof __initial_auth_token !== 'undefined') {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+        currentUser = auth.currentUser;
+        
+        let cargaInicial = true;
+
+        // Escuchar cambios en vivo desde Firebase
+        onSnapshot(productosRef, async (snapshot) => {
+          document.getElementById('loadingIndicator').classList.add('hidden');
+          
+          let datosNube = [];
+          snapshot.forEach(doc => {
+            datosNube.push({ id: doc.id, ...doc.data() });
+          });
+
+          // Si la tienda está completamente vacía la primera vez que se abre, la llenamos de ejemplos
+          if (datosNube.length === 0 && cargaInicial) {
+            cargaInicial = false;
+            for (let jug of juguetesPorDefecto) {
+              await addDoc(productosRef, jug);
+            }
+          } else {
+            cargaInicial = false;
+            productos = datosNube;
+            window.renderProductos();
+          }
+        }, (error) => {
+          console.error("Hubo un error cargando los juguetes:", error);
+        });
+
+        // Escuchar cambios en la foto de portada desde la nube
+        onSnapshot(configRef, (docSnap) => {
+          if (docSnap.exists() && docSnap.data().logoUrl) {
+            document.getElementById('logoPrincipal').src = docSnap.data().logoUrl;
+          }
+        });
+
+      } catch (error) {
+        console.error("Error al conectar con la base de datos:", error);
+      }
+    }
+
+    inicializarTienda();
+
+    window.subirNuevaPortada = async function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      if (!currentUser) { alert("Error de conexión a la nube. Intenta recargar la página."); return; }
+
+      // Cambiar temporalmente el botón a un estado de carga
+      const btn = document.getElementById('btnPortada');
+      const htmlOriginal = btn.innerHTML;
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Subiendo...`;
+      btn.disabled = true;
+
+      try {
+        const base64 = await comprimirImagenParaLaNube(file);
+        // Guardar la nueva portada en la base de datos
+        await setDoc(configRef, { logoUrl: base64 }, { merge: true });
+        alert("¡Portada actualizada con éxito! 🎉");
+      } catch (error) {
+        console.error("Error al subir portada:", error);
+        alert("Hubo un error al guardar la portada.");
+      } finally {
+        btn.innerHTML = htmlOriginal;
+        btn.disabled = false;
+        event.target.value = ""; // Limpiar input para permitir subir la misma si se desea cambiar de nuevo
+      }
+    }
+
+    window.renderProductos = function() {
+      const contenedor = document.getElementById('contenedorProductos');
+      contenedor.innerHTML = '';
+
+      const productosFiltrados = productos.filter(p => {
+        const pasaCategoria = categoriaActual === 'todos' || p.categoria === categoriaActual;
+        
+        const precioNum = parseFloat(p.precio);
+        let pasaPresupuesto = false;
+        
+        if (presupuestoActual === 'todos') {
+          pasaPresupuesto = true;
+        } else if (presupuestoActual === 'rango1') {
+          pasaPresupuesto = precioNum >= 30 && precioNum <= 50;
+        } else if (presupuestoActual === 'rango2') {
+          pasaPresupuesto = precioNum >= 60 && precioNum <= 100;
+        } else if (presupuestoActual === 'rango3') {
+          pasaPresupuesto = precioNum >= 110 && precioNum <= 160;
+        } else if (presupuestoActual === 'rango4') {
+          pasaPresupuesto = precioNum >= 170;
+        }
+        
+        return pasaCategoria && pasaPresupuesto;
+      });
+
+      if (productosFiltrados.length === 0) {
+        contenedor.innerHTML = `
+          <div class="col-span-full text-center py-16 bg-white/80 backdrop-blur-md rounded-[40px] border-4 border-dashed border-white shadow-xl">
+            <p class="text-4xl font-bold text-purple-500 mb-4">¡Ups! 🙈</p>
+            <p class="text-2xl font-bold text-gray-600">Aún no hay juguetes en esta categoría o precio.</p>
+          </div>
+        `;
+        return;
+      }
+
+      productosFiltrados.forEach((producto) => {
+        const tarjeta = document.createElement('div');
+        
+        let bgColor = "bg-white/95 border-yellow-300";
+        if (producto.categoria === 'bebes') bgColor = "bg-teal-50/95 border-teal-300"; 
+        else if (producto.categoria === 'ninos') bgColor = "bg-blue-50/95 border-blue-300"; 
+        else if (producto.categoria === 'ninas') bgColor = "bg-pink-50/95 border-pink-300"; 
+        else if (producto.categoria === 'didacticos') bgColor = "bg-orange-50/95 border-orange-300"; 
+        else if (producto.categoria === 'peluches') bgColor = "bg-purple-50/95 border-purple-300"; 
+        
+        tarjeta.className = `${bgColor} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:-translate-y-3 transition duration-300 flex flex-col cursor-pointer group`;
+        
+        tarjeta.onclick = () => window.abrirModalVista(producto.id);
+
+        let badgeColor = 'bg-gray-500';
+        let badgeText = '✨ Juguete';
+        let badgeTextColor = 'text-white';
+        
+        if (producto.categoria === 'ninos') { badgeColor = 'bg-blue-500'; badgeText = '🚀 Niños'; }
+        else if (producto.categoria === 'ninas') { badgeColor = 'bg-pink-500'; badgeText = '🦄 Niñas'; }
+        else if (producto.categoria === 'bebes') { badgeColor = 'bg-teal-300'; badgeText = '🍼 Bebé & Accs.'; badgeTextColor = 'text-teal-900'; }
+        else if (producto.categoria === 'didacticos') { badgeColor = 'bg-orange-400'; badgeText = '🧩 Didácticos'; }
+        else if (producto.categoria === 'peluches') { badgeColor = 'bg-purple-400'; badgeText = '🧸 Peluches'; }
+
+        let adminBotonesHTML = '';
+        if (isAdmin) {
+          adminBotonesHTML = `
+            <div class="flex gap-2 w-full mt-4" onclick="event.stopPropagation()">
+              <button onclick="window.abrirModalAdmin('${producto.id}')" class="flex-1 bg-yellow-400 text-yellow-900 py-3 rounded-2xl font-bold hover:bg-yellow-500 transition text-lg border-2 border-white shadow-md">
+                <i class="fas fa-edit"></i> Editar
+              </button>
+              <button onclick="window.eliminarProducto('${producto.id}')" class="flex-1 bg-red-500 text-white py-3 rounded-2xl font-bold hover:bg-red-600 transition text-lg border-2 border-white shadow-md">
+                <i class="fas fa-trash"></i> Borrar
+              </button>
+            </div>
+          `;
+        }
+
+        tarjeta.innerHTML = `
+          <div class="relative h-72 bg-white overflow-hidden p-2">
+            <img src="${producto.imagenes[0]}" alt="${producto.nombre}" class="w-full h-full object-cover rounded-[30px] group-hover:scale-105 transition duration-500" />
+            <span class="absolute top-5 left-5 ${badgeColor} ${badgeTextColor} text-sm font-bold px-4 py-2 rounded-full shadow-lg uppercase tracking-wider border-2 border-white">
+              ${badgeText}
+            </span>
+            <div class="absolute bottom-5 right-5 bg-black/70 text-white text-sm font-bold px-4 py-2 rounded-full backdrop-blur-sm flex items-center gap-2 border border-white/50">
+              <i class="fas fa-search-plus"></i> Detalles
+            </div>
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-3xl font-bold text-purple-900 leading-tight group-hover:text-pink-500 transition">${producto.nombre}</h3>
+            <div class="text-4xl font-black text-pink-500 mt-4 drop-shadow-sm">Bs. ${producto.precio}</div>
+            ${adminBotonesHTML}
+          </div>
+        `;
+        contenedor.appendChild(tarjeta);
+      });
+    }
+
+    window.filtrarCategoria = function(cat) {
+      categoriaActual = cat;
+      const baseClass = "px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 border-4 border-white ";
+      
+      document.getElementById('btn-todos').className = baseClass + (cat === 'todos' ? "bg-yellow-400 text-purple-900 scale-105" : "bg-white/20 text-white backdrop-blur-md");
+      document.getElementById('btn-ninos').className = baseClass + (cat === 'ninos' ? "bg-blue-500 text-white scale-105" : "bg-white/20 text-white backdrop-blur-md");
+      document.getElementById('btn-ninas').className = baseClass + (cat === 'ninas' ? "bg-pink-500 text-white scale-105" : "bg-white/20 text-white backdrop-blur-md");
+      document.getElementById('btn-bebes').className = baseClass + (cat === 'bebes' ? "bg-teal-300 text-teal-900 scale-105" : "bg-white/20 text-white backdrop-blur-md");
+      document.getElementById('btn-didacticos').className = baseClass + (cat === 'didacticos' ? "bg-orange-400 text-white scale-105" : "bg-white/20 text-white backdrop-blur-md");
+      document.getElementById('btn-peluches').className = baseClass + (cat === 'peluches' ? "bg-purple-400 text-white scale-105" : "bg-white/20 text-white backdrop-blur-md");
+
+      window.renderProductos();
+    }
+
+    window.filtrarPresupuesto = function(rango) {
+      presupuestoActual = rango;
+      const botones = ['todos', 'rango1', 'rango2', 'rango3', 'rango4'];
+      const baseClass = "px-5 py-2 rounded-full text-lg font-bold border-2 border-white shadow-md transform hover:scale-105 transition ";
+      
+      botones.forEach(valor => {
+        const btn = document.getElementById(`btn-precio-${valor}`);
+        if(btn) {
+          if(valor === rango) {
+            btn.className = baseClass + "bg-green-500 text-white scale-105"; 
+          } else {
+            btn.className = baseClass + "bg-white/30 text-white hover:bg-white/60"; 
+          }
+        }
+      });
+      window.renderProductos();
+    }
+
+    window.loginAdmin = function() {
+      if(isAdmin) {
+        alert("Ya estás en el modo Administrador.");
+        return;
+      }
+      const pass = prompt('Ingresa la contraseña de administrador (Sensible a mayúsculas/minúsculas):');
+      if (pass === 'mariaPlayup') {
+        isAdmin = true;
+        document.getElementById('adminPanel').classList.remove('hidden');
+        document.getElementById('btnAdminLogin').classList.add('hidden');
+        window.renderProductos();
+      } else if (pass !== null) {
+        alert('Contraseña incorrecta.');
+      }
+    }
+
+    // Modales de Vista
+    let productoActualModal = null;
+    let anguloActualIndex = 0;
+    const modalVista = document.getElementById('modalVista');
+    const modalVistaContent = document.getElementById('modalVistaContent');
+
+    window.abrirModalVista = function(id) {
+      const prod = productos.find(p => p.id === id);
+      if(!prod) return;
+      productoActualModal = prod;
+      anguloActualIndex = 0;
+
+      document.getElementById('detalleNombre').innerText = prod.nombre;
+      document.getElementById('detalleDescripcion').innerText = prod.descripcion;
+      document.getElementById('detallePrecio').innerText = `Bs. ${prod.precio}`;
+      
+      const badge = document.getElementById('detalleCategoriaBadge');
+      if(prod.categoria === 'ninos') { badge.className = "px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider text-white shadow-md bg-blue-500 border-2 border-white"; badge.innerText = "🚀 Juguete de Niños"; } 
+      else if (prod.categoria === 'ninas') { badge.className = "px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider text-white shadow-md bg-pink-500 border-2 border-white"; badge.innerText = "🦄 Juguete de Niñas"; } 
+      else if (prod.categoria === 'bebes') { badge.className = "px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider text-teal-900 shadow-md bg-teal-300 border-2 border-white"; badge.innerText = "🍼 Bebés y Accesorios"; } 
+      else if (prod.categoria === 'didacticos') { badge.className = "px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider text-white shadow-md bg-orange-400 border-2 border-white"; badge.innerText = "🧩 Juguete Didáctico"; } 
+      else if (prod.categoria === 'peluches') { badge.className = "px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider text-white shadow-md bg-purple-400 border-2 border-white"; badge.innerText = "🧸 Peluche"; }
+
+      const mensajeWa = `Buen dia me gustaria saber cuanto esta este juguete automatico: *${prod.nombre}* a Bs. ${prod.precio}`;
+      document.getElementById('detalleBtnWhatsApp').href = `https://wa.me/qr/RQIEHSOPT7CCD1?text=${encodeURIComponent(mensajeWa)}`;
+
+      document.getElementById('imgThumb0').src = prod.imagenes[0];
+      document.getElementById('imgThumb1').src = prod.imagenes[1] || prod.imagenes[0];
+
+      window.actualizarAnguloVisual();
+
+      modalVista.classList.remove('hidden');
+      modalVista.classList.add('flex');
+      setTimeout(() => { modalVista.classList.remove('opacity-0'); modalVistaContent.classList.remove('scale-95'); }, 10);
+    }
+
+    window.cambiarAngulo = function(index) {
+      if(!productoActualModal) return;
+      anguloActualIndex = index;
+      window.actualizarAnguloVisual();
+    }
+
+    window.actualizarAnguloVisual = function() {
+      if(!productoActualModal) return;
+      document.getElementById('imagenPrincipal').src = productoActualModal.imagenes[anguloActualIndex] || productoActualModal.imagenes[0];
+      const thumb0 = document.getElementById('thumb0');
+      const thumb1 = document.getElementById('thumb1');
+      const baseThumbClass = "w-24 h-24 rounded-2xl overflow-hidden shadow-lg focus:outline-none transition hover:scale-105 bg-white border-4 ";
+      if(anguloActualIndex === 0) {
+        thumb0.className = baseThumbClass + "border-pink-500 scale-105";
+        thumb1.className = baseThumbClass + "border-transparent opacity-60";
+      } else {
+        thumb0.className = baseThumbClass + "border-transparent opacity-60";
+        thumb1.className = baseThumbClass + "border-pink-500 scale-105";
+      }
+    }
+
+    window.cerrarModalVista = function() {
+      modalVista.classList.add('opacity-0');
+      modalVistaContent.classList.add('scale-95');
+      setTimeout(() => { modalVista.classList.add('hidden'); modalVista.classList.remove('flex'); }, 300);
+    }
+
+    const modalAdminForm = document.getElementById('modalAdminForm');
+    const modalAdminContent = document.getElementById('modalAdminContent');
+    const formProducto = document.getElementById('formProducto');
+
+    window.abrirModalAdmin = function(id = null) {
+      modalAdminForm.classList.remove('hidden');
+      modalAdminForm.classList.add('flex');
+      setTimeout(() => { modalAdminForm.classList.remove('opacity-0'); modalAdminContent.classList.remove('scale-95'); }, 10);
+
+      formProducto.reset();
+      document.getElementById('productoId').value = '';
+
+      if(id) {
+        document.getElementById('modalAdminTitulo').innerText = '✏️ Editar Juguete';
+        const prod = productos.find(p => p.id === id);
+        if(prod) {
+          document.getElementById('productoId').value = prod.id;
+          document.getElementById('productoNombre').value = prod.nombre;
+          document.getElementById('productoCategoria').value = prod.categoria;
+          document.getElementById('productoPrecio').value = prod.precio;
+          document.getElementById('productoDescripcion').value = prod.descripcion;
+        }
+      } else {
+        document.getElementById('modalAdminTitulo').innerText = '✨ Añadir Nuevo Juguete';
+      }
+    }
+
+    window.cerrarModalAdmin = function() {
+      modalAdminForm.classList.add('opacity-0');
+      modalAdminContent.classList.add('scale-95');
+      setTimeout(() => { modalAdminForm.classList.add('hidden'); modalAdminForm.classList.remove('flex'); }, 300);
+    }
+
+    // Comprime la imagen seleccionada del teléfono para que ocupe muy poco espacio en la base de datos
+    function comprimirImagenParaLaNube(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 600; const MAX_HEIGHT = 600;
+            let width = img.width; let height = img.height;
+            if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
+            else { if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; } }
+            canvas.width = width; canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL('image/jpeg', 0.6)); // Comprime para base de datos
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    window.guardarProducto = async function(event) {
+      event.preventDefault();
+      if (!currentUser) { alert("Error de conexión a la nube. Intenta recargar la página."); return; }
+
+      const btnGuardar = document.getElementById('btnGuardarProd');
+      btnGuardar.disabled = true;
+      btnGuardar.innerText = "⏳ Guardando en la nube...";
+
+      try {
+        const idActual = document.getElementById('productoId').value;
+        const nombre = document.getElementById('productoNombre').value;
+        const categoria = document.getElementById('productoCategoria').value;
+        const precio = document.getElementById('productoPrecio').value;
+        const descripcion = document.getElementById('productoDescripcion').value;
+
+        const file1 = document.getElementById('productoImagen1').files[0];
+        const file2 = document.getElementById('productoImagen2').files[0];
+
+        let img1Base64 = null; let img2Base64 = null;
+        if (file1) img1Base64 = await comprimirImagenParaLaNube(file1);
+        if (file2) img2Base64 = await comprimirImagenParaLaNube(file2);
+
+        if (idActual) {
+          // Actualizar producto existente en la nube
+          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'juguetes', idActual);
+          const prodActual = productos.find(p => p.id === idActual);
+          const updateData = { nombre, categoria, precio, descripcion, imagenes: [...prodActual.imagenes] };
+          
+          if (img1Base64) updateData.imagenes[0] = img1Base64;
+          if (img2Base64) updateData.imagenes[1] = img2Base64;
+
+          await updateDoc(docRef, updateData);
+        } else {
+          // Crear nuevo producto en la nube
+          const nuevoProd = {
+            nombre, categoria, precio, descripcion,
+            imagenes: [
+              img1Base64 || `https://placehold.co/600x400/eeeeee/666666?text=${encodeURIComponent(nombre)}+1`,
+              img2Base64 || `https://placehold.co/600x400/dddddd/555555?text=${encodeURIComponent(nombre)}+2`
+            ]
+          };
+          await addDoc(productosRef, nuevoProd);
+        }
+
+        window.cerrarModalAdmin();
+      } catch (error) {
+        console.error("Error al guardar el producto:", error);
+        alert("Ocurrió un error guardando el juguete. Por favor, revisa tu conexión.");
+      } finally {
+        btnGuardar.disabled = false;
+        btnGuardar.innerText = "Guardar Juguete";
+      }
+    }
+
+    window.eliminarProducto = async function(id) {
+      if(!currentUser) return;
+      if(confirm('🚨 ¿Estás segura de eliminar este juguete permanentemente de la tienda?')) {
+        try {
+          const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'juguetes', id);
+          await deleteDoc(docRef);
+        } catch (error) {
+          console.error("Error al eliminar", error);
+        }
+      }
+    }
+
+    window.filtrarCategoria('todos');
+  </script>
+</body>
+</html>
