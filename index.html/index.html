@@ -71,7 +71,7 @@
       </p>
 
       <p class="mt-8 text-3xl md:text-4xl leading-relaxed font-black max-w-3xl text-white drop-shadow-xl text-shadow-lg p-6 bg-white/10 rounded-[30px] border-2 border-white/30 backdrop-blur-md">
-        <span class="text-yellow-300">Encuentra</span> los <span class="text-pink-400">mejores</span> <span class="text-blue-400">juguetes</span> de <span class="text-green-400">niños</span>, <span class="text-purple-400">niñas</span> y <span class="text-teal-300">bebés</span> al <span class="text-orange-400">instante.</span>
+        <span class="text-yellow-300">Encuentra</span> los <span class="text-pink-400">mejores</span> <span class="text-blue-400">juguetes</span> de <span class="text-green-400">niños</span>, <span class="text-purple-400">niñas</span> y <span class="text-teal-300">bebés y accesorios</span> al <span class="text-orange-400">instante.</span>
       </p>
 
       <div class="flex flex-wrap justify-center gap-6 mt-10">
@@ -97,7 +97,7 @@
         <h2 class="text-4xl font-bold flex items-center gap-3">
           <i class="fas fa-crown text-yellow-500"></i> Panel de María
         </h2>
-        <p class="text-xl mt-2 font-semibold">Tus cambios se guardarán permanentemente en la nube.</p>
+        <p class="text-xl mt-2 font-semibold">Tus cambios se guardarán permanentemente en tu nube.</p>
       </div>
       <div class="flex gap-4 flex-wrap">
         <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
@@ -126,7 +126,7 @@
         🍼 Juguetes de Bebé y Accesorios
       </button>
       <button onclick="filtrarCategoria('didacticos')" id="btn-didacticos" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
-        🧩 Didácticos
+        🧩 Juguetes Didácticos
       </button>
       <button onclick="filtrarCategoria('peluches')" id="btn-peluches" class="px-8 py-4 rounded-3xl text-2xl font-bold shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition transform hover:scale-105 bg-white/20 text-white backdrop-blur-md border-4 border-white">
         🧸 Peluches
@@ -278,11 +278,9 @@
     let categoriaActual = 'todos';
     let presupuestoActual = 'todos';
     
-    // Referencias a la base de datos
     const productosRef = collection(db, 'juguetes_playup');
     const configRef = doc(db, 'configuracion_playup', 'portada');
 
-    // Juguetes por defecto si la base de datos está vacía
     const juguetesPorDefecto = [
       {
         nombre: 'Set de Bloques Castillo Mágico',
@@ -318,7 +316,6 @@
 
     async function inicializarTienda() {
       try {
-        // Asegurar autenticación anónima robusta con reintento y listener
         onAuthStateChanged(auth, async (user) => {
           if (user) {
             currentUser = user;
@@ -334,7 +331,6 @@
 
         let cargaInicial = true;
 
-        // Escuchar cambios de productos en tiempo real
         onSnapshot(productosRef, async (snapshot) => {
           document.getElementById('loadingIndicator').classList.add('hidden');
           
@@ -357,7 +353,6 @@
           console.error("Error sincronizando:", error);
         });
 
-        // Escuchar logo de portada
         onSnapshot(configRef, (docSnap) => {
           if (docSnap.exists() && docSnap.data().logoUrl) {
             document.getElementById('logoPrincipal').src = docSnap.data().logoUrl;
@@ -370,6 +365,36 @@
     }
 
     inicializarTienda();
+
+    // Compresión súper segura para evitar que la base de datos rechace la foto por tamaño
+    function comprimirImagenParaLaNube(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 500; 
+            const MAX_HEIGHT = 500;
+            let width = img.width; 
+            let height = img.height;
+            if (width > height) { 
+              if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } 
+            } else { 
+              if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; } 
+            }
+            canvas.width = width; 
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            // Calidad al 50% para que pese poquísimo y suba al instante
+            resolve(canvas.toDataURL('image/jpeg', 0.5));
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
 
     window.subirNuevaPortada = async function(event) {
       const file = event.target.files[0];
@@ -386,7 +411,7 @@
         alert("¡Portada actualizada con éxito en tu nube! 🎉");
       } catch (error) {
         console.error("Error al subir portada:", error);
-        alert("Hubo un error al guardar la portada.");
+        alert("Hubo un error al guardar la portada. Intenta con una imagen más ligera.");
       } finally {
         btn.innerHTML = htmlOriginal;
         btn.disabled = false;
@@ -523,7 +548,7 @@
         alert("Ya estás en el modo Administrador.");
         return;
       }
-      const pass = prompt('Ingresa la contraseña de administrador (Sensible a mayúsculas/minúsculas):');
+      const pass = prompt('Ingresa la contraseña de administrador:');
       if (pass === 'mariaPlayup') {
         isAdmin = true;
         document.getElementById('adminPanel').classList.remove('hidden');
@@ -630,28 +655,6 @@
       setTimeout(() => { modalAdminForm.classList.add('hidden'); modalAdminForm.classList.remove('flex'); }, 300);
     }
 
-    function comprimirImagenParaLaNube(file) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const img = new Image();
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const MAX_WIDTH = 600; const MAX_HEIGHT = 600;
-            let width = img.width; let height = img.height;
-            if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
-            else { if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; } }
-            canvas.width = width; canvas.height = height;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
-            resolve(canvas.toDataURL('image/jpeg', 0.6));
-          };
-          img.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
     window.guardarProducto = async function(event) {
       event.preventDefault();
 
@@ -696,7 +699,7 @@
         window.cerrarModalAdmin();
       } catch (error) {
         console.error("Error al guardar:", error);
-        alert("Ocurrió un error guardando el juguete. Revisa tu conexión.");
+        alert("Ocurrió un error guardando el juguete. Intenta con fotos un poco más pequeñas.");
       } finally {
         btnGuardar.disabled = false;
         btnGuardar.innerText = "Guardar Juguete";
@@ -715,9 +718,6 @@
     }
 
     window.filtrarCategoria('todos');
-  </script>
-</body>
-</html>
   </script>
 </body>
 </html>
