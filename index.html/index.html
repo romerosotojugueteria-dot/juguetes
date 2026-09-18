@@ -29,44 +29,42 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Animación de Burbujas Flotantes */
+    /* Burbujas flotantes realistas */
     .bubble {
       position: absolute;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.15));
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.6);
-      animation: floatBubbles 12s infinite ease-in-out;
+      background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.25) 60%, rgba(255, 255, 255, 0.6) 100%);
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.4), inset 0 0 12px rgba(255, 255, 255, 0.7);
+      animation: floatBubbles linear infinite;
       pointer-events: none;
     }
 
     @keyframes floatBubbles {
       0% {
-        transform: translateY(110vh) scale(0.6) rotate(0deg);
+        transform: translateY(105vh) scale(0.6) rotate(0deg);
         opacity: 0;
       }
-      20% {
-        opacity: 0.7;
-      }
-      80% {
-        opacity: 0.7;
-      }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.8; }
       100% {
-        transform: translateY(-20vh) scale(1.1) rotate(360deg);
+        transform: translateY(-15vh) scale(1.15) rotate(360deg);
         opacity: 0;
       }
     }
 
-    /* Elementos flotantes decorativos a los lados */
+    /* Juguetes y figuras flotantes con balanceo suave */
     .toy-float {
       position: absolute;
       pointer-events: none;
-      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
-      animation: floatWiggle 6s infinite ease-in-out alternate;
+      filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.75));
+      animation: floatWiggle 5s infinite ease-in-out alternate;
+      user-select: none;
     }
 
     @keyframes floatWiggle {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-25px) rotate(15deg); }
+      0% { transform: translateY(0px) rotate(-6deg) scale(0.95); }
+      50% { transform: translateY(-18px) rotate(4deg) scale(1.05); }
+      100% { transform: translateY(-30px) rotate(10deg) scale(1); }
     }
 
     .stars {
@@ -80,7 +78,7 @@
       background-size: 200px 200px;
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.4;
+      opacity: 0.45;
       pointer-events: none;
       z-index: 0;
     }
@@ -99,30 +97,51 @@
 <body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
   <div class="stars fixed"></div>
 
-  <!-- Contenedor global de burbujas flotantes de fondo -->
+  <!-- Cortina continua de burbujas flotantes -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="bubble w-16 h-16 left-[5%]" style="animation-duration: 9s; animation-delay: 0s;"></div>
-    <div class="bubble w-24 h-24 left-[12%]" style="animation-duration: 14s; animation-delay: 2s;"></div>
-    <div class="bubble w-12 h-12 left-[22%]" style="animation-duration: 11s; animation-delay: 4s;"></div>
-    <div class="bubble w-20 h-20 right-[8%]" style="animation-duration: 13s; animation-delay: 1s;"></div>
-    <div class="bubble w-28 h-28 right-[15%]" style="animation-duration: 16s; animation-delay: 3s;"></div>
-    <div class="bubble w-14 h-14 right-[25%]" style="animation-duration: 10s; animation-delay: 5s;"></div>
+    <div class="bubble w-12 h-12 left-[3%]" style="animation-duration: 9s; animation-delay: 0s;"></div>
+    <div class="bubble w-20 h-20 left-[9%]" style="animation-duration: 13s; animation-delay: 2s;"></div>
+    <div class="bubble w-16 h-16 left-[16%]" style="animation-duration: 11s; animation-delay: 4.5s;"></div>
+    <div class="bubble w-24 h-24 left-[24%]" style="animation-duration: 15s; animation-delay: 1s;"></div>
+    <div class="bubble w-10 h-10 left-[31%]" style="animation-duration: 8s; animation-delay: 6s;"></div>
+    <div class="bubble w-28 h-28 left-[40%]" style="animation-duration: 17s; animation-delay: 3s;"></div>
+    <div class="bubble w-14 h-14 left-[48%]" style="animation-duration: 10s; animation-delay: 7s;"></div>
+    <div class="bubble w-20 h-20 left-[58%]" style="animation-duration: 12s; animation-delay: 1.5s;"></div>
+    <div class="bubble w-12 h-12 left-[67%]" style="animation-duration: 9.5s; animation-delay: 5s;"></div>
+    <div class="bubble w-26 h-26 left-[76%]" style="animation-duration: 16s; animation-delay: 2.5s;"></div>
+    <div class="bubble w-16 h-16 left-[84%]" style="animation-duration: 11.5s; animation-delay: 4s;"></div>
+    <div class="bubble w-22 h-22 left-[92%]" style="animation-duration: 14s; animation-delay: 0.5s;"></div>
   </div>
 
-  <!-- Portada y encabezado con decoraciones laterales -->
-  <section class="relative pt-10 pb-10 px-4 md:px-10 text-white text-center z-10">
-    
-    <!-- Íconos y juguetes flotantes a los lados de la portada -->
-    <div class="toy-float hidden lg:block left-6 top-16 text-6xl text-yellow-300 opacity-80" style="animation-duration: 5s;">🚀</div>
-    <div class="toy-float hidden lg:block left-24 top-52 text-5xl text-pink-300 opacity-75" style="animation-duration: 7s;">✨</div>
-    <div class="toy-float hidden lg:block left-10 bottom-8 text-6xl text-cyan-300 opacity-80" style="animation-duration: 6s;">🧸</div>
-    
-    <div class="toy-float hidden lg:block right-8 top-16 text-6xl text-green-300 opacity-80" style="animation-duration: 6s;">🦄</div>
-    <div class="toy-float hidden lg:block right-24 top-52 text-5xl text-yellow-300 opacity-75" style="animation-duration: 5s;">⭐</div>
-    <div class="toy-float hidden lg:block right-10 bottom-8 text-6xl text-amber-300 opacity-80" style="animation-duration: 7s;">🧩</div>
+  <!-- Figuras y juguetes flotantes en laterales de la pantalla -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <!-- Lateral Izquierdo -->
+    <div class="toy-float text-5xl md:text-6xl left-3 top-[12%]" style="animation-duration: 5.5s; animation-delay: 0s;">🚀</div>
+    <div class="toy-float text-4xl md:text-5xl left-6 top-[28%]" style="animation-duration: 6.8s; animation-delay: 1s;">✨</div>
+    <div class="toy-float text-5xl md:text-6xl left-2 top-[44%]" style="animation-duration: 4.8s; animation-delay: 2s;">🧸</div>
+    <div class="toy-float text-5xl md:text-6xl left-5 top-[60%]" style="animation-duration: 6.2s; animation-delay: 0.5s;">🎮</div>
+    <div class="toy-float text-4xl md:text-5xl left-3 top-[76%]" style="animation-duration: 5.2s; animation-delay: 1.8s;">🧩</div>
+    <div class="toy-float text-5xl md:text-6xl left-5 top-[90%]" style="animation-duration: 6.5s; animation-delay: 2.2s;">🚗</div>
 
+    <!-- Lateral Derecho -->
+    <div class="toy-float text-5xl md:text-6xl right-4 top-[10%]" style="animation-duration: 6s; animation-delay: 0.5s;">🦄</div>
+    <div class="toy-float text-4xl md:text-5xl right-6 top-[26%]" style="animation-duration: 5s; animation-delay: 1.5s;">⭐</div>
+    <div class="toy-float text-5xl md:text-6xl right-2 top-[42%]" style="animation-duration: 6.5s; animation-delay: 0s;">👑</div>
+    <div class="toy-float text-5xl md:text-6xl right-5 top-[58%]" style="animation-duration: 5.8s; animation-delay: 2.5s;">🤖</div>
+    <div class="toy-float text-4xl md:text-5xl right-3 top-[74%]" style="animation-duration: 4.5s; animation-delay: 1.2s;">🎈</div>
+    <div class="toy-float text-5xl md:text-6xl right-5 top-[88%]" style="animation-duration: 6.3s; animation-delay: 0.8s;">🎨</div>
+  </div>
+
+  <!-- Portada y encabezado -->
+  <section class="relative pt-10 pb-10 px-4 md:px-10 text-white text-center z-10">
     <div class="max-w-4xl mx-auto flex flex-col items-center relative">
       
+      <!-- Juguetes flotantes adicionales junto al logo -->
+      <div class="toy-float hidden md:block -left-12 top-10 text-5xl text-yellow-300 opacity-90" style="animation-duration: 4.5s;">⚡</div>
+      <div class="toy-float hidden md:block -left-6 bottom-16 text-5xl text-pink-300 opacity-90" style="animation-duration: 6s;">🍭</div>
+      <div class="toy-float hidden md:block -right-12 top-10 text-5xl text-cyan-300 opacity-90" style="animation-duration: 5.2s;">🎯</div>
+      <div class="toy-float hidden md:block -right-6 bottom-16 text-5xl text-purple-300 opacity-90" style="animation-duration: 5.8s;">🌟</div>
+
       <img
         id="logoPrincipal"
         src="https://placehold.co/800x500/ff007b/ffffff?text=PlayUp"
@@ -130,13 +149,13 @@
         class="w-full max-w-lg object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-6 bg-white/20 p-2 relative z-10"
       />
       
-      <p id="txtEslogan" class="text-4xl md:text-5xl font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
+      <p id="txtEslogan" class="text-4xl md:text-5xl font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text relative z-10">
         <span class="text-red-500">¡</span><span class="text-blue-600">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-600">e</span>
         <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
         <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-600">r</span><span class="text-purple-600">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
       </p>
 
-      <div class="flex flex-wrap justify-center gap-4 mt-8">
+      <div class="flex flex-wrap justify-center gap-4 mt-8 relative z-10">
         <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2 border-2 border-white">
           <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
         </a>
@@ -177,7 +196,7 @@
     </div>
   </section>
 
-  <!-- Sección Categorías Horizontales (3 Izquierda / 3 Derecha) -->
+  <!-- Categorías Horizontales (3 Izquierda / 3 Derecha) -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
       <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-md">Explora por Categoría</h2>
@@ -293,7 +312,7 @@
     </div>
   </section>
 
-  <!-- Punto de anclaje para desplazamiento suave -->
+  <!-- Ancla para desplazamiento suave -->
   <div id="seccionCatalogo" class="pt-2"></div>
 
   <!-- Vitrina de juguetes -->
@@ -712,7 +731,6 @@
       });
     };
 
-    // Función auxiliar para deslizar automáticamente a la sección de productos
     function deslizarAlCatalogo() {
       const el = document.getElementById('seccionCatalogo');
       if (el) {
