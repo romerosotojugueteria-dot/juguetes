@@ -8,17 +8,67 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
-    body { font-family: 'Fredoka', sans-serif; }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body { 
+      font-family: 'Fredoka', sans-serif; 
+    }
+
     .bg-magical {
       background: linear-gradient(-45deg, #0019ff, #d600ff, #ff007b, #ff7b00);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
     }
+
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* Animación de Burbujas Flotantes */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.15));
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.6);
+      animation: floatBubbles 12s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes floatBubbles {
+      0% {
+        transform: translateY(110vh) scale(0.6) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.7;
+      }
+      80% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-20vh) scale(1.1) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Elementos flotantes decorativos a los lados */
+    .toy-float {
+      position: absolute;
+      pointer-events: none;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+      animation: floatWiggle 6s infinite ease-in-out alternate;
+    }
+
+    @keyframes floatWiggle {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-25px) rotate(15deg); }
+    }
+
     .stars {
       background-image: 
         radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
@@ -34,9 +84,11 @@
       pointer-events: none;
       z-index: 0;
     }
+
     .bubbly-text {
       text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
     }
+
     .cat-banner-activa {
       border-color: #facc15 !important;
       box-shadow: 0 0 25px rgba(250, 204, 21, 0.95) !important;
@@ -47,15 +99,35 @@
 <body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
   <div class="stars fixed"></div>
 
-  <!-- Portada y encabezado -->
+  <!-- Contenedor global de burbujas flotantes de fondo -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="bubble w-16 h-16 left-[5%]" style="animation-duration: 9s; animation-delay: 0s;"></div>
+    <div class="bubble w-24 h-24 left-[12%]" style="animation-duration: 14s; animation-delay: 2s;"></div>
+    <div class="bubble w-12 h-12 left-[22%]" style="animation-duration: 11s; animation-delay: 4s;"></div>
+    <div class="bubble w-20 h-20 right-[8%]" style="animation-duration: 13s; animation-delay: 1s;"></div>
+    <div class="bubble w-28 h-28 right-[15%]" style="animation-duration: 16s; animation-delay: 3s;"></div>
+    <div class="bubble w-14 h-14 right-[25%]" style="animation-duration: 10s; animation-delay: 5s;"></div>
+  </div>
+
+  <!-- Portada y encabezado con decoraciones laterales -->
   <section class="relative pt-10 pb-10 px-4 md:px-10 text-white text-center z-10">
-    <div class="max-w-4xl mx-auto flex flex-col items-center">
+    
+    <!-- Íconos y juguetes flotantes a los lados de la portada -->
+    <div class="toy-float hidden lg:block left-6 top-16 text-6xl text-yellow-300 opacity-80" style="animation-duration: 5s;">🚀</div>
+    <div class="toy-float hidden lg:block left-24 top-52 text-5xl text-pink-300 opacity-75" style="animation-duration: 7s;">✨</div>
+    <div class="toy-float hidden lg:block left-10 bottom-8 text-6xl text-cyan-300 opacity-80" style="animation-duration: 6s;">🧸</div>
+    
+    <div class="toy-float hidden lg:block right-8 top-16 text-6xl text-green-300 opacity-80" style="animation-duration: 6s;">🦄</div>
+    <div class="toy-float hidden lg:block right-24 top-52 text-5xl text-yellow-300 opacity-75" style="animation-duration: 5s;">⭐</div>
+    <div class="toy-float hidden lg:block right-10 bottom-8 text-6xl text-amber-300 opacity-80" style="animation-duration: 7s;">🧩</div>
+
+    <div class="max-w-4xl mx-auto flex flex-col items-center relative">
       
       <img
         id="logoPrincipal"
         src="https://placehold.co/800x500/ff007b/ffffff?text=PlayUp"
         alt="PlayUp Logo"
-        class="w-full max-w-lg object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-6 bg-white/20 p-2"
+        class="w-full max-w-lg object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-6 bg-white/20 p-2 relative z-10"
       />
       
       <p id="txtEslogan" class="text-4xl md:text-5xl font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
@@ -105,20 +177,18 @@
     </div>
   </section>
 
-  <!-- SECCIÓN CATEGORÍAS: 2 COLUMNAS (3 Izquierda / 3 Derecha) en formato alargado horizontal -->
+  <!-- Sección Categorías Horizontales (3 Izquierda / 3 Derecha) -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
       <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-md">Explora por Categoría</h2>
-      <p class="text-white/90 text-lg font-semibold mt-1">Toca un banner para filtrar</p>
+      <p class="text-white/90 text-lg font-semibold mt-1">Toca un banner para filtrar y ver los juguetes</p>
     </div>
 
-    <!-- Contenedor dividido en Mitad Izquierda y Mitad Derecha -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
       
-      <!-- COLUMNA IZQUIERDA (3 Banners Horizontales) -->
+      <!-- Columna Izquierda -->
       <div class="flex flex-col gap-4">
-        
-        <!-- 1. Todos -->
+        <!-- Todos -->
         <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1 cat-banner-activa">
           <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=1200&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent flex items-center px-6">
@@ -132,7 +202,7 @@
           </div>
         </div>
 
-        <!-- 2. Niños -->
+        <!-- Niños -->
         <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1200&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/50 to-transparent flex items-center px-6">
@@ -146,7 +216,7 @@
           </div>
         </div>
 
-        <!-- 3. Niñas -->
+        <!-- Niñas -->
         <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-pink-950/90 via-pink-900/50 to-transparent flex items-center px-6">
@@ -159,13 +229,11 @@
             </div>
           </div>
         </div>
-
       </div>
 
-      <!-- COLUMNA DERECHA (3 Banners Horizontales) -->
+      <!-- Columna Derecha -->
       <div class="flex flex-col gap-4">
-        
-        <!-- 4. Bebés -->
+        <!-- Bebés -->
         <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-teal-950/90 via-teal-900/50 to-transparent flex items-center px-6">
@@ -179,7 +247,7 @@
           </div>
         </div>
 
-        <!-- 5. Didácticos -->
+        <!-- Didácticos -->
         <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-amber-950/90 via-amber-900/50 to-transparent flex items-center px-6">
@@ -193,7 +261,7 @@
           </div>
         </div>
 
-        <!-- 6. Peluches -->
+        <!-- Peluches -->
         <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=1200&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-purple-950/90 via-purple-900/50 to-transparent flex items-center px-6">
@@ -206,7 +274,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
     </div>
@@ -225,6 +292,9 @@
       <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 170 a más</button>
     </div>
   </section>
+
+  <!-- Punto de anclaje para desplazamiento suave -->
+  <div id="seccionCatalogo" class="pt-2"></div>
 
   <!-- Vitrina de juguetes -->
   <section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
@@ -285,7 +355,7 @@
           <i class="fas fa-times-circle"></i>
         </button>
       </div>
-      <p class="text-sm font-semibold text-gray-600 mb-6">Selecciona una imagen horizontal para actualizar el banner de cada categoría:</p>
+      <p class="text-sm font-semibold text-gray-600 mb-6">Elige fotos en formato horizontal para que calcen perfecto en las tiras:</p>
 
       <div class="space-y-4">
         <div class="p-3 bg-gray-50 rounded-2xl border flex items-center justify-between gap-4">
@@ -642,6 +712,14 @@
       });
     };
 
+    // Función auxiliar para deslizar automáticamente a la sección de productos
+    function deslizarAlCatalogo() {
+      const el = document.getElementById('seccionCatalogo');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
     window.filtrarCategoria = function(cat) {
       categoriaActual = cat;
       const cats = ['todos', 'ninos', 'ninas', 'bebes', 'didacticos', 'peluches'];
@@ -653,6 +731,7 @@
         }
       });
       window.renderProductos();
+      deslizarAlCatalogo();
     };
 
     window.filtrarPresupuesto = function(r) {
@@ -665,6 +744,7 @@
         }
       });
       window.renderProductos();
+      deslizarAlCatalogo();
     };
 
     window.loginAdmin = function() {
