@@ -39,8 +39,8 @@
     }
     .cat-activa {
       border-color: #facc15 !important;
-      box-shadow: 0 0 25px rgba(250, 204, 21, 0.9) !important;
-      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.95) !important;
+      transform: scale(1.02) translateY(-4px);
     }
   </style>
 </head>
@@ -88,7 +88,7 @@
         <h2 class="text-3xl font-black flex items-center gap-2">
           <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
         </h2>
-        <p class="text-sm font-bold text-purple-700">Gestiona imágenes, categorías y juguetes al instante.</p>
+        <p class="text-sm font-bold text-purple-700">Gestiona imágenes horizontales, categorías y juguetes.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
         <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
@@ -105,66 +105,97 @@
     </div>
   </section>
 
-  <!-- Categorías visuales anchas -->
+  <!-- Categorías Panorámicas (3 y 3) -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
       <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-md">Explora por Categoría</h2>
-      <p class="text-white/90 text-lg font-semibold mt-1">Toca una categoría para ver sus juguetes</p>
+      <p class="text-white/90 text-lg font-semibold mt-1">Elige una categoría para descubrir los juguetes</p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <!-- Grilla Panorámica: 3 columnas en escritorio, formato horizontal -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
       
-      <!-- Todos -->
-      <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2 cat-activa">
-        <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=600&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-2xl">✨</span>
-          <span class="text-white font-black text-xl leading-tight">Todos</span>
+      <!-- Fila 1 - Tarjeta 1: Todos -->
+      <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-36 md:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition duration-300 transform hover:-translate-y-2 cat-activa">
+        <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=900&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent flex items-center px-6">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl filter drop-shadow">✨</span>
+            <div>
+              <span class="text-white font-black text-2xl md:text-3xl block leading-tight">Todos</span>
+              <span class="text-yellow-300 text-xs md:text-sm font-bold tracking-wide">Todo el catálogo</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Niños -->
-      <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
-        <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-blue-900/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-2xl">🚀</span>
-          <span class="text-white font-black text-xl leading-tight">Niños</span>
+      <!-- Fila 1 - Tarjeta 2: Niños -->
+      <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-36 md:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=900&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-r from-sky-950/90 via-sky-900/40 to-transparent flex items-center px-6">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl filter drop-shadow">🚀</span>
+            <div>
+              <span class="text-white font-black text-2xl md:text-3xl block leading-tight">Niños</span>
+              <span class="text-sky-300 text-xs md:text-sm font-bold tracking-wide">Autos, figuras y acción</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Niñas -->
-      <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
-        <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-pink-900/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-2xl">🦄</span>
-          <span class="text-white font-black text-xl leading-tight">Niñas</span>
+      <!-- Fila 1 - Tarjeta 3: Niñas -->
+      <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-36 md:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=900&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-950/90 via-pink-900/40 to-transparent flex items-center px-6">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl filter drop-shadow">🦄</span>
+            <div>
+              <span class="text-white font-black text-2xl md:text-3xl block leading-tight">Niñas</span>
+              <span class="text-pink-300 text-xs md:text-sm font-bold tracking-wide">Castillos, muñecas y magia</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Bebés -->
-      <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
-        <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-teal-900/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-2xl">🍼</span>
-          <span class="text-white font-black text-xl leading-tight">Bebés</span>
+      <!-- Fila 2 - Tarjeta 4: Bebés -->
+      <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-36 md:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=900&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-r from-teal-950/90 via-teal-900/40 to-transparent flex items-center px-6">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl filter drop-shadow">🍼</span>
+            <div>
+              <span class="text-white font-black text-2xl md:text-3xl block leading-tight">Bebés</span>
+              <span class="text-teal-300 text-xs md:text-sm font-bold tracking-wide">Sonajeros y accesorios</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Didácticos -->
-      <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
-        <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-amber-900/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-2xl">🧩</span>
-          <span class="text-white font-black text-xl leading-tight">Didácticos</span>
+      <!-- Fila 2 - Tarjeta 5: Didácticos -->
+      <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-36 md:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=900&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-r from-amber-950/90 via-amber-900/40 to-transparent flex items-center px-6">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl filter drop-shadow">🧩</span>
+            <div>
+              <span class="text-white font-black text-2xl md:text-3xl block leading-tight">Didácticos</span>
+              <span class="text-amber-300 text-xs md:text-sm font-bold tracking-wide">Ingenio, bloques y destreza</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Peluches -->
-      <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
-        <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=600&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-purple-900/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-2xl">🧸</span>
-          <span class="text-white font-black text-xl leading-tight">Peluches</span>
+      <!-- Fila 2 - Tarjeta 6: Peluches -->
+      <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-36 md:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=900&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-950/90 via-purple-900/40 to-transparent flex items-center px-6">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl filter drop-shadow">🧸</span>
+            <div>
+              <span class="text-white font-black text-2xl md:text-3xl block leading-tight">Peluches</span>
+              <span class="text-purple-300 text-xs md:text-sm font-bold tracking-wide">Suaves y abrazables</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -244,7 +275,7 @@
           <i class="fas fa-times-circle"></i>
         </button>
       </div>
-      <p class="text-sm font-semibold text-gray-600 mb-6">Selecciona una imagen desde tu galería para actualizar la portada de cada categoría:</p>
+      <p class="text-sm font-semibold text-gray-600 mb-6">Elige fotos en formato horizontal para que calcen perfecto en las tarjetas:</p>
 
       <div class="space-y-4">
         <div class="p-3 bg-gray-50 rounded-2xl border flex items-center justify-between gap-4">
@@ -440,7 +471,7 @@
           const img = new Image();
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const MAX_DIM = 600;
+            const MAX_DIM = 700;
             let w = img.width, h = img.height;
             if (w > h && w > MAX_DIM) { h *= MAX_DIM / w; w = MAX_DIM; }
             else if (h > MAX_DIM) { w *= MAX_DIM / h; h = MAX_DIM; }
@@ -516,7 +547,7 @@
             fotosCategorias: { [categoria]: base64 }
           }, { merge: true });
         }
-        alert(`¡Foto de la categoría "${categoria}" actualizada! ✨`);
+        alert(`¡Foto horizontal de "${categoria}" guardada con éxito! ✨`);
       } catch(e) {
         alert("No se pudo guardar la imagen.");
       }
@@ -797,10 +828,6 @@
       window.renderProductos();
     };
 
-    inicializarTienda();
-  </script>
-</body>
-</html>
     inicializarTienda();
   </script>
 </body>
