@@ -37,109 +37,145 @@
     .bubbly-text {
       text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
     }
-    .editable-focus {
-      outline: 3px dashed #facc15 !important;
-      background-color: rgba(255, 255, 255, 0.25) !important;
-      border-radius: 12px;
-      padding: 4px 8px;
+    .cat-activa {
+      border-color: #facc15 !important;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.9) !important;
+      transform: scale(1.04) translateY(-4px);
     }
   </style>
 </head>
 <body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
   <div class="stars fixed"></div>
 
-  <!-- Barra flotante para guardar textos en vivo -->
-  <div id="barEdicionTextos" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-purple-950/95 border-4 border-yellow-400 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-4 hidden backdrop-blur-md">
-    <span class="text-lg font-bold"><i class="fas fa-edit text-yellow-400 mr-2"></i>Edición en vivo activada</span>
-    <button onclick="guardarTextosEnVivo()" class="bg-green-500 hover:bg-green-600 px-6 py-2 rounded-2xl font-bold shadow-lg transition transform hover:scale-105">
-      💾 Guardar Textos
-    </button>
-    <button onclick="cancelarEdicionTextos()" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-2xl font-bold transition">
-      Cerrar
-    </button>
-  </div>
-
-  <section class="relative pt-12 pb-20 px-6 md:px-12 rounded-b-[60px] overflow-hidden text-white text-center z-10">
+  <!-- Portada y encabezado -->
+  <section class="relative pt-10 pb-12 px-4 md:px-10 text-white text-center z-10">
     <div class="max-w-4xl mx-auto flex flex-col items-center">
       
       <img
         id="logoPrincipal"
         src="https://placehold.co/800x500/ff007b/ffffff?text=PlayUp"
         alt="PlayUp Logo"
-        class="w-full max-w-xl object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-8 transform hover:scale-105 transition duration-500 bg-white/20 p-2"
+        class="w-full max-w-lg object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-6 bg-white/20 p-2"
       />
       
-      <p id="txtEslogan" class="text-4xl md:text-5xl mt-2 font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
+      <p id="txtEslogan" class="text-4xl md:text-5xl font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
         <span class="text-red-500">¡</span><span class="text-blue-600">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-600">e</span>
         <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
         <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-600">r</span><span class="text-purple-600">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
       </p>
 
-      <p id="txtDescripcion" class="mt-8 text-2xl md:text-3xl leading-relaxed font-bold max-w-3xl text-white drop-shadow-xl p-6 bg-white/15 rounded-[30px] border-2 border-white/30 backdrop-blur-md">
-        Encuentra los mejores juguetes para niños, niñas, bebés y didácticos con entrega rápida y al mejor precio.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-6 mt-10">
-        <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-400 to-green-600 text-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3 border-4 border-white">
-          <i class="fab fa-whatsapp text-3xl"></i> WhatsApp
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2 border-2 border-white">
+          <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
         </a>
-        <a id="btnLinkTiktok" href="https://www.tiktok.com/@playupjuguetera" target="_blank" class="bg-black text-white border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3">
-          <i class="fab fa-tiktok text-3xl"></i> TikTok
+        <a id="btnLinkTiktok" href="https://www.tiktok.com/@playupjuguetera" target="_blank" class="bg-black text-white border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
+          <i class="fab fa-tiktok text-2xl"></i> TikTok
         </a>
-        <a id="btnLinkUbicacion" href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3 group">
-          <i class="fas fa-map-marker-alt text-3xl group-hover:animate-bounce"></i> Ubicación
+        <a id="btnLinkUbicacion" href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
+          <i class="fas fa-map-marker-alt text-2xl"></i> Ubicación
         </a>
-        <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-4 border-white px-8 py-4 rounded-3xl text-2xl font-bold shadow-xl hover:scale-110 transition flex items-center gap-3 cursor-pointer">
+        <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
           <i class="fas fa-magic"></i> Modo Admin
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Panel de Administración -->
-  <section id="adminPanel" class="max-w-7xl mx-auto px-6 pt-4 pb-8 hidden transition-all duration-500 relative z-10">
-    <div class="bg-white/95 backdrop-blur-lg text-purple-900 rounded-[40px] p-8 shadow-2xl border-4 border-yellow-400 flex flex-wrap justify-between items-center gap-6">
+  <!-- Panel Admin -->
+  <section id="adminPanel" class="max-w-7xl mx-auto px-6 pb-6 hidden transition-all duration-500 relative z-10">
+    <div class="bg-white/95 backdrop-blur-lg text-purple-900 rounded-[35px] p-6 shadow-2xl border-4 border-yellow-400 flex flex-wrap justify-between items-center gap-4">
       <div>
-        <h2 class="text-3xl md:text-4xl font-black flex items-center gap-3">
-          <i class="fas fa-crown text-yellow-500"></i> Panel de Administración PlayUp
+        <h2 class="text-3xl font-black flex items-center gap-2">
+          <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
         </h2>
-        <p class="text-lg mt-1 font-semibold text-purple-700">Edita textos, actualiza enlaces y sube tus juguetes.</p>
+        <p class="text-sm font-bold text-purple-700">Gestiona imágenes, categorías y juguetes al instante.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
-        <button onclick="activarModoEdicionTextos()" class="bg-amber-400 hover:bg-amber-500 text-purple-950 border-2 border-white px-6 py-3 rounded-2xl text-lg font-black hover:scale-105 transition shadow-lg flex items-center gap-2">
-          <i class="fas fa-pencil-alt"></i> Editar Textos
-        </button>
-        <button onclick="abrirModalEnlaces()" class="bg-cyan-500 hover:bg-cyan-600 text-white border-2 border-white px-6 py-3 rounded-2xl text-lg font-black hover:scale-105 transition shadow-lg flex items-center gap-2">
-          <i class="fas fa-link"></i> Cambiar Enlaces
-        </button>
         <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
-        <button onclick="document.getElementById('inputPortada').click()" id="btnPortada" class="bg-blue-600 hover:bg-blue-700 text-white border-2 border-white px-6 py-3 rounded-2xl text-lg font-black hover:scale-105 transition shadow-lg flex items-center gap-2">
+        <button onclick="document.getElementById('inputPortada').click()" id="btnPortada" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
           <i class="fas fa-image"></i> Cambiar Portada
         </button>
-        <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white border-2 border-white px-7 py-3 rounded-2xl text-xl font-black hover:scale-105 transition shadow-lg flex items-center gap-2">
+        <button onclick="abrirModalFotosCategorias()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
+          <i class="fas fa-layer-group"></i> 🖼️ Fotos Categorías
+        </button>
+        <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:scale-105 transition flex items-center gap-2">
           <i class="fas fa-plus-circle"></i> + Añadir Juguete
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Categorías -->
-  <section class="max-w-7xl mx-auto px-6 pt-6 pb-4 relative z-10">
-    <div class="flex flex-wrap justify-center gap-4">
-      <button onclick="filtrarCategoria('todos')" id="btn-todos" class="px-7 py-3 rounded-3xl text-xl font-bold shadow-md transition transform hover:scale-105 bg-yellow-400 text-purple-900 border-4 border-white">✨ Todos</button>
-      <button onclick="filtrarCategoria('ninos')" id="btn-ninos" class="px-7 py-3 rounded-3xl text-xl font-bold shadow-md transition transform hover:scale-105 bg-white/20 text-white border-4 border-white">🚀 Niños</button>
-      <button onclick="filtrarCategoria('ninas')" id="btn-ninas" class="px-7 py-3 rounded-3xl text-xl font-bold shadow-md transition transform hover:scale-105 bg-white/20 text-white border-4 border-white">🦄 Niñas</button>
-      <button onclick="filtrarCategoria('bebes')" id="btn-bebes" class="px-7 py-3 rounded-3xl text-xl font-bold shadow-md transition transform hover:scale-105 bg-white/20 text-white border-4 border-white">🍼 Bebé</button>
-      <button onclick="filtrarCategoria('didacticos')" id="btn-didacticos" class="px-7 py-3 rounded-3xl text-xl font-bold shadow-md transition transform hover:scale-105 bg-white/20 text-white border-4 border-white">🧩 Didácticos</button>
-      <button onclick="filtrarCategoria('peluches')" id="btn-peluches" class="px-7 py-3 rounded-3xl text-xl font-bold shadow-md transition transform hover:scale-105 bg-white/20 text-white border-4 border-white">🧸 Peluches</button>
+  <!-- Categorías visuales anchas -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
+    <div class="text-center mb-6">
+      <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-md">Explora por Categoría</h2>
+      <p class="text-white/90 text-lg font-semibold mt-1">Toca una categoría para ver sus juguetes</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      
+      <!-- Todos -->
+      <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2 cat-activa">
+        <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=600&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4">
+          <span class="text-2xl">✨</span>
+          <span class="text-white font-black text-xl leading-tight">Todos</span>
+        </div>
+      </div>
+
+      <!-- Niños -->
+      <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-blue-900/40 to-transparent flex flex-col justify-end p-4">
+          <span class="text-2xl">🚀</span>
+          <span class="text-white font-black text-xl leading-tight">Niños</span>
+        </div>
+      </div>
+
+      <!-- Niñas -->
+      <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-pink-900/40 to-transparent flex flex-col justify-end p-4">
+          <span class="text-2xl">🦄</span>
+          <span class="text-white font-black text-xl leading-tight">Niñas</span>
+        </div>
+      </div>
+
+      <!-- Bebés -->
+      <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-teal-900/40 to-transparent flex flex-col justify-end p-4">
+          <span class="text-2xl">🍼</span>
+          <span class="text-white font-black text-xl leading-tight">Bebés</span>
+        </div>
+      </div>
+
+      <!-- Didácticos -->
+      <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-amber-900/40 to-transparent flex flex-col justify-end p-4">
+          <span class="text-2xl">🧩</span>
+          <span class="text-white font-black text-xl leading-tight">Didácticos</span>
+        </div>
+      </div>
+
+      <!-- Peluches -->
+      <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-44 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-2">
+        <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=600&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-purple-900/40 to-transparent flex flex-col justify-end p-4">
+          <span class="text-2xl">🧸</span>
+          <span class="text-white font-black text-xl leading-tight">Peluches</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Filtro de presupuesto -->
-  <section class="max-w-7xl mx-auto px-6 pb-6 relative z-10">
-    <div class="bg-white/20 backdrop-blur-xl rounded-[30px] p-4 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
-      <span class="text-white font-black text-xl mr-2 flex items-center gap-2">
-        <i class="fas fa-wallet text-yellow-300 text-2xl"></i> Presupuesto:
+  <section class="max-w-7xl mx-auto px-6 py-4 relative z-10">
+    <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
+      <span class="text-white font-black text-lg mr-2 flex items-center gap-2">
+        <i class="fas fa-wallet text-yellow-300 text-xl"></i> Presupuesto:
       </span>
       <button onclick="filtrarPresupuesto('todos')" id="btn-precio-todos" class="px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white">Cualquiera</button>
       <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 30 a 50</button>
@@ -149,25 +185,25 @@
     </div>
   </section>
 
-  <!-- Catálogo de productos -->
+  <!-- Vitrina de juguetes -->
   <section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
     <div id="loadingIndicator" class="text-center py-10">
       <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
-      <p class="text-white text-xl mt-4 font-bold">Cargando inventario de PlayUp...</p>
+      <p class="text-white text-xl mt-4 font-bold">Cargando catálogo PlayUp...</p>
     </div>
-    <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6"></div>
+    <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"></div>
   </section>
 
-  <!-- Modal Detalle Producto -->
+  <!-- Modal Detalle -->
   <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
-      <button type="button" onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-500 hover:text-red-500 text-3xl transition bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-gray-200">
+      <button type="button" onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-500 hover:text-red-500 text-3xl bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-gray-200">
         <i class="fas fa-times"></i>
       </button>
       
       <div class="text-center mb-4 mt-2">
-        <span id="detalleCategoriaBadge" class="px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider text-white shadow-md"></span>
-        <h3 id="detalleNombre" class="text-3xl md:text-4xl font-bold text-purple-900 mt-4 leading-tight"></h3>
+        <span id="detalleCategoriaBadge" class="px-6 py-2 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md"></span>
+        <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
       </div>
 
       <div class="relative h-72 md:h-80 bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
@@ -188,10 +224,10 @@
       <div class="flex flex-wrap justify-between items-center gap-4 border-t-2 border-gray-200 pt-4">
         <div id="detallePrecio" class="text-3xl md:text-4xl font-black text-pink-600"></div>
         <div class="flex gap-3">
-          <button type="button" onclick="cerrarModalVista()" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-2xl text-lg font-bold hover:bg-gray-300 transition">
+          <button type="button" onclick="cerrarModalVista()" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-2xl text-lg font-bold hover:bg-gray-300">
             Volver
           </button>
-          <a id="detalleBtnWhatsApp" href="#" target="_blank" class="bg-gradient-to-r from-green-400 to-green-600 text-white px-7 py-3 rounded-2xl text-lg font-bold hover:scale-105 transition shadow-lg flex items-center gap-2 border-2 border-white">
+          <a id="detalleBtnWhatsApp" href="#" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-2xl text-lg font-bold hover:scale-105 transition shadow-lg flex items-center gap-2 border-2 border-white">
             <i class="fab fa-whatsapp text-2xl"></i> ¡Pedir por WhatsApp!
           </a>
         </div>
@@ -199,12 +235,52 @@
     </div>
   </div>
 
-  <!-- Modal Admin: Crear / Editar Juguete -->
+  <!-- Modal Admin: Cambiar Fotos de Categorías -->
+  <div id="modalFotosCategorias" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-teal-500 relative max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-2xl font-black text-teal-900">🖼️ Cambiar Fotos de Categorías</h3>
+        <button type="button" onclick="cerrarModalFotosCategorias()" class="text-gray-400 hover:text-red-500 text-3xl">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+      <p class="text-sm font-semibold text-gray-600 mb-6">Selecciona una imagen desde tu galería para actualizar la portada de cada categoría:</p>
+
+      <div class="space-y-4">
+        <div class="p-3 bg-gray-50 rounded-2xl border flex items-center justify-between gap-4">
+          <span class="font-bold text-gray-800">✨ Todos</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('todos', event)" class="text-xs text-teal-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-teal-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-blue-50 rounded-2xl border border-blue-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-blue-900">🚀 Niños</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('ninos', event)" class="text-xs text-blue-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-blue-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-pink-50 rounded-2xl border border-pink-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-pink-900">🦄 Niñas</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('ninas', event)" class="text-xs text-pink-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-pink-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-teal-50 rounded-2xl border border-teal-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-teal-900">🍼 Bebés</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('bebes', event)" class="text-xs text-teal-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-teal-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-amber-900">🧩 Didácticos</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('didacticos', event)" class="text-xs text-amber-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-amber-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-purple-900">🧸 Peluches</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('peluches', event)" class="text-xs text-purple-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-purple-100 file:font-bold">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Admin Crear / Editar Juguete -->
   <div id="modalAdminForm" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-purple-500 relative" id="modalAdminContent">
       <div class="flex justify-between items-center mb-4">
         <h3 id="modalAdminTitulo" class="text-3xl font-black text-purple-700">Añadir Juguete</h3>
-        <button type="button" onclick="cerrarModalAdmin()" class="text-gray-400 hover:text-red-500 text-3xl transition">
+        <button type="button" onclick="cerrarModalAdmin()" class="text-gray-400 hover:text-red-500 text-3xl">
           <i class="fas fa-times-circle"></i>
         </button>
       </div>
@@ -220,10 +296,10 @@
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1">Categoría</label>
           <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
-            <option value="ninos">🚀 Juguetes de Niños</option>
-            <option value="ninas">🦄 Juguetes de Niñas</option>
-            <option value="bebes">🍼 Juguetes de Bebé y Accesorios</option>
-            <option value="didacticos">🧩 Juguetes Didácticos</option>
+            <option value="ninos">🚀 Niños</option>
+            <option value="ninas">🦄 Niñas</option>
+            <option value="bebes">🍼 Bebés</option>
+            <option value="didacticos">🧩 Didácticos</option>
             <option value="peluches">🧸 Peluches</option>
           </select>
         </div>
@@ -244,13 +320,11 @@
         <div class="p-3 bg-blue-50 rounded-2xl border-2 border-blue-200">
           <label class="block text-blue-700 font-bold mb-1">📸 Foto Principal (Frente)</label>
           <input type="file" id="productoImagen1" accept="image/*" class="w-full text-sm text-blue-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-blue-200 file:text-blue-800 hover:file:bg-blue-300">
-          <p id="previewImg1Text" class="text-xs text-gray-500 mt-1"></p>
         </div>
 
         <div class="p-3 bg-pink-50 rounded-2xl border-2 border-pink-200">
-          <label class="block text-pink-700 font-bold mb-1">📸 Foto 2 (Otro Ángulo o Caja)</label>
+          <label class="block text-pink-700 font-bold mb-1">📸 Foto 2 (Otro Ángulo)</label>
           <input type="file" id="productoImagen2" accept="image/*" class="w-full text-sm text-pink-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-pink-200 file:text-pink-800 hover:file:bg-pink-300">
-          <p id="previewImg2Text" class="text-xs text-gray-500 mt-1"></p>
         </div>
 
         <button type="submit" id="btnGuardarProd" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xl font-bold py-4 rounded-3xl hover:opacity-95 transition shadow-xl mt-4 border-2 border-white">
@@ -260,39 +334,10 @@
     </div>
   </div>
 
-  <!-- Modal Admin: Editar Enlaces de Contacto -->
-  <div id="modalEnlaces" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-md shadow-2xl border-4 border-cyan-400 relative">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-2xl font-black text-cyan-800">Enlaces de Contacto</h3>
-        <button type="button" onclick="cerrarModalEnlaces()" class="text-gray-400 hover:text-red-500 text-2xl">
-          <i class="fas fa-times-circle"></i>
-        </button>
-      </div>
-      <form onsubmit="guardarEnlaces(event)" class="space-y-4">
-        <div>
-          <label class="block font-bold text-gray-700">Enlace WhatsApp (o wa.me)</label>
-          <input id="inputLinkWhatsapp" type="url" required class="w-full bg-cyan-50 border-2 border-cyan-200 rounded-2xl px-4 py-2 font-medium text-sm">
-        </div>
-        <div>
-          <label class="block font-bold text-gray-700">Enlace TikTok</label>
-          <input id="inputLinkTiktok" type="url" required class="w-full bg-cyan-50 border-2 border-cyan-200 rounded-2xl px-4 py-2 font-medium text-sm">
-        </div>
-        <div>
-          <label class="block font-bold text-gray-700">Enlace Google Maps (Ubicación)</label>
-          <input id="inputLinkUbicacion" type="url" required class="w-full bg-cyan-50 border-2 border-cyan-200 rounded-2xl px-4 py-2 font-medium text-sm">
-        </div>
-        <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 rounded-2xl shadow-lg transition">
-          Guardar Enlaces
-        </button>
-      </form>
-    </div>
-  </div>
-
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAcNULVUiPKmTtWulmqrQjzYEKyaS-s5iY",
@@ -321,40 +366,41 @@
     const juguetesPorDefecto = [
       {
         id: 'def_1',
-        nombre: 'Set de Bloques Castillo Mágico',
+        nombre: 'Set Bloques Castillo Rosa',
         categoria: 'ninas',
         precio: '280',
-        descripcion: 'Hermoso castillo armable con luces y figuras pequeñas incluidas.',
-        imagenes: ['https://placehold.co/600x400/ff99cc/ffffff?text=Castillo+Frente', 'https://placehold.co/600x400/ff66aa/ffffff?text=Castillo+Atras']
+        descripcion: 'Hermoso castillo armable con figuras y accesorios incluidos.',
+        imagenes: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80']
       },
       {
         id: 'def_2',
-        nombre: 'Auto de Carreras RC Veloz',
+        nombre: 'Auto Deportivo RC Recargable',
         categoria: 'ninos',
         precio: '150',
-        descripcion: 'Auto deportivo veloz, recargable, perfecto para exteriores.',
-        imagenes: ['https://placehold.co/600x400/99ccff/ffffff?text=Auto+Frente', 'https://placehold.co/600x400/66a3ff/ffffff?text=Auto+Lado']
+        descripcion: 'Auto de carreras a control remoto de alta velocidad.',
+        imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80']
       }
     ];
 
     async function inicializarTienda() {
-      // 1. Cargar almacenamiento local rápido
       const localData = localStorage.getItem('playup_local_prods');
       productos = localData ? JSON.parse(localData) : juguetesPorDefecto;
       window.renderProductos();
       document.getElementById('loadingIndicator').classList.add('hidden');
 
       const localConfig = localStorage.getItem('playup_textos_config');
-      if(localConfig) aplicarConfiguracionTextos(JSON.parse(localConfig));
+      if(localConfig) {
+        const d = JSON.parse(localConfig);
+        if(d.logoUrl) document.getElementById('logoPrincipal').src = d.logoUrl;
+        if(d.fotosCategorias) aplicarFotosCategorias(d.fotosCategorias);
+      }
 
       if(!auth || !db) return;
 
-      // 2. Auth anónimo para Firestore
       try {
         await signInAnonymously(auth);
       } catch(e) {}
 
-      // 3. Sincronización en tiempo real de productos
       try {
         const productosRef = collection(db, 'juguetes_playup');
         onSnapshot(productosRef, (snapshot) => {
@@ -367,31 +413,25 @@
           }
         });
 
-        // 4. Sincronización en tiempo real de textos y enlaces
         const configRef = doc(db, 'configuracion_playup', 'general');
         onSnapshot(configRef, (docSnap) => {
           if (docSnap.exists()) {
             const data = docSnap.data();
-            aplicarConfiguracionTextos(data);
+            if(data.logoUrl) document.getElementById('logoPrincipal').src = data.logoUrl;
+            if(data.fotosCategorias) aplicarFotosCategorias(data.fotosCategorias);
             localStorage.setItem('playup_textos_config', JSON.stringify(data));
           }
         });
-      } catch (err) {
-        console.warn("Modo local persistente activo.");
-      }
+      } catch (err) {}
     }
 
-    function aplicarConfiguracionTextos(data) {
-      if(!data) return;
-      if(data.logoUrl) document.getElementById('logoPrincipal').src = data.logoUrl;
-      if(data.eslogan) document.getElementById('txtEslogan').innerHTML = data.eslogan;
-      if(data.descripcion) document.getElementById('txtDescripcion').innerText = data.descripcion;
-      if(data.whatsapp) document.getElementById('btnLinkWhatsapp').href = data.whatsapp;
-      if(data.tiktok) document.getElementById('btnLinkTiktok').href = data.tiktok;
-      if(data.ubicacion) document.getElementById('btnLinkUbicacion').href = data.ubicacion;
+    function aplicarFotosCategorias(fotos) {
+      Object.keys(fotos).forEach(cat => {
+        const el = document.getElementById(`img-cat-${cat}`);
+        if(el && fotos[cat]) el.src = fotos[cat];
+      });
     }
 
-    // Compresión eficiente para almacenar fotos limpias sin superar cuotas
     function procesarImagenLiviana(file) {
       return new Promise((resolve) => {
         if (!file) return resolve(null);
@@ -400,7 +440,7 @@
           const img = new Image();
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const MAX_DIM = 600; // tamaño óptimo y liviano para cards de ecommerce
+            const MAX_DIM = 600;
             let w = img.width, h = img.height;
             if (w > h && w > MAX_DIM) { h *= MAX_DIM / w; w = MAX_DIM; }
             else if (h > MAX_DIM) { w *= MAX_DIM / h; h = MAX_DIM; }
@@ -408,7 +448,7 @@
             canvas.height = h;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, w, h);
-            resolve(canvas.toDataURL('image/jpeg', 0.7)); // compresión ligera
+            resolve(canvas.toDataURL('image/jpeg', 0.7));
           };
           img.onerror = () => resolve(null);
           img.src = e.target.result;
@@ -422,101 +462,66 @@
       const file = event.target.files[0];
       if (!file) return;
       const btn = document.getElementById('btnPortada');
-      const txtOriginal = btn.innerHTML;
       btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Subiendo...`;
       btn.disabled = true;
 
       try {
         const base64 = await procesarImagenLiviana(file);
-        if(!base64) throw new Error("Error de imagen");
+        if(!base64) throw new Error("Error");
         document.getElementById('logoPrincipal').src = base64;
-
-        // Guardar local y nube
-        guardarDatoGeneral({ logoUrl: base64 });
+        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
+        cfg.logoUrl = base64;
+        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
+        if(db) await setDoc(doc(db, 'configuracion_playup', 'general'), { logoUrl: base64 }, { merge: true });
         alert("¡Portada actualizada con éxito! 🎉");
       } catch (err) {
-        alert("Error al cargar la portada.");
+        alert("Error al guardar la portada.");
       } finally {
-        btn.innerHTML = txtOriginal;
+        btn.innerHTML = `<i class="fas fa-image"></i> Cambiar Portada`;
         btn.disabled = false;
         event.target.value = "";
       }
     };
 
-    async function guardarDatoGeneral(nuevoDato) {
-      let actual = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
-      actual = { ...actual, ...nuevoDato };
-      localStorage.setItem('playup_textos_config', JSON.stringify(actual));
-      if(db) {
-        try {
-          await setDoc(doc(db, 'configuracion_playup', 'general'), nuevoDato, { merge: true });
-        } catch(e) {}
-      }
-    }
-
-    // Edición visual de textos en tiempo real
-    window.activarModoEdicionTextos = function() {
-      const el1 = document.getElementById('txtEslogan');
-      const el2 = document.getElementById('txtDescripcion');
-      el1.contentEditable = "true";
-      el2.contentEditable = "true";
-      el1.classList.add('editable-focus');
-      el2.classList.add('editable-focus');
-      document.getElementById('barEdicionTextos').classList.remove('hidden');
-      alert("¡Modo Edición Activado! Haz clic directo sobre el eslogan o la descripción para modificar cualquier letra.");
-    };
-
-    window.cancelarEdicionTextos = function() {
-      const el1 = document.getElementById('txtEslogan');
-      const el2 = document.getElementById('txtDescripcion');
-      el1.contentEditable = "false";
-      el2.contentEditable = "false";
-      el1.classList.remove('editable-focus');
-      el2.classList.remove('editable-focus');
-      document.getElementById('barEdicionTextos').classList.add('hidden');
-    };
-
-    window.guardarTextosEnVivo = async function() {
-      const esloganHTML = document.getElementById('txtEslogan').innerHTML;
-      const descripcionTXT = document.getElementById('txtDescripcion').innerText;
-      await guardarDatoGeneral({ eslogan: esloganHTML, descripcion: descripcionTXT });
-      window.cancelarEdicionTextos();
-      alert("¡Textos guardados correctamente en tu tienda! ✨");
-    };
-
-    // Modal de Enlaces
-    window.abrirModalEnlaces = function() {
-      document.getElementById('inputLinkWhatsapp').value = document.getElementById('btnLinkWhatsapp').href;
-      document.getElementById('inputLinkTiktok').value = document.getElementById('btnLinkTiktok').href;
-      document.getElementById('inputLinkUbicacion').value = document.getElementById('btnLinkUbicacion').href;
-      const m = document.getElementById('modalEnlaces');
+    window.abrirModalFotosCategorias = function() {
+      const m = document.getElementById('modalFotosCategorias');
       m.classList.remove('hidden');
       m.classList.add('flex');
       setTimeout(() => m.classList.remove('opacity-0'), 10);
     };
 
-    window.cerrarModalEnlaces = function() {
-      const m = document.getElementById('modalEnlaces');
+    window.cerrarModalFotosCategorias = function() {
+      const m = document.getElementById('modalFotosCategorias');
       m.classList.add('opacity-0');
       setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
     };
 
-    window.guardarEnlaces = async function(e) {
-      e.preventDefault();
-      const whatsapp = document.getElementById('inputLinkWhatsapp').value;
-      const tiktok = document.getElementById('inputLinkTiktok').value;
-      const ubicacion = document.getElementById('inputLinkUbicacion').value;
+    window.subirFotoCategoria = async function(categoria, event) {
+      const file = event.target.files[0];
+      if(!file) return;
+      try {
+        const base64 = await procesarImagenLiviana(file);
+        if(!base64) throw new Error();
 
-      document.getElementById('btnLinkWhatsapp').href = whatsapp;
-      document.getElementById('btnLinkTiktok').href = tiktok;
-      document.getElementById('btnLinkUbicacion').href = ubicacion;
+        const el = document.getElementById(`img-cat-${categoria}`);
+        if(el) el.src = base64;
 
-      await guardarDatoGeneral({ whatsapp, tiktok, ubicacion });
-      window.cerrarModalEnlaces();
-      alert("¡Enlaces de contacto actualizados!");
+        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
+        if(!cfg.fotosCategorias) cfg.fotosCategorias = {};
+        cfg.fotosCategorias[categoria] = base64;
+        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
+
+        if(db) {
+          await setDoc(doc(db, 'configuracion_playup', 'general'), {
+            fotosCategorias: { [categoria]: base64 }
+          }, { merge: true });
+        }
+        alert(`¡Foto de la categoría "${categoria}" actualizada! ✨`);
+      } catch(e) {
+        alert("No se pudo guardar la imagen.");
+      }
     };
 
-    // Render de productos
     window.renderProductos = function() {
       const contenedor = document.getElementById('contenedorProductos');
       contenedor.innerHTML = '';
@@ -537,7 +542,7 @@
         contenedor.innerHTML = `
           <div class="col-span-full text-center py-16 bg-white/80 backdrop-blur-md rounded-[40px] border-4 border-dashed border-white shadow-xl">
             <p class="text-4xl font-black text-purple-600 mb-2">¡Ups! 🙈</p>
-            <p class="text-xl font-bold text-gray-700">No hay juguetes disponibles en esta categoría o filtro de precio.</p>
+            <p class="text-xl font-bold text-gray-700">Aún no hay juguetes en esta categoría.</p>
           </div>`;
         return;
       }
@@ -554,7 +559,7 @@
         card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col`;
 
         const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola, me interesa el juguete: ${p.nombre} a Bs. ${p.precio}`)}`;
+        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} a Bs.${p.precio}`)}`;
         const idVal = p.id || p.nombre;
         const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
 
@@ -600,10 +605,10 @@
       categoriaActual = cat;
       const cats = ['todos', 'ninos', 'ninas', 'bebes', 'didacticos', 'peluches'];
       cats.forEach(c => {
-        const btn = document.getElementById(`btn-${c}`);
-        if(btn) {
-          if(c === cat) btn.className = "px-7 py-3 rounded-3xl text-xl font-bold shadow-lg bg-yellow-400 text-purple-900 border-4 border-white scale-105";
-          else btn.className = "px-7 py-3 rounded-3xl text-xl font-bold shadow-md bg-white/20 text-white border-4 border-white";
+        const el = document.getElementById(`card-cat-${c}`);
+        if(el) {
+          if(c === cat) el.classList.add('cat-activa');
+          else el.classList.remove('cat-activa');
         }
       });
       window.renderProductos();
@@ -622,20 +627,19 @@
     };
 
     window.loginAdmin = function() {
-      if(isAdmin) return alert("Modo administrador ya activo.");
-      const pass = prompt('Ingresa la contraseña de administrador:');
+      if(isAdmin) return alert("Modo administrador activo.");
+      const pass = prompt('Contraseña de administrador:');
       if (pass === 'mariaPlayup') {
         isAdmin = true;
         document.getElementById('adminPanel').classList.remove('hidden');
         document.getElementById('btnAdminLogin').classList.add('hidden');
         window.renderProductos();
-        alert('¡Bienvenida al Panel de Control de PlayUp!');
+        alert('¡Bienvenido al modo Administrador!');
       } else if(pass !== null) {
         alert('Contraseña incorrecta.');
       }
     };
 
-    // Modal Vista Detalle
     let productoActualModal = null;
     let anguloActualIndex = 0;
     const modalVista = document.getElementById('modalVista');
@@ -651,11 +655,11 @@
       document.getElementById('detallePrecio').innerText = `Bs. ${p.precio}`;
       
       const badge = document.getElementById('detalleCategoriaBadge');
-      badge.className = "px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider text-white shadow bg-purple-600";
+      badge.className = "px-6 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow bg-purple-600";
       badge.innerText = p.categoria;
 
       const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-      document.getElementById('detalleBtnWhatsApp').href = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs. ${p.precio}`)}`;
+      document.getElementById('detalleBtnWhatsApp').href = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs.${p.precio}`)}`;
 
       const fotos = p.imagenes || [];
       document.getElementById('imgThumb0').src = fotos[0] || 'https://placehold.co/600x400/eee/999?text=1';
@@ -686,7 +690,6 @@
       setTimeout(() => { modalVista.classList.add('hidden'); modalVista.classList.remove('flex'); }, 300);
     };
 
-    // Modal Admin Form
     const modalAdminForm = document.getElementById('modalAdminForm');
     const formProducto = document.getElementById('formProducto');
 
@@ -752,7 +755,7 @@
           existente.descripcion = descripcion;
           existente.imagenes = imgs;
 
-          if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('local_')) {
+          if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('loc_')) {
             try {
               await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, precio, descripcion, imagenes: imgs });
             } catch(e) {}
@@ -773,7 +776,7 @@
         window.cerrarModalAdmin();
         alert("¡Juguete guardado con éxito! 🎉");
       } catch (err) {
-        alert("Ocurrió un error al guardar.");
+        alert("Error al guardar.");
       } finally {
         btn.disabled = false;
         btn.innerText = "Guardar Juguete";
@@ -781,7 +784,7 @@
     };
 
     window.eliminarProducto = async function(idOrName) {
-      if(!confirm("¿Deseas eliminar este producto de forma permanente?")) return;
+      if(!confirm("¿Deseas eliminar este producto?")) return;
       try {
         const prod = productos.find(p => String(p.id) === String(idOrName) || String(p.nombre) === String(idOrName));
         if (prod && prod.id && db && !String(prod.id).startsWith('loc_') && !String(prod.id).startsWith('def_')) {
@@ -794,6 +797,10 @@
       window.renderProductos();
     };
 
+    inicializarTienda();
+  </script>
+</body>
+</html>
     inicializarTienda();
   </script>
 </body>
