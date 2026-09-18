@@ -1,89 +1,208 @@
-<!-- SECCIÓN CATEGORÍAS (3 Izquierda / 3 Derecha forzado) -->
-  <section class="max-w-7xl mx-auto px-4 py-6 relative z-10">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlayUp Store - ¡Sube la diversión!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+    body { font-family: 'Fredoka', sans-serif; }
+    .bg-magical {
+      background: linear-gradient(-45deg, #0019ff, #d600ff, #ff007b, #ff7b00);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .stars {
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bubbly-text {
+      text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
+    }
+    .cat-banner-activa {
+      border-color: #facc15 !important;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.95) !important;
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
+  <div class="stars fixed"></div>
+
+  <!-- Portada y encabezado -->
+  <section class="relative pt-10 pb-10 px-4 md:px-10 text-white text-center z-10">
+    <div class="max-w-4xl mx-auto flex flex-col items-center">
+      
+      <img
+        id="logoPrincipal"
+        src="https://placehold.co/800x500/ff007b/ffffff?text=PlayUp"
+        alt="PlayUp Logo"
+        class="w-full max-w-lg object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-6 bg-white/20 p-2"
+      />
+      
+      <p id="txtEslogan" class="text-4xl md:text-5xl font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text">
+        <span class="text-red-500">¡</span><span class="text-blue-600">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-600">e</span>
+        <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
+        <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-600">r</span><span class="text-purple-600">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2 border-2 border-white">
+          <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
+        </a>
+        <a id="btnLinkTiktok" href="https://www.tiktok.com/@playupjuguetera" target="_blank" class="bg-black text-white border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
+          <i class="fab fa-tiktok text-2xl"></i> TikTok
+        </a>
+        <a id="btnLinkUbicacion" href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
+          <i class="fas fa-map-marker-alt text-2xl"></i> Ubicación
+        </a>
+        <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
+          <i class="fas fa-magic"></i> Modo Admin
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel Admin -->
+  <section id="adminPanel" class="max-w-7xl mx-auto px-6 pb-6 hidden transition-all duration-500 relative z-10">
+    <div class="bg-white/95 backdrop-blur-lg text-purple-900 rounded-[35px] p-6 shadow-2xl border-4 border-yellow-400 flex flex-wrap justify-between items-center gap-4">
+      <div>
+        <h2 class="text-3xl font-black flex items-center gap-2">
+          <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
+        </h2>
+        <p class="text-sm font-bold text-purple-700">Cambia fotos de los banners y gestiona productos.</p>
+      </div>
+      <div class="flex gap-3 flex-wrap">
+        <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
+        <button onclick="document.getElementById('inputPortada').click()" id="btnPortada" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
+          <i class="fas fa-image"></i> Cambiar Portada
+        </button>
+        <button onclick="abrirModalFotosCategorias()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
+          <i class="fas fa-layer-group"></i> 🖼️ Fotos Categorías
+        </button>
+        <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:scale-105 transition flex items-center gap-2">
+          <i class="fas fa-plus-circle"></i> + Añadir Juguete
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CATEGORÍAS: 2 COLUMNAS (3 Izquierda / 3 Derecha) en formato alargado horizontal -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
       <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-md">Explora por Categoría</h2>
       <p class="text-white/90 text-lg font-semibold mt-1">Toca un banner para filtrar</p>
     </div>
 
-    <!-- Contenedor 2 columnas fijas en pantallas medianas hacia arriba -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+    <!-- Contenedor dividido en Mitad Izquierda y Mitad Derecha -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
       
-      <!-- COLUMNA IZQUIERDA -->
+      <!-- COLUMNA IZQUIERDA (3 Banners Horizontales) -->
       <div class="flex flex-col gap-4">
         
         <!-- 1. Todos -->
-        <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-1 cat-banner-activa" style="height: 120px;">
+        <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1 cat-banner-activa">
           <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=1200&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent flex items-center px-6">
-            <span class="text-4xl mr-4">✨</span>
-            <div>
-              <p class="text-white font-black text-2xl md:text-3xl leading-none">Todos</p>
-              <p class="text-yellow-300 text-sm font-bold mt-1">Ver todo el catálogo</p>
+          <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent flex items-center px-6">
+            <div class="flex items-center gap-4">
+              <span class="text-3xl md:text-4xl">✨</span>
+              <div>
+                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Todos</span>
+                <span class="text-yellow-300 text-xs md:text-sm font-bold">Ver todo el catálogo</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 2. Niños -->
-        <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-1" style="height: 120px;">
+        <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1200&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/50 to-transparent flex items-center px-6">
-            <span class="text-4xl mr-4">🚀</span>
-            <div>
-              <p class="text-white font-black text-2xl md:text-3xl leading-none">Niños</p>
-              <p class="text-sky-300 text-sm font-bold mt-1">Autos, pistas y acción</p>
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/50 to-transparent flex items-center px-6">
+            <div class="flex items-center gap-4">
+              <span class="text-3xl md:text-4xl">🚀</span>
+              <div>
+                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Niños</span>
+                <span class="text-sky-300 text-xs md:text-sm font-bold">Autos, pistas y acción</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 3. Niñas -->
-        <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-1" style="height: 120px;">
+        <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-pink-950/85 via-pink-900/50 to-transparent flex items-center px-6">
-            <span class="text-4xl mr-4">🦄</span>
-            <div>
-              <p class="text-white font-black text-2xl md:text-3xl leading-none">Niñas</p>
-              <p class="text-pink-300 text-sm font-bold mt-1">Muñecas, castillos y magia</p>
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-950/90 via-pink-900/50 to-transparent flex items-center px-6">
+            <div class="flex items-center gap-4">
+              <span class="text-3xl md:text-4xl">🦄</span>
+              <div>
+                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Niñas</span>
+                <span class="text-pink-300 text-xs md:text-sm font-bold">Muñecas, castillos y magia</span>
+              </div>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- COLUMNA DERECHA -->
+      <!-- COLUMNA DERECHA (3 Banners Horizontales) -->
       <div class="flex flex-col gap-4">
         
         <!-- 4. Bebés -->
-        <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-1" style="height: 120px;">
+        <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-teal-950/85 via-teal-900/50 to-transparent flex items-center px-6">
-            <span class="text-4xl mr-4">🍼</span>
-            <div>
-              <p class="text-white font-black text-2xl md:text-3xl leading-none">Bebés</p>
-              <p class="text-teal-300 text-sm font-bold mt-1">Sonajeros y accesorios</p>
+          <div class="absolute inset-0 bg-gradient-to-r from-teal-950/90 via-teal-900/50 to-transparent flex items-center px-6">
+            <div class="flex items-center gap-4">
+              <span class="text-3xl md:text-4xl">🍼</span>
+              <div>
+                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Bebés</span>
+                <span class="text-teal-300 text-xs md:text-sm font-bold">Sonajeros y accesorios</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 5. Didácticos -->
-        <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-1" style="height: 120px;">
+        <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-amber-950/85 via-amber-900/50 to-transparent flex items-center px-6">
-            <span class="text-4xl mr-4">🧩</span>
-            <div>
-              <p class="text-white font-black text-2xl md:text-3xl leading-none">Didácticos</p>
-              <p class="text-amber-300 text-sm font-bold mt-1">Bloques, ingenio y destreza</p>
+          <div class="absolute inset-0 bg-gradient-to-r from-amber-950/90 via-amber-900/50 to-transparent flex items-center px-6">
+            <div class="flex items-center gap-4">
+              <span class="text-3xl md:text-4xl">🧩</span>
+              <div>
+                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Didácticos</span>
+                <span class="text-amber-300 text-xs md:text-sm font-bold">Bloques, ingenio y destreza</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 6. Peluches -->
-        <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition duration-300 transform hover:-translate-y-1" style="height: 120px;">
+        <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=1200&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-purple-950/85 via-purple-900/50 to-transparent flex items-center px-6">
-            <span class="text-4xl mr-4">🧸</span>
-            <div>
-              <p class="text-white font-black text-2xl md:text-3xl leading-none">Peluches</p>
-              <p class="text-purple-300 text-sm font-bold mt-1">Suaves y abrazables</p>
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-950/90 via-purple-900/50 to-transparent flex items-center px-6">
+            <div class="flex items-center gap-4">
+              <span class="text-3xl md:text-4xl">🧸</span>
+              <div>
+                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Peluches</span>
+                <span class="text-purple-300 text-xs md:text-sm font-bold">Suaves y abrazables</span>
+              </div>
             </div>
           </div>
         </div>
@@ -92,3 +211,634 @@
 
     </div>
   </section>
+
+  <!-- Filtro de presupuesto -->
+  <section class="max-w-7xl mx-auto px-6 py-4 relative z-10">
+    <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
+      <span class="text-white font-black text-lg mr-2 flex items-center gap-2">
+        <i class="fas fa-wallet text-yellow-300 text-xl"></i> Presupuesto:
+      </span>
+      <button onclick="filtrarPresupuesto('todos')" id="btn-precio-todos" class="px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white">Cualquiera</button>
+      <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 30 a 50</button>
+      <button onclick="filtrarPresupuesto('rango2')" id="btn-precio-rango2" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 60 a 100</button>
+      <button onclick="filtrarPresupuesto('rango3')" id="btn-precio-rango3" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 110 a 160</button>
+      <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 170 a más</button>
+    </div>
+  </section>
+
+  <!-- Vitrina de juguetes -->
+  <section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
+    <div id="loadingIndicator" class="text-center py-10">
+      <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
+      <p class="text-white text-xl mt-4 font-bold">Cargando catálogo PlayUp...</p>
+    </div>
+    <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"></div>
+  </section>
+
+  <!-- Modal Detalle -->
+  <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
+      <button type="button" onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-500 hover:text-red-500 text-3xl bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-gray-200">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="text-center mb-4 mt-2">
+        <span id="detalleCategoriaBadge" class="px-6 py-2 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md"></span>
+        <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
+      </div>
+
+      <div class="relative h-72 md:h-80 bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
+        <img id="imagenPrincipal" src="" alt="Vista del Juguete" class="w-full h-full object-contain bg-white">
+      </div>
+
+      <div class="flex justify-center gap-4 mb-4">
+        <button type="button" onclick="cambiarAngulo(0)" id="thumb0" class="w-20 h-20 rounded-2xl overflow-hidden border-4 border-pink-500 shadow-md bg-white">
+          <img id="imgThumb0" src="" class="w-full h-full object-cover">
+        </button>
+        <button type="button" onclick="cambiarAngulo(1)" id="thumb1" class="w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent opacity-60 hover:opacity-100 shadow-md bg-white">
+          <img id="imgThumb1" src="" class="w-full h-full object-cover">
+        </button>
+      </div>
+
+      <p id="detalleDescripcion" class="text-gray-700 text-lg text-center mb-6 px-4 font-medium leading-relaxed"></p>
+
+      <div class="flex flex-wrap justify-between items-center gap-4 border-t-2 border-gray-200 pt-4">
+        <div id="detallePrecio" class="text-3xl md:text-4xl font-black text-pink-600"></div>
+        <div class="flex gap-3">
+          <button type="button" onclick="cerrarModalVista()" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-2xl text-lg font-bold hover:bg-gray-300">
+            Volver
+          </button>
+          <a id="detalleBtnWhatsApp" href="#" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-2xl text-lg font-bold hover:scale-105 transition shadow-lg flex items-center gap-2 border-2 border-white">
+            <i class="fab fa-whatsapp text-2xl"></i> ¡Pedir por WhatsApp!
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Admin: Cambiar Fotos de Categorías -->
+  <div id="modalFotosCategorias" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-teal-500 relative max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-2xl font-black text-teal-900">🖼️ Cambiar Fotos de Categorías</h3>
+        <button type="button" onclick="cerrarModalFotosCategorias()" class="text-gray-400 hover:text-red-500 text-3xl">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+      <p class="text-sm font-semibold text-gray-600 mb-6">Selecciona una imagen horizontal para actualizar el banner de cada categoría:</p>
+
+      <div class="space-y-4">
+        <div class="p-3 bg-gray-50 rounded-2xl border flex items-center justify-between gap-4">
+          <span class="font-bold text-gray-800">✨ Todos</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('todos', event)" class="text-xs text-teal-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-teal-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-blue-50 rounded-2xl border border-blue-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-blue-900">🚀 Niños</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('ninos', event)" class="text-xs text-blue-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-blue-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-pink-50 rounded-2xl border border-pink-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-pink-900">🦄 Niñas</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('ninas', event)" class="text-xs text-pink-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-pink-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-teal-50 rounded-2xl border border-teal-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-teal-900">🍼 Bebés</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('bebes', event)" class="text-xs text-teal-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-teal-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-amber-900">🧩 Didácticos</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('didacticos', event)" class="text-xs text-amber-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-amber-100 file:font-bold">
+        </div>
+        <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 flex items-center justify-between gap-4">
+          <span class="font-bold text-purple-900">🧸 Peluches</span>
+          <input type="file" accept="image/*" onchange="subirFotoCategoria('peluches', event)" class="text-xs text-purple-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-purple-100 file:font-bold">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Admin Crear / Editar Juguete -->
+  <div id="modalAdminForm" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-purple-500 relative" id="modalAdminContent">
+      <div class="flex justify-between items-center mb-4">
+        <h3 id="modalAdminTitulo" class="text-3xl font-black text-purple-700">Añadir Juguete</h3>
+        <button type="button" onclick="cerrarModalAdmin()" class="text-gray-400 hover:text-red-500 text-3xl">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+      
+      <form id="formProducto" onsubmit="guardarProducto(event)" class="space-y-4 max-h-[75vh] overflow-y-auto pr-2">
+        <input type="hidden" id="productoId">
+        
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Nombre del Juguete</label>
+          <input type="text" id="productoNombre" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Categoría</label>
+          <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
+            <option value="ninos">🚀 Niños</option>
+            <option value="ninas">🦄 Niñas</option>
+            <option value="bebes">🍼 Bebés</option>
+            <option value="didacticos">🧩 Didácticos</option>
+            <option value="peluches">🧸 Peluches</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Precio (Solo número)</label>
+          <div class="relative">
+            <span class="absolute left-4 top-3 font-bold text-gray-500 text-lg">Bs.</span>
+            <input type="number" id="productoPrecio" required min="1" step="any" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl pl-14 pr-4 py-3 font-bold text-lg outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Descripción</label>
+          <textarea id="productoDescripcion" required rows="2" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-base outline-none resize-none"></textarea>
+        </div>
+
+        <div class="p-3 bg-blue-50 rounded-2xl border-2 border-blue-200">
+          <label class="block text-blue-700 font-bold mb-1">📸 Foto Principal (Frente)</label>
+          <input type="file" id="productoImagen1" accept="image/*" class="w-full text-sm text-blue-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-blue-200 file:text-blue-800 hover:file:bg-blue-300">
+        </div>
+
+        <div class="p-3 bg-pink-50 rounded-2xl border-2 border-pink-200">
+          <label class="block text-pink-700 font-bold mb-1">📸 Foto 2 (Otro Ángulo)</label>
+          <input type="file" id="productoImagen2" accept="image/*" class="w-full text-sm text-pink-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-pink-200 file:text-pink-800 hover:file:bg-pink-300">
+        </div>
+
+        <button type="submit" id="btnGuardarProd" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xl font-bold py-4 rounded-3xl hover:opacity-95 transition shadow-xl mt-4 border-2 border-white">
+          Guardar Juguete
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAcNULVUiPKmTtWulmqrQjzYEKyaS-s5iY",
+      authDomain: "playup-539e9.firebaseapp.com",
+      projectId: "playup-539e9",
+      storageBucket: "playup-539e9.firebasestorage.app",
+      messagingSenderId: "446767107451",
+      appId: "1:446767107451:web:41d0cbe466f9264d4b01de",
+      measurementId: "G-VCFXMXKJY6"
+    };
+
+    let app, auth, db;
+    try {
+      app = initializeApp(firebaseConfig);
+      auth = getAuth(app);
+      db = getFirestore(app);
+    } catch(e) {
+      console.warn("Firebase Init fallback:", e);
+    }
+
+    let productos = [];
+    let isAdmin = false;
+    let categoriaActual = 'todos';
+    let presupuestoActual = 'todos';
+
+    const juguetesPorDefecto = [
+      {
+        id: 'def_1',
+        nombre: 'Set Bloques Castillo Rosa',
+        categoria: 'ninas',
+        precio: '280',
+        descripcion: 'Hermoso castillo armable con figuras y accesorios incluidos.',
+        imagenes: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80']
+      },
+      {
+        id: 'def_2',
+        nombre: 'Auto Deportivo RC Recargable',
+        categoria: 'ninos',
+        precio: '150',
+        descripcion: 'Auto de carreras a control remoto de alta velocidad.',
+        imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80']
+      }
+    ];
+
+    async function inicializarTienda() {
+      const localData = localStorage.getItem('playup_local_prods');
+      productos = localData ? JSON.parse(localData) : juguetesPorDefecto;
+      window.renderProductos();
+      document.getElementById('loadingIndicator').classList.add('hidden');
+
+      const localConfig = localStorage.getItem('playup_textos_config');
+      if(localConfig) {
+        const d = JSON.parse(localConfig);
+        if(d.logoUrl) document.getElementById('logoPrincipal').src = d.logoUrl;
+        if(d.fotosCategorias) aplicarFotosCategorias(d.fotosCategorias);
+      }
+
+      if(!auth || !db) return;
+
+      try {
+        await signInAnonymously(auth);
+      } catch(e) {}
+
+      try {
+        const productosRef = collection(db, 'juguetes_playup');
+        onSnapshot(productosRef, (snapshot) => {
+          let nube = [];
+          snapshot.forEach(docSnap => nube.push({ id: docSnap.id, ...docSnap.data() }));
+          if(nube.length > 0) {
+            productos = nube;
+            localStorage.setItem('playup_local_prods', JSON.stringify(productos));
+            window.renderProductos();
+          }
+        });
+
+        const configRef = doc(db, 'configuracion_playup', 'general');
+        onSnapshot(configRef, (docSnap) => {
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            if(data.logoUrl) document.getElementById('logoPrincipal').src = data.logoUrl;
+            if(data.fotosCategorias) aplicarFotosCategorias(data.fotosCategorias);
+            localStorage.setItem('playup_textos_config', JSON.stringify(data));
+          }
+        });
+      } catch (err) {}
+    }
+
+    function aplicarFotosCategorias(fotos) {
+      Object.keys(fotos).forEach(cat => {
+        const el = document.getElementById(`img-cat-${cat}`);
+        if(el && fotos[cat]) el.src = fotos[cat];
+      });
+    }
+
+    function procesarImagenLiviana(file) {
+      return new Promise((resolve) => {
+        if (!file) return resolve(null);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_DIM = 700;
+            let w = img.width, h = img.height;
+            if (w > h && w > MAX_DIM) { h *= MAX_DIM / w; w = MAX_DIM; }
+            else if (h > MAX_DIM) { w *= MAX_DIM / h; h = MAX_DIM; }
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', 0.7));
+          };
+          img.onerror = () => resolve(null);
+          img.src = e.target.result;
+        };
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    window.subirNuevaPortada = async function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const btn = document.getElementById('btnPortada');
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Subiendo...`;
+      btn.disabled = true;
+
+      try {
+        const base64 = await procesarImagenLiviana(file);
+        if(!base64) throw new Error("Error");
+        document.getElementById('logoPrincipal').src = base64;
+        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
+        cfg.logoUrl = base64;
+        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
+        if(db) await setDoc(doc(db, 'configuracion_playup', 'general'), { logoUrl: base64 }, { merge: true });
+        alert("¡Portada actualizada con éxito! 🎉");
+      } catch (err) {
+        alert("Error al guardar la portada.");
+      } finally {
+        btn.innerHTML = `<i class="fas fa-image"></i> Cambiar Portada`;
+        btn.disabled = false;
+        event.target.value = "";
+      }
+    };
+
+    window.abrirModalFotosCategorias = function() {
+      const m = document.getElementById('modalFotosCategorias');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+      setTimeout(() => m.classList.remove('opacity-0'), 10);
+    };
+
+    window.cerrarModalFotosCategorias = function() {
+      const m = document.getElementById('modalFotosCategorias');
+      m.classList.add('opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
+    };
+
+    window.subirFotoCategoria = async function(categoria, event) {
+      const file = event.target.files[0];
+      if(!file) return;
+      try {
+        const base64 = await procesarImagenLiviana(file);
+        if(!base64) throw new Error();
+
+        const el = document.getElementById(`img-cat-${categoria}`);
+        if(el) el.src = base64;
+
+        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
+        if(!cfg.fotosCategorias) cfg.fotosCategorias = {};
+        cfg.fotosCategorias[categoria] = base64;
+        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
+
+        if(db) {
+          await setDoc(doc(db, 'configuracion_playup', 'general'), {
+            fotosCategorias: { [categoria]: base64 }
+          }, { merge: true });
+        }
+        alert(`¡Banner de "${categoria}" guardado con éxito! ✨`);
+      } catch(e) {
+        alert("No se pudo guardar la imagen.");
+      }
+    };
+
+    window.renderProductos = function() {
+      const contenedor = document.getElementById('contenedorProductos');
+      contenedor.innerHTML = '';
+
+      const filtrados = productos.filter(p => {
+        const catOk = categoriaActual === 'todos' || p.categoria === categoriaActual;
+        const pr = parseFloat(p.precio) || 0;
+        let pOk = false;
+        if (presupuestoActual === 'todos') pOk = true;
+        else if (presupuestoActual === 'rango1') pOk = pr >= 30 && pr <= 50;
+        else if (presupuestoActual === 'rango2') pOk = pr >= 60 && pr <= 100;
+        else if (presupuestoActual === 'rango3') pOk = pr >= 110 && pr <= 160;
+        else if (presupuestoActual === 'rango4') pOk = pr >= 170;
+        return catOk && pOk;
+      });
+
+      if (filtrados.length === 0) {
+        contenedor.innerHTML = `
+          <div class="col-span-full text-center py-16 bg-white/80 backdrop-blur-md rounded-[40px] border-4 border-dashed border-white shadow-xl">
+            <p class="text-4xl font-black text-purple-600 mb-2">¡Ups! 🙈</p>
+            <p class="text-xl font-bold text-gray-700">Aún no hay juguetes en esta categoría.</p>
+          </div>`;
+        return;
+      }
+
+      filtrados.forEach((p) => {
+        const card = document.createElement('div');
+        let bg = "bg-white/95 border-yellow-300";
+        if (p.categoria === 'bebes') bg = "bg-teal-50/95 border-teal-300"; 
+        else if (p.categoria === 'ninos') bg = "bg-sky-50/95 border-sky-300"; 
+        else if (p.categoria === 'ninas') bg = "bg-pink-50/95 border-pink-300"; 
+        else if (p.categoria === 'didacticos') bg = "bg-amber-50/95 border-amber-300"; 
+        else if (p.categoria === 'peluches') bg = "bg-purple-50/95 border-purple-300"; 
+
+        card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col`;
+
+        const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
+        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} a Bs.${p.precio}`)}`;
+        const idVal = p.id || p.nombre;
+        const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
+
+        let adminHTML = '';
+        if (isAdmin) {
+          adminHTML = `
+            <div class="flex gap-2 mt-4 pt-3 border-t border-gray-200">
+              <button onclick="window.abrirModalAdmin('${idVal}')" class="flex-1 bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-bold py-2 rounded-xl transition text-sm">
+                <i class="fas fa-edit"></i> Editar
+              </button>
+              <button onclick="window.eliminarProducto('${idVal}')" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-xl transition text-sm">
+                <i class="fas fa-trash"></i> Eliminar
+              </button>
+            </div>`;
+        }
+
+        card.innerHTML = `
+          <div class="relative h-64 bg-white cursor-pointer overflow-hidden p-2" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
+            <img src="${foto}" alt="${p.nombre}" class="w-full h-full object-cover rounded-[30px] hover:scale-105 transition duration-300" />
+            <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-black px-3 py-1.5 rounded-full uppercase border border-white">
+              ${p.categoria}
+            </span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-2xl font-black text-purple-950 leading-snug cursor-pointer hover:text-pink-600 transition" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
+              ${p.nombre}
+            </h3>
+            <div class="text-3xl font-black text-pink-600 mt-2">Bs. ${p.precio}</div>
+            <p class="text-gray-600 text-sm mt-2 line-clamp-2">${p.descripcion}</p>
+            <div class="mt-auto pt-4">
+              <a href="${linkWa}" target="_blank" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-102 transition shadow-md">
+                <i class="fab fa-whatsapp text-xl"></i> Pedir al WhatsApp
+              </a>
+              ${adminHTML}
+            </div>
+          </div>
+        `;
+        contenedor.appendChild(card);
+      });
+    };
+
+    window.filtrarCategoria = function(cat) {
+      categoriaActual = cat;
+      const cats = ['todos', 'ninos', 'ninas', 'bebes', 'didacticos', 'peluches'];
+      cats.forEach(c => {
+        const el = document.getElementById(`card-cat-${c}`);
+        if(el) {
+          if(c === cat) el.classList.add('cat-banner-activa');
+          else el.classList.remove('cat-banner-activa');
+        }
+      });
+      window.renderProductos();
+    };
+
+    window.filtrarPresupuesto = function(r) {
+      presupuestoActual = r;
+      ['todos', 'rango1', 'rango2', 'rango3', 'rango4'].forEach(rg => {
+        const btn = document.getElementById(`btn-precio-${rg}`);
+        if(btn) {
+          if(rg === r) btn.className = "px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white scale-105";
+          else btn.className = "px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white";
+        }
+      });
+      window.renderProductos();
+    };
+
+    window.loginAdmin = function() {
+      if(isAdmin) return alert("Modo administrador activo.");
+      const pass = prompt('Contraseña de administrador:');
+      if (pass === 'mariaPlayup') {
+        isAdmin = true;
+        document.getElementById('adminPanel').classList.remove('hidden');
+        document.getElementById('btnAdminLogin').classList.add('hidden');
+        window.renderProductos();
+        alert('¡Bienvenido al modo Administrador!');
+      } else if(pass !== null) {
+        alert('Contraseña incorrecta.');
+      }
+    };
+
+    let productoActualModal = null;
+    let anguloActualIndex = 0;
+    const modalVista = document.getElementById('modalVista');
+
+    window.abrirModalVista = function(idOrName) {
+      const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
+      if(!p) return;
+      productoActualModal = p;
+      anguloActualIndex = 0;
+
+      document.getElementById('detalleNombre').innerText = p.nombre;
+      document.getElementById('detalleDescripcion').innerText = p.descripcion;
+      document.getElementById('detallePrecio').innerText = `Bs. ${p.precio}`;
+      
+      const badge = document.getElementById('detalleCategoriaBadge');
+      badge.className = "px-6 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow bg-purple-600";
+      badge.innerText = p.categoria;
+
+      const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
+      document.getElementById('detalleBtnWhatsApp').href = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs.${p.precio}`)}`;
+
+      const fotos = p.imagenes || [];
+      document.getElementById('imgThumb0').src = fotos[0] || 'https://placehold.co/600x400/eee/999?text=1';
+      document.getElementById('imgThumb1').src = fotos[1] || fotos[0] || 'https://placehold.co/600x400/eee/999?text=2';
+
+      window.actualizarAnguloVisual();
+      modalVista.classList.remove('hidden');
+      modalVista.classList.add('flex');
+      setTimeout(() => { modalVista.classList.remove('opacity-0'); document.getElementById('modalVistaContent').classList.remove('scale-95'); }, 10);
+    };
+
+    window.cambiarAngulo = function(idx) {
+      anguloActualIndex = idx;
+      window.actualizarAnguloVisual();
+    };
+
+    window.actualizarAnguloVisual = function() {
+      if(!productoActualModal) return;
+      const fotos = productoActualModal.imagenes || [];
+      document.getElementById('imagenPrincipal').src = fotos[anguloActualIndex] || fotos[0] || 'https://placehold.co/600x400/eee/999?text=PlayUp';
+      document.getElementById('thumb0').style.opacity = anguloActualIndex === 0 ? "1" : "0.5";
+      document.getElementById('thumb1').style.opacity = anguloActualIndex === 1 ? "1" : "0.5";
+    };
+
+    window.cerrarModalVista = function() {
+      modalVista.classList.add('opacity-0');
+      document.getElementById('modalVistaContent').classList.add('scale-95');
+      setTimeout(() => { modalVista.classList.add('hidden'); modalVista.classList.remove('flex'); }, 300);
+    };
+
+    const modalAdminForm = document.getElementById('modalAdminForm');
+    const formProducto = document.getElementById('formProducto');
+
+    window.abrirModalAdmin = function(idOrName = null) {
+      formProducto.reset();
+      document.getElementById('productoId').value = '';
+      if(idOrName) {
+        document.getElementById('modalAdminTitulo').innerText = '✏️ Editar Juguete';
+        const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
+        if(p) {
+          document.getElementById('productoId').value = p.id || p.nombre;
+          document.getElementById('productoNombre').value = p.nombre;
+          document.getElementById('productoCategoria').value = p.categoria;
+          document.getElementById('productoPrecio').value = p.precio;
+          document.getElementById('productoDescripcion').value = p.descripcion;
+        }
+      } else {
+        document.getElementById('modalAdminTitulo').innerText = '✨ Nuevo Juguete';
+      }
+      modalAdminForm.classList.remove('hidden');
+      modalAdminForm.classList.add('flex');
+      setTimeout(() => { modalAdminForm.classList.remove('opacity-0'); document.getElementById('modalAdminContent').classList.remove('scale-95'); }, 10);
+    };
+
+    window.cerrarModalAdmin = function() {
+      modalAdminForm.classList.add('opacity-0');
+      document.getElementById('modalAdminContent').classList.add('scale-95');
+      setTimeout(() => { modalAdminForm.classList.add('hidden'); modalAdminForm.classList.remove('flex'); }, 300);
+    };
+
+    window.guardarProducto = async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnGuardarProd');
+      btn.disabled = true;
+      btn.innerText = "⏳ Guardando...";
+
+      try {
+        const idActual = document.getElementById('productoId').value;
+        const nombre = document.getElementById('productoNombre').value;
+        const categoria = document.getElementById('productoCategoria').value;
+        const precio = document.getElementById('productoPrecio').value;
+        const descripcion = document.getElementById('productoDescripcion').value;
+
+        const f1 = document.getElementById('productoImagen1').files[0];
+        const f2 = document.getElementById('productoImagen2').files[0];
+
+        const base64_1 = await procesarImagenLiviana(f1);
+        const base64_2 = await procesarImagenLiviana(f2);
+
+        const existente = productos.find(p => String(p.id) === String(idActual) || String(p.nombre) === String(idActual));
+        let imgs = existente && existente.imagenes ? [...existente.imagenes] : [
+          `https://placehold.co/600x400/99ccff/003366?text=${encodeURIComponent(nombre)}`,
+          `https://placehold.co/600x400/ff99cc/660033?text=${encodeURIComponent(nombre)}+2`
+        ];
+
+        if(base64_1) imgs[0] = base64_1;
+        if(base64_2) imgs[1] = base64_2;
+
+        if (existente && existente.id) {
+          existente.nombre = nombre;
+          existente.categoria = categoria;
+          existente.precio = precio;
+          existente.descripcion = descripcion;
+          existente.imagenes = imgs;
+
+          if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('loc_')) {
+            try {
+              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, precio, descripcion, imagenes: imgs });
+            } catch(e) {}
+          }
+        } else {
+          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, precio, descripcion, imagenes: imgs };
+          if(db) {
+            try {
+              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, precio, descripcion, imagenes: imgs });
+              nuevo.id = docRef.id;
+            } catch(e) {}
+          }
+          productos.push(nuevo);
+        }
+
+        localStorage.setItem('playup_local_prods', JSON.stringify(productos));
+        window.renderProductos();
+        window.cerrarModalAdmin();
+        alert("¡Juguete guardado con éxito! 🎉");
+      } catch (err) {
+        alert("Error al guardar.");
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Guardar Juguete";
+      }
+    };
+
+    window.eliminarProducto = async function(idOrName) {
+      if(!confirm("¿Deseas eliminar este producto?")) return;
+      try {
+        const prod = productos.find(p => String(p.id) === String(idOrName) || String(p.nombre) === String(idOrName));
+        if (prod && prod.id && db && !String(prod.id).startsWith('loc_') && !String(prod.id).startsWith('def_')) {
+          await deleteDoc(doc(db, 'juguetes_playup', prod.id));
+        }
+      } catch (e) {}
+
+      productos = productos.filter(p => String(p.id) !== String(idOrName) && String(p.nombre) !== String(idOrName));
+      localStorage.setItem('playup_local_prods', JSON.stringify(productos));
+      window.renderProductos();
+    };
+
+    inicializarTienda();
+  </script>
+</body>
+</html>
