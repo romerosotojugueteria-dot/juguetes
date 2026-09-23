@@ -29,6 +29,7 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Burbujas ascendentes */
     .bubble {
       position: absolute;
       border-radius: 50%;
@@ -51,6 +52,7 @@
       }
     }
 
+    /* Figuras flotantes */
     .toy-float {
       position: absolute;
       pointer-events: none;
@@ -174,7 +176,7 @@
         <h2 class="text-3xl font-black flex items-center gap-2">
           <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
         </h2>
-        <p class="text-sm font-bold text-purple-700">Gestiona imágenes, Google Sheets y productos en tiempo real.</p>
+        <p class="text-sm font-bold text-purple-700">Edita imágenes, rangos de edad y conecta tu Google Sheets.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
         <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
@@ -194,7 +196,7 @@
     </div>
   </section>
 
-  <!-- BUSCADOR INTELIGENTE Y FILTROS RÁPIDOS (Ofertas, Novedades, Anime) -->
+  <!-- BUSCADOR INTELIGENTE Y FILTROS RÁPIDOS -->
   <section class="max-w-4xl mx-auto px-4 py-4 relative z-20">
     <div class="bg-white/95 backdrop-blur-xl p-5 md:p-6 rounded-[35px] border-4 border-yellow-300 shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
       
@@ -203,7 +205,7 @@
         <input
           type="text"
           id="inputBusqueda"
-          placeholder="¿Qué juguete buscas hoy? (ej. dinosaurio, pista, barbie, goku...)"
+          placeholder="Busca por nombre, edad (ej. 3 años, bebé) o juguete..."
           oninput="ejecutarBusqueda(this.value)"
           class="w-full bg-purple-50/80 border-2 border-purple-200 focus:border-purple-600 focus:bg-white rounded-full py-4 pl-14 pr-12 text-lg md:text-xl font-bold text-purple-950 placeholder-purple-400 outline-none transition shadow-inner"
         />
@@ -216,22 +218,28 @@
         </button>
       </div>
 
-      <!-- Filtros directos solicitados -->
-      <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mt-4 pt-3 border-t border-purple-100">
-        <span class="text-purple-900 font-extrabold text-sm md:text-base mr-1 flex items-center gap-1">
-          <i class="fas fa-bolt text-yellow-500"></i> Búsquedas Rápidas:
+      <!-- Filtros rápidos comerciales -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-4 pt-3 border-t border-purple-100">
+        <span class="text-purple-900 font-extrabold text-sm mr-1 flex items-center gap-1">
+          <i class="fas fa-bolt text-yellow-500"></i> Rápidos:
         </span>
-        <button onclick="aplicarFiltroRapido('ofertas')" id="tag-ofertas" class="px-4 py-2 rounded-full text-sm md:text-base font-black bg-rose-500 text-white hover:scale-105 transition shadow border-2 border-white flex items-center gap-1">
+        <button onclick="aplicarFiltroRapido('ofertas')" id="tag-ofertas" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-rose-500 text-white hover:scale-105 transition shadow border-2 border-white">
           🔥 Ofertas
         </button>
-        <button onclick="aplicarFiltroRapido('novedades')" id="tag-novedades" class="px-4 py-2 rounded-full text-sm md:text-base font-black bg-amber-400 text-purple-950 hover:scale-105 transition shadow border-2 border-white flex items-center gap-1">
+        <button onclick="aplicarFiltroRapido('novedades')" id="tag-novedades" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-amber-400 text-purple-950 hover:scale-105 transition shadow border-2 border-white">
           ✨ Novedades
         </button>
-        <button onclick="aplicarFiltroRapido('anime')" id="tag-anime" class="px-4 py-2 rounded-full text-sm md:text-base font-black bg-indigo-600 text-white hover:scale-105 transition shadow border-2 border-white flex items-center gap-1">
+        <button onclick="aplicarFiltroRapido('cumpleanos')" id="tag-cumpleanos" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-emerald-500 text-white hover:scale-105 transition shadow border-2 border-white">
+          🎁 Cumpleaños
+        </button>
+        <button onclick="aplicarFiltroRapido('anime')" id="tag-anime" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-indigo-600 text-white hover:scale-105 transition shadow border-2 border-white">
           ⚡ Anime
         </button>
-        <button onclick="limpiarBusqueda()" class="px-3 py-2 rounded-full text-xs md:text-sm font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">
-          Ver Todos
+        <button onclick="aplicarFiltroRapido('tiktok')" id="tag-tiktok" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-black text-white hover:scale-105 transition shadow border-2 border-white">
+          📱 TikTok
+        </button>
+        <button onclick="limpiarBusqueda()" class="px-3 py-1.5 rounded-full text-xs font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">
+          Restablecer
         </button>
       </div>
 
@@ -243,7 +251,7 @@
   <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
       <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-md">Explora por Categoría</h2>
-      <p class="text-white/90 text-lg font-semibold mt-1">Toca un banner para filtrar y ver los juguetes</p>
+      <p class="text-white/90 text-lg font-semibold mt-1">Toca un banner para filtrar los juguetes</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -368,8 +376,11 @@
         <i class="fas fa-times"></i>
       </button>
       
-      <div class="text-center mb-4 mt-2">
-        <span id="detalleCategoriaBadge" class="px-6 py-2 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md"></span>
+      <div class="text-center mb-3 mt-2">
+        <div class="flex items-center justify-center gap-2 flex-wrap">
+          <span id="detalleCategoriaBadge" class="px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md"></span>
+          <span id="detalleEdadBadge" class="px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md bg-purple-600 border border-white"></span>
+        </div>
         <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
       </div>
 
@@ -386,7 +397,12 @@
         </button>
       </div>
 
-      <p id="detalleDescripcion" class="text-gray-700 text-lg text-center mb-6 px-4 font-medium leading-relaxed"></p>
+      <div class="bg-purple-50 p-4 rounded-2xl border-2 border-purple-200 mb-4 text-center">
+        <p class="text-purple-950 font-bold text-base mb-1">
+          <i class="fas fa-child mr-1 text-pink-500"></i> <span id="detalleEdadTexto">Edad recomendada: Todas las edades</span>
+        </p>
+        <p id="detalleDescripcion" class="text-gray-700 text-base font-medium leading-relaxed"></p>
+      </div>
 
       <div class="flex flex-wrap justify-between items-center gap-4 border-t-2 border-gray-200 pt-4">
         <div id="detallePrecio" class="text-3xl md:text-4xl font-black text-pink-600"></div>
@@ -412,11 +428,11 @@
         </button>
       </div>
       <p class="text-sm font-semibold text-gray-600 mb-4">
-        Pega la URL de tu Web App de Google Apps Script. Todas las búsquedas y visitas de los clientes se guardarán en tu hoja de cálculo automáticamente:
+        Pega la URL de tu Web App de Google Apps Script para registrar todas las búsquedas y clics de tus clientes:
       </p>
       <form onsubmit="guardarUrlGoogleSheets(event)" class="space-y-4">
         <div>
-          <label class="block text-gray-700 font-bold mb-1">URL de Aplicación Web (Google Sheets):</label>
+          <label class="block text-gray-700 font-bold mb-1">URL Web App de Google Sheets:</label>
           <input
             type="url"
             id="inputGoogleSheetsUrl"
@@ -490,32 +506,48 @@
           <input type="text" id="productoNombre" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Categoría</label>
-          <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
-            <option value="ninos">🚀 Niños</option>
-            <option value="ninas">🦄 Niñas</option>
-            <option value="bebes">🍼 Bebés</option>
-            <option value="didacticos">🧩 Didácticos</option>
-            <option value="peluches">🧸 Peluches</option>
-          </select>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Categoría</label>
+            <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-3 py-3 font-semibold text-base outline-none">
+              <option value="ninos">🚀 Niños</option>
+              <option value="ninas">🦄 Niñas</option>
+              <option value="bebes">🍼 Bebés</option>
+              <option value="didacticos">🧩 Didácticos</option>
+              <option value="peluches">🧸 Peluches</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Edad Sugerida</label>
+            <select id="productoEdad" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-3 py-3 font-semibold text-base outline-none">
+              <option value="0-2">👶 0 a 2 años</option>
+              <option value="3-5" selected>🎈 3 a 5 años</option>
+              <option value="6-8">🚀 6 a 8 años</option>
+              <option value="9+">⭐ 9+ años / Todos</option>
+            </select>
+          </div>
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Etiqueta Especial (Opcional)</label>
-          <select id="productoEtiqueta" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-base outline-none">
-            <option value="">Ninguna</option>
-            <option value="ofertas">🔥 Oferta</option>
-            <option value="novedades">✨ Novedad</option>
-            <option value="anime">⚡ Anime</option>
-          </select>
-        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Etiqueta Especial</label>
+            <select id="productoEtiqueta" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-3 py-3 font-semibold text-base outline-none">
+              <option value="">Ninguna</option>
+              <option value="ofertas">🔥 Oferta</option>
+              <option value="novedades">✨ Novedad</option>
+              <option value="cumpleanos">🎁 Cumpleaños</option>
+              <option value="anime">⚡ Anime</option>
+              <option value="tiktok">📱 TikTok</option>
+            </select>
+          </div>
 
-        <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Precio (Solo número)</label>
-          <div class="relative">
-            <span class="absolute left-4 top-3 font-bold text-gray-500 text-lg">Bs.</span>
-            <input type="number" id="productoPrecio" required min="1" step="any" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl pl-14 pr-4 py-3 font-bold text-lg outline-none">
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Precio</label>
+            <div class="relative">
+              <span class="absolute left-3 top-3 font-bold text-gray-500 text-base">Bs.</span>
+              <input type="number" id="productoPrecio" required min="1" step="any" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl pl-12 pr-3 py-3 font-bold text-base outline-none">
+            </div>
           </div>
         </div>
 
@@ -578,6 +610,7 @@
         id: 'def_1',
         nombre: 'Set Bloques Castillo Rosa',
         categoria: 'ninas',
+        edad: '3-5',
         etiqueta: 'novedades',
         precio: '280',
         descripcion: 'Hermoso castillo armable con figuras y accesorios incluidos.',
@@ -587,6 +620,7 @@
         id: 'def_2',
         nombre: 'Auto Deportivo RC Recargable',
         categoria: 'ninos',
+        edad: '6-8',
         etiqueta: 'ofertas',
         precio: '150',
         descripcion: 'Auto de carreras a control remoto de alta velocidad.',
@@ -594,16 +628,17 @@
       },
       {
         id: 'def_3',
-        nombre: 'Figura de Acción Goku Super Saiyan',
-        categoria: 'ninos',
-        etiqueta: 'anime',
-        precio: '120',
-        descripcion: 'Figura coleccionable articulada con base de exhibición.',
-        imagenes: ['https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80']
+        nombre: 'Gimnasio Musical y Sonajero Bebe',
+        categoria: 'bebes',
+        edad: '0-2',
+        etiqueta: 'cumpleanos',
+        precio: '190',
+        descripcion: 'Alfombra suave con piano y sonajeros estimulantes.',
+        imagenes: ['https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80']
       }
     ];
 
-    // REGISTRO SILENCIOSO A GOOGLE SHEETS
+    // REGISTRO A GOOGLE SHEETS
     async function registrarEnGoogleSheets(tipoEvento, detalle) {
       const urlSheets = localStorage.getItem('playup_google_sheets_url');
       if (!urlSheets) return;
@@ -622,9 +657,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-      } catch (err) {
-        console.warn("Sheets tracking offline");
-      }
+      } catch (err) {}
     }
 
     async function inicializarTienda() {
@@ -678,20 +711,15 @@
       });
     }
 
-    // BUSCADOR EN TIEMPO REAL
     window.ejecutarBusqueda = function(valor) {
       terminoBusqueda = valor.trim().toLowerCase();
       etiquetaFiltro = '';
       const btnLimpiar = document.getElementById('btnLimpiarBusqueda');
-      if (terminoBusqueda.length > 0) {
-        btnLimpiar.classList.remove('hidden');
-      } else {
-        btnLimpiar.classList.add('hidden');
-      }
+      if (terminoBusqueda.length > 0) btnLimpiar.classList.remove('hidden');
+      else btnLimpiar.classList.add('hidden');
 
       window.renderProductos();
 
-      // Registro en Google Sheets con debounce para no saturar al escribir
       clearTimeout(timeoutBusqueda);
       if (terminoBusqueda.length >= 3) {
         timeoutBusqueda = setTimeout(() => {
@@ -707,12 +735,11 @@
       document.getElementById('btnLimpiarBusqueda').classList.remove('hidden');
       
       const aviso = document.getElementById('avisoResultados');
-      aviso.innerText = `Mostrando sección: ${etiqueta.toUpperCase()}`;
+      aviso.innerText = `Filtro aplicado: ${etiqueta.toUpperCase()}`;
       aviso.classList.remove('hidden');
 
       window.renderProductos();
       deslizarAlCatalogo();
-
       registrarEnGoogleSheets("Filtro Rápido", etiqueta);
     };
 
@@ -803,8 +830,8 @@
       }
 
       window.cerrarModalGoogleSheets();
-      alert("¡Google Sheets conectado! Ahora cada búsqueda de tus clientes se enviará automáticamente a tu Excel online. 📈");
-      registrarEnGoogleSheets("Sistema", "Conexión de Google Sheets configurada con éxito");
+      alert("¡Google Sheets conectado! Ahora el registro está activo.");
+      registrarEnGoogleSheets("Sistema", "Conexión Google Sheets configurada");
     };
 
     window.abrirModalFotosCategorias = function() {
@@ -846,6 +873,13 @@
       }
     };
 
+    function obtenerTextoEdad(edadCode) {
+      if(edadCode === '0-2') return { tag: '+0 meses', desc: '0 a 2 años (Bebés y Estimulación)', color: 'bg-teal-500' };
+      if(edadCode === '3-5') return { tag: '+3 años', desc: '3 a 5 años (Preescolar)', color: 'bg-sky-500' };
+      if(edadCode === '6-8') return { tag: '+6 años', desc: '6 a 8 años (Niños)', color: 'bg-amber-500' };
+      return { tag: '+9 años', desc: '9+ años / Todas las edades', color: 'bg-purple-600' };
+    }
+
     window.renderProductos = function() {
       const contenedor = document.getElementById('contenedorProductos');
       contenedor.innerHTML = '';
@@ -866,7 +900,8 @@
           const enNombre = (p.nombre || '').toLowerCase().includes(terminoBusqueda);
           const enDesc = (p.descripcion || '').toLowerCase().includes(terminoBusqueda);
           const enCat = (p.categoria || '').toLowerCase().includes(terminoBusqueda);
-          busquedaOk = enNombre || enDesc || enCat;
+          const enEdad = (p.edad || '').toLowerCase().includes(terminoBusqueda);
+          busquedaOk = enNombre || enDesc || enCat || enEdad;
         }
 
         let etiquetaOk = true;
@@ -902,15 +937,18 @@
 
         card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col relative`;
 
+        const edadInfo = obtenerTextoEdad(p.edad || '3-5');
         const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} a Bs.${p.precio}`)}`;
+        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} (Edad: ${edadInfo.desc}) a Bs.${p.precio}`)}`;
         const idVal = p.id || p.nombre;
         const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
 
         let tagHTML = '';
-        if (p.etiqueta === 'ofertas') tagHTML = `<span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">🔥 Oferta</span>`;
-        else if (p.etiqueta === 'novedades') tagHTML = `<span class="absolute top-4 right-4 bg-yellow-400 text-purple-900 text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">✨ Nuevo</span>`;
-        else if (p.etiqueta === 'anime') tagHTML = `<span class="absolute top-4 right-4 bg-indigo-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">⚡ Anime</span>`;
+        if (p.etiqueta === 'ofertas') tagHTML = `<span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">🔥 Oferta</span>`;
+        else if (p.etiqueta === 'novedades') tagHTML = `<span class="absolute top-4 right-4 bg-yellow-400 text-purple-900 text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">✨ Nuevo</span>`;
+        else if (p.etiqueta === 'cumpleanos') tagHTML = `<span class="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">🎁 Regalo</span>`;
+        else if (p.etiqueta === 'anime') tagHTML = `<span class="absolute top-4 right-4 bg-indigo-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">⚡ Anime</span>`;
+        else if (p.etiqueta === 'tiktok') tagHTML = `<span class="absolute top-4 right-4 bg-black text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">📱 TikTok</span>`;
 
         let adminHTML = '';
         if (isAdmin) {
@@ -929,9 +967,14 @@
           ${tagHTML}
           <div class="relative h-64 bg-white cursor-pointer overflow-hidden p-2" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
             <img src="${foto}" alt="${p.nombre}" class="w-full h-full object-cover rounded-[30px] hover:scale-105 transition duration-300" />
-            <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-black px-3 py-1.5 rounded-full uppercase border border-white">
-              ${p.categoria}
-            </span>
+            <div class="absolute top-4 left-4 flex gap-1.5 flex-col">
+              <span class="bg-purple-700 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">
+                ${p.categoria}
+              </span>
+              <span class="${edadInfo.color} text-white text-xs font-black px-3 py-1 rounded-full border border-white shadow">
+                ${edadInfo.tag}
+              </span>
+            </div>
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="text-2xl font-black text-purple-950 leading-snug cursor-pointer hover:text-pink-600 transition" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
@@ -940,7 +983,7 @@
             <div class="text-3xl font-black text-pink-600 mt-2">Bs. ${p.precio}</div>
             <p class="text-gray-600 text-sm mt-2 line-clamp-2">${p.descripcion}</p>
             <div class="mt-auto pt-4">
-              <a href="${linkWa}" target="_blank" onclick="registrarEnGoogleSheets('Clic en Pedir WhatsApp', '${p.nombre.replace(/'/g, "\\'")} - Bs. ${p.precio}')" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-102 transition shadow-md">
+              <a href="${linkWa}" target="_blank" onclick="registrarEnGoogleSheets('Clic en WhatsApp', '${p.nombre.replace(/'/g, "\\'")} (${edadInfo.tag}) - Bs. ${p.precio}')" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-102 transition shadow-md">
                 <i class="fab fa-whatsapp text-xl"></i> Pedir al WhatsApp
               </a>
               ${adminHTML}
@@ -953,9 +996,7 @@
 
     function deslizarAlCatalogo() {
       const el = document.getElementById('seccionCatalogo');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
     window.filtrarCategoria = function(cat) {
@@ -1011,19 +1052,25 @@
       productoActualModal = p;
       anguloActualIndex = 0;
 
+      const edadInfo = obtenerTextoEdad(p.edad || '3-5');
       document.getElementById('detalleNombre').innerText = p.nombre;
       document.getElementById('detalleDescripcion').innerText = p.descripcion;
       document.getElementById('detallePrecio').innerText = `Bs. ${p.precio}`;
+      document.getElementById('detalleEdadTexto').innerText = `Edad recomendada: ${edadInfo.desc}`;
       
       const badge = document.getElementById('detalleCategoriaBadge');
-      badge.className = "px-6 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow bg-purple-600";
+      badge.className = "px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow bg-purple-600";
       badge.innerText = p.categoria;
 
+      const badgeEdad = document.getElementById('detalleEdadBadge');
+      badgeEdad.className = `px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow ${edadInfo.color}`;
+      badgeEdad.innerText = edadInfo.tag;
+
       const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-      const linkWaModal = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs.${p.precio}`)}`;
+      const linkWaModal = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} (Edad: ${edadInfo.desc}) por Bs.${p.precio}`)}`;
       const btnWa = document.getElementById('detalleBtnWhatsApp');
       btnWa.href = linkWaModal;
-      btnWa.onclick = () => registrarEnGoogleSheets("Clic Pedir (Modal)", `${p.nombre} - Bs. ${p.precio}`);
+      btnWa.onclick = () => registrarEnGoogleSheets("Clic Pedir (Modal)", `${p.nombre} (${edadInfo.tag}) - Bs. ${p.precio}`);
 
       const fotos = p.imagenes || [];
       document.getElementById('imgThumb0').src = fotos[0] || 'https://placehold.co/600x400/eee/999?text=1';
@@ -1034,7 +1081,7 @@
       modalVista.classList.add('flex');
       setTimeout(() => { modalVista.classList.remove('opacity-0'); document.getElementById('modalVistaContent').classList.remove('scale-95'); }, 10);
 
-      registrarEnGoogleSheets("Detalle Producto Abierto", `${p.nombre} (Bs. ${p.precio})`);
+      registrarEnGoogleSheets("Detalle Producto Abierto", `${p.nombre} (${edadInfo.tag}) - Bs. ${p.precio}`);
     };
 
     window.cambiarAngulo = function(idx) {
@@ -1069,6 +1116,7 @@
           document.getElementById('productoId').value = p.id || p.nombre;
           document.getElementById('productoNombre').value = p.nombre;
           document.getElementById('productoCategoria').value = p.categoria;
+          document.getElementById('productoEdad').value = p.edad || '3-5';
           document.getElementById('productoEtiqueta').value = p.etiqueta || '';
           document.getElementById('productoPrecio').value = p.precio;
           document.getElementById('productoDescripcion').value = p.descripcion;
@@ -1097,6 +1145,7 @@
         const idActual = document.getElementById('productoId').value;
         const nombre = document.getElementById('productoNombre').value;
         const categoria = document.getElementById('productoCategoria').value;
+        const edad = document.getElementById('productoEdad').value;
         const etiqueta = document.getElementById('productoEtiqueta').value;
         const precio = document.getElementById('productoPrecio').value;
         const descripcion = document.getElementById('productoDescripcion').value;
@@ -1119,6 +1168,7 @@
         if (existente && existente.id) {
           existente.nombre = nombre;
           existente.categoria = categoria;
+          existente.edad = edad;
           existente.etiqueta = etiqueta;
           existente.precio = precio;
           existente.descripcion = descripcion;
@@ -1126,14 +1176,14 @@
 
           if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('loc_')) {
             try {
-              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, etiqueta, precio, descripcion, imagenes: imgs });
+              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, edad, etiqueta, precio, descripcion, imagenes: imgs });
             } catch(e) {}
           }
         } else {
-          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, etiqueta, precio, descripcion, imagenes: imgs };
+          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, edad, etiqueta, precio, descripcion, imagenes: imgs };
           if(db) {
             try {
-              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, etiqueta, precio, descripcion, imagenes: imgs });
+              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, edad, etiqueta, precio, descripcion, imagenes: imgs });
               nuevo.id = docRef.id;
             } catch(e) {}
           }
