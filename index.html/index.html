@@ -29,7 +29,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Burbujas flotantes realistas */
     .bubble {
       position: absolute;
       border-radius: 50%;
@@ -52,7 +51,6 @@
       }
     }
 
-    /* Juguetes y figuras flotantes con balanceo suave */
     .toy-float {
       position: absolute;
       pointer-events: none;
@@ -97,7 +95,7 @@
 <body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
   <div class="stars fixed"></div>
 
-  <!-- Cortina continua de burbujas flotantes -->
+  <!-- Cortina de burbujas flotantes de fondo -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
     <div class="bubble w-12 h-12 left-[3%]" style="animation-duration: 9s; animation-delay: 0s;"></div>
     <div class="bubble w-20 h-20 left-[9%]" style="animation-duration: 13s; animation-delay: 2s;"></div>
@@ -113,9 +111,8 @@
     <div class="bubble w-22 h-22 left-[92%]" style="animation-duration: 14s; animation-delay: 0.5s;"></div>
   </div>
 
-  <!-- Figuras y juguetes flotantes en laterales de la pantalla -->
+  <!-- Figuras y juguetes flotantes en laterales -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <!-- Lateral Izquierdo -->
     <div class="toy-float text-5xl md:text-6xl left-3 top-[12%]" style="animation-duration: 5.5s; animation-delay: 0s;">🚀</div>
     <div class="toy-float text-4xl md:text-5xl left-6 top-[28%]" style="animation-duration: 6.8s; animation-delay: 1s;">✨</div>
     <div class="toy-float text-5xl md:text-6xl left-2 top-[44%]" style="animation-duration: 4.8s; animation-delay: 2s;">🧸</div>
@@ -123,7 +120,6 @@
     <div class="toy-float text-4xl md:text-5xl left-3 top-[76%]" style="animation-duration: 5.2s; animation-delay: 1.8s;">🧩</div>
     <div class="toy-float text-5xl md:text-6xl left-5 top-[90%]" style="animation-duration: 6.5s; animation-delay: 2.2s;">🚗</div>
 
-    <!-- Lateral Derecho -->
     <div class="toy-float text-5xl md:text-6xl right-4 top-[10%]" style="animation-duration: 6s; animation-delay: 0.5s;">🦄</div>
     <div class="toy-float text-4xl md:text-5xl right-6 top-[26%]" style="animation-duration: 5s; animation-delay: 1.5s;">⭐</div>
     <div class="toy-float text-5xl md:text-6xl right-2 top-[42%]" style="animation-duration: 6.5s; animation-delay: 0s;">👑</div>
@@ -133,14 +129,13 @@
   </div>
 
   <!-- Portada y encabezado -->
-  <section class="relative pt-10 pb-10 px-4 md:px-10 text-white text-center z-10">
+  <section class="relative pt-10 pb-8 px-4 md:px-10 text-white text-center z-10">
     <div class="max-w-4xl mx-auto flex flex-col items-center relative">
       
-      <!-- Juguetes flotantes adicionales junto al logo -->
-      <div class="toy-float hidden md:block -left-12 top-10 text-5xl text-yellow-300 opacity-90" style="animation-duration: 4.5s;">⚡</div>
-      <div class="toy-float hidden md:block -left-6 bottom-16 text-5xl text-pink-300 opacity-90" style="animation-duration: 6s;">🍭</div>
-      <div class="toy-float hidden md:block -right-12 top-10 text-5xl text-cyan-300 opacity-90" style="animation-duration: 5.2s;">🎯</div>
-      <div class="toy-float hidden md:block -right-6 bottom-16 text-5xl text-purple-300 opacity-90" style="animation-duration: 5.8s;">🌟</div>
+      <div class="toy-float hidden md:block -left-12 top-10 text-5xl text-yellow-300 opacity-90">⚡</div>
+      <div class="toy-float hidden md:block -left-6 bottom-16 text-5xl text-pink-300 opacity-90">🍭</div>
+      <div class="toy-float hidden md:block -right-12 top-10 text-5xl text-cyan-300 opacity-90">🎯</div>
+      <div class="toy-float hidden md:block -right-6 bottom-16 text-5xl text-purple-300 opacity-90">🌟</div>
 
       <img
         id="logoPrincipal"
@@ -179,7 +174,7 @@
         <h2 class="text-3xl font-black flex items-center gap-2">
           <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
         </h2>
-        <p class="text-sm font-bold text-purple-700">Cambia fotos de los banners y gestiona productos.</p>
+        <p class="text-sm font-bold text-purple-700">Gestiona imágenes, Google Sheets y productos en tiempo real.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
         <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
@@ -189,10 +184,58 @@
         <button onclick="abrirModalFotosCategorias()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
           <i class="fas fa-layer-group"></i> 🖼️ Fotos Categorías
         </button>
+        <button onclick="abrirModalGoogleSheets()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
+          <i class="fas fa-file-excel"></i> 📊 Conectar Sheets
+        </button>
         <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:scale-105 transition flex items-center gap-2">
           <i class="fas fa-plus-circle"></i> + Añadir Juguete
         </button>
       </div>
+    </div>
+  </section>
+
+  <!-- BUSCADOR INTELIGENTE Y FILTROS RÁPIDOS (Ofertas, Novedades, Anime) -->
+  <section class="max-w-4xl mx-auto px-4 py-4 relative z-20">
+    <div class="bg-white/95 backdrop-blur-xl p-5 md:p-6 rounded-[35px] border-4 border-yellow-300 shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
+      
+      <div class="relative flex items-center">
+        <i class="fas fa-search absolute left-5 text-purple-500 text-2xl"></i>
+        <input
+          type="text"
+          id="inputBusqueda"
+          placeholder="¿Qué juguete buscas hoy? (ej. dinosaurio, pista, barbie, goku...)"
+          oninput="ejecutarBusqueda(this.value)"
+          class="w-full bg-purple-50/80 border-2 border-purple-200 focus:border-purple-600 focus:bg-white rounded-full py-4 pl-14 pr-12 text-lg md:text-xl font-bold text-purple-950 placeholder-purple-400 outline-none transition shadow-inner"
+        />
+        <button
+          onclick="limpiarBusqueda()"
+          id="btnLimpiarBusqueda"
+          class="absolute right-4 text-gray-400 hover:text-red-500 text-2xl hidden"
+        >
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+
+      <!-- Filtros directos solicitados -->
+      <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mt-4 pt-3 border-t border-purple-100">
+        <span class="text-purple-900 font-extrabold text-sm md:text-base mr-1 flex items-center gap-1">
+          <i class="fas fa-bolt text-yellow-500"></i> Búsquedas Rápidas:
+        </span>
+        <button onclick="aplicarFiltroRapido('ofertas')" id="tag-ofertas" class="px-4 py-2 rounded-full text-sm md:text-base font-black bg-rose-500 text-white hover:scale-105 transition shadow border-2 border-white flex items-center gap-1">
+          🔥 Ofertas
+        </button>
+        <button onclick="aplicarFiltroRapido('novedades')" id="tag-novedades" class="px-4 py-2 rounded-full text-sm md:text-base font-black bg-amber-400 text-purple-950 hover:scale-105 transition shadow border-2 border-white flex items-center gap-1">
+          ✨ Novedades
+        </button>
+        <button onclick="aplicarFiltroRapido('anime')" id="tag-anime" class="px-4 py-2 rounded-full text-sm md:text-base font-black bg-indigo-600 text-white hover:scale-105 transition shadow border-2 border-white flex items-center gap-1">
+          ⚡ Anime
+        </button>
+        <button onclick="limpiarBusqueda()" class="px-3 py-2 rounded-full text-xs md:text-sm font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">
+          Ver Todos
+        </button>
+      </div>
+
+      <div id="avisoResultados" class="text-center text-sm font-bold text-purple-700 mt-2 hidden"></div>
     </div>
   </section>
 
@@ -207,7 +250,6 @@
       
       <!-- Columna Izquierda -->
       <div class="flex flex-col gap-4">
-        <!-- Todos -->
         <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1 cat-banner-activa">
           <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=1200&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent flex items-center px-6">
@@ -221,7 +263,6 @@
           </div>
         </div>
 
-        <!-- Niños -->
         <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1200&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/50 to-transparent flex items-center px-6">
@@ -235,7 +276,6 @@
           </div>
         </div>
 
-        <!-- Niñas -->
         <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-pink-950/90 via-pink-900/50 to-transparent flex items-center px-6">
@@ -252,7 +292,6 @@
 
       <!-- Columna Derecha -->
       <div class="flex flex-col gap-4">
-        <!-- Bebés -->
         <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-teal-950/90 via-teal-900/50 to-transparent flex items-center px-6">
@@ -266,7 +305,6 @@
           </div>
         </div>
 
-        <!-- Didácticos -->
         <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-amber-950/90 via-amber-900/50 to-transparent flex items-center px-6">
@@ -280,7 +318,6 @@
           </div>
         </div>
 
-        <!-- Peluches -->
         <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=1200&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-purple-950/90 via-purple-900/50 to-transparent flex items-center px-6">
@@ -365,6 +402,36 @@
     </div>
   </div>
 
+  <!-- Modal Admin: Conectar Google Sheets -->
+  <div id="modalGoogleSheets" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl border-4 border-emerald-500 relative">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-2xl font-black text-emerald-900">📊 Conectar Google Sheets</h3>
+        <button type="button" onclick="cerrarModalGoogleSheets()" class="text-gray-400 hover:text-red-500 text-3xl">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+      <p class="text-sm font-semibold text-gray-600 mb-4">
+        Pega la URL de tu Web App de Google Apps Script. Todas las búsquedas y visitas de los clientes se guardarán en tu hoja de cálculo automáticamente:
+      </p>
+      <form onsubmit="guardarUrlGoogleSheets(event)" class="space-y-4">
+        <div>
+          <label class="block text-gray-700 font-bold mb-1">URL de Aplicación Web (Google Sheets):</label>
+          <input
+            type="url"
+            id="inputGoogleSheetsUrl"
+            placeholder="https://script.google.com/macros/s/.../exec"
+            required
+            class="w-full bg-emerald-50 border-2 border-emerald-300 rounded-2xl px-4 py-3 text-sm font-medium outline-none focus:bg-white"
+          />
+        </div>
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl transition shadow-lg">
+          Guardar Conexión
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Modal Admin: Cambiar Fotos de Categorías -->
   <div id="modalFotosCategorias" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-teal-500 relative max-h-[85vh] overflow-y-auto">
@@ -374,7 +441,7 @@
           <i class="fas fa-times-circle"></i>
         </button>
       </div>
-      <p class="text-sm font-semibold text-gray-600 mb-6">Elige fotos en formato horizontal para que calcen perfecto en las tiras:</p>
+      <p class="text-sm font-semibold text-gray-600 mb-6">Elige fotos en formato horizontal para las tiras:</p>
 
       <div class="space-y-4">
         <div class="p-3 bg-gray-50 rounded-2xl border flex items-center justify-between gap-4">
@@ -435,6 +502,16 @@
         </div>
 
         <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Etiqueta Especial (Opcional)</label>
+          <select id="productoEtiqueta" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+            <option value="">Ninguna</option>
+            <option value="ofertas">🔥 Oferta</option>
+            <option value="novedades">✨ Novedad</option>
+            <option value="anime">⚡ Anime</option>
+          </select>
+        </div>
+
+        <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1">Precio (Solo número)</label>
           <div class="relative">
             <span class="absolute left-4 top-3 font-bold text-gray-500 text-lg">Bs.</span>
@@ -485,19 +562,23 @@
       auth = getAuth(app);
       db = getFirestore(app);
     } catch(e) {
-      console.warn("Firebase Init fallback:", e);
+      console.warn("Firebase fallback mode:", e);
     }
 
     let productos = [];
     let isAdmin = false;
     let categoriaActual = 'todos';
     let presupuestoActual = 'todos';
+    let terminoBusqueda = '';
+    let etiquetaFiltro = '';
+    let timeoutBusqueda = null;
 
     const juguetesPorDefecto = [
       {
         id: 'def_1',
         nombre: 'Set Bloques Castillo Rosa',
         categoria: 'ninas',
+        etiqueta: 'novedades',
         precio: '280',
         descripcion: 'Hermoso castillo armable con figuras y accesorios incluidos.',
         imagenes: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80']
@@ -506,11 +587,45 @@
         id: 'def_2',
         nombre: 'Auto Deportivo RC Recargable',
         categoria: 'ninos',
+        etiqueta: 'ofertas',
         precio: '150',
         descripcion: 'Auto de carreras a control remoto de alta velocidad.',
         imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80']
+      },
+      {
+        id: 'def_3',
+        nombre: 'Figura de Acción Goku Super Saiyan',
+        categoria: 'ninos',
+        etiqueta: 'anime',
+        precio: '120',
+        descripcion: 'Figura coleccionable articulada con base de exhibición.',
+        imagenes: ['https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80']
       }
     ];
+
+    // REGISTRO SILENCIOSO A GOOGLE SHEETS
+    async function registrarEnGoogleSheets(tipoEvento, detalle) {
+      const urlSheets = localStorage.getItem('playup_google_sheets_url');
+      if (!urlSheets) return;
+
+      const payload = {
+        fecha: new Date().toLocaleString('es-BO', { timeZone: 'America/La_Paz' }),
+        tipo: tipoEvento,
+        detalle: detalle,
+        dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? 'Celular' : 'Computadora'
+      };
+
+      try {
+        await fetch(urlSheets, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn("Sheets tracking offline");
+      }
+    }
 
     async function inicializarTienda() {
       const localData = localStorage.getItem('playup_local_prods');
@@ -549,6 +664,7 @@
             const data = docSnap.data();
             if(data.logoUrl) document.getElementById('logoPrincipal').src = data.logoUrl;
             if(data.fotosCategorias) aplicarFotosCategorias(data.fotosCategorias);
+            if(data.sheetsUrl) localStorage.setItem('playup_google_sheets_url', data.sheetsUrl);
             localStorage.setItem('playup_textos_config', JSON.stringify(data));
           }
         });
@@ -561,6 +677,53 @@
         if(el && fotos[cat]) el.src = fotos[cat];
       });
     }
+
+    // BUSCADOR EN TIEMPO REAL
+    window.ejecutarBusqueda = function(valor) {
+      terminoBusqueda = valor.trim().toLowerCase();
+      etiquetaFiltro = '';
+      const btnLimpiar = document.getElementById('btnLimpiarBusqueda');
+      if (terminoBusqueda.length > 0) {
+        btnLimpiar.classList.remove('hidden');
+      } else {
+        btnLimpiar.classList.add('hidden');
+      }
+
+      window.renderProductos();
+
+      // Registro en Google Sheets con debounce para no saturar al escribir
+      clearTimeout(timeoutBusqueda);
+      if (terminoBusqueda.length >= 3) {
+        timeoutBusqueda = setTimeout(() => {
+          registrarEnGoogleSheets("Búsqueda por texto", terminoBusqueda);
+        }, 1200);
+      }
+    };
+
+    window.aplicarFiltroRapido = function(etiqueta) {
+      etiquetaFiltro = etiqueta;
+      terminoBusqueda = '';
+      document.getElementById('inputBusqueda').value = '';
+      document.getElementById('btnLimpiarBusqueda').classList.remove('hidden');
+      
+      const aviso = document.getElementById('avisoResultados');
+      aviso.innerText = `Mostrando sección: ${etiqueta.toUpperCase()}`;
+      aviso.classList.remove('hidden');
+
+      window.renderProductos();
+      deslizarAlCatalogo();
+
+      registrarEnGoogleSheets("Filtro Rápido", etiqueta);
+    };
+
+    window.limpiarBusqueda = function() {
+      terminoBusqueda = '';
+      etiquetaFiltro = '';
+      document.getElementById('inputBusqueda').value = '';
+      document.getElementById('btnLimpiarBusqueda').classList.add('hidden');
+      document.getElementById('avisoResultados').classList.add('hidden');
+      window.renderProductos();
+    };
 
     function procesarImagenLiviana(file) {
       return new Promise((resolve) => {
@@ -613,6 +776,37 @@
       }
     };
 
+    window.abrirModalGoogleSheets = function() {
+      const actual = localStorage.getItem('playup_google_sheets_url') || '';
+      document.getElementById('inputGoogleSheetsUrl').value = actual;
+      const m = document.getElementById('modalGoogleSheets');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+      setTimeout(() => m.classList.remove('opacity-0'), 10);
+    };
+
+    window.cerrarModalGoogleSheets = function() {
+      const m = document.getElementById('modalGoogleSheets');
+      m.classList.add('opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
+    };
+
+    window.guardarUrlGoogleSheets = async function(e) {
+      e.preventDefault();
+      const url = document.getElementById('inputGoogleSheetsUrl').value.trim();
+      localStorage.setItem('playup_google_sheets_url', url);
+
+      if(db) {
+        try {
+          await setDoc(doc(db, 'configuracion_playup', 'general'), { sheetsUrl: url }, { merge: true });
+        } catch(err) {}
+      }
+
+      window.cerrarModalGoogleSheets();
+      alert("¡Google Sheets conectado! Ahora cada búsqueda de tus clientes se enviará automáticamente a tu Excel online. 📈");
+      registrarEnGoogleSheets("Sistema", "Conexión de Google Sheets configurada con éxito");
+    };
+
     window.abrirModalFotosCategorias = function() {
       const m = document.getElementById('modalFotosCategorias');
       m.classList.remove('hidden');
@@ -659,20 +853,40 @@
       const filtrados = productos.filter(p => {
         const catOk = categoriaActual === 'todos' || p.categoria === categoriaActual;
         const pr = parseFloat(p.precio) || 0;
+        
         let pOk = false;
         if (presupuestoActual === 'todos') pOk = true;
         else if (presupuestoActual === 'rango1') pOk = pr >= 30 && pr <= 50;
         else if (presupuestoActual === 'rango2') pOk = pr >= 60 && pr <= 100;
         else if (presupuestoActual === 'rango3') pOk = pr >= 110 && pr <= 160;
         else if (presupuestoActual === 'rango4') pOk = pr >= 170;
-        return catOk && pOk;
+
+        let busquedaOk = true;
+        if (terminoBusqueda) {
+          const enNombre = (p.nombre || '').toLowerCase().includes(terminoBusqueda);
+          const enDesc = (p.descripcion || '').toLowerCase().includes(terminoBusqueda);
+          const enCat = (p.categoria || '').toLowerCase().includes(terminoBusqueda);
+          busquedaOk = enNombre || enDesc || enCat;
+        }
+
+        let etiquetaOk = true;
+        if (etiquetaFiltro) {
+          const matchTag = p.etiqueta === etiquetaFiltro;
+          const matchTexto = (p.nombre || '').toLowerCase().includes(etiquetaFiltro) || (p.descripcion || '').toLowerCase().includes(etiquetaFiltro);
+          etiquetaOk = matchTag || matchTexto;
+        }
+
+        return catOk && pOk && busquedaOk && etiquetaOk;
       });
 
       if (filtrados.length === 0) {
         contenedor.innerHTML = `
           <div class="col-span-full text-center py-16 bg-white/80 backdrop-blur-md rounded-[40px] border-4 border-dashed border-white shadow-xl">
             <p class="text-4xl font-black text-purple-600 mb-2">¡Ups! 🙈</p>
-            <p class="text-xl font-bold text-gray-700">Aún no hay juguetes en esta categoría.</p>
+            <p class="text-xl font-bold text-gray-700">No encontramos juguetes con esa búsqueda o filtro.</p>
+            <button onclick="limpiarBusqueda()" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-2 rounded-2xl shadow transition">
+              Restablecer catálogo
+            </button>
           </div>`;
         return;
       }
@@ -686,12 +900,17 @@
         else if (p.categoria === 'didacticos') bg = "bg-amber-50/95 border-amber-300"; 
         else if (p.categoria === 'peluches') bg = "bg-purple-50/95 border-purple-300"; 
 
-        card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col`;
+        card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col relative`;
 
         const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
         const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} a Bs.${p.precio}`)}`;
         const idVal = p.id || p.nombre;
         const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
+
+        let tagHTML = '';
+        if (p.etiqueta === 'ofertas') tagHTML = `<span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">🔥 Oferta</span>`;
+        else if (p.etiqueta === 'novedades') tagHTML = `<span class="absolute top-4 right-4 bg-yellow-400 text-purple-900 text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">✨ Nuevo</span>`;
+        else if (p.etiqueta === 'anime') tagHTML = `<span class="absolute top-4 right-4 bg-indigo-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">⚡ Anime</span>`;
 
         let adminHTML = '';
         if (isAdmin) {
@@ -707,6 +926,7 @@
         }
 
         card.innerHTML = `
+          ${tagHTML}
           <div class="relative h-64 bg-white cursor-pointer overflow-hidden p-2" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
             <img src="${foto}" alt="${p.nombre}" class="w-full h-full object-cover rounded-[30px] hover:scale-105 transition duration-300" />
             <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-black px-3 py-1.5 rounded-full uppercase border border-white">
@@ -720,7 +940,7 @@
             <div class="text-3xl font-black text-pink-600 mt-2">Bs. ${p.precio}</div>
             <p class="text-gray-600 text-sm mt-2 line-clamp-2">${p.descripcion}</p>
             <div class="mt-auto pt-4">
-              <a href="${linkWa}" target="_blank" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-102 transition shadow-md">
+              <a href="${linkWa}" target="_blank" onclick="registrarEnGoogleSheets('Clic en Pedir WhatsApp', '${p.nombre.replace(/'/g, "\\'")} - Bs. ${p.precio}')" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-102 transition shadow-md">
                 <i class="fab fa-whatsapp text-xl"></i> Pedir al WhatsApp
               </a>
               ${adminHTML}
@@ -750,6 +970,7 @@
       });
       window.renderProductos();
       deslizarAlCatalogo();
+      registrarEnGoogleSheets("Filtro Categoría", cat);
     };
 
     window.filtrarPresupuesto = function(r) {
@@ -763,6 +984,7 @@
       });
       window.renderProductos();
       deslizarAlCatalogo();
+      registrarEnGoogleSheets("Filtro Presupuesto", r);
     };
 
     window.loginAdmin = function() {
@@ -798,7 +1020,10 @@
       badge.innerText = p.categoria;
 
       const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-      document.getElementById('detalleBtnWhatsApp').href = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs.${p.precio}`)}`;
+      const linkWaModal = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs.${p.precio}`)}`;
+      const btnWa = document.getElementById('detalleBtnWhatsApp');
+      btnWa.href = linkWaModal;
+      btnWa.onclick = () => registrarEnGoogleSheets("Clic Pedir (Modal)", `${p.nombre} - Bs. ${p.precio}`);
 
       const fotos = p.imagenes || [];
       document.getElementById('imgThumb0').src = fotos[0] || 'https://placehold.co/600x400/eee/999?text=1';
@@ -808,6 +1033,8 @@
       modalVista.classList.remove('hidden');
       modalVista.classList.add('flex');
       setTimeout(() => { modalVista.classList.remove('opacity-0'); document.getElementById('modalVistaContent').classList.remove('scale-95'); }, 10);
+
+      registrarEnGoogleSheets("Detalle Producto Abierto", `${p.nombre} (Bs. ${p.precio})`);
     };
 
     window.cambiarAngulo = function(idx) {
@@ -842,6 +1069,7 @@
           document.getElementById('productoId').value = p.id || p.nombre;
           document.getElementById('productoNombre').value = p.nombre;
           document.getElementById('productoCategoria').value = p.categoria;
+          document.getElementById('productoEtiqueta').value = p.etiqueta || '';
           document.getElementById('productoPrecio').value = p.precio;
           document.getElementById('productoDescripcion').value = p.descripcion;
         }
@@ -869,6 +1097,7 @@
         const idActual = document.getElementById('productoId').value;
         const nombre = document.getElementById('productoNombre').value;
         const categoria = document.getElementById('productoCategoria').value;
+        const etiqueta = document.getElementById('productoEtiqueta').value;
         const precio = document.getElementById('productoPrecio').value;
         const descripcion = document.getElementById('productoDescripcion').value;
 
@@ -890,20 +1119,21 @@
         if (existente && existente.id) {
           existente.nombre = nombre;
           existente.categoria = categoria;
+          existente.etiqueta = etiqueta;
           existente.precio = precio;
           existente.descripcion = descripcion;
           existente.imagenes = imgs;
 
           if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('loc_')) {
             try {
-              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, precio, descripcion, imagenes: imgs });
+              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, etiqueta, precio, descripcion, imagenes: imgs });
             } catch(e) {}
           }
         } else {
-          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, precio, descripcion, imagenes: imgs };
+          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, etiqueta, precio, descripcion, imagenes: imgs };
           if(db) {
             try {
-              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, precio, descripcion, imagenes: imgs });
+              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, etiqueta, precio, descripcion, imagenes: imgs });
               nuevo.id = docRef.id;
             } catch(e) {}
           }
