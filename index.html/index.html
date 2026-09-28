@@ -8,28 +8,18 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
-    
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body { 
-      font-family: 'Fredoka', sans-serif; 
-    }
-
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Fredoka', sans-serif; }
     .bg-magical {
       background: linear-gradient(-45deg, #0019ff, #d600ff, #ff007b, #ff7b00);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
     }
-
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    /* Burbujas ascendentes */
     .bubble {
       position: absolute;
       border-radius: 50%;
@@ -38,21 +28,12 @@
       animation: floatBubbles linear infinite;
       pointer-events: none;
     }
-
     @keyframes floatBubbles {
-      0% {
-        transform: translateY(105vh) scale(0.6) rotate(0deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(105vh) scale(0.6) rotate(0deg); opacity: 0; }
       15% { opacity: 0.8; }
       85% { opacity: 0.8; }
-      100% {
-        transform: translateY(-15vh) scale(1.15) rotate(360deg);
-        opacity: 0;
-      }
+      100% { transform: translateY(-15vh) scale(1.15) rotate(360deg); opacity: 0; }
     }
-
-    /* Figuras flotantes */
     .toy-float {
       position: absolute;
       pointer-events: none;
@@ -60,13 +41,11 @@
       animation: floatWiggle 5s infinite ease-in-out alternate;
       user-select: none;
     }
-
     @keyframes floatWiggle {
       0% { transform: translateY(0px) rotate(-6deg) scale(0.95); }
       50% { transform: translateY(-18px) rotate(4deg) scale(1.05); }
       100% { transform: translateY(-30px) rotate(10deg) scale(1); }
     }
-
     .stars {
       background-image: 
         radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
@@ -82,11 +61,9 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .bubbly-text {
       text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
     }
-
     .cat-banner-activa {
       border-color: #facc15 !important;
       box-shadow: 0 0 25px rgba(250, 204, 21, 0.95) !important;
@@ -97,55 +74,39 @@
 <body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
   <div class="stars fixed"></div>
 
-  <!-- Cortina de burbujas flotantes de fondo -->
+  <!-- Burbujas decorativas -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="bubble w-12 h-12 left-[3%]" style="animation-duration: 9s; animation-delay: 0s;"></div>
-    <div class="bubble w-20 h-20 left-[9%]" style="animation-duration: 13s; animation-delay: 2s;"></div>
-    <div class="bubble w-16 h-16 left-[16%]" style="animation-duration: 11s; animation-delay: 4.5s;"></div>
-    <div class="bubble w-24 h-24 left-[24%]" style="animation-duration: 15s; animation-delay: 1s;"></div>
-    <div class="bubble w-10 h-10 left-[31%]" style="animation-duration: 8s; animation-delay: 6s;"></div>
-    <div class="bubble w-28 h-28 left-[40%]" style="animation-duration: 17s; animation-delay: 3s;"></div>
-    <div class="bubble w-14 h-14 left-[48%]" style="animation-duration: 10s; animation-delay: 7s;"></div>
-    <div class="bubble w-20 h-20 left-[58%]" style="animation-duration: 12s; animation-delay: 1.5s;"></div>
-    <div class="bubble w-12 h-12 left-[67%]" style="animation-duration: 9.5s; animation-delay: 5s;"></div>
-    <div class="bubble w-26 h-26 left-[76%]" style="animation-duration: 16s; animation-delay: 2.5s;"></div>
-    <div class="bubble w-16 h-16 left-[84%]" style="animation-duration: 11.5s; animation-delay: 4s;"></div>
-    <div class="bubble w-22 h-22 left-[92%]" style="animation-duration: 14s; animation-delay: 0.5s;"></div>
+    <div class="bubble w-12 h-12 left-[3%]" style="animation-duration: 9s;"></div>
+    <div class="bubble w-20 h-20 left-[12%]" style="animation-duration: 13s; animation-delay: 2s;"></div>
+    <div class="bubble w-16 h-16 left-[22%]" style="animation-duration: 11s; animation-delay: 4s;"></div>
+    <div class="bubble w-24 h-24 left-[35%]" style="animation-duration: 15s; animation-delay: 1s;"></div>
+    <div class="bubble w-14 h-14 left-[52%]" style="animation-duration: 10s; animation-delay: 6s;"></div>
+    <div class="bubble w-20 h-20 left-[68%]" style="animation-duration: 12s; animation-delay: 1.5s;"></div>
+    <div class="bubble w-16 h-16 left-[82%]" style="animation-duration: 11.5s; animation-delay: 3s;"></div>
+    <div class="bubble w-22 h-22 left-[93%]" style="animation-duration: 14s; animation-delay: 0.5s;"></div>
   </div>
 
-  <!-- Figuras y juguetes flotantes en laterales -->
+  <!-- Figuras laterales -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="toy-float text-5xl md:text-6xl left-3 top-[12%]" style="animation-duration: 5.5s; animation-delay: 0s;">🚀</div>
-    <div class="toy-float text-4xl md:text-5xl left-6 top-[28%]" style="animation-duration: 6.8s; animation-delay: 1s;">✨</div>
-    <div class="toy-float text-5xl md:text-6xl left-2 top-[44%]" style="animation-duration: 4.8s; animation-delay: 2s;">🧸</div>
-    <div class="toy-float text-5xl md:text-6xl left-5 top-[60%]" style="animation-duration: 6.2s; animation-delay: 0.5s;">🎮</div>
-    <div class="toy-float text-4xl md:text-5xl left-3 top-[76%]" style="animation-duration: 5.2s; animation-delay: 1.8s;">🧩</div>
-    <div class="toy-float text-5xl md:text-6xl left-5 top-[90%]" style="animation-duration: 6.5s; animation-delay: 2.2s;">🚗</div>
-
-    <div class="toy-float text-5xl md:text-6xl right-4 top-[10%]" style="animation-duration: 6s; animation-delay: 0.5s;">🦄</div>
-    <div class="toy-float text-4xl md:text-5xl right-6 top-[26%]" style="animation-duration: 5s; animation-delay: 1.5s;">⭐</div>
-    <div class="toy-float text-5xl md:text-6xl right-2 top-[42%]" style="animation-duration: 6.5s; animation-delay: 0s;">👑</div>
-    <div class="toy-float text-5xl md:text-6xl right-5 top-[58%]" style="animation-duration: 5.8s; animation-delay: 2.5s;">🤖</div>
-    <div class="toy-float text-4xl md:text-5xl right-3 top-[74%]" style="animation-duration: 4.5s; animation-delay: 1.2s;">🎈</div>
-    <div class="toy-float text-5xl md:text-6xl right-5 top-[88%]" style="animation-duration: 6.3s; animation-delay: 0.8s;">🎨</div>
+    <div class="toy-float text-5xl md:text-6xl left-3 top-[12%]">🚀</div>
+    <div class="toy-float text-4xl md:text-5xl left-5 top-[38%]">✨</div>
+    <div class="toy-float text-5xl md:text-6xl left-3 top-[65%]">🧸</div>
+    <div class="toy-float text-4xl md:text-5xl left-5 top-[85%]">🧩</div>
+    <div class="toy-float text-5xl md:text-6xl right-4 top-[10%]">🦄</div>
+    <div class="toy-float text-4xl md:text-5xl right-5 top-[36%]">⭐</div>
+    <div class="toy-float text-5xl md:text-6xl right-3 top-[62%]">🤖</div>
+    <div class="toy-float text-4xl md:text-5xl right-5 top-[85%]">🎈</div>
   </div>
 
-  <!-- Portada y encabezado -->
+  <!-- Portada -->
   <section class="relative pt-10 pb-8 px-4 md:px-10 text-white text-center z-10">
     <div class="max-w-4xl mx-auto flex flex-col items-center relative">
-      
-      <div class="toy-float hidden md:block -left-12 top-10 text-5xl text-yellow-300 opacity-90">⚡</div>
-      <div class="toy-float hidden md:block -left-6 bottom-16 text-5xl text-pink-300 opacity-90">🍭</div>
-      <div class="toy-float hidden md:block -right-12 top-10 text-5xl text-cyan-300 opacity-90">🎯</div>
-      <div class="toy-float hidden md:block -right-6 bottom-16 text-5xl text-purple-300 opacity-90">🌟</div>
-
       <img
         id="logoPrincipal"
         src="https://placehold.co/800x500/ff007b/ffffff?text=PlayUp"
         alt="PlayUp Logo"
         class="w-full max-w-lg object-contain rounded-[40px] shadow-[0_0_50px_rgba(255,255,255,0.8)] mb-6 bg-white/20 p-2 relative z-10"
       />
-      
       <p id="txtEslogan" class="text-4xl md:text-5xl font-black drop-shadow-2xl bg-white/40 px-8 py-3 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text relative z-10">
         <span class="text-red-500">¡</span><span class="text-blue-600">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-600">e</span>
         <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
@@ -156,11 +117,8 @@
         <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2 border-2 border-white">
           <i class="fab fa-whatsapp text-2xl"></i> WhatsApp
         </a>
-        <a id="btnLinkTiktok" href="https://www.tiktok.com/@playupjuguetera" target="_blank" class="bg-black text-white border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
-          <i class="fab fa-tiktok text-2xl"></i> TikTok
-        </a>
-        <a id="btnLinkUbicacion" href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
-          <i class="fas fa-map-marker-alt text-2xl"></i> Ubicación
+        <a href="#seccionRegistro" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2 border-2 border-white">
+          <i class="fas fa-user-plus text-xl"></i> Registrarme
         </a>
         <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-2 border-white px-7 py-3 rounded-3xl text-xl font-bold shadow-xl hover:scale-105 transition flex items-center gap-2">
           <i class="fas fa-magic"></i> Modo Admin
@@ -176,18 +134,11 @@
         <h2 class="text-3xl font-black flex items-center gap-2">
           <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
         </h2>
-        <p class="text-sm font-bold text-purple-700">Edita imágenes, rangos de edad y conecta tu Google Sheets.</p>
+        <p class="text-sm font-bold text-purple-700">Edita imágenes, Google Sheets y tus productos.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
-        <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
-        <button onclick="document.getElementById('inputPortada').click()" id="btnPortada" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
-          <i class="fas fa-image"></i> Cambiar Portada
-        </button>
-        <button onclick="abrirModalFotosCategorias()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
-          <i class="fas fa-layer-group"></i> 🖼️ Fotos Categorías
-        </button>
         <button onclick="abrirModalGoogleSheets()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
-          <i class="fas fa-file-excel"></i> 📊 Conectar Sheets
+          <i class="fas fa-file-excel"></i> 📊 Conectar Google Sheets
         </button>
         <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:scale-105 transition flex items-center gap-2">
           <i class="fas fa-plus-circle"></i> + Añadir Juguete
@@ -196,229 +147,196 @@
     </div>
   </section>
 
-  <!-- BUSCADOR INTELIGENTE Y FILTROS RÁPIDOS -->
-  <section class="max-w-4xl mx-auto px-4 py-4 relative z-20">
-    <div class="bg-white/95 backdrop-blur-xl p-5 md:p-6 rounded-[35px] border-4 border-yellow-300 shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
-      
-      <div class="relative flex items-center">
-        <i class="fas fa-search absolute left-5 text-purple-500 text-2xl"></i>
-        <input
-          type="text"
-          id="inputBusqueda"
-          placeholder="Busca por nombre, edad (ej. 3 años, bebé) o juguete..."
-          oninput="ejecutarBusqueda(this.value)"
-          class="w-full bg-purple-50/80 border-2 border-purple-200 focus:border-purple-600 focus:bg-white rounded-full py-4 pl-14 pr-12 text-lg md:text-xl font-bold text-purple-950 placeholder-purple-400 outline-none transition shadow-inner"
-        />
-        <button
-          onclick="limpiarBusqueda()"
-          id="btnLimpiarBusqueda"
-          class="absolute right-4 text-gray-400 hover:text-red-500 text-2xl hidden"
-        >
-          <i class="fas fa-times-circle"></i>
-        </button>
-      </div>
-
-      <!-- Filtros rápidos comerciales -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mt-4 pt-3 border-t border-purple-100">
-        <span class="text-purple-900 font-extrabold text-sm mr-1 flex items-center gap-1">
-          <i class="fas fa-bolt text-yellow-500"></i> Rápidos:
-        </span>
-        <button onclick="aplicarFiltroRapido('ofertas')" id="tag-ofertas" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-rose-500 text-white hover:scale-105 transition shadow border-2 border-white">
-          🔥 Ofertas
-        </button>
-        <button onclick="aplicarFiltroRapido('novedades')" id="tag-novedades" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-amber-400 text-purple-950 hover:scale-105 transition shadow border-2 border-white">
-          ✨ Novedades
-        </button>
-        <button onclick="aplicarFiltroRapido('cumpleanos')" id="tag-cumpleanos" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-emerald-500 text-white hover:scale-105 transition shadow border-2 border-white">
-          🎁 Cumpleaños
-        </button>
-        <button onclick="aplicarFiltroRapido('anime')" id="tag-anime" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-indigo-600 text-white hover:scale-105 transition shadow border-2 border-white">
-          ⚡ Anime
-        </button>
-        <button onclick="aplicarFiltroRapido('tiktok')" id="tag-tiktok" class="px-3.5 py-1.5 rounded-full text-xs md:text-sm font-black bg-black text-white hover:scale-105 transition shadow border-2 border-white">
-          📱 TikTok
-        </button>
-        <button onclick="limpiarBusqueda()" class="px-3 py-1.5 rounded-full text-xs font-bold bg-gray-200 text-gray-700 hover:bg-gray-300 transition">
-          Restablecer
-        </button>
-      </div>
-
-      <div id="avisoResultados" class="text-center text-sm font-bold text-purple-700 mt-2 hidden"></div>
-    </div>
-  </section>
-
-  <!-- Categorías Horizontales (3 Izquierda / 3 Derecha) -->
+  <!-- Categorías Horizontales -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
       <h2 class="text-3xl md:text-4xl font-black text-white drop-shadow-md">Explora por Categoría</h2>
-      <p class="text-white/90 text-lg font-semibold mt-1">Toca un banner para filtrar los juguetes</p>
     </div>
-
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      
-      <!-- Columna Izquierda -->
       <div class="flex flex-col gap-4">
-        <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1 cat-banner-activa">
-          <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=1200&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent flex items-center px-6">
-            <div class="flex items-center gap-4">
-              <span class="text-3xl md:text-4xl">✨</span>
-              <div>
-                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Todos</span>
-                <span class="text-yellow-300 text-xs md:text-sm font-bold">Ver todo el catálogo</span>
-              </div>
-            </div>
+        <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 cat-banner-activa">
+          <img id="img-cat-todos" src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=1200" alt="Todos" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-black/90 to-transparent flex items-center px-6">
+            <span class="text-white font-black text-2xl md:text-3xl">✨ Todos</span>
           </div>
         </div>
-
-        <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1200&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/50 to-transparent flex items-center px-6">
-            <div class="flex items-center gap-4">
-              <span class="text-3xl md:text-4xl">🚀</span>
-              <div>
-                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Niños</span>
-                <span class="text-sky-300 text-xs md:text-sm font-bold">Autos, pistas y acción</span>
-              </div>
-            </div>
+        <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300">
+          <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1200" alt="Niños" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 to-transparent flex items-center px-6">
+            <span class="text-white font-black text-2xl md:text-3xl">🚀 Niños</span>
           </div>
         </div>
-
-        <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-pink-950/90 via-pink-900/50 to-transparent flex items-center px-6">
-            <div class="flex items-center gap-4">
-              <span class="text-3xl md:text-4xl">🦄</span>
-              <div>
-                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Niñas</span>
-                <span class="text-pink-300 text-xs md:text-sm font-bold">Muñecas, castillos y magia</span>
-              </div>
-            </div>
+        <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300">
+          <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200" alt="Niñas" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-950/90 to-transparent flex items-center px-6">
+            <span class="text-white font-black text-2xl md:text-3xl">🦄 Niñas</span>
           </div>
         </div>
       </div>
-
-      <!-- Columna Derecha -->
       <div class="flex flex-col gap-4">
-        <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-teal-950/90 via-teal-900/50 to-transparent flex items-center px-6">
-            <div class="flex items-center gap-4">
-              <span class="text-3xl md:text-4xl">🍼</span>
-              <div>
-                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Bebés</span>
-                <span class="text-teal-300 text-xs md:text-sm font-bold">Sonajeros y accesorios</span>
-              </div>
-            </div>
+        <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300">
+          <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200" alt="Bebés" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-teal-950/90 to-transparent flex items-center px-6">
+            <span class="text-white font-black text-2xl md:text-3xl">🍼 Bebés</span>
           </div>
         </div>
-
-        <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-amber-950/90 via-amber-900/50 to-transparent flex items-center px-6">
-            <div class="flex items-center gap-4">
-              <span class="text-3xl md:text-4xl">🧩</span>
-              <div>
-                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Didácticos</span>
-                <span class="text-amber-300 text-xs md:text-sm font-bold">Bloques, ingenio y destreza</span>
-              </div>
-            </div>
+        <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300">
+          <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200" alt="Didácticos" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-amber-950/90 to-transparent flex items-center px-6">
+            <span class="text-white font-black text-2xl md:text-3xl">🧩 Didácticos</span>
           </div>
         </div>
-
-        <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=1200&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-r from-purple-950/90 via-purple-900/50 to-transparent flex items-center px-6">
-            <div class="flex items-center gap-4">
-              <span class="text-3xl md:text-4xl">🧸</span>
-              <div>
-                <span class="text-white font-black text-2xl md:text-3xl leading-none block">Peluches</span>
-                <span class="text-purple-300 text-xs md:text-sm font-bold">Suaves y abrazables</span>
-              </div>
-            </div>
+        <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-24 md:h-28 rounded-2xl overflow-hidden cursor-pointer border-4 border-white shadow-xl transition-all duration-300">
+          <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=1200" alt="Peluches" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-950/90 to-transparent flex items-center px-6">
+            <span class="text-white font-black text-2xl md:text-3xl">🧸 Peluches</span>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Filtro de presupuesto -->
-  <section class="max-w-7xl mx-auto px-6 py-4 relative z-10">
-    <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
-      <span class="text-white font-black text-lg mr-2 flex items-center gap-2">
-        <i class="fas fa-wallet text-yellow-300 text-xl"></i> Presupuesto:
-      </span>
-      <button onclick="filtrarPresupuesto('todos')" id="btn-precio-todos" class="px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white">Cualquiera</button>
-      <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 30 a 50</button>
-      <button onclick="filtrarPresupuesto('rango2')" id="btn-precio-rango2" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 60 a 100</button>
-      <button onclick="filtrarPresupuesto('rango3')" id="btn-precio-rango3" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 110 a 160</button>
-      <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 170 a más</button>
-    </div>
-  </section>
-
-  <!-- Ancla para desplazamiento suave -->
   <div id="seccionCatalogo" class="pt-2"></div>
 
-  <!-- Vitrina de juguetes -->
-  <section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
+  <!-- Catálogo -->
+  <section class="max-w-7xl mx-auto px-6 pb-12 relative z-10">
     <div id="loadingIndicator" class="text-center py-10">
       <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
-      <p class="text-white text-xl mt-4 font-bold">Cargando catálogo PlayUp...</p>
+      <p class="text-white text-xl mt-4 font-bold">Cargando juguetes...</p>
     </div>
     <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"></div>
   </section>
 
-  <!-- Modal Detalle -->
-  <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
-      <button type="button" onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-500 hover:text-red-500 text-3xl bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-gray-200">
-        <i class="fas fa-times"></i>
-      </button>
-      
-      <div class="text-center mb-3 mt-2">
-        <div class="flex items-center justify-center gap-2 flex-wrap">
-          <span id="detalleCategoriaBadge" class="px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md"></span>
-          <span id="detalleEdadBadge" class="px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md bg-purple-600 border border-white"></span>
+  <!-- FORMULARIO OFICIAL EXIGIDO (10 PREGUNTAS) -->
+  <section id="seccionRegistro" class="max-w-3xl mx-auto px-4 pb-20 relative z-20">
+    <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-10 shadow-2xl border-4 border-yellow-300">
+      <div class="text-center mb-8">
+        <span class="bg-pink-500 text-white text-sm font-black px-4 py-1.5 rounded-full uppercase">Comunidad PlayUp</span>
+        <h2 class="text-3xl md:text-4xl font-black text-purple-950 mt-3">Formulario de Registro</h2>
+        <p class="text-gray-600 font-semibold mt-1">Déjanos tus datos para recibir ofertas exclusivas y novedades de juguetes.</p>
+      </div>
+
+      <form id="formRegistroUsuario" onsubmit="enviarRegistroGoogleSheets(event)" class="space-y-5">
+        
+        <!-- 1. Nombre completo (obligatorio) -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-1 text-sm md:text-base">1. Nombre completo *</label>
+          <input type="text" id="regNombre" required placeholder="Ej. Juan Pérez Morales" class="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-3 font-semibold text-gray-900 outline-none focus:bg-white focus:border-purple-500">
         </div>
-        <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
-      </div>
 
-      <div class="relative h-72 md:h-80 bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
-        <img id="imagenPrincipal" src="" alt="Vista del Juguete" class="w-full h-full object-contain bg-white">
-      </div>
+        <!-- 2. Correo electrónico (validado) -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-1 text-sm md:text-base">2. Correo electrónico *</label>
+          <input type="email" id="regCorreo" required placeholder="nombre@correo.com" class="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-3 font-semibold text-gray-900 outline-none focus:bg-white focus:border-purple-500">
+        </div>
 
-      <div class="flex justify-center gap-4 mb-4">
-        <button type="button" onclick="cambiarAngulo(0)" id="thumb0" class="w-20 h-20 rounded-2xl overflow-hidden border-4 border-pink-500 shadow-md bg-white">
-          <img id="imgThumb0" src="" class="w-full h-full object-cover">
+        <!-- 3. Número de teléfono (código de país) -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-1 text-sm md:text-base">3. Número de teléfono (WhatsApp) *</label>
+          <input type="tel" id="regTelefono" required value="+591 " placeholder="+591 70000000" class="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-3 font-semibold text-gray-900 outline-none focus:bg-white focus:border-purple-500">
+        </div>
+
+        <!-- 4. Dirección -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-1 text-sm md:text-base">4. Dirección (Zona, calle, número) *</label>
+          <textarea id="regDireccion" required rows="2" placeholder="Ej. Barrio Los Pozos, Calle Suárez #123" class="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-3 font-semibold text-gray-900 outline-none focus:bg-white focus:border-purple-500 resize-none"></textarea>
+        </div>
+
+        <!-- 5. Ciudad donde vive (Lista desplegable ciudades de Bolivia) -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-1 text-sm md:text-base">5. Ciudad donde vive *</label>
+          <select id="regCiudad" required class="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-3 font-semibold text-gray-900 outline-none focus:bg-white focus:border-purple-500">
+            <option value="">Selecciona tu ciudad...</option>
+            <option value="Santa Cruz de la Sierra">Santa Cruz de la Sierra</option>
+            <option value="La Paz">La Paz</option>
+            <option value="Cochabamba">Cochabamba</option>
+            <option value="El Alto">El Alto</option>
+            <option value="Sucre">Sucre</option>
+            <option value="Oruro">Oruro</option>
+            <option value="Tarija">Tarija</option>
+            <option value="Potosí">Potosí</option>
+            <option value="Trinidad">Trinidad</option>
+            <option value="Cobija">Cobija</option>
+            <option value="Montero">Montero</option>
+            <option value="Otra">Otra ciudad</option>
+          </select>
+        </div>
+
+        <!-- 6. Fecha de nacimiento -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-1 text-sm md:text-base">6. Fecha de nacimiento *</label>
+          <input type="date" id="regFechaNac" required class="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-3 font-semibold text-gray-900 outline-none focus:bg-white focus:border-purple-500">
+        </div>
+
+        <!-- 7. Servicio o producto de interés (Casillas múltiples propias de PlayUp) -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-2 text-sm md:text-base">7. ¿Qué tipo de juguetes te interesan? (Selecciona una o más) *</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-purple-50 p-4 rounded-2xl border-2 border-purple-200">
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="checkbox" name="interes" value="Juguetes de Niños" class="w-5 h-5 text-purple-600 rounded"> 🚀 Juguetes de Niños
+            </label>
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="checkbox" name="interes" value="Juguetes de Niñas" class="w-5 h-5 text-purple-600 rounded"> 🦄 Juguetes de Niñas
+            </label>
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="checkbox" name="interes" value="Bebés y Estimulación" class="w-5 h-5 text-purple-600 rounded"> 🍼 Bebés y Estimulación
+            </label>
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="checkbox" name="interes" value="Juguetes Didácticos" class="w-5 h-5 text-purple-600 rounded"> 🧩 Juguetes Didácticos
+            </label>
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="checkbox" name="interes" value="Peluches Suaves" class="w-5 h-5 text-purple-600 rounded"> 🧸 Peluches
+            </label>
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="checkbox" name="interes" value="Figuras y Colección" class="w-5 h-5 text-purple-600 rounded"> ⚡ Figuras / Anime
+            </label>
+          </div>
+        </div>
+
+        <!-- 8. Cómo prefiere que lo contactemos (Radio) -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-2 text-sm md:text-base">8. ¿Cómo prefieres que te contactemos? *</label>
+          <div class="flex flex-wrap gap-4 bg-purple-50 p-4 rounded-2xl border-2 border-purple-200">
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="radio" name="contactoPref" value="WhatsApp" checked class="w-5 h-5 text-purple-600"> <i class="fab fa-whatsapp text-green-600 text-lg"></i> WhatsApp
+            </label>
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="radio" name="contactoPref" value="Correo" class="w-5 h-5 text-purple-600"> <i class="fas fa-envelope text-blue-600 text-lg"></i> Correo
+            </label>
+            <label class="flex items-center gap-2 font-semibold text-gray-800 text-sm cursor-pointer">
+              <input type="radio" name="contactoPref" value="Teléfono" class="w-5 h-5 text-purple-600"> <i class="fas fa-phone-alt text-purple-600 text-lg"></i> Llamada
+            </label>
+          </div>
+        </div>
+
+        <!-- 9. Comentario o consulta (opcional) -->
+        <div>
+          <label class="block text-gray-800 font-bold mb-1 text-sm md:text-base">9. Comentario o consulta (Opcional)</label>
+          <textarea id="regComentario" rows="2" placeholder="¿Buscas algún juguete en específico para un cumpleaños?" class="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-3 font-semibold text-gray-900 outline-none focus:bg-white focus:border-purple-500 resize-none"></textarea>
+        </div>
+
+        <!-- 10. Acepta términos y política de privacidad (obligatorio) -->
+        <div class="pt-2">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" id="regAcepta" required class="w-6 h-6 text-purple-600 rounded mt-0.5">
+            <span class="text-xs md:text-sm font-semibold text-gray-700 leading-tight">
+              10. Acepto los términos, condiciones y la política de privacidad para el tratamiento de mis datos de contacto. *
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" id="btnEnviarRegistro" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white text-xl font-bold py-4 rounded-3xl transition shadow-xl mt-6 border-2 border-white">
+          Enviar Registro
         </button>
-        <button type="button" onclick="cambiarAngulo(1)" id="thumb1" class="w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent opacity-60 hover:opacity-100 shadow-md bg-white">
-          <img id="imgThumb1" src="" class="w-full h-full object-cover">
-        </button>
-      </div>
 
-      <div class="bg-purple-50 p-4 rounded-2xl border-2 border-purple-200 mb-4 text-center">
-        <p class="text-purple-950 font-bold text-base mb-1">
-          <i class="fas fa-child mr-1 text-pink-500"></i> <span id="detalleEdadTexto">Edad recomendada: Todas las edades</span>
+        <p id="msgRegistroExitoso" class="text-center font-bold text-green-600 text-lg hidden pt-2">
+          🎉 ¡Registro enviado con éxito! Nos pondremos en contacto contigo.
         </p>
-        <p id="detalleDescripcion" class="text-gray-700 text-base font-medium leading-relaxed"></p>
-      </div>
-
-      <div class="flex flex-wrap justify-between items-center gap-4 border-t-2 border-gray-200 pt-4">
-        <div id="detallePrecio" class="text-3xl md:text-4xl font-black text-pink-600"></div>
-        <div class="flex gap-3">
-          <button type="button" onclick="cerrarModalVista()" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-2xl text-lg font-bold hover:bg-gray-300">
-            Volver
-          </button>
-          <a id="detalleBtnWhatsApp" href="#" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-2xl text-lg font-bold hover:scale-105 transition shadow-lg flex items-center gap-2 border-2 border-white">
-            <i class="fab fa-whatsapp text-2xl"></i> ¡Pedir por WhatsApp!
-          </a>
-        </div>
-      </div>
+      </form>
     </div>
-  </div>
+  </section>
 
-  <!-- Modal Admin: Conectar Google Sheets -->
+  <!-- Modal Admin Google Sheets -->
   <div id="modalGoogleSheets" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl border-4 border-emerald-500 relative">
       <div class="flex justify-between items-center mb-4">
@@ -428,18 +346,12 @@
         </button>
       </div>
       <p class="text-sm font-semibold text-gray-600 mb-4">
-        Pega la URL de tu Web App de Google Apps Script para registrar todas las búsquedas y clics de tus clientes:
+        Pega la URL de tu Web App de Google Apps Script. Las 10 respuestas de los usuarios se enviarán a tu hoja automáticamente:
       </p>
       <form onsubmit="guardarUrlGoogleSheets(event)" class="space-y-4">
         <div>
           <label class="block text-gray-700 font-bold mb-1">URL Web App de Google Sheets:</label>
-          <input
-            type="url"
-            id="inputGoogleSheetsUrl"
-            placeholder="https://script.google.com/macros/s/.../exec"
-            required
-            class="w-full bg-emerald-50 border-2 border-emerald-300 rounded-2xl px-4 py-3 text-sm font-medium outline-none focus:bg-white"
-          />
+          <input type="url" id="inputGoogleSheetsUrl" placeholder="https://script.google.com/macros/s/.../exec" required class="w-full bg-emerald-50 border-2 border-emerald-300 rounded-2xl px-4 py-3 text-sm font-medium outline-none">
         </div>
         <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl transition shadow-lg">
           Guardar Conexión
@@ -448,135 +360,11 @@
     </div>
   </div>
 
-  <!-- Modal Admin: Cambiar Fotos de Categorías -->
-  <div id="modalFotosCategorias" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-teal-500 relative max-h-[85vh] overflow-y-auto">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-2xl font-black text-teal-900">🖼️ Cambiar Fotos de Categorías</h3>
-        <button type="button" onclick="cerrarModalFotosCategorias()" class="text-gray-400 hover:text-red-500 text-3xl">
-          <i class="fas fa-times-circle"></i>
-        </button>
-      </div>
-      <p class="text-sm font-semibold text-gray-600 mb-6">Elige fotos en formato horizontal para las tiras:</p>
-
-      <div class="space-y-4">
-        <div class="p-3 bg-gray-50 rounded-2xl border flex items-center justify-between gap-4">
-          <span class="font-bold text-gray-800">✨ Todos</span>
-          <input type="file" accept="image/*" onchange="subirFotoCategoria('todos', event)" class="text-xs text-teal-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-teal-100 file:font-bold">
-        </div>
-        <div class="p-3 bg-blue-50 rounded-2xl border border-blue-200 flex items-center justify-between gap-4">
-          <span class="font-bold text-blue-900">🚀 Niños</span>
-          <input type="file" accept="image/*" onchange="subirFotoCategoria('ninos', event)" class="text-xs text-blue-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-blue-100 file:font-bold">
-        </div>
-        <div class="p-3 bg-pink-50 rounded-2xl border border-pink-200 flex items-center justify-between gap-4">
-          <span class="font-bold text-pink-900">🦄 Niñas</span>
-          <input type="file" accept="image/*" onchange="subirFotoCategoria('ninas', event)" class="text-xs text-pink-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-pink-100 file:font-bold">
-        </div>
-        <div class="p-3 bg-teal-50 rounded-2xl border border-teal-200 flex items-center justify-between gap-4">
-          <span class="font-bold text-teal-900">🍼 Bebés</span>
-          <input type="file" accept="image/*" onchange="subirFotoCategoria('bebes', event)" class="text-xs text-teal-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-teal-100 file:font-bold">
-        </div>
-        <div class="p-3 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-between gap-4">
-          <span class="font-bold text-amber-900">🧩 Didácticos</span>
-          <input type="file" accept="image/*" onchange="subirFotoCategoria('didacticos', event)" class="text-xs text-amber-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-amber-100 file:font-bold">
-        </div>
-        <div class="p-3 bg-purple-50 rounded-2xl border border-purple-200 flex items-center justify-between gap-4">
-          <span class="font-bold text-purple-900">🧸 Peluches</span>
-          <input type="file" accept="image/*" onchange="subirFotoCategoria('peluches', event)" class="text-xs text-purple-700 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-purple-100 file:font-bold">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Admin Crear / Editar Juguete -->
-  <div id="modalAdminForm" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-purple-500 relative" id="modalAdminContent">
-      <div class="flex justify-between items-center mb-4">
-        <h3 id="modalAdminTitulo" class="text-3xl font-black text-purple-700">Añadir Juguete</h3>
-        <button type="button" onclick="cerrarModalAdmin()" class="text-gray-400 hover:text-red-500 text-3xl">
-          <i class="fas fa-times-circle"></i>
-        </button>
-      </div>
-      
-      <form id="formProducto" onsubmit="guardarProducto(event)" class="space-y-4 max-h-[75vh] overflow-y-auto pr-2">
-        <input type="hidden" id="productoId">
-        
-        <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Nombre del Juguete</label>
-          <input type="text" id="productoNombre" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-gray-700 font-bold mb-1 ml-1">Categoría</label>
-            <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-3 py-3 font-semibold text-base outline-none">
-              <option value="ninos">🚀 Niños</option>
-              <option value="ninas">🦄 Niñas</option>
-              <option value="bebes">🍼 Bebés</option>
-              <option value="didacticos">🧩 Didácticos</option>
-              <option value="peluches">🧸 Peluches</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-gray-700 font-bold mb-1 ml-1">Edad Sugerida</label>
-            <select id="productoEdad" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-3 py-3 font-semibold text-base outline-none">
-              <option value="0-2">👶 0 a 2 años</option>
-              <option value="3-5" selected>🎈 3 a 5 años</option>
-              <option value="6-8">🚀 6 a 8 años</option>
-              <option value="9+">⭐ 9+ años / Todos</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-gray-700 font-bold mb-1 ml-1">Etiqueta Especial</label>
-            <select id="productoEtiqueta" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-3 py-3 font-semibold text-base outline-none">
-              <option value="">Ninguna</option>
-              <option value="ofertas">🔥 Oferta</option>
-              <option value="novedades">✨ Novedad</option>
-              <option value="cumpleanos">🎁 Cumpleaños</option>
-              <option value="anime">⚡ Anime</option>
-              <option value="tiktok">📱 TikTok</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-gray-700 font-bold mb-1 ml-1">Precio</label>
-            <div class="relative">
-              <span class="absolute left-3 top-3 font-bold text-gray-500 text-base">Bs.</span>
-              <input type="number" id="productoPrecio" required min="1" step="any" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl pl-12 pr-3 py-3 font-bold text-base outline-none">
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Descripción</label>
-          <textarea id="productoDescripcion" required rows="2" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-base outline-none resize-none"></textarea>
-        </div>
-
-        <div class="p-3 bg-blue-50 rounded-2xl border-2 border-blue-200">
-          <label class="block text-blue-700 font-bold mb-1">📸 Foto Principal (Frente)</label>
-          <input type="file" id="productoImagen1" accept="image/*" class="w-full text-sm text-blue-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-blue-200 file:text-blue-800 hover:file:bg-blue-300">
-        </div>
-
-        <div class="p-3 bg-pink-50 rounded-2xl border-2 border-pink-200">
-          <label class="block text-pink-700 font-bold mb-1">📸 Foto 2 (Otro Ángulo)</label>
-          <input type="file" id="productoImagen2" accept="image/*" class="w-full text-sm text-pink-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-pink-200 file:text-pink-800 hover:file:bg-pink-300">
-        </div>
-
-        <button type="submit" id="btnGuardarProd" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xl font-bold py-4 rounded-3xl hover:opacity-95 transition shadow-xl mt-4 border-2 border-white">
-          Guardar Juguete
-        </button>
-      </form>
-    </div>
-  </div>
-
+  <!-- Scripts -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getFirestore, collection, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAcNULVUiPKmTtWulmqrQjzYEKyaS-s5iY",
@@ -593,61 +381,78 @@
       app = initializeApp(firebaseConfig);
       auth = getAuth(app);
       db = getFirestore(app);
-    } catch(e) {
-      console.warn("Firebase fallback mode:", e);
-    }
+    } catch(e) {}
 
     let productos = [];
     let isAdmin = false;
     let categoriaActual = 'todos';
-    let presupuestoActual = 'todos';
-    let terminoBusqueda = '';
-    let etiquetaFiltro = '';
-    let timeoutBusqueda = null;
 
     const juguetesPorDefecto = [
-      {
-        id: 'def_1',
-        nombre: 'Set Bloques Castillo Rosa',
-        categoria: 'ninas',
-        edad: '3-5',
-        etiqueta: 'novedades',
-        precio: '280',
-        descripcion: 'Hermoso castillo armable con figuras y accesorios incluidos.',
-        imagenes: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80']
-      },
-      {
-        id: 'def_2',
-        nombre: 'Auto Deportivo RC Recargable',
-        categoria: 'ninos',
-        edad: '6-8',
-        etiqueta: 'ofertas',
-        precio: '150',
-        descripcion: 'Auto de carreras a control remoto de alta velocidad.',
-        imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80']
-      },
-      {
-        id: 'def_3',
-        nombre: 'Gimnasio Musical y Sonajero Bebe',
-        categoria: 'bebes',
-        edad: '0-2',
-        etiqueta: 'cumpleanos',
-        precio: '190',
-        descripcion: 'Alfombra suave con piano y sonajeros estimulantes.',
-        imagenes: ['https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80']
-      }
+      { id: 'def_1', nombre: 'Set Bloques Castillo Rosa', categoria: 'ninas', precio: '280', descripcion: 'Hermoso castillo armable con figuras.', imagenes: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600'] },
+      { id: 'def_2', nombre: 'Auto Deportivo RC Recargable', categoria: 'ninos', precio: '150', descripcion: 'Auto veloz a control remoto.', imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600'] }
     ];
 
-    // REGISTRO A GOOGLE SHEETS
-    async function registrarEnGoogleSheets(tipoEvento, detalle) {
-      const urlSheets = localStorage.getItem('playup_google_sheets_url');
-      if (!urlSheets) return;
+    async function inicializarTienda() {
+      const localData = localStorage.getItem('playup_local_prods');
+      productos = localData ? JSON.parse(localData) : juguetesPorDefecto;
+      window.renderProductos();
+      document.getElementById('loadingIndicator').classList.add('hidden');
 
+      if(!auth || !db) return;
+      try { await signInAnonymously(auth); } catch(e) {}
+      try {
+        onSnapshot(collection(db, 'juguetes_playup'), (snapshot) => {
+          let nube = [];
+          snapshot.forEach(docSnap => nube.push({ id: docSnap.id, ...docSnap.data() }));
+          if(nube.length > 0) {
+            productos = nube;
+            window.renderProductos();
+          }
+        });
+        onSnapshot(doc(db, 'configuracion_playup', 'general'), (docSnap) => {
+          if (docSnap.exists() && docSnap.data().sheetsUrl) {
+            localStorage.setItem('playup_google_sheets_url', docSnap.data().sheetsUrl);
+          }
+        });
+      } catch(e) {}
+    }
+
+    // ENVÍO DEL FORMULARIO DE 10 PREGUNTAS A GOOGLE SHEETS
+    window.enviarRegistroGoogleSheets = async function(e) {
+      e.preventDefault();
+      
+      const urlSheets = localStorage.getItem('playup_google_sheets_url');
+      if(!urlSheets) {
+        alert("Falta conectar Google Sheets. Entra al 'Modo Admin' y pulsa 'Conectar Google Sheets'.");
+        return;
+      }
+
+      // Validar selección múltiple (Pregunta 7)
+      const checks = Array.from(document.querySelectorAll('input[name="interes"]:checked')).map(c => c.value);
+      if(checks.length === 0) {
+        alert("Por favor selecciona al menos un producto de tu interés en la pregunta 7.");
+        return;
+      }
+
+      const btn = document.getElementById('btnEnviarRegistro');
+      btn.disabled = true;
+      btn.innerText = "Enviando registro...";
+
+      const radioContacto = document.querySelector('input[name="contactoPref"]:checked');
+
+      // Objeto ordenado según las 10 preguntas y la guía
       const payload = {
-        fecha: new Date().toLocaleString('es-BO', { timeZone: 'America/La_Paz' }),
-        tipo: tipoEvento,
-        detalle: detalle,
-        dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? 'Celular' : 'Computadora'
+        nombre: document.getElementById('regNombre').value.trim(),
+        correo: document.getElementById('regCorreo').value.trim(),
+        telefono: document.getElementById('regTelefono').value.trim(),
+        direccion: document.getElementById('regDireccion').value.trim(),
+        ciudad: document.getElementById('regCiudad').value,
+        fechaNacimiento: document.getElementById('regFechaNac').value,
+        interes: checks.join(', '),
+        contacto: radioContacto ? radioContacto.value : 'WhatsApp',
+        comentario: document.getElementById('regComentario').value.trim() || 'Sin comentario',
+        acepta: document.getElementById('regAcepta').checked ? 'Sí' : 'No',
+        fechaRegistro: new Date().toLocaleString('es-BO', { timeZone: 'America/La_Paz' })
       };
 
       try {
@@ -657,155 +462,79 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-      } catch (err) {}
-    }
 
-    async function inicializarTienda() {
-      const localData = localStorage.getItem('playup_local_prods');
-      productos = localData ? JSON.parse(localData) : juguetesPorDefecto;
-      window.renderProductos();
-      document.getElementById('loadingIndicator').classList.add('hidden');
-
-      const localConfig = localStorage.getItem('playup_textos_config');
-      if(localConfig) {
-        const d = JSON.parse(localConfig);
-        if(d.logoUrl) document.getElementById('logoPrincipal').src = d.logoUrl;
-        if(d.fotosCategorias) aplicarFotosCategorias(d.fotosCategorias);
-      }
-
-      if(!auth || !db) return;
-
-      try {
-        await signInAnonymously(auth);
-      } catch(e) {}
-
-      try {
-        const productosRef = collection(db, 'juguetes_playup');
-        onSnapshot(productosRef, (snapshot) => {
-          let nube = [];
-          snapshot.forEach(docSnap => nube.push({ id: docSnap.id, ...docSnap.data() }));
-          if(nube.length > 0) {
-            productos = nube;
-            localStorage.setItem('playup_local_prods', JSON.stringify(productos));
-            window.renderProductos();
-          }
-        });
-
-        const configRef = doc(db, 'configuracion_playup', 'general');
-        onSnapshot(configRef, (docSnap) => {
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            if(data.logoUrl) document.getElementById('logoPrincipal').src = data.logoUrl;
-            if(data.fotosCategorias) aplicarFotosCategorias(data.fotosCategorias);
-            if(data.sheetsUrl) localStorage.setItem('playup_google_sheets_url', data.sheetsUrl);
-            localStorage.setItem('playup_textos_config', JSON.stringify(data));
-          }
-        });
-      } catch (err) {}
-    }
-
-    function aplicarFotosCategorias(fotos) {
-      Object.keys(fotos).forEach(cat => {
-        const el = document.getElementById(`img-cat-${cat}`);
-        if(el && fotos[cat]) el.src = fotos[cat];
-      });
-    }
-
-    window.ejecutarBusqueda = function(valor) {
-      terminoBusqueda = valor.trim().toLowerCase();
-      etiquetaFiltro = '';
-      const btnLimpiar = document.getElementById('btnLimpiarBusqueda');
-      if (terminoBusqueda.length > 0) btnLimpiar.classList.remove('hidden');
-      else btnLimpiar.classList.add('hidden');
-
-      window.renderProductos();
-
-      clearTimeout(timeoutBusqueda);
-      if (terminoBusqueda.length >= 3) {
-        timeoutBusqueda = setTimeout(() => {
-          registrarEnGoogleSheets("Búsqueda por texto", terminoBusqueda);
-        }, 1200);
-      }
-    };
-
-    window.aplicarFiltroRapido = function(etiqueta) {
-      etiquetaFiltro = etiqueta;
-      terminoBusqueda = '';
-      document.getElementById('inputBusqueda').value = '';
-      document.getElementById('btnLimpiarBusqueda').classList.remove('hidden');
-      
-      const aviso = document.getElementById('avisoResultados');
-      aviso.innerText = `Filtro aplicado: ${etiqueta.toUpperCase()}`;
-      aviso.classList.remove('hidden');
-
-      window.renderProductos();
-      deslizarAlCatalogo();
-      registrarEnGoogleSheets("Filtro Rápido", etiqueta);
-    };
-
-    window.limpiarBusqueda = function() {
-      terminoBusqueda = '';
-      etiquetaFiltro = '';
-      document.getElementById('inputBusqueda').value = '';
-      document.getElementById('btnLimpiarBusqueda').classList.add('hidden');
-      document.getElementById('avisoResultados').classList.add('hidden');
-      window.renderProductos();
-    };
-
-    function procesarImagenLiviana(file) {
-      return new Promise((resolve) => {
-        if (!file) return resolve(null);
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const img = new Image();
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const MAX_DIM = 700;
-            let w = img.width, h = img.height;
-            if (w > h && w > MAX_DIM) { h *= MAX_DIM / w; w = MAX_DIM; }
-            else if (h > MAX_DIM) { w *= MAX_DIM / h; h = MAX_DIM; }
-            canvas.width = w;
-            canvas.height = h;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, w, h);
-            resolve(canvas.toDataURL('image/jpeg', 0.7));
-          };
-          img.onerror = () => resolve(null);
-          img.src = e.target.result;
-        };
-        reader.onerror = () => resolve(null);
-        reader.readAsDataURL(file);
-      });
-    }
-
-    window.subirNuevaPortada = async function(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const btn = document.getElementById('btnPortada');
-      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Subiendo...`;
-      btn.disabled = true;
-
-      try {
-        const base64 = await procesarImagenLiviana(file);
-        if(!base64) throw new Error("Error");
-        document.getElementById('logoPrincipal').src = base64;
-        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
-        cfg.logoUrl = base64;
-        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
-        if(db) await setDoc(doc(db, 'configuracion_playup', 'general'), { logoUrl: base64 }, { merge: true });
-        alert("¡Portada actualizada con éxito! 🎉");
+        document.getElementById('formRegistroUsuario').reset();
+        document.getElementById('msgRegistroExitoso').classList.remove('hidden');
+        setTimeout(() => document.getElementById('msgRegistroExitoso').classList.add('hidden'), 6000);
       } catch (err) {
-        alert("Error al guardar la portada.");
+        alert("Hubo un error al enviar el formulario. Verifica tu conexión.");
       } finally {
-        btn.innerHTML = `<i class="fas fa-image"></i> Cambiar Portada`;
         btn.disabled = false;
-        event.target.value = "";
+        btn.innerText = "Enviar Registro";
+      }
+    };
+
+    window.renderProductos = function() {
+      const contenedor = document.getElementById('contenedorProductos');
+      contenedor.innerHTML = '';
+
+      const filtrados = productos.filter(p => categoriaActual === 'todos' || p.categoria === categoriaActual);
+      filtrados.forEach((p) => {
+        const card = document.createElement('div');
+        card.className = "bg-white/95 backdrop-blur-xl border-4 border-yellow-300 rounded-[40px] overflow-hidden shadow-2xl flex flex-col";
+        const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
+
+        card.innerHTML = `
+          <div class="relative h-64 bg-white p-2">
+            <img src="${foto}" alt="${p.nombre}" class="w-full h-full object-cover rounded-[30px]" />
+            <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-black px-3 py-1.5 rounded-full uppercase border border-white">
+              ${p.categoria}
+            </span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-2xl font-black text-purple-950">${p.nombre}</h3>
+            <div class="text-3xl font-black text-pink-600 mt-2">Bs. ${p.precio}</div>
+            <p class="text-gray-600 text-sm mt-2">${p.descripcion}</p>
+            <div class="mt-auto pt-4">
+              <a href="https://wa.me/qr/RQIEHSOPT7CCD1?text=Hola,%20me%20interesa%20${encodeURIComponent(p.nombre)}" target="_blank" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-md">
+                <i class="fab fa-whatsapp text-xl"></i> Pedir al WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+        contenedor.appendChild(card);
+      });
+    };
+
+    window.filtrarCategoria = function(cat) {
+      categoriaActual = cat;
+      ['todos', 'ninos', 'ninas', 'bebes', 'didacticos', 'peluches'].forEach(c => {
+        const el = document.getElementById(`card-cat-${c}`);
+        if(el) {
+          if(c === cat) el.classList.add('cat-banner-activa');
+          else el.classList.remove('cat-banner-activa');
+        }
+      });
+      window.renderProductos();
+      const el = document.getElementById('seccionCatalogo');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    window.loginAdmin = function() {
+      if(isAdmin) return alert("Modo administrador activo.");
+      const pass = prompt('Contraseña de administrador:');
+      if (pass === 'mariaPlayup') {
+        isAdmin = true;
+        document.getElementById('adminPanel').classList.remove('hidden');
+        document.getElementById('btnAdminLogin').classList.add('hidden');
+        alert('¡Bienvenido al modo Administrador!');
+      } else if(pass !== null) {
+        alert('Contraseña incorrecta.');
       }
     };
 
     window.abrirModalGoogleSheets = function() {
-      const actual = localStorage.getItem('playup_google_sheets_url') || '';
-      document.getElementById('inputGoogleSheetsUrl').value = actual;
+      document.getElementById('inputGoogleSheetsUrl').value = localStorage.getItem('playup_google_sheets_url') || '';
       const m = document.getElementById('modalGoogleSheets');
       m.classList.remove('hidden');
       m.classList.add('flex');
@@ -822,400 +551,17 @@
       e.preventDefault();
       const url = document.getElementById('inputGoogleSheetsUrl').value.trim();
       localStorage.setItem('playup_google_sheets_url', url);
-
       if(db) {
-        try {
-          await setDoc(doc(db, 'configuracion_playup', 'general'), { sheetsUrl: url }, { merge: true });
-        } catch(err) {}
+        try { await setDoc(doc(db, 'configuracion_playup', 'general'), { sheetsUrl: url }, { merge: true }); } catch(err) {}
       }
-
       window.cerrarModalGoogleSheets();
-      alert("¡Google Sheets conectado! Ahora el registro está activo.");
-      registrarEnGoogleSheets("Sistema", "Conexión Google Sheets configurada");
+      alert("¡Google Sheets conectado exitosamente para las 10 preguntas!");
     };
 
-    window.abrirModalFotosCategorias = function() {
-      const m = document.getElementById('modalFotosCategorias');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
-      setTimeout(() => m.classList.remove('opacity-0'), 10);
-    };
-
-    window.cerrarModalFotosCategorias = function() {
-      const m = document.getElementById('modalFotosCategorias');
-      m.classList.add('opacity-0');
-      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
-    };
-
-    window.subirFotoCategoria = async function(categoria, event) {
-      const file = event.target.files[0];
-      if(!file) return;
-      try {
-        const base64 = await procesarImagenLiviana(file);
-        if(!base64) throw new Error();
-
-        const el = document.getElementById(`img-cat-${categoria}`);
-        if(el) el.src = base64;
-
-        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
-        if(!cfg.fotosCategorias) cfg.fotosCategorias = {};
-        cfg.fotosCategorias[categoria] = base64;
-        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
-
-        if(db) {
-          await setDoc(doc(db, 'configuracion_playup', 'general'), {
-            fotosCategorias: { [categoria]: base64 }
-          }, { merge: true });
-        }
-        alert(`¡Banner de "${categoria}" guardado con éxito! ✨`);
-      } catch(e) {
-        alert("No se pudo guardar la imagen.");
-      }
-    };
-
-    function obtenerTextoEdad(edadCode) {
-      if(edadCode === '0-2') return { tag: '+0 meses', desc: '0 a 2 años (Bebés y Estimulación)', color: 'bg-teal-500' };
-      if(edadCode === '3-5') return { tag: '+3 años', desc: '3 a 5 años (Preescolar)', color: 'bg-sky-500' };
-      if(edadCode === '6-8') return { tag: '+6 años', desc: '6 a 8 años (Niños)', color: 'bg-amber-500' };
-      return { tag: '+9 años', desc: '9+ años / Todas las edades', color: 'bg-purple-600' };
-    }
-
-    window.renderProductos = function() {
-      const contenedor = document.getElementById('contenedorProductos');
-      contenedor.innerHTML = '';
-
-      const filtrados = productos.filter(p => {
-        const catOk = categoriaActual === 'todos' || p.categoria === categoriaActual;
-        const pr = parseFloat(p.precio) || 0;
-        
-        let pOk = false;
-        if (presupuestoActual === 'todos') pOk = true;
-        else if (presupuestoActual === 'rango1') pOk = pr >= 30 && pr <= 50;
-        else if (presupuestoActual === 'rango2') pOk = pr >= 60 && pr <= 100;
-        else if (presupuestoActual === 'rango3') pOk = pr >= 110 && pr <= 160;
-        else if (presupuestoActual === 'rango4') pOk = pr >= 170;
-
-        let busquedaOk = true;
-        if (terminoBusqueda) {
-          const enNombre = (p.nombre || '').toLowerCase().includes(terminoBusqueda);
-          const enDesc = (p.descripcion || '').toLowerCase().includes(terminoBusqueda);
-          const enCat = (p.categoria || '').toLowerCase().includes(terminoBusqueda);
-          const enEdad = (p.edad || '').toLowerCase().includes(terminoBusqueda);
-          busquedaOk = enNombre || enDesc || enCat || enEdad;
-        }
-
-        let etiquetaOk = true;
-        if (etiquetaFiltro) {
-          const matchTag = p.etiqueta === etiquetaFiltro;
-          const matchTexto = (p.nombre || '').toLowerCase().includes(etiquetaFiltro) || (p.descripcion || '').toLowerCase().includes(etiquetaFiltro);
-          etiquetaOk = matchTag || matchTexto;
-        }
-
-        return catOk && pOk && busquedaOk && etiquetaOk;
-      });
-
-      if (filtrados.length === 0) {
-        contenedor.innerHTML = `
-          <div class="col-span-full text-center py-16 bg-white/80 backdrop-blur-md rounded-[40px] border-4 border-dashed border-white shadow-xl">
-            <p class="text-4xl font-black text-purple-600 mb-2">¡Ups! 🙈</p>
-            <p class="text-xl font-bold text-gray-700">No encontramos juguetes con esa búsqueda o filtro.</p>
-            <button onclick="limpiarBusqueda()" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-2 rounded-2xl shadow transition">
-              Restablecer catálogo
-            </button>
-          </div>`;
-        return;
-      }
-
-      filtrados.forEach((p) => {
-        const card = document.createElement('div');
-        let bg = "bg-white/95 border-yellow-300";
-        if (p.categoria === 'bebes') bg = "bg-teal-50/95 border-teal-300"; 
-        else if (p.categoria === 'ninos') bg = "bg-sky-50/95 border-sky-300"; 
-        else if (p.categoria === 'ninas') bg = "bg-pink-50/95 border-pink-300"; 
-        else if (p.categoria === 'didacticos') bg = "bg-amber-50/95 border-amber-300"; 
-        else if (p.categoria === 'peluches') bg = "bg-purple-50/95 border-purple-300"; 
-
-        card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col relative`;
-
-        const edadInfo = obtenerTextoEdad(p.edad || '3-5');
-        const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} (Edad: ${edadInfo.desc}) a Bs.${p.precio}`)}`;
-        const idVal = p.id || p.nombre;
-        const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
-
-        let tagHTML = '';
-        if (p.etiqueta === 'ofertas') tagHTML = `<span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">🔥 Oferta</span>`;
-        else if (p.etiqueta === 'novedades') tagHTML = `<span class="absolute top-4 right-4 bg-yellow-400 text-purple-900 text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">✨ Nuevo</span>`;
-        else if (p.etiqueta === 'cumpleanos') tagHTML = `<span class="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">🎁 Regalo</span>`;
-        else if (p.etiqueta === 'anime') tagHTML = `<span class="absolute top-4 right-4 bg-indigo-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">⚡ Anime</span>`;
-        else if (p.etiqueta === 'tiktok') tagHTML = `<span class="absolute top-4 right-4 bg-black text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow z-10">📱 TikTok</span>`;
-
-        let adminHTML = '';
-        if (isAdmin) {
-          adminHTML = `
-            <div class="flex gap-2 mt-4 pt-3 border-t border-gray-200">
-              <button onclick="window.abrirModalAdmin('${idVal}')" class="flex-1 bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-bold py-2 rounded-xl transition text-sm">
-                <i class="fas fa-edit"></i> Editar
-              </button>
-              <button onclick="window.eliminarProducto('${idVal}')" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-xl transition text-sm">
-                <i class="fas fa-trash"></i> Eliminar
-              </button>
-            </div>`;
-        }
-
-        card.innerHTML = `
-          ${tagHTML}
-          <div class="relative h-64 bg-white cursor-pointer overflow-hidden p-2" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
-            <img src="${foto}" alt="${p.nombre}" class="w-full h-full object-cover rounded-[30px] hover:scale-105 transition duration-300" />
-            <div class="absolute top-4 left-4 flex gap-1.5 flex-col">
-              <span class="bg-purple-700 text-white text-xs font-black px-3 py-1 rounded-full uppercase border border-white shadow">
-                ${p.categoria}
-              </span>
-              <span class="${edadInfo.color} text-white text-xs font-black px-3 py-1 rounded-full border border-white shadow">
-                ${edadInfo.tag}
-              </span>
-            </div>
-          </div>
-          <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-2xl font-black text-purple-950 leading-snug cursor-pointer hover:text-pink-600 transition" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
-              ${p.nombre}
-            </h3>
-            <div class="text-3xl font-black text-pink-600 mt-2">Bs. ${p.precio}</div>
-            <p class="text-gray-600 text-sm mt-2 line-clamp-2">${p.descripcion}</p>
-            <div class="mt-auto pt-4">
-              <a href="${linkWa}" target="_blank" onclick="registrarEnGoogleSheets('Clic en WhatsApp', '${p.nombre.replace(/'/g, "\\'")} (${edadInfo.tag}) - Bs. ${p.precio}')" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-102 transition shadow-md">
-                <i class="fab fa-whatsapp text-xl"></i> Pedir al WhatsApp
-              </a>
-              ${adminHTML}
-            </div>
-          </div>
-        `;
-        contenedor.appendChild(card);
-      });
-    };
-
-    function deslizarAlCatalogo() {
-      const el = document.getElementById('seccionCatalogo');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    window.filtrarCategoria = function(cat) {
-      categoriaActual = cat;
-      const cats = ['todos', 'ninos', 'ninas', 'bebes', 'didacticos', 'peluches'];
-      cats.forEach(c => {
-        const el = document.getElementById(`card-cat-${c}`);
-        if(el) {
-          if(c === cat) el.classList.add('cat-banner-activa');
-          else el.classList.remove('cat-banner-activa');
-        }
-      });
-      window.renderProductos();
-      deslizarAlCatalogo();
-      registrarEnGoogleSheets("Filtro Categoría", cat);
-    };
-
-    window.filtrarPresupuesto = function(r) {
-      presupuestoActual = r;
-      ['todos', 'rango1', 'rango2', 'rango3', 'rango4'].forEach(rg => {
-        const btn = document.getElementById(`btn-precio-${rg}`);
-        if(btn) {
-          if(rg === r) btn.className = "px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white scale-105";
-          else btn.className = "px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white";
-        }
-      });
-      window.renderProductos();
-      deslizarAlCatalogo();
-      registrarEnGoogleSheets("Filtro Presupuesto", r);
-    };
-
-    window.loginAdmin = function() {
-      if(isAdmin) return alert("Modo administrador activo.");
-      const pass = prompt('Contraseña de administrador:');
-      if (pass === 'mariaPlayup') {
-        isAdmin = true;
-        document.getElementById('adminPanel').classList.remove('hidden');
-        document.getElementById('btnAdminLogin').classList.add('hidden');
-        window.renderProductos();
-        alert('¡Bienvenido al modo Administrador!');
-      } else if(pass !== null) {
-        alert('Contraseña incorrecta.');
-      }
-    };
-
-    let productoActualModal = null;
-    let anguloActualIndex = 0;
-    const modalVista = document.getElementById('modalVista');
-
-    window.abrirModalVista = function(idOrName) {
-      const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
-      if(!p) return;
-      productoActualModal = p;
-      anguloActualIndex = 0;
-
-      const edadInfo = obtenerTextoEdad(p.edad || '3-5');
-      document.getElementById('detalleNombre').innerText = p.nombre;
-      document.getElementById('detalleDescripcion').innerText = p.descripcion;
-      document.getElementById('detallePrecio').innerText = `Bs. ${p.precio}`;
-      document.getElementById('detalleEdadTexto').innerText = `Edad recomendada: ${edadInfo.desc}`;
-      
-      const badge = document.getElementById('detalleCategoriaBadge');
-      badge.className = "px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow bg-purple-600";
-      badge.innerText = p.categoria;
-
-      const badgeEdad = document.getElementById('detalleEdadBadge');
-      badgeEdad.className = `px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow ${edadInfo.color}`;
-      badgeEdad.innerText = edadInfo.tag;
-
-      const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-      const linkWaModal = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} (Edad: ${edadInfo.desc}) por Bs.${p.precio}`)}`;
-      const btnWa = document.getElementById('detalleBtnWhatsApp');
-      btnWa.href = linkWaModal;
-      btnWa.onclick = () => registrarEnGoogleSheets("Clic Pedir (Modal)", `${p.nombre} (${edadInfo.tag}) - Bs. ${p.precio}`);
-
-      const fotos = p.imagenes || [];
-      document.getElementById('imgThumb0').src = fotos[0] || 'https://placehold.co/600x400/eee/999?text=1';
-      document.getElementById('imgThumb1').src = fotos[1] || fotos[0] || 'https://placehold.co/600x400/eee/999?text=2';
-
-      window.actualizarAnguloVisual();
-      modalVista.classList.remove('hidden');
-      modalVista.classList.add('flex');
-      setTimeout(() => { modalVista.classList.remove('opacity-0'); document.getElementById('modalVistaContent').classList.remove('scale-95'); }, 10);
-
-      registrarEnGoogleSheets("Detalle Producto Abierto", `${p.nombre} (${edadInfo.tag}) - Bs. ${p.precio}`);
-    };
-
-    window.cambiarAngulo = function(idx) {
-      anguloActualIndex = idx;
-      window.actualizarAnguloVisual();
-    };
-
-    window.actualizarAnguloVisual = function() {
-      if(!productoActualModal) return;
-      const fotos = productoActualModal.imagenes || [];
-      document.getElementById('imagenPrincipal').src = fotos[anguloActualIndex] || fotos[0] || 'https://placehold.co/600x400/eee/999?text=PlayUp';
-      document.getElementById('thumb0').style.opacity = anguloActualIndex === 0 ? "1" : "0.5";
-      document.getElementById('thumb1').style.opacity = anguloActualIndex === 1 ? "1" : "0.5";
-    };
-
-    window.cerrarModalVista = function() {
-      modalVista.classList.add('opacity-0');
-      document.getElementById('modalVistaContent').classList.add('scale-95');
-      setTimeout(() => { modalVista.classList.add('hidden'); modalVista.classList.remove('flex'); }, 300);
-    };
-
-    const modalAdminForm = document.getElementById('modalAdminForm');
-    const formProducto = document.getElementById('formProducto');
-
-    window.abrirModalAdmin = function(idOrName = null) {
-      formProducto.reset();
-      document.getElementById('productoId').value = '';
-      if(idOrName) {
-        document.getElementById('modalAdminTitulo').innerText = '✏️ Editar Juguete';
-        const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
-        if(p) {
-          document.getElementById('productoId').value = p.id || p.nombre;
-          document.getElementById('productoNombre').value = p.nombre;
-          document.getElementById('productoCategoria').value = p.categoria;
-          document.getElementById('productoEdad').value = p.edad || '3-5';
-          document.getElementById('productoEtiqueta').value = p.etiqueta || '';
-          document.getElementById('productoPrecio').value = p.precio;
-          document.getElementById('productoDescripcion').value = p.descripcion;
-        }
-      } else {
-        document.getElementById('modalAdminTitulo').innerText = '✨ Nuevo Juguete';
-      }
-      modalAdminForm.classList.remove('hidden');
-      modalAdminForm.classList.add('flex');
-      setTimeout(() => { modalAdminForm.classList.remove('opacity-0'); document.getElementById('modalAdminContent').classList.remove('scale-95'); }, 10);
-    };
-
-    window.cerrarModalAdmin = function() {
-      modalAdminForm.classList.add('opacity-0');
-      document.getElementById('modalAdminContent').classList.add('scale-95');
-      setTimeout(() => { modalAdminForm.classList.add('hidden'); modalAdminForm.classList.remove('flex'); }, 300);
-    };
-
-    window.guardarProducto = async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('btnGuardarProd');
-      btn.disabled = true;
-      btn.innerText = "⏳ Guardando...";
-
-      try {
-        const idActual = document.getElementById('productoId').value;
-        const nombre = document.getElementById('productoNombre').value;
-        const categoria = document.getElementById('productoCategoria').value;
-        const edad = document.getElementById('productoEdad').value;
-        const etiqueta = document.getElementById('productoEtiqueta').value;
-        const precio = document.getElementById('productoPrecio').value;
-        const descripcion = document.getElementById('productoDescripcion').value;
-
-        const f1 = document.getElementById('productoImagen1').files[0];
-        const f2 = document.getElementById('productoImagen2').files[0];
-
-        const base64_1 = await procesarImagenLiviana(f1);
-        const base64_2 = await procesarImagenLiviana(f2);
-
-        const existente = productos.find(p => String(p.id) === String(idActual) || String(p.nombre) === String(idActual));
-        let imgs = existente && existente.imagenes ? [...existente.imagenes] : [
-          `https://placehold.co/600x400/99ccff/003366?text=${encodeURIComponent(nombre)}`,
-          `https://placehold.co/600x400/ff99cc/660033?text=${encodeURIComponent(nombre)}+2`
-        ];
-
-        if(base64_1) imgs[0] = base64_1;
-        if(base64_2) imgs[1] = base64_2;
-
-        if (existente && existente.id) {
-          existente.nombre = nombre;
-          existente.categoria = categoria;
-          existente.edad = edad;
-          existente.etiqueta = etiqueta;
-          existente.precio = precio;
-          existente.descripcion = descripcion;
-          existente.imagenes = imgs;
-
-          if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('loc_')) {
-            try {
-              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, edad, etiqueta, precio, descripcion, imagenes: imgs });
-            } catch(e) {}
-          }
-        } else {
-          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, edad, etiqueta, precio, descripcion, imagenes: imgs };
-          if(db) {
-            try {
-              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, edad, etiqueta, precio, descripcion, imagenes: imgs });
-              nuevo.id = docRef.id;
-            } catch(e) {}
-          }
-          productos.push(nuevo);
-        }
-
-        localStorage.setItem('playup_local_prods', JSON.stringify(productos));
-        window.renderProductos();
-        window.cerrarModalAdmin();
-        alert("¡Juguete guardado con éxito! 🎉");
-      } catch (err) {
-        alert("Error al guardar.");
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "Guardar Juguete";
-      }
-    };
-
-    window.eliminarProducto = async function(idOrName) {
-      if(!confirm("¿Deseas eliminar este producto?")) return;
-      try {
-        const prod = productos.find(p => String(p.id) === String(idOrName) || String(p.nombre) === String(idOrName));
-        if (prod && prod.id && db && !String(prod.id).startsWith('loc_') && !String(prod.id).startsWith('def_')) {
-          await deleteDoc(doc(db, 'juguetes_playup', prod.id));
-        }
-      } catch (e) {}
-
-      productos = productos.filter(p => String(p.id) !== String(idOrName) && String(p.nombre) !== String(idOrName));
-      localStorage.setItem('playup_local_prods', JSON.stringify(productos));
-      window.renderProductos();
-    };
-
+    inicializarTienda();
+  </script>
+</body>
+</html>
     inicializarTienda();
   </script>
 </body>
