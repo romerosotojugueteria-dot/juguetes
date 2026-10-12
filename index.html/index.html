@@ -133,4 +133,157 @@
         <button onclick="abrirModalFotosCategorias()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
           <i class="fas fa-layer-group"></i> 🖼️ Fotos Categorías
         </button>
-        <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py
+        <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:scale-105 transition flex items-center gap-2">
+          <i class="fas fa-plus-circle"></i> + Añadir Juguete
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banners Horizontales Grandes -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
+    <div class="text-center mb-6">
+      <h2 class="text-3xl md:text-5xl font-black text-white drop-shadow-lg">✨ Explora por Categoría ✨</h2>
+      <p class="text-white/90 text-xl font-bold mt-1">Toca un banner para filtrar los juguetes</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+      <div class="flex flex-col gap-5">
+        <!-- 1. Todos -->
+        <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cat-banner-activa">
+          <img id="img-cat-todos" src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent flex items-center px-6 sm:px-8">
+            <div class="flex items-center gap-5">
+              <span class="text-5xl drop-shadow-md">✨</span>
+              <div>
+                <span class="text-white font-black text-2xl sm:text-3xl block leading-tight drop-shadow-md">Todos</span>
+                <span class="text-yellow-300 text-base sm:text-lg font-bold drop-shadow">Ver todo el catálogo completo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Niños -->
+        <div onclick="filtrarCategoria('ninos')" id="card-cat-ninos" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <img id="img-cat-ninos" src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1200&auto=format&fit=crop&q=80" alt="Niños" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/45 to-transparent flex items-center px-6 sm:px-8">
+            <div class="flex items-center gap-5">
+              <span class="text-5xl drop-shadow-md">🚀</span>
+              <div>
+                <span class="text-white font-black text-2xl sm:text-3xl block leading-tight drop-shadow-md">Niños</span>
+                <span class="text-sky-300 text-base sm:text-lg font-bold drop-shadow">Autos, pistas, robots y acción</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Niñas -->
+        <div onclick="filtrarCategoria('ninas')" id="card-cat-ninas" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <img id="img-cat-ninas" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&auto=format&fit=crop&q=80" alt="Niñas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-950/85 via-pink-900/45 to-transparent flex items-center px-6 sm:px-8">
+            <div class="flex items-center gap-5">
+              <span class="text-5xl drop-shadow-md">🦄</span>
+              <div>
+                <span class="text-white font-black text-2xl sm:text-3xl block leading-tight drop-shadow-md">Niñas</span>
+                <span class="text-pink-300 text-base sm:text-lg font-bold drop-shadow">Muñecas, castillos y magia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <!-- 4. Bebés -->
+        <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-r from-teal-950/85 via-teal-900/45 to-transparent flex items-center px-6 sm:px-8">
+            <div class="flex items-center gap-5">
+              <span class="text-5xl drop-shadow-md">🍼</span>
+              <div>
+                <span class="text-white font-black text-2xl sm:text-3xl block leading-tight drop-shadow-md">Bebés</span>
+                <span class="text-teal-300 text-base sm:text-lg font-bold drop-shadow">Sonajeros, mordedores y ternura</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Didácticos -->
+        <div onclick="filtrarCategoria('didacticos')" id="card-cat-didacticos" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <img id="img-cat-didacticos" src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200&auto=format&fit=crop&q=80" alt="Didácticos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-r from-amber-950/85 via-amber-900/45 to-transparent flex items-center px-6 sm:px-8">
+            <div class="flex items-center gap-5">
+              <span class="text-5xl drop-shadow-md">🧩</span>
+              <div>
+                <span class="text-white font-black text-2xl sm:text-3xl block leading-tight drop-shadow-md">Didácticos</span>
+                <span class="text-amber-300 text-base sm:text-lg font-bold drop-shadow">Bloques, ingenio, lógica y arte</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Peluches -->
+        <div onclick="filtrarCategoria('peluches')" id="card-cat-peluches" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <img id="img-cat-peluches" src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=1200&auto=format&fit=crop&q=80" alt="Peluches" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-950/85 via-purple-900/45 to-transparent flex items-center px-6 sm:px-8">
+            <div class="flex items-center gap-5">
+              <span class="text-5xl drop-shadow-md">🧸</span>
+              <div>
+                <span class="text-white font-black text-2xl sm:text-3xl block leading-tight drop-shadow-md">Peluches</span>
+                <span class="text-purple-300 text-base sm:text-lg font-bold drop-shadow">Ositos tiernos y ultra suaves</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtro de presupuesto continuo -->
+  <section class="max-w-7xl mx-auto px-6 py-4 relative z-10">
+    <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
+      <span class="text-white font-black text-lg mr-2 flex items-center gap-2">
+        <i class="fas fa-wallet text-yellow-300 text-xl"></i> Presupuesto:
+      </span>
+      <button onclick="filtrarPresupuesto('todos')" id="btn-precio-todos" class="px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white scale-105">Cualquiera</button>
+      <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 30 a 50</button>
+      <button onclick="filtrarPresupuesto('rango2')" id="btn-precio-rango2" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 51 a 100</button>
+      <button onclick="filtrarPresupuesto('rango3')" id="btn-precio-rango3" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 101 a 160</button>
+      <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 161 a más</button>
+    </div>
+  </section>
+
+  <!-- Vitrina de juguetes -->
+  <section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
+    <div id="loadingIndicator" class="text-center py-10">
+      <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
+      <p class="text-white text-xl mt-4 font-bold">Cargando catálogo PlayUp...</p>
+    </div>
+    <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"></div>
+  </section>
+
+  <!-- MODAL DE REGISTRO COMPLETO (Google Sheets) -->
+  <div id="modalRegistro" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-yellow-400 relative max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-black text-purple-900 flex items-center gap-2">
+            🎁 Formulario de Registro PlayUp
+          </h3>
+          <p class="text-sm font-semibold text-gray-600 mt-1">Completa tus datos para recibir ofertas exclusivas, sorteos y regalos.</p>
+        </div>
+        <button type="button" onclick="cerrarModalRegistro()" class="text-gray-400 hover:text-red-500 text-3xl">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+
+      <form id="formRegistroCliente" onsubmit="enviarRegistroCliente(event)" class="space-y-4">
+        <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Nombre Completo del Papá / Mamá *</label>
+          <input type="text" id="regNombre" required placeholder="Ej: Patricia Morales" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Número de WhatsApp *</label>
+            <input type="tel" id="regTelefono" required placeholder="Ej: 78541236" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text
+  
