@@ -322,7 +322,7 @@
     </div>
   </section>
 
-  <!-- Vitrina de juguetes (Punto de llegada tras seleccionar categoría) -->
+  <!-- Vitrina de juguetes -->
   <section id="vitrinaJuguetes" class="max-w-7xl mx-auto px-6 pb-20 relative z-10 scroll-mt-6">
     <div id="loadingIndicator" class="text-center py-10">
       <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
@@ -331,7 +331,7 @@
     <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"></div>
   </section>
 
-  <!-- MODAL REGISTRO DE USUARIO (10 PREGUNTAS EXACTAS) -->
+  <!-- MODAL REGISTRO DE USUARIO (10 PREGUNTAS DE LA GUÍA) -->
   <div id="modalRegistro" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl border-4 border-yellow-400 relative max-h-[90vh] overflow-y-auto">
       
@@ -447,7 +447,7 @@
         <!-- 9. Comentario o consulta -->
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">9. Comentario o consulta (opcional)</label>
-          <textarea id="regComentario" rows="2" placeholder="Escribe aquí tu consulta o juguete que buscas..." class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-sm outline-none resize-none"></textarea>
+          <textarea id="regComentario" rows="2" placeholder="Escribe aquí el juguete que buscas o tu consulta..." class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-sm outline-none resize-none"></textarea>
         </div>
 
         <!-- 10. Acepta términos y política de privacidad -->
@@ -1168,26 +1168,28 @@
           } catch(errFs) {}
         }
 
-        // 3. Crear mensaje personalizado para WhatsApp
-        const mensajeWa = `✨ *¡Hola PlayUp Juguetería!* 🧸
-¡Acabo de registrarme en su página web! 🚀
+        // 3. Crear mensaje de WhatsApp idéntico al estilo requerido
+        const consultaTexto = comentario || "Modelos y disponibilidad de juguetes";
+        const mensajeWa = `✨ *Hola, PlayUp Store* 🧸
+¡Acabo de registrarme en su página! 🚀
 
 👤 *Nombre:* ${nombre}
 📱 *Teléfono:* ${telefono}
-📍 *Ciudad:* ${ciudad}
-🧩 *Interés:* ${checksInteres.join(", ")}
-${edadPeques ? `👶 *Edad del peque:* ${edadPeques}\n` : ''}💌 *Consulta:* ${comentario || 'Quisiera ver modelos, precios y disponibilidad'}
+🧩 *Interés:* ${checksInteres.join(", ")}${edadPeques ? ` (Edad: ${edadPeques})` : ''}
+💌 *Consulta:* ${consultaTexto}
 
-¡Quedo a la espera de su respuesta! Muchas gracias 🎉🛍️`;
+Me encantaría conocer más sobre sus juguetes, precios y disponibilidad ✨
 
-        // 4. Redirigir a WhatsApp de PlayUp
+Quedo atenta/o a su respuesta. ¡Muchas gracias! 💕🛍️`;
+
+        // 4. Redirigir directamente al WhatsApp de PlayUp
         const linkWaBase = "https://wa.me/qr/RQIEHSOPT7CCD1";
         const urlFinalWa = `${linkWaBase}?text=${encodeURIComponent(mensajeWa)}`;
 
         document.getElementById('formRegistroCliente').reset();
         window.cerrarModalRegistro();
 
-        // Abre WhatsApp en una pestaña nueva
+        // Abre WhatsApp con el mensaje listo para enviar
         window.open(urlFinalWa, '_blank');
 
       } catch(err) {
