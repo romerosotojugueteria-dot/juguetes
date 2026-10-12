@@ -37,7 +37,6 @@
       z-index: 0;
     }
 
-    /* Iconos decorativos flotantes de fondo (aviones, ositos, etc.) */
     .bg-decor {
       position: fixed;
       pointer-events: none;
@@ -62,7 +61,7 @@
   </style>
 </head>
 <body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
-  <!-- Estrellas y decoraciones infantiles de fondo -->
+  <!-- Fondo con elementos infantiles -->
   <div class="stars fixed"></div>
   <div class="bg-decor text-6xl top-10 left-8" style="animation-duration: 9s;">✈️</div>
   <div class="bg-decor text-7xl top-44 right-12" style="animation-duration: 11s;">🧸</div>
@@ -71,11 +70,11 @@
   <div class="bg-decor text-6xl bottom-60 right-1/4" style="animation-duration: 8s;">⭐</div>
   <div class="bg-decor text-7xl bottom-12 right-12" style="animation-duration: 12s;">🎈</div>
 
-  <!-- Portada y Encabezado: Logo a la Izquierda y Enlaces/Eslogan a la Derecha -->
+  <!-- Encabezado: Logo a la izquierda, eslogan y botones a la derecha -->
   <section class="max-w-7xl mx-auto pt-6 pb-6 px-4 sm:px-6 relative z-10 text-white">
     <div class="bg-white/15 backdrop-blur-md rounded-[35px] p-6 border-2 border-white/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
       
-      <!-- LADO IZQUIERDO: Cuadro de logo más pequeño y compacto -->
+      <!-- LADO IZQUIERDO -->
       <div class="w-full md:w-auto flex justify-center md:justify-start">
         <div class="w-64 sm:w-72 bg-white/20 p-2.5 rounded-3xl border-2 border-white/60 shadow-[0_0_35px_rgba(255,255,255,0.7)] backdrop-blur-sm">
           <img
@@ -87,7 +86,7 @@
         </div>
       </div>
 
-      <!-- LADO DERECHO: Eslogan y botones de redes, ubicación y registro -->
+      <!-- LADO DERECHO -->
       <div class="w-full md:flex-1 flex flex-col items-center md:items-end text-center md:text-right">
         <p id="txtEslogan" class="text-3xl sm:text-4xl lg:text-5xl font-black drop-shadow-2xl bg-white/35 px-6 py-2 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text mb-4">
           <span class="text-red-500">¡</span><span class="text-blue-600">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-600">e</span>
@@ -95,7 +94,6 @@
           <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-600">r</span><span class="text-purple-600">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
         </p>
 
-        <!-- Bloque de enlaces y botón de registro -->
         <div class="flex flex-wrap justify-center md:justify-end gap-3 w-full">
           <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2 border-2 border-white">
             <i class="fab fa-whatsapp text-xl"></i> WhatsApp
@@ -106,9 +104,8 @@
           <a id="btnLinkUbicacion" href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
             <i class="fas fa-map-marker-alt text-xl"></i> Ubicación
           </a>
-          <!-- Botón de Registro de Clientes (Google Sheets) -->
           <button onclick="abrirModalRegistro()" class="bg-gradient-to-r from-amber-400 to-orange-500 text-purple-950 border-2 border-white px-5 py-2.5 rounded-2xl text-base font-black shadow-lg hover:scale-105 transition flex items-center gap-2">
-            <i class="fas fa-gift text-xl text-purple-900"></i> ¡Regístrate Aquí!
+            <i class="fas fa-clipboard-list text-xl text-purple-900"></i> ¡Regístrate Aquí!
           </button>
           <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
             <i class="fas fa-magic"></i> Admin
@@ -126,7 +123,7 @@
         <h2 class="text-3xl font-black flex items-center gap-2">
           <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
         </h2>
-        <p class="text-sm font-bold text-purple-700">Cambia fotos de los banners y gestiona productos.</p>
+        <p class="text-sm font-bold text-purple-700">Gestiona imágenes, datos y productos.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
         <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
@@ -143,7 +140,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN CATEGORÍAS: Banners grandes y horizontales (3 Izquierda / 3 Derecha) -->
+  <!-- Banners Horizontales Grandes -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
       <h2 class="text-3xl md:text-5xl font-black text-white drop-shadow-lg">✨ Explora por Categoría ✨</h2>
@@ -151,13 +148,10 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-      
-      <!-- COLUMNA IZQUIERDA -->
       <div class="flex flex-col gap-5">
-        
         <!-- 1. Todos -->
         <div onclick="filtrarCategoria('todos')" id="card-cat-todos" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cat-banner-activa">
-          <img id="img-cat-todos" src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&auto=format&fit=crop&q=80" alt="Todos los Juguetes" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <img id="img-cat-todos" src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&auto=format&fit=crop&q=80" alt="Todos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent flex items-center px-6 sm:px-8">
             <div class="flex items-center gap-5">
               <span class="text-5xl drop-shadow-md">✨</span>
@@ -196,12 +190,9 @@
             </div>
           </div>
         </div>
-
       </div>
 
-      <!-- COLUMNA DERECHA -->
       <div class="flex flex-col gap-5">
-        
         <!-- 4. Bebés -->
         <div onclick="filtrarCategoria('bebes')" id="card-cat-bebes" class="group relative h-36 sm:h-40 rounded-3xl overflow-hidden cursor-pointer border-4 border-white shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
           <img id="img-cat-bebes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&auto=format&fit=crop&q=80" alt="Bebés" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -224,7 +215,7 @@
               <span class="text-5xl drop-shadow-md">🧩</span>
               <div>
                 <span class="text-white font-black text-2xl sm:text-3xl block leading-tight drop-shadow-md">Didácticos</span>
-                <span class="text-amber-300 text-base sm:text-lg font-bold drop-shadow">Bloques de madera, ingenio y arte</span>
+                <span class="text-amber-300 text-base sm:text-lg font-bold drop-shadow">Bloques, ingenio, lógica y arte</span>
               </div>
             </div>
           </div>
@@ -243,9 +234,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 
@@ -272,15 +261,15 @@
     <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"></div>
   </section>
 
-  <!-- Modal Registro de Clientes (Vinculado a Google Sheets) -->
+  <!-- MODAL DE REGISTRO COMPLETO (Sincronizado con Google Sheets) -->
   <div id="modalRegistro" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl border-4 border-yellow-400 relative">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-yellow-400 relative max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center mb-4">
         <div>
           <h3 class="text-2xl md:text-3xl font-black text-purple-900 flex items-center gap-2">
-            🎁 Registro de Amigos PlayUp
+            🎁 Formulario de Registro PlayUp
           </h3>
-          <p class="text-sm font-semibold text-gray-600 mt-1">¡Recibe descuentos, novedades y sorpresas para tus peques!</p>
+          <p class="text-sm font-semibold text-gray-600 mt-1">Completa tus datos para recibir ofertas exclusivas, sorteos y regalos.</p>
         </div>
         <button type="button" onclick="cerrarModalRegistro()" class="text-gray-400 hover:text-red-500 text-3xl">
           <i class="fas fa-times-circle"></i>
@@ -289,33 +278,56 @@
 
       <form id="formRegistroCliente" onsubmit="enviarRegistroCliente(event)" class="space-y-4">
         <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Tu Nombre Completo *</label>
-          <input type="text" id="regNombre" required placeholder="Ej: Mariana Rodríguez" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Nombre Completo del Papá / Mamá *</label>
+          <input type="text" id="regNombre" required placeholder="Ej: Patricia Morales" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Número de WhatsApp *</label>
+            <input type="tel" id="regTelefono" required placeholder="Ej: 78541236" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+          </div>
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Correo Electrónico *</label>
+            <input type="email" id="regCorreo" required placeholder="ejemplo@gmail.com" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Fecha Nacimiento del Peque</label>
+            <input type="date" id="regFechaNac" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+          </div>
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Edad Actual del Peque</label>
+            <select id="regEdad" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+              <option value="0 a 12 meses">0 a 12 meses (Bebé)</option>
+              <option value="1 a 3 años">1 a 3 años</option>
+              <option value="4 a 6 años">4 a 6 años</option>
+              <option value="7 a 10 años">7 a 10 años</option>
+              <option value="Más de 10 años">Más de 10 años</option>
+            </select>
+          </div>
         </div>
 
         <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Número de WhatsApp *</label>
-          <input type="tel" id="regTelefono" required placeholder="Ej: 78564321" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+          <label class="block text-gray-700 font-bold mb-1 ml-1">¿Qué tipo de juguete estás buscando?</label>
+          <input type="text" id="regBusqueda" placeholder="Ej: Dinosaurios, pistas de carreras, muñecas, bloques de madera..." class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
         </div>
 
         <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Edad o Cumpleaños de tu peque</label>
-          <input type="text" id="regPeques" placeholder="Ej: Cumple 4 añitos el 15 de Noviembre" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
-        </div>
-
-        <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Ciudad / Barrio</label>
-          <input type="text" id="regCiudad" placeholder="Ej: Santa Cruz - Los Pozos" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Ciudad y Zona / Barrio</label>
+          <input type="text" id="regCiudad" placeholder="Ej: Santa Cruz - Zona Los Pozos / Plan 3000" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-3 font-semibold text-base outline-none">
         </div>
 
         <button type="submit" id="btnEnviarRegistro" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-purple-950 text-xl font-black py-4 rounded-3xl hover:opacity-95 transition shadow-xl mt-3 border-2 border-white flex items-center justify-center gap-2">
-          <span>¡Registrarme y Ganar Sorpresa!</span> 🚀
+          <span>¡Guardar mi Registro y Participar!</span> 🚀
         </button>
       </form>
     </div>
   </div>
 
-  <!-- Modal Detalle -->
+  <!-- Modal Detalle con Edad Recomendada -->
   <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
       <button type="button" onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-500 hover:text-red-500 text-3xl bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-gray-200">
@@ -323,8 +335,11 @@
       </button>
       
       <div class="text-center mb-4 mt-2">
-        <span id="detalleCategoriaBadge" class="px-6 py-2 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md"></span>
-        <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <span id="detalleCategoriaBadge" class="px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-white shadow-md bg-purple-600"></span>
+          <span id="detalleEdadBadge" class="px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-purple-950 bg-amber-300 shadow-md border border-white"></span>
+        </div>
+        <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-2 leading-tight"></h3>
       </div>
 
       <div class="relative h-72 md:h-80 bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
@@ -396,7 +411,7 @@
     </div>
   </div>
 
-  <!-- Modal Admin Crear / Editar Juguete -->
+  <!-- Modal Admin Crear / Editar Juguete con Campo de Edad -->
   <div id="modalAdminForm" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-purple-500 relative" id="modalAdminContent">
       <div class="flex justify-between items-center mb-4">
@@ -414,15 +429,21 @@
           <input type="text" id="productoNombre" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1">Categoría</label>
-          <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
-            <option value="ninos">🚀 Niños</option>
-            <option value="ninas">🦄 Niñas</option>
-            <option value="bebes">🍼 Bebés</option>
-            <option value="didacticos">🧩 Didácticos</option>
-            <option value="peluches">🧸 Peluches</option>
-          </select>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Categoría</label>
+            <select id="productoCategoria" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+              <option value="ninos">🚀 Niños</option>
+              <option value="ninas">🦄 Niñas</option>
+              <option value="bebes">🍼 Bebés</option>
+              <option value="didacticos">🧩 Didácticos</option>
+              <option value="peluches">🧸 Peluches</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-bold mb-1 ml-1">Edad Recomendada</label>
+            <input type="text" id="productoEdad" required placeholder="Ej: 3-6 años, 0-12m" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-base outline-none">
+          </div>
         </div>
 
         <div>
@@ -484,14 +505,16 @@
     let categoriaActual = 'todos';
     let presupuestoActual = 'todos';
 
-    // 18 Juguetes surtidos para que el catálogo luzca completo
+    // 24 juguetes balanceados en todas las categorías, precios y edades
     const juguetesPorDefecto = [
+      // --- NIÑOS ---
       {
         id: 'def_1',
-        nombre: 'Auto Deportivo RC Recargable',
+        nombre: 'Set de Autos de Metal Coleccionables x5',
         categoria: 'ninos',
-        precio: '145',
-        descripcion: 'Auto de carreras a control remoto con batería USB, suspensión suave y faros LED.',
+        edad: '3+ años',
+        precio: '45',
+        descripcion: 'Pack de 5 autitos metálicos die-cast de alta resistencia con detalles deportivos y ruedas veloces.',
         imagenes: [
           'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
           'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&auto=format&fit=crop&q=80'
@@ -499,153 +522,173 @@
       },
       {
         id: 'def_2',
-        nombre: 'Set Bloques Castillo Rosa Mágico',
-        categoria: 'ninas',
-        precio: '180',
-        descripcion: 'Hermoso set armable con figuras de princesas, torres de ensueño y carruaje para peques.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_3',
-        nombre: 'Oso Gigante Teddy Ultra Suave',
-        categoria: 'peluches',
-        precio: '130',
-        descripcion: 'Peluche gigante de felpa hipoalergénica con lazo de satén. Súper esponjoso y abrazable.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1556012018-50c5c0da73bf?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_4',
-        nombre: 'Sonajero Mordedor Sensorial Bebé',
-        categoria: 'bebes',
-        precio: '45',
-        descripcion: 'Sonajero de silicona suave libre de BPA, fácil agarre y texturas que alivian encías.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_5',
-        nombre: 'Torre Didáctica Arcoíris Montessori',
-        categoria: 'didacticos',
-        precio: '75',
-        descripcion: 'Juguete de encaje y apilado con pinturas no tóxicas. Desarrolla motricidad fina y colores.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_6',
-        nombre: 'Robot Guardián Articulado con Luces',
+        nombre: 'Robot Guardián con Luces y Sonido',
         categoria: 'ninos',
-        precio: '95',
-        descripcion: 'Robot interactivo caminante con luces en el pecho, efectos de sonido y rotación 360°.',
+        edad: '4-8 años',
+        precio: '90',
+        descripcion: 'Robot articulado caminante con sonidos espaciales, luces LED dinámicas y giro 360° en acción.',
         imagenes: [
           'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&auto=format&fit=crop&q=80',
           'https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=800&auto=format&fit=crop&q=80'
         ]
       },
       {
-        id: 'def_7',
-        nombre: 'Muñeca Princesa Bailarina Brillante',
-        categoria: 'ninas',
-        precio: '120',
-        descripcion: 'Muñeca articulada con vestido de tul, tiara desmontable y canciones mágicas.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_8',
-        nombre: 'Gatito de Peluche Cariñoso',
-        categoria: 'peluches',
-        precio: '65',
-        descripcion: 'Tierno gatito de peluche con ojitos bordados y textura aterciopelada de alta calidad.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_9',
-        nombre: 'Gimnasio Alfombra Sensorial Bebé',
-        categoria: 'bebes',
-        precio: '190',
-        descripcion: 'Manta acolchada con arco de colgantes, sonajeros y pianito musical interactivo para pataditas.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_10',
-        nombre: 'Cubo Didáctico Multiactividad 5 en 1',
-        categoria: 'didacticos',
-        precio: '150',
-        descripcion: 'Laberinto de cuentas, ábaco, reloj infantil y engranajes giratorios en madera fina pulida.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_11',
-        nombre: 'Pista de Autos Doble Loop Extremo',
+        id: 'def_3',
+        nombre: 'Auto Deportivo RC Recargable USB',
         categoria: 'ninos',
-        precio: '165',
-        descripcion: 'Pista de aceleración rápida con giros dobles de 360 grados y dos vehículos metálicos incluidos.',
+        edad: '6+ años',
+        precio: '145',
+        descripcion: 'Vehículo de carreras a control remoto con batería de litio recargable, suspensión y faros delanteros.',
         imagenes: [
           'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
           'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&auto=format&fit=crop&q=80'
         ]
       },
       {
-        id: 'def_12',
-        nombre: 'Set de Té y Pastelería Mágica',
+        id: 'def_4',
+        nombre: 'Pista de Carreras Doble Loop 360°',
+        categoria: 'ninos',
+        edad: '5-10 años',
+        precio: '185',
+        descripcion: 'Mega pista de aceleración extrema con doble giro invertido 360 y lanzadores de potencia manual.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+      {
+        id: 'def_5',
+        nombre: 'Dinosaurio T-Rex Ruge y Camina',
+        categoria: 'ninos',
+        edad: '3-7 años',
+        precio: '120',
+        descripcion: 'Tiranosaurio con textura realista, efectos de rugido feroz y pasos motorizados con ojos brillantes.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+
+      // --- NIÑAS ---
+      {
+        id: 'def_6',
+        nombre: 'Set de Accesorios y Bisutería Princesa',
         categoria: 'ninas',
-        precio: '85',
-        descripcion: 'Juego de té con tazas color pastel, tetera musical y postrecitos para compartir con amigas.',
+        edad: '3-6 años',
+        precio: '38',
+        descripcion: 'Hermosa corona con destellos, varita mágica, collar y pulseras en tonos pastel para jugar a ser princesa.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+      {
+        id: 'def_7',
+        nombre: 'Juego de Té y Pastelería Mágica',
+        categoria: 'ninas',
+        edad: '3-8 años',
+        precio: '80',
+        descripcion: 'Set completo con tetera musical, tazas, platillos y pastelitos desmontables para compartir momentos tiernos.',
         imagenes: [
           'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80',
           'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
         ]
       },
       {
-        id: 'def_13',
-        nombre: 'Unicornio Arcoíris Suave 40cm',
-        categoria: 'peluches',
-        precio: '90',
-        descripcion: 'Precioso unicornio de peluche con crin de colores pasteles y cuerno dorado brillante.',
+        id: 'def_8',
+        nombre: 'Muñeca Princesa Bailarina con Melodía',
+        categoria: 'ninas',
+        edad: '4-9 años',
+        precio: '125',
+        descripcion: 'Muñeca articulada con vestido de tul satinado, tiara brillante desmontable y música suave de cuento.',
         imagenes: [
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80'
+          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
         ]
       },
       {
-        id: 'def_14',
-        nombre: 'Móvil Musical de Cuna con Proyector',
+        id: 'def_9',
+        nombre: 'Set Bloques Castillo Rosa Mágico',
+        categoria: 'ninas',
+        edad: '5+ años',
+        precio: '180',
+        descripcion: 'Castillo armable con más de 400 piezas, figuras de príncipes, carruaje real y torres deslumbrantes.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+      {
+        id: 'def_10',
+        nombre: 'Tocador de Belleza Glamour con Luces',
+        categoria: 'ninas',
+        edad: '4-10 años',
+        precio: '220',
+        descripcion: 'Mesa tocador con taburete, espejo mágico irrompible con luces, secador con sonido y set de belleza.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+
+      // --- BEBÉS ---
+      {
+        id: 'def_11',
+        nombre: 'Sonajero Mordedor Sensorial de Silicona',
         categoria: 'bebes',
-        precio: '175',
-        descripcion: 'Móvil giratorio con animalitos de felpa, melodías relajantes para dormir y luces estrelladas.',
+        edad: '0-12m',
+        precio: '40',
+        descripcion: 'Mordedor anatómico de silicona de grado alimenticio libre de BPA, con texturas que alivian el brote dental.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+      {
+        id: 'def_12',
+        nombre: 'Juguete Apilable Aros Arcoíris Suaves',
+        categoria: 'bebes',
+        edad: '6-24m',
+        precio: '65',
+        descripcion: 'Pirámide de anillos suaves de fácil agarre para estimular la coordinación ojo-mano y distinguir tamaños.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+      {
+        id: 'def_13',
+        nombre: 'Cangrejo Musical Interactivo de Arrastre',
+        categoria: 'bebes',
+        edad: '9-36m',
+        precio: '115',
+        descripcion: 'Cangrejo con sensor de obstáculos que camina de lado, emite música alegre y motiva al bebé a gatear.',
         imagenes: [
           'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80',
           'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&auto=format&fit=crop&q=80'
         ]
       },
       {
+        id: 'def_14',
+        nombre: 'Gimnasio Alfombra Sensorial con Piano',
+        categoria: 'bebes',
+        edad: '0-18m',
+        precio: '195',
+        descripcion: 'Manta acolchada con arco de colgantes sonoros y piano musical accionado por pataditas o manitas.',
+        imagenes: [
+          'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80'
+        ]
+      },
+
+      // --- DIDÁCTICOS ---
+      {
         id: 'def_15',
-        nombre: 'Rompecabezas de Madera Encajable',
+        nombre: 'Rompecabezas de Madera Encajable Formas',
         categoria: 'didacticos',
-        precio: '40',
-        descripcion: 'Piezas grandes seguras con números y figuras de animales de la selva para niños pequeños.',
+        edad: '2-5 años',
+        precio: '45',
+        descripcion: 'Tablero Montessori de madera pulida no tóxica con animalitos y números para encajar con precisión.',
         imagenes: [
           'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80',
           'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80'
@@ -653,521 +696,30 @@
       },
       {
         id: 'def_16',
-        nombre: 'Dinosaurio T-Rex Sonidos y Movimiento',
-        categoria: 'ninos',
-        precio: '110',
-        descripcion: 'Dinosaurio a pilas que camina, ruge y enciende sus ojos de color rojo intenso.',
+        nombre: 'Torre de Fracciones y Apilado Montessori',
+        categoria: 'didacticos',
+        edad: '3-6 años',
+        precio: '75',
+        descripcion: 'Set de bloques geométricos de colores para aprender conteo, clasificación espacial y lógica matemática.',
         imagenes: [
           'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&auto=format&fit=crop&q=80'
+          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
         ]
       },
       {
         id: 'def_17',
-        nombre: 'Tocador de Belleza Infantil con Luces',
-        categoria: 'ninas',
-        precio: '210',
-        descripcion: 'Tocador con espejo mágico irrompible, secadora de juguete con sonido, peines y accesorios.',
+        nombre: 'Cubo Didáctico Multiactividad 5 en 1',
+        categoria: 'didacticos',
+        edad: '1-4 años',
+        precio: '150',
+        descripcion: 'Laberinto de cuentas superior, ábaco, reloj didáctico y engranajes giratorios en un solo bloque robusto.',
         imagenes: [
-          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
+          'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80',
+          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
         ]
       },
       {
         id: 'def_18',
-        nombre: 'Conejita de Felpa Orejas Largas',
-        categoria: 'peluches',
-        precio: '55',
-        descripcion: 'Tierna conejita con vestido bordado en algodón suave. Liviana e ideal para los brazos de tu peque.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1556012018-50c5c0da73bf?w=800&auto=format&fit=crop&q=80'
-        ]
-      }
-    ];
-
-    async function inicializarTienda() {
-      // Si el caché tiene pocos productos, refrescamos con los 18 surtidos
-      const localData = localStorage.getItem('playup_local_prods');
-      if (localData) {
-        const parseados = JSON.parse(localData);
-        productos = (parseados.length <= 10) ? juguetesPorDefecto : parseados;
-      } else {
-        productos = juguetesPorDefecto;
-      }
-      localStorage.setItem('playup_local_prods', JSON.stringify(productos));
-
-      window.renderProductos();
-      document.getElementById('loadingIndicator').classList.add('hidden');
-
-      const localConfig = localStorage.getItem('playup_textos_config');
-      if(localConfig) {
-        const d = JSON.parse(localConfig);
-        if(d.logoUrl) document.getElementById('logoPrincipal').src = d.logoUrl;
-        if(d.fotosCategorias) aplicarFotosCategorias(d.fotosCategorias);
-      }
-
-      if(!auth || !db) return;
-
-      try {
-        await signInAnonymously(auth);
-      } catch(e) {}
-
-      try {
-        const productosRef = collection(db, 'juguetes_playup');
-        onSnapshot(productosRef, (snapshot) => {
-          let nube = [];
-          snapshot.forEach(docSnap => nube.push({ id: docSnap.id, ...docSnap.data() }));
-          if(nube.length > 0) {
-            productos = nube;
-            localStorage.setItem('playup_local_prods', JSON.stringify(productos));
-            window.renderProductos();
-          }
-        });
-
-        const configRef = doc(db, 'configuracion_playup', 'general');
-        onSnapshot(configRef, (docSnap) => {
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            if(data.logoUrl) document.getElementById('logoPrincipal').src = data.logoUrl;
-            if(data.fotosCategorias) aplicarFotosCategorias(data.fotosCategorias);
-            localStorage.setItem('playup_textos_config', JSON.stringify(data));
-          }
-        });
-      } catch (err) {}
-    }
-
-    function aplicarFotosCategorias(fotos) {
-      Object.keys(fotos).forEach(cat => {
-        const el = document.getElementById(`img-cat-${cat}`);
-        if(el && fotos[cat]) el.src = fotos[cat];
-      });
-    }
-
-    function procesarImagenLiviana(file) {
-      return new Promise((resolve) => {
-        if (!file) return resolve(null);
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const img = new Image();
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const MAX_DIM = 700;
-            let w = img.width, h = img.height;
-            if (w > h && w > MAX_DIM) { h *= MAX_DIM / w; w = MAX_DIM; }
-            else if (h > MAX_DIM) { w *= MAX_DIM / h; h = MAX_DIM; }
-            canvas.width = w;
-            canvas.height = h;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, w, h);
-            resolve(canvas.toDataURL('image/jpeg', 0.7));
-          };
-          img.onerror = () => resolve(null);
-          img.src = e.target.result;
-        };
-        reader.onerror = () => resolve(null);
-        reader.readAsDataURL(file);
-      });
-    }
-
-    window.subirNuevaPortada = async function(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const btn = document.getElementById('btnPortada');
-      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Subiendo...`;
-      btn.disabled = true;
-
-      try {
-        const base64 = await procesarImagenLiviana(file);
-        if(!base64) throw new Error("Error");
-        document.getElementById('logoPrincipal').src = base64;
-        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
-        cfg.logoUrl = base64;
-        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
-        if(db) await setDoc(doc(db, 'configuracion_playup', 'general'), { logoUrl: base64 }, { merge: true });
-        alert("¡Portada actualizada con éxito! 🎉");
-      } catch (err) {
-        alert("Error al guardar la portada.");
-      } finally {
-        btn.innerHTML = `<i class="fas fa-image"></i> Cambiar Portada`;
-        btn.disabled = false;
-        event.target.value = "";
-      }
-    };
-
-    window.abrirModalFotosCategorias = function() {
-      const m = document.getElementById('modalFotosCategorias');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
-      setTimeout(() => m.classList.remove('opacity-0'), 10);
-    };
-
-    window.cerrarModalFotosCategorias = function() {
-      const m = document.getElementById('modalFotosCategorias');
-      m.classList.add('opacity-0');
-      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
-    };
-
-    window.subirFotoCategoria = async function(categoria, event) {
-      const file = event.target.files[0];
-      if(!file) return;
-      try {
-        const base64 = await procesarImagenLiviana(file);
-        if(!base64) throw new Error();
-
-        const el = document.getElementById(`img-cat-${categoria}`);
-        if(el) el.src = base64;
-
-        let cfg = JSON.parse(localStorage.getItem('playup_textos_config') || '{}');
-        if(!cfg.fotosCategorias) cfg.fotosCategorias = {};
-        cfg.fotosCategorias[categoria] = base64;
-        localStorage.setItem('playup_textos_config', JSON.stringify(cfg));
-
-        if(db) {
-          await setDoc(doc(db, 'configuracion_playup', 'general'), {
-            fotosCategorias: { [categoria]: base64 }
-          }, { merge: true });
-        }
-        alert(`¡Banner de "${categoria}" guardado con éxito! ✨`);
-      } catch(e) {
-        alert("No se pudo guardar la imagen.");
-      }
-    };
-
-    /* FUNCIONALIDADES DE REGISTRO GOOGLE SHEETS */
-    window.abrirModalRegistro = function() {
-      const m = document.getElementById('modalRegistro');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
-      setTimeout(() => m.classList.remove('opacity-0'), 10);
-    };
-
-    window.cerrarModalRegistro = function() {
-      const m = document.getElementById('modalRegistro');
-      m.classList.add('opacity-0');
-      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
-    };
-
-    // Pega aquí la URL de tu Web App de Google Apps Script o Webhook de Google Sheets
-    const URL_GOOGLE_SHEETS_SCRIPT = "TU_URL_DE_APPS_SCRIPT_AQUI";
-
-    window.enviarRegistroCliente = async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('btnEnviarRegistro');
-      btn.disabled = true;
-      btn.innerText = "Enviando registro...";
-
-      const datos = {
-        fecha: new Date().toLocaleString(),
-        nombre: document.getElementById('regNombre').value,
-        telefono: document.getElementById('regTelefono').value,
-        peques: document.getElementById('regPeques').value,
-        ciudad: document.getElementById('regCiudad').value
-      };
-
-      try {
-        if(URL_GOOGLE_SHEETS_SCRIPT && URL_GOOGLE_SHEETS_SCRIPT !== "TU_URL_DE_APPS_SCRIPT_AQUI") {
-          await fetch(URL_GOOGLE_SHEETS_SCRIPT, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(datos)
-          });
-        }
-        
-        // Guardar registro de respaldo en Firestore si está conectado
-        if(db) {
-          await addDoc(collection(db, 'registros_clientes'), datos);
-        }
-
-        alert("¡Felicidades! 🎉 Tus datos se registraron correctamente.");
-        document.getElementById('formRegistroCliente').reset();
-        window.cerrarModalRegistro();
-      } catch(err) {
-        alert("¡Registro guardado!");
-        window.cerrarModalRegistro();
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = `<span>¡Registrarme y Ganar Sorpresa!</span> 🚀`;
-      }
-    };
-
-    window.renderProductos = function() {
-      const contenedor = document.getElementById('contenedorProductos');
-      contenedor.innerHTML = '';
-
-      const filtrados = productos.filter(p => {
-        const catOk = categoriaActual === 'todos' || p.categoria === categoriaActual;
-        const pr = parseFloat(p.precio) || 0;
-        let pOk = false;
-        if (presupuestoActual === 'todos') pOk = true;
-        else if (presupuestoActual === 'rango1') pOk = pr >= 30 && pr <= 50;
-        else if (presupuestoActual === 'rango2') pOk = pr >= 60 && pr <= 100;
-        else if (presupuestoActual === 'rango3') pOk = pr >= 110 && pr <= 160;
-        else if (presupuestoActual === 'rango4') pOk = pr >= 170;
-        return catOk && pOk;
-      });
-
-      if (filtrados.length === 0) {
-        contenedor.innerHTML = `
-          <div class="col-span-full text-center py-16 bg-white/80 backdrop-blur-md rounded-[40px] border-4 border-dashed border-white shadow-xl">
-            <p class="text-4xl font-black text-purple-600 mb-2">¡Ups! 🙈</p>
-            <p class="text-xl font-bold text-gray-700">Aún no hay juguetes en esta categoría.</p>
-          </div>`;
-        return;
-      }
-
-      filtrados.forEach((p) => {
-        const card = document.createElement('div');
-        let bg = "bg-white/95 border-yellow-300";
-        if (p.categoria === 'bebes') bg = "bg-teal-50/95 border-teal-300"; 
-        else if (p.categoria === 'ninos') bg = "bg-sky-50/95 border-sky-300"; 
-        else if (p.categoria === 'ninas') bg = "bg-pink-50/95 border-pink-300"; 
-        else if (p.categoria === 'didacticos') bg = "bg-amber-50/95 border-amber-300"; 
-        else if (p.categoria === 'peluches') bg = "bg-purple-50/95 border-purple-300"; 
-
-        card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col`;
-
-        const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} a Bs.${p.precio}`)}`;
-        const idVal = p.id || p.nombre;
-        const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
-
-        let adminHTML = '';
-        if (isAdmin) {
-          adminHTML = `
-            <div class="flex gap-2 mt-4 pt-3 border-t border-gray-200">
-              <button onclick="window.abrirModalAdmin('${idVal}')" class="flex-1 bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-bold py-2 rounded-xl transition text-sm">
-                <i class="fas fa-edit"></i> Editar
-              </button>
-              <button onclick="window.eliminarProducto('${idVal}')" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-xl transition text-sm">
-                <i class="fas fa-trash"></i> Eliminar
-              </button>
-            </div>`;
-        }
-
-        card.innerHTML = `
-          <div class="relative h-64 bg-white cursor-pointer overflow-hidden p-2" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
-            <img src="${foto}" alt="${p.nombre}" class="w-full h-full object-cover rounded-[30px] hover:scale-105 transition duration-300" />
-            <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-black px-3 py-1.5 rounded-full uppercase border border-white">
-              ${p.categoria}
-            </span>
-          </div>
-          <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-2xl font-black text-purple-950 leading-snug cursor-pointer hover:text-pink-600 transition" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
-              ${p.nombre}
-            </h3>
-            <div class="text-3xl font-black text-pink-600 mt-2">Bs. ${p.precio}</div>
-            <p class="text-gray-600 text-sm mt-2 line-clamp-2">${p.descripcion}</p>
-            <div class="mt-auto pt-4">
-              <a href="${linkWa}" target="_blank" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-102 transition shadow-md">
-                <i class="fab fa-whatsapp text-xl"></i> Pedir al WhatsApp
-              </a>
-              ${adminHTML}
-            </div>
-          </div>
-        `;
-        contenedor.appendChild(card);
-      });
-    };
-
-    window.filtrarCategoria = function(cat) {
-      categoriaActual = cat;
-      const cats = ['todos', 'ninos', 'ninas', 'bebes', 'didacticos', 'peluches'];
-      cats.forEach(c => {
-        const el = document.getElementById(`card-cat-${c}`);
-        if(el) {
-          if(c === cat) el.classList.add('cat-banner-activa');
-          else el.classList.remove('cat-banner-activa');
-        }
-      });
-      window.renderProductos();
-    };
-
-    window.filtrarPresupuesto = function(r) {
-      presupuestoActual = r;
-      ['todos', 'rango1', 'rango2', 'rango3', 'rango4'].forEach(rg => {
-        const btn = document.getElementById(`btn-precio-${rg}`);
-        if(btn) {
-          if(rg === r) btn.className = "px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white scale-105";
-          else btn.className = "px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white";
-        }
-      });
-      window.renderProductos();
-    };
-
-    window.loginAdmin = function() {
-      if(isAdmin) return alert("Modo administrador activo.");
-      const pass = prompt('Contraseña de administrador:');
-      if (pass === 'mariaPlayup') {
-        isAdmin = true;
-        document.getElementById('adminPanel').classList.remove('hidden');
-        document.getElementById('btnAdminLogin').classList.add('hidden');
-        window.renderProductos();
-        alert('¡Bienvenido al modo Administrador!');
-      } else if(pass !== null) {
-        alert('Contraseña incorrecta.');
-      }
-    };
-
-    let productoActualModal = null;
-    let anguloActualIndex = 0;
-    const modalVista = document.getElementById('modalVista');
-
-    window.abrirModalVista = function(idOrName) {
-      const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
-      if(!p) return;
-      productoActualModal = p;
-      anguloActualIndex = 0;
-
-      document.getElementById('detalleNombre').innerText = p.nombre;
-      document.getElementById('detalleDescripcion').innerText = p.descripcion;
-      document.getElementById('detallePrecio').innerText = `Bs. ${p.precio}`;
-      
-      const badge = document.getElementById('detalleCategoriaBadge');
-      badge.className = "px-6 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow bg-purple-600";
-      badge.innerText = p.categoria;
-
-      const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-      document.getElementById('detalleBtnWhatsApp').href = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs.${p.precio}`)}`;
-
-      const fotos = p.imagenes || [];
-      document.getElementById('imgThumb0').src = fotos[0] || 'https://placehold.co/600x400/eee/999?text=1';
-      document.getElementById('imgThumb1').src = fotos[1] || fotos[0] || 'https://placehold.co/600x400/eee/999?text=2';
-
-      window.actualizarAnguloVisual();
-      modalVista.classList.remove('hidden');
-      modalVista.classList.add('flex');
-      setTimeout(() => { modalVista.classList.remove('opacity-0'); document.getElementById('modalVistaContent').classList.remove('scale-95'); }, 10);
-    };
-
-    window.cambiarAngulo = function(idx) {
-      anguloActualIndex = idx;
-      window.actualizarAnguloVisual();
-    };
-
-    window.actualizarAnguloVisual = function() {
-      if(!productoActualModal) return;
-      const fotos = productoActualModal.imagenes || [];
-      document.getElementById('imagenPrincipal').src = fotos[anguloActualIndex] || fotos[0] || 'https://placehold.co/600x400/eee/999?text=PlayUp';
-      document.getElementById('thumb0').style.opacity = anguloActualIndex === 0 ? "1" : "0.5";
-      document.getElementById('thumb1').style.opacity = anguloActualIndex === 1 ? "1" : "0.5";
-    };
-
-    window.cerrarModalVista = function() {
-      modalVista.classList.add('opacity-0');
-      document.getElementById('modalVistaContent').classList.add('scale-95');
-      setTimeout(() => { modalVista.classList.add('hidden'); modalVista.classList.remove('flex'); }, 300);
-    };
-
-    const modalAdminForm = document.getElementById('modalAdminForm');
-    const formProducto = document.getElementById('formProducto');
-
-    window.abrirModalAdmin = function(idOrName = null) {
-      formProducto.reset();
-      document.getElementById('productoId').value = '';
-      if(idOrName) {
-        document.getElementById('modalAdminTitulo').innerText = '✏️ Editar Juguete';
-        const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
-        if(p) {
-          document.getElementById('productoId').value = p.id || p.nombre;
-          document.getElementById('productoNombre').value = p.nombre;
-          document.getElementById('productoCategoria').value = p.categoria;
-          document.getElementById('productoPrecio').value = p.precio;
-          document.getElementById('productoDescripcion').value = p.descripcion;
-        }
-      } else {
-        document.getElementById('modalAdminTitulo').innerText = '✨ Nuevo Juguete';
-      }
-      modalAdminForm.classList.remove('hidden');
-      modalAdminForm.classList.add('flex');
-      setTimeout(() => { modalAdminForm.classList.remove('opacity-0'); document.getElementById('modalAdminContent').classList.remove('scale-95'); }, 10);
-    };
-
-    window.cerrarModalAdmin = function() {
-      modalAdminForm.classList.add('opacity-0');
-      document.getElementById('modalAdminContent').classList.add('scale-95');
-      setTimeout(() => { modalAdminForm.classList.add('hidden'); modalAdminForm.classList.remove('flex'); }, 300);
-    };
-
-    window.guardarProducto = async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('btnGuardarProd');
-      btn.disabled = true;
-      btn.innerText = "⏳ Guardando...";
-
-      try {
-        const idActual = document.getElementById('productoId').value;
-        const nombre = document.getElementById('productoNombre').value;
-        const categoria = document.getElementById('productoCategoria').value;
-        const precio = document.getElementById('productoPrecio').value;
-        const descripcion = document.getElementById('productoDescripcion').value;
-
-        const f1 = document.getElementById('productoImagen1').files[0];
-        const f2 = document.getElementById('productoImagen2').files[0];
-
-        const base64_1 = await procesarImagenLiviana(f1);
-        const base64_2 = await procesarImagenLiviana(f2);
-
-        const existente = productos.find(p => String(p.id) === String(idActual) || String(p.nombre) === String(idActual));
-        let imgs = existente && existente.imagenes ? [...existente.imagenes] : [
-          `https://placehold.co/600x400/99ccff/003366?text=${encodeURIComponent(nombre)}`,
-          `https://placehold.co/600x400/ff99cc/660033?text=${encodeURIComponent(nombre)}+2`
-        ];
-
-        if(base64_1) imgs[0] = base64_1;
-        if(base64_2) imgs[1] = base64_2;
-
-        if (existente && existente.id) {
-          existente.nombre = nombre;
-          existente.categoria = categoria;
-          existente.precio = precio;
-          existente.descripcion = descripcion;
-          existente.imagenes = imgs;
-
-          if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('loc_')) {
-            try {
-              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, precio, descripcion, imagenes: imgs });
-            } catch(e) {}
-          }
-        } else {
-          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, precio, descripcion, imagenes: imgs };
-          if(db) {
-            try {
-              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, precio, descripcion, imagenes: imgs });
-              nuevo.id = docRef.id;
-            } catch(e) {}
-          }
-          productos.push(nuevo);
-        }
-
-        localStorage.setItem('playup_local_prods', JSON.stringify(productos));
-        window.renderProductos();
-        window.cerrarModalAdmin();
-        alert("¡Juguete guardado con éxito! 🎉");
-      } catch (err) {
-        alert("Error al guardar.");
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "Guardar Juguete";
-      }
-    };
-
-    window.eliminarProducto = async function(idOrName) {
-      if(!confirm("¿Deseas eliminar este producto?")) return;
-      try {
-        const prod = productos.find(p => String(p.id) === String(idOrName) || String(p.nombre) === String(idOrName));
-        if (prod && prod.id && db && !String(prod.id).startsWith('loc_') && !String(prod.id).startsWith('def_')) {
-          await deleteDoc(doc(db, 'juguetes_playup', prod.id));
-        }
-      } catch (e) {}
-
-      productos = productos.filter(p => String(p.id) !== String(idOrName) && String(p.nombre) !== String(idOrName));
-      localStorage.setItem('playup_local_prods', JSON.stringify(productos));
-      window.renderProductos();
-    };
-
-    inicializarTienda();
-  </script>
-</body>
-</html>
+        nombre: 'Bloques Magnéticos de Construcción 3D 100 Piezas',
+        categoria: 'didacticos',
+        edad
