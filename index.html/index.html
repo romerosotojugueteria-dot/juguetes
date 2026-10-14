@@ -470,7 +470,10 @@
       </button>
       
       <div class="text-center mb-4 mt-2">
-        <span id="detalleCategoriaBadge" class="px-6 py-2 rounded-full text-sm font-black uppercase tracking-wider text-white shadow-md"></span>
+        <div class="flex items-center justify-center gap-2">
+          <span id="detalleCategoriaBadge" class="px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-white shadow-md"></span>
+          <span id="detalleCodigoBadge" class="px-4 py-1.5 rounded-full text-xs font-black text-purple-900 bg-yellow-300 border border-yellow-500 shadow"></span>
+        </div>
         <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
       </div>
       <div class="relative h-72 md:h-80 bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
@@ -498,7 +501,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal Admin: Fotos Categorías -->
+    <!-- Modal Admin: Fotos Categorías -->
   <div id="modalFotosCategorias" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-teal-500 relative max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center mb-4">
@@ -550,6 +553,10 @@
         <input type="hidden" id="productoId">
         
         <div>
+          <label class="block text-gray-700 font-bold mb-1 ml-1">Código del Juguete (Opcional, se genera auto):</label>
+          <input type="text" id="productoCodigo" placeholder="Ej: PLU-019" class="w-full bg-yellow-50 border-2 border-yellow-300 focus:border-yellow-500 focus:bg-white rounded-2xl px-4 py-2.5 font-bold text-base outline-none uppercase text-purple-950">
+        </div>
+        <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1">Nombre del Juguete</label>
           <input type="text" id="productoNombre" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 focus:bg-white rounded-2xl px-4 py-3 font-semibold text-lg outline-none">
         </div>
@@ -588,7 +595,7 @@
       </form>
     </div>
   </div>
-    <script type="module">
+  <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
@@ -613,6 +620,8 @@
     let isAdmin = false;
     let categoriaActual = 'todos';
     let presupuestoActual = 'todos';
+    const MI_TELEFONO_WHATSAPP = "59163529287";
+
     // Configuración persistente del formulario de registro
     let configRegistro = {
       scriptUrl: "",
@@ -622,6 +631,7 @@
     const juguetesPorDefecto = [
       {
         id: 'def_1',
+        codigo: 'PLU-001',
         nombre: 'Auto Deportivo RC Recargable',
         categoria: 'ninos',
         precio: '145',
@@ -633,6 +643,7 @@
       },
       {
         id: 'def_2',
+        codigo: 'PLU-002',
         nombre: 'Set Bloques Castillo Rosa Mágico',
         categoria: 'ninas',
         precio: '180',
@@ -644,6 +655,7 @@
       },
       {
         id: 'def_3',
+        codigo: 'PLU-003',
         nombre: 'Oso Gigante Teddy Ultra Suave',
         categoria: 'peluches',
         precio: '130',
@@ -655,6 +667,7 @@
       },
       {
         id: 'def_4',
+        codigo: 'PLU-004',
         nombre: 'Sonajero Mordedor Sensorial Bebé',
         categoria: 'bebes',
         precio: '45',
@@ -666,6 +679,7 @@
       },
       {
         id: 'def_5',
+        codigo: 'PLU-005',
         nombre: 'Torre Didáctica Arcoíris Montessori',
         categoria: 'didacticos',
         precio: '75',
@@ -677,6 +691,7 @@
       },
       {
         id: 'def_6',
+        codigo: 'PLU-006',
         nombre: 'Robot Guardián Articulado con Luces',
         categoria: 'ninos',
         precio: '95',
@@ -688,6 +703,7 @@
       },
       {
         id: 'def_7',
+        codigo: 'PLU-007',
         nombre: 'Muñeca Princesa Bailarina Brillante',
         categoria: 'ninas',
         precio: '120',
@@ -699,6 +715,7 @@
       },
       {
         id: 'def_8',
+        codigo: 'PLU-008',
         nombre: 'Gatito de Peluche Cariñoso',
         categoria: 'peluches',
         precio: '65',
@@ -710,6 +727,7 @@
       },
       {
         id: 'def_9',
+        codigo: 'PLU-009',
         nombre: 'Gimnasio Alfombra Sensorial Bebé',
         categoria: 'bebes',
         precio: '190',
@@ -721,6 +739,7 @@
       },
       {
         id: 'def_10',
+        codigo: 'PLU-010',
         nombre: 'Cubo Didáctico Multiactividad 5 en 1',
         categoria: 'didacticos',
         precio: '150',
@@ -732,6 +751,7 @@
       },
       {
         id: 'def_11',
+        codigo: 'PLU-011',
         nombre: 'Pista de Autos Doble Loop Extremo',
         categoria: 'ninos',
         precio: '165',
@@ -743,6 +763,7 @@
       },
       {
         id: 'def_12',
+        codigo: 'PLU-012',
         nombre: 'Set de Té y Pastelería Mágica',
         categoria: 'ninas',
         precio: '85',
@@ -754,6 +775,7 @@
       },
       {
         id: 'def_13',
+        codigo: 'PLU-013',
         nombre: 'Unicornio Arcoíris Suave 40cm',
         categoria: 'peluches',
         precio: '90',
@@ -765,6 +787,7 @@
       },
       {
         id: 'def_14',
+        codigo: 'PLU-014',
         nombre: 'Móvil Musical de Cuna con Proyector',
         categoria: 'bebes',
         precio: '175',
@@ -776,6 +799,7 @@
       },
       {
         id: 'def_15',
+        codigo: 'PLU-015',
         nombre: 'Rompecabezas de Madera Encajable',
         categoria: 'didacticos',
         precio: '40',
@@ -787,6 +811,7 @@
       },
       {
         id: 'def_16',
+        codigo: 'PLU-016',
         nombre: 'Dinosaurio T-Rex Sonidos y Movimiento',
         categoria: 'ninos',
         precio: '110',
@@ -798,6 +823,7 @@
       },
       {
         id: 'def_17',
+        codigo: 'PLU-017',
         nombre: 'Tocador de Belleza Infantil con Luces',
         categoria: 'ninas',
         precio: '210',
@@ -809,6 +835,7 @@
       },
       {
         id: 'def_18',
+        codigo: 'PLU-018',
         nombre: 'Conejita de Felpa Orejas Largas',
         categoria: 'peluches',
         precio: '55',
@@ -819,6 +846,15 @@
         ]
       }
     ];
+
+    function asegurarCodigosEnProductos() {
+      productos.forEach((p, index) => {
+        if(!p.codigo) {
+          p.codigo = `PLU-${String(index + 1).padStart(3, '0')}`;
+        }
+      });
+    }
+
     async function inicializarTienda() {
       const localData = localStorage.getItem('playup_local_prods');
       if (localData) {
@@ -827,6 +863,7 @@
       } else {
         productos = juguetesPorDefecto;
       }
+      asegurarCodigosEnProductos();
       localStorage.setItem('playup_local_prods', JSON.stringify(productos));
       window.renderProductos();
       document.getElementById('loadingIndicator').classList.add('hidden');
@@ -851,6 +888,7 @@
           snapshot.forEach(docSnap => nube.push({ id: docSnap.id, ...docSnap.data() }));
           if(nube.length > 0) {
             productos = nube;
+            asegurarCodigosEnProductos();
             localStorage.setItem('playup_local_prods', JSON.stringify(productos));
             window.renderProductos();
           }
@@ -1053,7 +1091,6 @@
         Acepta: acepta
       };
       try {
-        // 1. Envío a Google Sheets mediante Apps Script si está configurado
         const urlDestino = configRegistro.scriptUrl;
         if(urlDestino && urlDestino.startsWith("http")) {
           await fetch(urlDestino, {
@@ -1064,7 +1101,6 @@
           });
         }
         
-        // 2. Guardado de respaldo en Firebase Firestore
         if(db) {
           try {
             await addDoc(collection(db, 'registros_usuarios'), {
@@ -1074,10 +1110,9 @@
           } catch(errFs) {}
         }
 
-        // 3. Crear mensaje de WhatsApp idéntico al estilo solicitado
         const consultaTexto = comentario || "Modelos";
         const mensajeWa = `✨ Hola, PlayUp Store 💗
-¡Acabo de registrarme en su página! 🤖 
+¡Acabo de registrarme en su página! 🌷
 
 👤 Nombre: ${nombre}
 📱 Teléfono: ${telefono}
@@ -1086,16 +1121,11 @@
 
 Me encantaría conocer más sobre sus accesorios, precios y disponibilidad ✨
 
-Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
+Quedo atenta a su respuesta. ¡Muchas gracias! 💕🛍️`;
 
-        // 4. Redirigir directamente al chat de tu número de WhatsApp
-        const miNumero = "59163529287";
-        const urlFinalWa = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensajeWa)}`;
-        
-        document.getElementById('formRegistroCliente').reset();
+        const urlFinalWa = `https://wa.me/${MI_TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeWa)}`;
+    document.getElementById('formRegistroCliente').reset();
         window.cerrarModalRegistro();
-
-        // Abre WhatsApp con el mensaje ya estructurado
         window.open(urlFinalWa, '_blank');
       } catch(err) {
         console.error(err);
@@ -1105,6 +1135,19 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
         btn.innerHTML = `<span>Completar Registro</span> 🚀`;
       }
     };
+
+    function generarMensajeWhatsAppJuguete(p) {
+      const cod = p.codigo || 'PLU-000';
+      return `🤖 ¡Hola, PlayUp Store! ✨
+Me encantó este juguete de su catálogo:
+
+🎁 Producto: ${p.nombre}
+🏷️ Código: ${cod}
+💰 Precio: Bs. ${p.precio}
+
+¿Aún lo tienen disponible? ¡Quedo atento/a para coordinar mi compra! 🛍️🚀`;
+    }
+
     window.renderProductos = function() {
       const contenedor = document.getElementById('contenedorProductos');
       contenedor.innerHTML = '';
@@ -1127,7 +1170,7 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
           </div>`;
         return;
       }
-      filtrados.forEach((p) => {
+      filtrados.forEach((p, idx) => {
         const card = document.createElement('div');
         let bg = "bg-white/95 border-yellow-300";
         if (p.categoria === 'bebes') bg = "bg-teal-50/95 border-teal-300"; 
@@ -1136,10 +1179,15 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
         else if (p.categoria === 'didacticos') bg = "bg-amber-50/95 border-amber-300"; 
         else if (p.categoria === 'peluches') bg = "bg-purple-50/95 border-purple-300"; 
         card.className = `${bg} backdrop-blur-xl border-4 rounded-[40px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-300 flex flex-col`;
-        const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-        const linkWa = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, me interesa el juguete: ${p.nombre} a Bs.${p.precio}`)}`;
+        
+        const codJuguete = p.codigo || `PLU-${String(idx + 1).padStart(3, '0')}`;
+        p.codigo = codJuguete;
+
+        const textoWa = generarMensajeWhatsAppJuguete(p);
+        const linkWa = `https://wa.me/${MI_TELEFONO_WHATSAPP}?text=${encodeURIComponent(textoWa)}`;
         const idVal = p.id || p.nombre;
         const foto = (p.imagenes && p.imagenes[0]) ? p.imagenes[0] : 'https://placehold.co/600x400/eee/999?text=PlayUp';
+        
         let adminHTML = '';
         if (isAdmin) {
           adminHTML = `
@@ -1158,8 +1206,15 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
             <span class="absolute top-4 left-4 bg-purple-700 text-white text-xs font-black px-3 py-1.5 rounded-full uppercase border border-white">
               ${p.categoria}
             </span>
+            <span class="absolute top-4 right-4 bg-yellow-400 text-purple-950 text-xs font-black px-3 py-1.5 rounded-full uppercase border-2 border-white shadow">
+              Cód: ${codJuguete}
+            </span>
           </div>
           <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-black text-purple-800 bg-purple-100 px-2.5 py-1 rounded-lg">🏷️ ${codJuguete}</span>
+              <span class="text-xs font-bold text-gray-500 uppercase">${p.categoria}</span>
+            </div>
             <h3 class="text-2xl font-black text-purple-950 leading-snug cursor-pointer hover:text-pink-600 transition" onclick="window.abrirModalVista('${String(idVal).replace(/'/g, "\\'")}')">
               ${p.nombre}
             </h3>
@@ -1230,10 +1285,15 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
       document.getElementById('detallePrecio').innerText = `Bs. ${p.precio}`;
       
       const badge = document.getElementById('detalleCategoriaBadge');
-      badge.className = "px-6 py-1.5 rounded-full text-sm font-black uppercase tracking-wider text-white shadow bg-purple-600";
+      badge.className = "px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-white shadow bg-purple-600";
       badge.innerText = p.categoria;
-      const waBase = document.getElementById('btnLinkWhatsapp').href.split('?')[0];
-      document.getElementById('detalleBtnWhatsApp').href = `${waBase}?text=${encodeURIComponent(`Hola PlayUp, quiero pedir: ${p.nombre} por Bs.${p.precio}`)}`;
+
+      const codBadge = document.getElementById('detalleCodigoBadge');
+      codBadge.innerText = `Cód: ${p.codigo || 'PLU-000'}`;
+
+      const textoWa = generarMensajeWhatsAppJuguete(p);
+      document.getElementById('detalleBtnWhatsApp').href = `https://wa.me/${MI_TELEFONO_WHATSAPP}?text=${encodeURIComponent(textoWa)}`;
+      
       const fotos = p.imagenes || [];
       document.getElementById('imgThumb0').src = fotos[0] || 'https://placehold.co/600x400/eee/999?text=1';
       document.getElementById('imgThumb1').src = fotos[1] || fotos[0] || 'https://placehold.co/600x400/eee/999?text=2';
@@ -1268,6 +1328,7 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
         const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
         if(p) {
           document.getElementById('productoId').value = p.id || p.nombre;
+          document.getElementById('productoCodigo').value = p.codigo || '';
           document.getElementById('productoNombre').value = p.nombre;
           document.getElementById('productoCategoria').value = p.categoria;
           document.getElementById('productoPrecio').value = p.precio;
@@ -1275,6 +1336,8 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
         }
       } else {
         document.getElementById('modalAdminTitulo').innerText = '✨ Nuevo Juguete';
+        const proximoNumero = productos.length + 1;
+        document.getElementById('productoCodigo').value = `PLU-${String(proximoNumero).padStart(3, '0')}`;
       }
       modalAdminForm.classList.remove('hidden');
       modalAdminForm.classList.add('flex');
@@ -1293,6 +1356,10 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
       try {
         const idActual = document.getElementById('productoId').value;
         const nombre = document.getElementById('productoNombre').value;
+        let codigo = document.getElementById('productoCodigo').value.trim().toUpperCase();
+        if(!codigo) {
+          codigo = `PLU-${String(productos.length + 1).padStart(3, '0')}`;
+        }
         const categoria = document.getElementById('productoCategoria').value;
         const precio = document.getElementById('productoPrecio').value;
         const descripcion = document.getElementById('productoDescripcion').value;
@@ -1308,6 +1375,7 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
         if(base64_1) imgs[0] = base64_1;
         if(base64_2) imgs[1] = base64_2;
         if (existente && existente.id) {
+          existente.codigo = codigo;
           existente.nombre = nombre;
           existente.categoria = categoria;
           existente.precio = precio;
@@ -1315,14 +1383,14 @@ Quedo atento a su respuesta. ¡Muchas gracias! 🤖 🛍️`;
           existente.imagenes = imgs;
           if(db && !String(existente.id).startsWith('def_') && !String(existente.id).startsWith('loc_')) {
             try {
-              await updateDoc(doc(db, 'juguetes_playup', existente.id), { nombre, categoria, precio, descripcion, imagenes: imgs });
+              await updateDoc(doc(db, 'juguetes_playup', existente.id), { codigo, nombre, categoria, precio, descripcion, imagenes: imgs });
             } catch(e) {}
           }
         } else {
-          const nuevo = { id: 'loc_' + Date.now(), nombre, categoria, precio, descripcion, imagenes: imgs };
+          const nuevo = { id: 'loc_' + Date.now(), codigo, nombre, categoria, precio, descripcion, imagenes: imgs };
           if(db) {
             try {
-              const docRef = await addDoc(collection(db, 'juguetes_playup'), { nombre, categoria, precio, descripcion, imagenes: imgs });
+              const docRef = await addDoc(collection(db, 'juguetes_playup'), { codigo, nombre, categoria, precio, descripcion, imagenes: imgs });
               nuevo.id = docRef.id;
             } catch(e) {}
           }
