@@ -10,16 +10,18 @@
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
     body { font-family: 'Fredoka', sans-serif; }
     
+    /* FONDO CELESTE Y ROSADO (NIÑOS Y NIÑAS) */
     .bg-magical {
-      background: linear-gradient(-45deg, #0019ff, #d600ff, #ff007b, #ff7b00);
+      background: linear-gradient(-45deg, #70e1f5, #ff9a9e, #00c6ff, #fecfef, #ff758c);
       background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      animation: gradientBG 14s ease infinite;
     }
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
     .stars {
       background-image: 
         radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
@@ -31,10 +33,11 @@
       background-size: 200px 200px;
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0.4;
+      opacity: 0.45;
       pointer-events: none;
       z-index: 0;
     }
+
     /* BURBUJAS FLOTANTES DE FONDO */
     .bubble-container {
       position: fixed;
@@ -49,10 +52,10 @@
     .bubble {
       position: absolute;
       bottom: -120px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.4));
-      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.25) 60%, rgba(255, 255, 255, 0.5));
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
       border-radius: 50%;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.4);
       animation: floatUp linear infinite;
     }
     @keyframes floatUp {
@@ -61,13 +64,13 @@
         opacity: 0;
       }
       15% {
-        opacity: 0.7;
+        opacity: 0.75;
       }
       50% {
         transform: translateY(-50vh) translateX(30px) scale(1.05);
       }
       85% {
-        opacity: 0.7;
+        opacity: 0.75;
       }
       100% {
         transform: translateY(-115vh) translateX(-25px) scale(1);
@@ -84,13 +87,14 @@
     .bubble:nth-child(8) { left: 88%; width: 65px; height: 65px; animation-duration: 11s; animation-delay: 0.5s; }
     .bubble:nth-child(9) { left: 93%; width: 30px; height: 30px; animation-duration: 7s; animation-delay: 3.5s; }
     .bubble:nth-child(10) { left: 32%; width: 50px; height: 50px; animation-duration: 10.5s; animation-delay: 6s; }
+
     /* Iconos decorativos flotantes de fondo */
     .bg-decor {
       position: fixed;
       pointer-events: none;
       user-select: none;
       z-index: 1;
-      opacity: 0.22;
+      opacity: 0.28;
       animation: flotarSuave 8s ease-in-out infinite alternate;
     }
     @keyframes flotarSuave {
@@ -98,7 +102,7 @@
       100% { transform: translateY(-25px) rotate(8deg); }
     }
     .bubbly-text {
-      text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 4px 4px 8px rgba(0,0,0,0.3);
     }
     .cat-banner-activa {
       border-color: #facc15 !important;
@@ -108,9 +112,7 @@
   </style>
 </head>
 <body class="min-h-screen bg-magical text-gray-900 overflow-x-hidden relative">
-  <!-- Estrellas y decoraciones infantiles de fondo -->
   <div class="stars fixed"></div>
-  <!-- Burbujas Flotantes Dinámicas -->
   <div class="bubble-container">
     <div class="bubble"></div>
     <div class="bubble"></div>
@@ -123,19 +125,21 @@
     <div class="bubble"></div>
     <div class="bubble"></div>
   </div>
+
   <div class="bg-decor text-6xl top-10 left-8" style="animation-duration: 9s;">✈️</div>
   <div class="bg-decor text-7xl top-44 right-12" style="animation-duration: 11s;">🧸</div>
   <div class="bg-decor text-6xl top-96 left-1/4" style="animation-duration: 7s;">🚀</div>
   <div class="bg-decor text-7xl bottom-32 left-10" style="animation-duration: 10s;">🚂</div>
   <div class="bg-decor text-6xl bottom-60 right-1/4" style="animation-duration: 8s;">⭐</div>
   <div class="bg-decor text-7xl bottom-12 right-12" style="animation-duration: 12s;">🎈</div>
+
   <!-- Portada y Encabezado -->
   <section class="max-w-7xl mx-auto pt-6 pb-6 px-4 sm:px-6 relative z-10 text-white">
-    <div class="bg-white/15 backdrop-blur-md rounded-[35px] p-6 border-2 border-white/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="bg-white/25 backdrop-blur-md rounded-[35px] p-6 border-2 border-white/50 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
       
       <!-- LADO IZQUIERDO: Cuadro de logo -->
       <div class="w-full md:w-auto flex justify-center md:justify-start">
-        <div class="w-64 sm:w-72 bg-white/20 p-2.5 rounded-3xl border-2 border-white/60 shadow-[0_0_35px_rgba(255,255,255,0.7)] backdrop-blur-sm">
+        <div class="w-64 sm:w-72 bg-white/30 p-2.5 rounded-3xl border-2 border-white/70 shadow-[0_0_35px_rgba(255,255,255,0.8)] backdrop-blur-sm">
           <img
             id="logoPrincipal"
             src="https://placehold.co/600x320/ff007b/ffffff?text=PlayUp"
@@ -144,35 +148,45 @@
           />
         </div>
       </div>
+
       <!-- LADO DERECHO: Eslogan y botones -->
       <div class="w-full md:flex-1 flex flex-col items-center md:items-end text-center md:text-right">
-        <p id="txtEslogan" class="text-3xl sm:text-4xl lg:text-5xl font-black drop-shadow-2xl bg-white/35 px-6 py-2 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text mb-4">
-          <span class="text-red-500">¡</span><span class="text-blue-600">S</span><span class="text-yellow-400">u</span><span class="text-green-500">b</span><span class="text-purple-600">e</span>
+        <p id="txtEslogan" class="text-3xl sm:text-4xl lg:text-5xl font-black drop-shadow-2xl bg-white/45 px-6 py-2 rounded-full inline-block backdrop-blur-md border-4 border-white border-dashed bubbly-text mb-4">
+          <span class="text-rose-500">¡</span><span class="text-sky-500">S</span><span class="text-amber-400">u</span><span class="text-emerald-500">b</span><span class="text-purple-600">e</span>
           <span class="text-orange-500">l</span><span class="text-pink-500">a</span>
-          <span class="text-cyan-400">d</span><span class="text-red-500">i</span><span class="text-yellow-400">v</span><span class="text-green-500">e</span><span class="text-blue-600">r</span><span class="text-purple-600">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-400">n</span><span class="text-red-500">!</span>
+          <span class="text-cyan-500">d</span><span class="text-rose-500">i</span><span class="text-yellow-400">v</span><span class="text-emerald-500">e</span><span class="text-sky-600">r</span><span class="text-purple-600">s</span><span class="text-pink-500">i</span><span class="text-orange-500">ó</span><span class="text-cyan-500">n</span><span class="text-rose-500">!</span>
         </p>
-        <!-- Bloque de enlaces y botón de registro -->
+
+        <!-- Bloque de enlaces y botones de registro -->
         <div class="flex flex-wrap justify-center md:justify-end gap-3 w-full">
-          <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2 border-2 border-white">
+          <a id="btnLinkWhatsapp" href="https://wa.me/qr/RQIEHSOPT7CCD1" target="_blank" class="bg-gradient-to-r from-emerald-500 to-green-600 text-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2 border-2 border-white">
             <i class="fab fa-whatsapp text-xl"></i> WhatsApp
           </a>
-          <a id="btnLinkTiktok" href="https://www.tiktok.com/@playupjuguetera" target="_blank" class="bg-black text-white border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
+          <a id="btnLinkTiktok" href="https://www.tiktok.com/@playupjuguetera" target="_blank" class="bg-gray-900 text-white border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
             <i class="fab fa-tiktok text-xl"></i> TikTok
           </a>
-          <a id="btnLinkUbicacion" href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2 border-2 border-white">
+          <a id="btnLinkUbicacion" href="https://goo.gl/maps/z12sFherJAvHtLz49" target="_blank" class="bg-gradient-to-r from-rose-500 to-pink-600 text-white border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
             <i class="fas fa-map-marker-alt text-xl"></i> Ubicación
           </a>
+
           <!-- Botón de Registro de Clientes -->
-          <button onclick="abrirModalRegistro()" class="bg-gradient-to-r from-amber-400 to-orange-500 text-purple-950 border-2 border-white px-5 py-2.5 rounded-2xl text-base font-black shadow-lg hover:scale-105 transition flex items-center gap-2">
+          <button onclick="abrirModalRegistro()" class="bg-gradient-to-r from-amber-400 to-rose-400 text-purple-950 border-2 border-white px-5 py-2.5 rounded-2xl text-base font-black shadow-lg hover:scale-105 transition flex items-center gap-2">
             <i class="fas fa-user-edit text-xl text-purple-900"></i> ¡Regístrate Aquí!
           </button>
-          <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-900 border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
+
+          <!-- Hoja / Lista de Registrados -->
+          <button onclick="abrirModalListaRegistrados()" class="bg-gradient-to-r from-sky-400 to-indigo-500 text-white border-2 border-white px-4 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
+            <i class="fas fa-clipboard-list text-xl text-yellow-300"></i> Ver Registrados 📋
+          </button>
+
+          <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-950 border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
             <i class="fas fa-magic"></i> Admin
           </button>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Panel Admin -->
   <section id="adminPanel" class="max-w-7xl mx-auto px-6 pb-6 hidden transition-all duration-500 relative z-10">
     <div class="bg-white/95 backdrop-blur-lg text-purple-900 rounded-[35px] p-6 shadow-2xl border-4 border-yellow-400 flex flex-wrap justify-between items-center gap-4">
@@ -180,7 +194,7 @@
         <h2 class="text-3xl font-black flex items-center gap-2">
           <i class="fas fa-crown text-yellow-500"></i> Panel de Administración
         </h2>
-        <p class="text-sm font-bold text-purple-700">Gestiona catálogo, fotos y configuración del formulario.</p>
+        <p class="text-sm font-bold text-purple-700">Gestiona catálogo, fotos, formulario y lista de usuarios registrados.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
         <input type="file" id="inputPortada" class="hidden" accept="image/*" onchange="subirNuevaPortada(event)">
@@ -193,12 +207,16 @@
         <button onclick="abrirModalAdminRegistro()" class="bg-amber-500 hover:bg-amber-600 text-purple-950 px-5 py-3 rounded-2xl text-base font-black shadow flex items-center gap-2">
           <i class="fas fa-cog"></i> ⚙️ Configurar Formulario
         </button>
+        <button onclick="abrirModalListaRegistrados()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-2xl text-base font-bold shadow flex items-center gap-2">
+          <i class="fas fa-users-cog"></i> 👥 Gestionar Registrados
+        </button>
         <button onclick="abrirModalAdmin()" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:scale-105 transition flex items-center gap-2">
           <i class="fas fa-plus-circle"></i> + Añadir Juguete
         </button>
       </div>
     </div>
   </section>
+
   <!-- SECCIÓN CATEGORÍAS -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 relative z-10">
     <div class="text-center mb-6">
@@ -286,32 +304,34 @@
       </div>
     </div>
   </section>
+
   <!-- Filtro de presupuesto -->
   <section id="seccionFiltroPresupuesto" class="max-w-7xl mx-auto px-6 py-4 relative z-10">
-    <div class="bg-white/20 backdrop-blur-xl rounded-3xl p-4 border-2 border-white/50 flex flex-wrap justify-center items-center gap-3 shadow-lg">
-      <span class="text-white font-black text-lg mr-2 flex items-center gap-2">
-        <i class="fas fa-wallet text-yellow-300 text-xl"></i> Presupuesto:
+    <div class="bg-white/30 backdrop-blur-xl rounded-3xl p-4 border-2 border-white/60 flex flex-wrap justify-center items-center gap-3 shadow-lg">
+      <span class="text-purple-950 font-black text-lg mr-2 flex items-center gap-2">
+        <i class="fas fa-wallet text-amber-500 text-xl"></i> Presupuesto:
       </span>
       <button onclick="filtrarPresupuesto('todos')" id="btn-precio-todos" class="px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white">Cualquiera</button>
-      <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 30 a 50</button>
-      <button onclick="filtrarPresupuesto('rango2')" id="btn-precio-rango2" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 60 a 100</button>
-      <button onclick="filtrarPresupuesto('rango3')" id="btn-precio-rango3" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 110 a 160</button>
-      <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white">Bs. 170 a más</button>
+      <button onclick="filtrarPresupuesto('rango1')" id="btn-precio-rango1" class="px-5 py-2 rounded-full text-base font-bold bg-white/40 text-purple-950 hover:bg-white/70 border-2 border-white">Bs. 30 a 50</button>
+      <button onclick="filtrarPresupuesto('rango2')" id="btn-precio-rango2" class="px-5 py-2 rounded-full text-base font-bold bg-white/40 text-purple-950 hover:bg-white/70 border-2 border-white">Bs. 60 a 100</button>
+      <button onclick="filtrarPresupuesto('rango3')" id="btn-precio-rango3" class="px-5 py-2 rounded-full text-base font-bold bg-white/40 text-purple-950 hover:bg-white/70 border-2 border-white">Bs. 110 a 160</button>
+      <button onclick="filtrarPresupuesto('rango4')" id="btn-precio-rango4" class="px-5 py-2 rounded-full text-base font-bold bg-white/40 text-purple-950 hover:bg-white/70 border-2 border-white">Bs. 170 a más</button>
     </div>
   </section>
+
   <!-- Vitrina de juguetes -->
   <section id="vitrinaJuguetes" class="max-w-7xl mx-auto px-6 pb-20 relative z-10 scroll-mt-6">
     <div id="loadingIndicator" class="text-center py-10">
-      <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
-      <p class="text-white text-xl mt-4 font-bold">Cargando catálogo PlayUp...</p>
+      <i class="fas fa-circle-notch fa-spin text-5xl text-purple-800"></i>
+      <p class="text-purple-950 text-xl mt-4 font-bold">Cargando catálogo PlayUp...</p>
     </div>
     <div id="contenedorProductos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4"></div>
   </section>
-  <!-- MODAL REGISTRO DE USUARIO (10 PREGUNTAS DE LA GUÍA) -->
+
+  <!-- MODAL REGISTRO DE USUARIO -->
   <div id="modalRegistro" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl border-4 border-yellow-400 relative max-h-[90vh] overflow-y-auto">
       
-      <!-- Cabecera del formulario -->
       <div class="flex justify-between items-center mb-4 sticky top-0 bg-white/95 backdrop-blur-sm pb-2 z-10 border-b border-purple-100">
         <div>
           <h3 id="txtTituloRegistro" class="text-2xl md:text-3xl font-black text-purple-900 flex items-center gap-2">
@@ -325,29 +345,28 @@
           <i class="fas fa-times-circle"></i>
         </button>
       </div>
+
       <form id="formRegistroCliente" onsubmit="enviarRegistroCliente(event)" class="space-y-4">
-        
-        <!-- 1. Nombre completo -->
         <div>
-          <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">1. Nombre completo *</label>
+          <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">Nombre completo *</label>
           <input type="text" id="regNombre" required placeholder="Tu nombre y apellido" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-base outline-none">
         </div>
-        <!-- 2. Correo electrónico -->
+
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">2. Correo electrónico *</label>
           <input type="email" id="regCorreo" required placeholder="nombre@correo.com" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-base outline-none">
         </div>
-        <!-- 3. Número de teléfono -->
+
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">3. Número de teléfono / Celular *</label>
           <input type="tel" id="regTelefono" required placeholder="Ej: 75565671 o 63529287" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-base outline-none">
         </div>
-        <!-- 4. Dirección -->
+
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">4. Dirección (ciudad, zona, calle, número)</label>
           <input type="text" id="regDireccion" placeholder="Ej: Puesto 244, Mercado Nuevo Los Pozos" class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-base outline-none">
         </div>
-        <!-- 5. Ciudad donde vive -->
+
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">5. Ciudad donde vive *</label>
           <select id="regCiudad" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-base outline-none">
@@ -365,12 +384,12 @@
             <option value="Otra">Otra</option>
           </select>
         </div>
-        <!-- 6. Fecha de nacimiento -->
+
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">6. Fecha de nacimiento *</label>
           <input type="date" id="regFechaNac" required class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-base outline-none text-gray-700">
         </div>
-        <!-- 7. Servicio o producto de interés -->
+
         <div class="bg-purple-50/70 p-4 rounded-2xl border-2 border-purple-200">
           <label class="block text-purple-900 font-black mb-2 text-sm">7. ¿Qué tipo de juguetes te interesan? *</label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-semibold text-gray-700 mb-3">
@@ -396,7 +415,7 @@
           <label class="block text-gray-700 font-bold mb-1 text-xs">Edad del niño o niña (campo sugerido):</label>
           <input type="text" id="regEdadPeques" placeholder="Ej: 4 años" class="w-full bg-white border border-purple-200 rounded-xl px-3 py-2 text-sm outline-none">
         </div>
-        <!-- 8. Cómo prefiere que lo contactemos -->
+
         <div>
           <label class="block text-gray-700 font-bold mb-2 ml-1 text-sm">8. ¿Cómo prefieres que te contactemos? *</label>
           <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-700">
@@ -411,24 +430,92 @@
             </label>
           </div>
         </div>
-        <!-- 9. Comentario o consulta -->
+
         <div>
           <label class="block text-gray-700 font-bold mb-1 ml-1 text-sm">9. Comentario o consulta (opcional)</label>
           <textarea id="regComentario" rows="2" placeholder="Escribe aquí el juguete que buscas o tu consulta..." class="w-full bg-purple-50 border-2 border-purple-200 focus:border-purple-500 rounded-2xl px-4 py-2.5 font-semibold text-sm outline-none resize-none"></textarea>
         </div>
-        <!-- 10. Acepta términos y política de privacidad -->
+
         <div class="pt-2">
           <label class="flex items-start gap-2 cursor-pointer text-xs font-semibold text-gray-700">
             <input type="checkbox" id="regAcepta" required class="accent-purple-600 w-4 h-4 mt-0.5">
             <span>Acepto los términos y condiciones y la política de privacidad *</span>
           </label>
         </div>
+
         <button type="submit" id="btnEnviarRegistro" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-purple-950 text-xl font-black py-3.5 rounded-3xl hover:opacity-95 transition shadow-xl mt-3 border-2 border-white flex items-center justify-center gap-2">
           <span>Completar Registro</span> 🚀
         </button>
       </form>
     </div>
   </div>
+
+  <!-- MODAL: REGISTRO CONFIRMADO EN PANTALLA -->
+  <div id="modalConfirmacionExito" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-8 max-w-md w-full border-4 border-emerald-400 shadow-2xl text-center relative animate-bounce-short">
+      <div class="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-emerald-300 shadow-inner">
+        <span class="text-5xl">🎉</span>
+      </div>
+      <h3 class="text-3xl font-black text-purple-950 mb-2">¡Registro Confirmado!</h3>
+      <p id="txtMensajeExitoNombre" class="text-purple-700 font-bold text-lg mb-2">¡Gracias por unirte a PlayUp Store!</p>
+      <div class="bg-purple-50 p-4 rounded-2xl border-2 border-purple-200 text-sm font-semibold text-gray-700 mb-6 text-left space-y-1.5">
+        <p>✅ <span class="text-purple-950 font-bold">Datos guardados:</span> Registrado en la lista oficial.</p>
+        <p>💌 <span class="text-purple-950 font-bold">Confirmación:</span> Enviada a tu correo.</p>
+        <p>🚀 <span class="text-purple-950 font-bold">Paso siguiente:</span> Conectando con nuestro WhatsApp oficial...</p>
+      </div>
+      <button onclick="redirigirAhoraWhatsApp()" class="w-full py-3.5 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-black text-lg rounded-2xl shadow-lg hover:scale-105 transition flex items-center justify-center gap-2 border-2 border-white">
+        <i class="fab fa-whatsapp text-2xl"></i> Ir a WhatsApp Ahora
+      </button>
+      <p class="text-xs text-gray-400 mt-3 font-semibold">Te redirigiremos automáticamente en 3 segundos...</p>
+    </div>
+  </div>
+
+  <!-- MODAL: HOJITA / LISTA DE PERSONAS REGISTRADAS -->
+  <div id="modalListaRegistrados" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-3xl shadow-2xl border-4 border-sky-400 relative max-h-[85vh] flex flex-col">
+      <div class="flex justify-between items-center mb-4 pb-2 border-b border-sky-100">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-black text-purple-950 flex items-center gap-2">
+            📋 Lista Oficial de Registrados
+          </h3>
+          <p class="text-sm font-semibold text-gray-600">Comprueba tu registro confirmado en la comunidad PlayUp Store ✨</p>
+        </div>
+        <button type="button" onclick="cerrarModalListaRegistrados()" class="text-gray-400 hover:text-red-500 text-3xl">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+
+      <!-- Buscador rápido -->
+      <div class="mb-4">
+        <input type="text" id="inputBuscarRegistrado" oninput="filtrarListaRegistradosVisual()" placeholder="🔍 Busca tu nombre aquí..." class="w-full px-4 py-2.5 rounded-2xl border-2 border-sky-200 font-bold text-gray-800 outline-none focus:border-sky-500 bg-sky-50/50">
+      </div>
+
+      <!-- Tabla de personas registradas -->
+      <div class="overflow-y-auto flex-grow rounded-2xl border-2 border-sky-100">
+        <table class="w-full text-left text-sm text-gray-700">
+          <thead class="bg-sky-500 text-white font-black sticky top-0 text-xs uppercase tracking-wider">
+            <tr>
+              <th class="p-3">#</th>
+              <th class="p-3">Nombre</th>
+              <th class="p-3">Ciudad</th>
+              <th class="p-3">Interés</th>
+              <th class="p-3 text-center">Estado</th>
+              <th id="thAccionAdmin" class="p-3 text-center hidden">Acción Admin</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyRegistrados" class="divide-y divide-sky-100 font-semibold bg-white">
+            <!-- Rellenado dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="pt-4 flex justify-between items-center text-xs font-bold text-gray-500">
+        <span id="txtTotalRegistrados">Total registrados: 0</span>
+        <button onclick="cerrarModalListaRegistrados()" class="px-5 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-xl font-bold">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL ADMIN: CONFIGURACIÓN DEL FORMULARIO -->
   <div id="modalAdminRegistro" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl border-4 border-amber-400 relative">
@@ -462,6 +549,7 @@
       </form>
     </div>
   </div>
+
   <!-- Modal Detalle Juguete -->
   <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
@@ -501,6 +589,7 @@
       </div>
     </div>
   </div>
+
   <!-- Modal Admin: Fotos Categorías -->
   <div id="modalFotosCategorias" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-xl shadow-2xl border-4 border-teal-500 relative max-h-[85vh] overflow-y-auto">
@@ -539,6 +628,7 @@
       </div>
     </div>
   </div>
+
   <!-- Modal Admin: Crear / Editar Juguete -->
   <div id="modalAdminForm" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-purple-500 relative" id="modalAdminContent">
@@ -595,10 +685,12 @@
       </form>
     </div>
   </div>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, updateDoc, deleteDoc, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
     const firebaseConfig = {
       apiKey: "AIzaSyAcNULVUiPKmTtWulmqrQjzYEKyaS-s5iY",
       authDomain: "playup-539e9.firebaseapp.com",
@@ -608,6 +700,7 @@
       appId: "1:446767107451:web:41d0cbe466f9264d4b01de",
       measurementId: "G-VCFXMXKJY6"
     };
+
     let app, auth, db;
     try {
       app = initializeApp(firebaseConfig);
@@ -616,235 +709,41 @@
     } catch(e) {
       console.warn("Firebase Init fallback:", e);
     }
+
     let productos = [];
+    let registradosList = [];
     let isAdmin = false;
     let categoriaActual = 'todos';
     let presupuestoActual = 'todos';
     const MI_TELEFONO_WHATSAPP = "59163529287";
+    let urlWhatsAppPendiente = "";
+    let temporizadorRedireccion = null;
 
-    // Configuración persistente del formulario de registro
     let configRegistro = {
       scriptUrl: "",
       titulo: "📋 Formulario de Registro de Usuario",
       subtitulo: "Por favor ingresa tus datos de contacto para registrarte en el sistema."
     };
+
     const juguetesPorDefecto = [
-      {
-        id: 'def_1',
-        codigo: 'PLU-001',
-        nombre: 'Auto Deportivo RC Recargable',
-        categoria: 'ninos',
-        precio: '145',
-        descripcion: 'Auto de carreras a control remoto con batería USB, suspensión suave y faros LED.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_2',
-        codigo: 'PLU-002',
-        nombre: 'Set Bloques Castillo Rosa Mágico',
-        categoria: 'ninas',
-        precio: '180',
-        descripcion: 'Hermoso set armable con figuras de princesas, torres de ensueño y carruaje para peques.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_3',
-        codigo: 'PLU-003',
-        nombre: 'Oso Gigante Teddy Ultra Suave',
-        categoria: 'peluches',
-        precio: '130',
-        descripcion: 'Peluche gigante de felpa hipoalergénica con lazo de satén. Súper esponjoso y abrazable.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1556012018-50c5c0da73bf?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_4',
-        codigo: 'PLU-004',
-        nombre: 'Sonajero Mordedor Sensorial Bebé',
-        categoria: 'bebes',
-        precio: '45',
-        descripcion: 'Sonajero de silicona suave libre de BPA, fácil agarre y texturas que alivian encías.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_5',
-        codigo: 'PLU-005',
-        nombre: 'Torre Didáctica Arcoíris Montessori',
-        categoria: 'didacticos',
-        precio: '75',
-        descripcion: 'Juguete de encaje y apilado con pinturas no tóxicas. Desarrolla motricidad fina y colores.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_6',
-        codigo: 'PLU-006',
-        nombre: 'Robot Guardián Articulado con Luces',
-        categoria: 'ninos',
-        precio: '95',
-        descripcion: 'Robot interactivo caminante con luces en el pecho, efectos de sonido y rotación 360°.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_7',
-        codigo: 'PLU-007',
-        nombre: 'Muñeca Princesa Bailarina Brillante',
-        categoria: 'ninas',
-        precio: '120',
-        descripcion: 'Muñeca articulada con vestido de tul, tiara desmontable y canciones mágicas.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_8',
-        codigo: 'PLU-008',
-        nombre: 'Gatito de Peluche Cariñoso',
-        categoria: 'peluches',
-        precio: '65',
-        descripcion: 'Tierno gatito de peluche con ojitos bordados y textura aterciopelada de alta calidad.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_9',
-        codigo: 'PLU-009',
-        nombre: 'Gimnasio Alfombra Sensorial Bebé',
-        categoria: 'bebes',
-        precio: '190',
-        descripcion: 'Manta acolchada con arco de colgantes, sonajeros y pianito musical interactivo para pataditas.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_10',
-        codigo: 'PLU-010',
-        nombre: 'Cubo Didáctico Multiactividad 5 en 1',
-        categoria: 'didacticos',
-        precio: '150',
-        descripcion: 'Laberinto de cuentas, ábaco, reloj infantil y engranajes giratorios en madera fina pulida.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_11',
-        codigo: 'PLU-011',
-        nombre: 'Pista de Autos Doble Loop Extremo',
-        categoria: 'ninos',
-        precio: '165',
-        descripcion: 'Pista de aceleración rápida con giros dobles de 360 grados y dos vehículos metálicos incluidos.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_12',
-        codigo: 'PLU-012',
-        nombre: 'Set de Té y Pastelería Mágica',
-        categoria: 'ninas',
-        precio: '85',
-        descripcion: 'Juego de té con tazas color pastel, tetera musical y postrecitos para compartir con amigas.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_13',
-        codigo: 'PLU-013',
-        nombre: 'Unicornio Arcoíris Suave 40cm',
-        categoria: 'peluches',
-        precio: '90',
-        descripcion: 'Precioso unicornio de peluche con crin de colores pasteles y cuerno dorado brillante.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_14',
-        codigo: 'PLU-014',
-        nombre: 'Móvil Musical de Cuna con Proyector',
-        categoria: 'bebes',
-        precio: '175',
-        descripcion: 'Móvil giratorio con animalitos de felpa, melodías relajantes para dormir y luces estrelladas.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_15',
-        codigo: 'PLU-015',
-        nombre: 'Rompecabezas de Madera Encajable',
-        categoria: 'didacticos',
-        precio: '40',
-        descripcion: 'Piezas grandes seguras con números y figuras de animales de la selva para niños pequeños.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_16',
-        codigo: 'PLU-016',
-        nombre: 'Dinosaurio T-Rex Sonidos y Movimiento',
-        categoria: 'ninos',
-        precio: '110',
-        descripcion: 'Dinosaurio a pilas que camina, ruge y enciende sus ojos de color rojo intenso.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_17',
-        codigo: 'PLU-017',
-        nombre: 'Tocador de Belleza Infantil con Luces',
-        categoria: 'ninas',
-        precio: '210',
-        descripcion: 'Tocador con espejo mágico irrompible, secadora de juguete con sonido, peines y accesorios.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'
-        ]
-      },
-      {
-        id: 'def_18',
-        codigo: 'PLU-018',
-        nombre: 'Conejita de Felpa Orejas Largas',
-        categoria: 'peluches',
-        precio: '55',
-        descripcion: 'Tierna conejita con vestido bordado en algodón suave. Liviana e ideal para los brazos de tu peque.',
-        imagenes: [
-          'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80',
-          'https://images.unsplash.com/photo-1556012018-50c5c0da73bf?w=800&auto=format&fit=crop&q=80'
-        ]
-      }
+      { id: 'def_1', codigo: 'PLU-001', nombre: 'Auto Deportivo RC Recargable', categoria: 'ninos', precio: '145', descripcion: 'Auto de carreras a control remoto con batería USB, suspensión suave y faros LED.', imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_2', codigo: 'PLU-002', nombre: 'Set Bloques Castillo Rosa Mágico', categoria: 'ninas', precio: '180', descripcion: 'Hermoso set armable con figuras de princesas, torres de ensueño y carruaje para peques.', imagenes: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_3', codigo: 'PLU-003', nombre: 'Oso Gigante Teddy Ultra Suave', categoria: 'peluches', precio: '130', descripcion: 'Peluche gigante de felpa hipoalergénica con lazo de satén. Súper esponjoso y abrazable.', imagenes: ['https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1556012018-50c5c0da73bf?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_4', codigo: 'PLU-004', nombre: 'Sonajero Mordedor Sensorial Bebé', categoria: 'bebes', precio: '45', descripcion: 'Sonajero de silicona suave libre de BPA, fácil agarre y texturas que alivian encías.', imagenes: ['https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_5', codigo: 'PLU-005', nombre: 'Torre Didáctica Arcoíris Montessori', categoria: 'didacticos', precio: '75', descripcion: 'Juguete de encaje y apilado con pinturas no tóxicas. Desarrolla motricidad fina y colores.', imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_6', codigo: 'PLU-006', nombre: 'Robot Guardián Articulado con Luces', categoria: 'ninos', precio: '95', descripcion: 'Robot interactivo caminante con luces en el pecho, efectos de sonido y rotación 360°.', imagenes: ['https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_7', codigo: 'PLU-007', nombre: 'Muñeca Princesa Bailarina Brillante', categoria: 'ninas', precio: '120', descripcion: 'Muñeca articulada con vestido de tul, tiara desmontable y canciones mágicas.', imagenes: ['https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_8', codigo: 'PLU-008', nombre: 'Gatito de Peluche Cariñoso', categoria: 'peluches', precio: '65', descripcion: 'Tierno gatito de peluche con ojitos bordados y textura aterciopelada de alta calidad.', imagenes: ['https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_9', codigo: 'PLU-009', nombre: 'Gimnasio Alfombra Sensorial Bebé', categoria: 'bebes', precio: '190', descripcion: 'Manta acolchada con arco de colgantes, sonajeros y pianito musical interactivo para pataditas.', imagenes: ['https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_10', codigo: 'PLU-010', nombre: 'Cubo Didáctico Multiactividad 5 en 1', categoria: 'didacticos', precio: '150', descripcion: 'Laberinto de cuentas, ábaco, reloj infantil y engranajes giratorios en madera fina pulida.', imagenes: ['https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_11', codigo: 'PLU-011', nombre: 'Pista de Autos Doble Loop Extremo', categoria: 'ninos', precio: '165', descripcion: 'Pista de aceleración rápida con giros dobles de 360 grados y dos vehículos metálicos incluidos.', imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_12', codigo: 'PLU-012', nombre: 'Set de Té y Pastelería Mágica', categoria: 'ninas', precio: '85', descripcion: 'Juego de té con tazas color pastel, tetera musical y postrecitos para compartir con amigas.', imagenes: ['https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_13', codigo: 'PLU-013', nombre: 'Unicornio Arcoíris Suave 40cm', categoria: 'peluches', precio: '90', descripcion: 'Precioso unicornio de peluche con crin de colores pasteles y cuerno dorado brillante.', imagenes: ['https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_14', codigo: 'PLU-014', nombre: 'Móvil Musical de Cuna con Proyector', categoria: 'bebes', precio: '175', descripcion: 'Móvil giratorio con animalitos de felpa, melodías relajantes para dormir y luces estrelladas.', imagenes: ['https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_15', codigo: 'PLU-015', nombre: 'Rompecabezas de Madera Encajable', categoria: 'didacticos', precio: '40', descripcion: 'Piezas grandes seguras con números y figuras de animales de la selva para niños pequeños.', imagenes: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_16', codigo: 'PLU-016', nombre: 'Dinosaurio T-Rex Sonidos y Movimiento', categoria: 'ninos', precio: '110', descripcion: 'Dinosaurio a pilas que camina, ruge y enciende sus ojos de color rojo intenso.', imagenes: ['https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_17', codigo: 'PLU-017', nombre: 'Tocador de Belleza Infantil con Luces', categoria: 'ninas', precio: '210', descripcion: 'Tocador con espejo mágico irrompible, secadora de juguete con sonido, peines y accesorios.', imagenes: ['https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80'] },
+      { id: 'def_18', codigo: 'PLU-018', nombre: 'Conejita de Felpa Orejas Largas', categoria: 'peluches', precio: '55', descripcion: 'Tierna conejita con vestido bordado en algodón suave. Liviana e ideal para los brazos de tu peque.', imagenes: ['https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=800&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1556012018-50c5c0da73bf?w=800&auto=format&fit=crop&q=80'] }
     ];
 
     function asegurarCodigosEnProductos() {
@@ -867,6 +766,13 @@
       localStorage.setItem('playup_local_prods', JSON.stringify(productos));
       window.renderProductos();
       document.getElementById('loadingIndicator').classList.add('hidden');
+
+      const localReg = localStorage.getItem('playup_local_registrados');
+      if(localReg) {
+        registradosList = JSON.parse(localReg);
+        renderizarTablaRegistrados();
+      }
+
       const localConfig = localStorage.getItem('playup_textos_config');
       if(localConfig) {
         const d = JSON.parse(localConfig);
@@ -877,10 +783,12 @@
           actualizarTextosFormularioVisual();
         }
       }
+
       if(!auth || !db) return;
       try {
         await signInAnonymously(auth);
       } catch(e) {}
+
       try {
         const productosRef = collection(db, 'juguetes_playup');
         onSnapshot(productosRef, (snapshot) => {
@@ -893,6 +801,19 @@
             window.renderProductos();
           }
         });
+
+        // Escuchar registrados en tiempo real
+        const regRef = collection(db, 'registros_usuarios');
+        onSnapshot(regRef, (snapshot) => {
+          let lista = [];
+          snapshot.forEach(docSnap => lista.push({ id: docSnap.id, ...docSnap.data() }));
+          if(lista.length > 0) {
+            registradosList = lista.reverse(); // Más recientes arriba
+            localStorage.setItem('playup_local_registrados', JSON.stringify(registradosList));
+            renderizarTablaRegistrados();
+          }
+        });
+
         const configRef = doc(db, 'configuracion_playup', 'general');
         onSnapshot(configRef, (docSnap) => {
           if (docSnap.exists()) {
@@ -908,18 +829,21 @@
         });
       } catch (err) {}
     }
+
     function aplicarFotosCategorias(fotos) {
       Object.keys(fotos).forEach(cat => {
         const el = document.getElementById(`img-cat-${cat}`);
         if(el && fotos[cat]) el.src = fotos[cat];
       });
     }
+
     function actualizarTextosFormularioVisual() {
       const t = document.getElementById('txtTituloRegistro');
       const st = document.getElementById('txtSubtituloRegistro');
       if(t && configRegistro.titulo) t.innerText = configRegistro.titulo;
       if(st && configRegistro.subtitulo) st.innerText = configRegistro.subtitulo;
     }
+
     function procesarImagenLiviana(file) {
       return new Promise((resolve) => {
         if (!file) return resolve(null);
@@ -945,6 +869,7 @@
         reader.readAsDataURL(file);
       });
     }
+
     window.subirNuevaPortada = async function(event) {
       const file = event.target.files[0];
       if (!file) return;
@@ -968,17 +893,20 @@
         event.target.value = "";
       }
     };
+
     window.abrirModalFotosCategorias = function() {
       const m = document.getElementById('modalFotosCategorias');
       m.classList.remove('hidden');
       m.classList.add('flex');
       setTimeout(() => m.classList.remove('opacity-0'), 10);
     };
+
     window.cerrarModalFotosCategorias = function() {
       const m = document.getElementById('modalFotosCategorias');
       m.classList.add('opacity-0');
       setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
     };
+
     window.subirFotoCategoria = async function(categoria, event) {
       const file = event.target.files[0];
       if(!file) return;
@@ -1001,7 +929,8 @@
         alert("No se pudo guardar la imagen.");
       }
     };
-    /* FUNCIONALIDADES DE REGISTRO GOOGLE SHEETS */
+
+    /* FUNCIONALIDADES DE REGISTRO */
     window.abrirModalRegistro = function() {
       actualizarTextosFormularioVisual();
       const m = document.getElementById('modalRegistro');
@@ -1009,11 +938,101 @@
       m.classList.add('flex');
       setTimeout(() => m.classList.remove('opacity-0'), 10);
     };
+
     window.cerrarModalRegistro = function() {
       const m = document.getElementById('modalRegistro');
       m.classList.add('opacity-0');
       setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
     };
+
+    /* MODAL LISTA DE REGISTRADOS (HOJITA) */
+    window.abrirModalListaRegistrados = function() {
+      renderizarTablaRegistrados();
+      const m = document.getElementById('modalListaRegistrados');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+      setTimeout(() => m.classList.remove('opacity-0'), 10);
+    };
+
+    window.cerrarModalListaRegistrados = function() {
+      const m = document.getElementById('modalListaRegistrados');
+      m.classList.add('opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
+    };
+
+    function renderizarTablaRegistrados(filtro = "") {
+      const tbody = document.getElementById('tbodyRegistrados');
+      const totalTxt = document.getElementById('txtTotalRegistrados');
+      const thAdmin = document.getElementById('thAccionAdmin');
+      
+      if(isAdmin) thAdmin.classList.remove('hidden');
+      else thAdmin.classList.add('hidden');
+
+      tbody.innerHTML = "";
+
+      const listaFiltrada = registradosList.filter(r => {
+        const nom = (r.Nombre || "").toLowerCase();
+        return nom.includes(filtro.toLowerCase());
+      });
+
+      totalTxt.innerText = `Total registrados: ${listaFiltrada.length}`;
+
+      if(listaFiltrada.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="${isAdmin ? 6 : 5}" class="text-center py-8 text-gray-500 font-bold">No hay personas registradas aún.</td></tr>`;
+        return;
+      }
+
+      listaFiltrada.forEach((reg, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-sky-50 transition";
+        
+        let botonEliminar = "";
+        if(isAdmin) {
+          botonEliminar = `
+            <td class="p-3 text-center">
+              <button onclick="window.eliminarRegistroUsuario('${reg.id}')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-xl font-bold text-xs shadow flex items-center gap-1 mx-auto">
+                <i class="fas fa-trash-alt"></i> Borrar
+              </button>
+            </td>
+          `;
+        }
+
+        tr.innerHTML = `
+          <td class="p-3 font-bold text-sky-700">${idx + 1}</td>
+          <td class="p-3 font-bold text-purple-950">${reg.Nombre || 'Anónimo'}</td>
+          <td class="p-3 text-gray-600">${reg.Ciudad || 'Santa Cruz'}</td>
+          <td class="p-3 text-purple-800 text-xs">${reg.Interes || 'Juguetes'}</td>
+          <td class="p-3 text-center">
+            <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-black border border-emerald-300">
+              ✓ Confirmado
+            </span>
+          </td>
+          ${botonEliminar}
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    window.filtrarListaRegistradosVisual = function() {
+      const val = document.getElementById('inputBuscarRegistrado').value;
+      renderizarTablaRegistrados(val);
+    };
+
+    window.eliminarRegistroUsuario = async function(idRegistro) {
+      if(!confirm("¿Estás seguro de eliminar este registro del sistema?")) return;
+      try {
+        if(db && idRegistro) {
+          await deleteDoc(doc(db, 'registros_usuarios', idRegistro));
+        }
+        registradosList = registradosList.filter(r => r.id !== idRegistro);
+        localStorage.setItem('playup_local_registrados', JSON.stringify(registradosList));
+        renderizarTablaRegistrados();
+        alert("Registro eliminado con éxito.");
+      } catch(err) {
+        alert("No se pudo eliminar el registro.");
+      }
+    };
+
     /* CONFIGURACIÓN DEL FORMULARIO DESDE PANEL ADMIN */
     window.abrirModalAdminRegistro = function() {
       document.getElementById('adminUrlScript').value = configRegistro.scriptUrl || '';
@@ -1024,11 +1043,13 @@
       m.classList.add('flex');
       setTimeout(() => m.classList.remove('opacity-0'), 10);
     };
+
     window.cerrarModalAdminRegistro = function() {
       const m = document.getElementById('modalAdminRegistro');
       m.classList.add('opacity-0');
       setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
     };
+
     window.guardarConfigFormulario = async function(e) {
       e.preventDefault();
       const btn = document.getElementById('btnGuardarConfigReg');
@@ -1053,6 +1074,18 @@
       btn.innerText = "Guardar Cambios";
       window.cerrarModalAdminRegistro();
     };
+
+    /* PANTALLA CONFIRMACIÓN Y ENVÍO */
+    window.redirigirAhoraWhatsApp = function() {
+      if(temporizadorRedireccion) clearTimeout(temporizadorRedireccion);
+      const m = document.getElementById('modalConfirmacionExito');
+      m.classList.add('opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 200);
+      if(urlWhatsAppPendiente) {
+        window.open(urlWhatsAppPendiente, '_blank');
+      }
+    };
+
     window.enviarRegistroCliente = async function(e) {
       e.preventDefault();
       const checksInteres = Array.from(document.querySelectorAll('input[name="interes"]:checked')).map(c => c.value);
@@ -1062,11 +1095,8 @@
       }
       const nombre = document.getElementById('regNombre').value.trim();
       const correo = document.getElementById('regCorreo').value.trim();
-      
-      // Limpieza de teléfono: extrae sólo dígitos y previene el #ERROR! en Google Sheets
       const telefonoRaw = document.getElementById('regTelefono').value.trim();
       const telefonoLimpio = telefonoRaw.replace(/[^\d]/g, '');
-      
       const direccion = document.getElementById('regDireccion').value.trim();
       const ciudad = document.getElementById('regCiudad').value;
       const fechaNac = document.getElementById('regFechaNac').value;
@@ -1081,9 +1111,8 @@
       }
       const btn = document.getElementById('btnEnviarRegistro');
       btn.disabled = true;
-      btn.innerText = "Guardando y conectando...";
+      btn.innerText = "Registrando...";
 
-      // Se antepone el apóstrofe para forzar formato texto en Google Sheets y evitar cualquier error de fórmula
       const datos = {
         Nombre: nombre,
         Correo: correo,
@@ -1096,27 +1125,43 @@
         Comentario: comentario || "Modelos",
         Acepta: acepta
       };
+
       try {
+        // Enviar a Google Sheets
         const urlDestino = configRegistro.scriptUrl;
         if(urlDestino && urlDestino.startsWith("http")) {
-          await fetch(urlDestino, {
+          fetch(urlDestino, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(datos)
-          });
+          }).catch(err => console.warn(err));
         }
-        
+
+        // Guardar en Firebase
+        let nuevoId = "reg_" + Date.now();
         if(db) {
           try {
-            await addDoc(collection(db, 'registros_usuarios'), {
+            const docRef = await addDoc(collection(db, 'registros_usuarios'), {
               ...datos,
               Telefono: telefonoLimpio,
               fecha_registro: new Date().toISOString()
             });
+            nuevoId = docRef.id;
           } catch(errFs) {}
         }
 
+        // Agregar localmente a la lista para visualización inmediata
+        registradosList.unshift({
+          id: nuevoId,
+          Nombre: nombre,
+          Ciudad: ciudad,
+          Interes: interesFinal
+        });
+        localStorage.setItem('playup_local_registrados', JSON.stringify(registradosList));
+        renderizarTablaRegistrados();
+
+        // Armar mensaje WhatsApp
         const consultaTexto = comentario || "Modelos";
         const mensajeWa = `✨ Hola, PlayUp Store 🤖
 ¡Acabo de registrarme en su página! 🚀
@@ -1127,14 +1172,25 @@
 📨 Consulta: ${consultaTexto}
 
 Me encantaría conocer más sobre sus accesorios, precios y disponibilidad ✨
-
 Quedo atento a su respuesta. ¡Muchas gracias! ✨🛍️`;
 
-        const urlFinalWa = `https://wa.me/${MI_TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeWa)}`;
-        
+        urlWhatsAppPendiente = `https://wa.me/${MI_TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeWa)}`;
+
+        // Cerrar formulario y mostrar ventana de confirmación en pantalla
         document.getElementById('formRegistroCliente').reset();
         window.cerrarModalRegistro();
-        window.open(urlFinalWa, '_blank');
+
+        const modalExito = document.getElementById('modalConfirmacionExito');
+        document.getElementById('txtMensajeExitoNombre').innerText = `¡${nombre}, tu registro fue confirmado con éxito! 🎉`;
+        modalExito.classList.remove('hidden');
+        modalExito.classList.add('flex');
+        setTimeout(() => modalExito.classList.remove('opacity-0'), 10);
+
+        // Auto redirección a WhatsApp tras 2.8 segundos
+        temporizadorRedireccion = setTimeout(() => {
+          window.redirigirAhoraWhatsApp();
+        }, 2800);
+
       } catch(err) {
         console.error(err);
         alert("Hubo un inconveniente al enviar. Revisa el enlace o tu conexión.");
@@ -1239,7 +1295,7 @@ Me encantó este juguete de su catálogo:
         contenedor.appendChild(card);
       });
     };
-    /* FILTRAR Y DESPLAZARSE AUTOMÁTICAMENTE A LOS PRODUCTOS */
+
     window.filtrarCategoria = function(cat) {
       categoriaActual = cat;
       const cats = ['todos', 'ninos', 'ninas', 'bebes', 'didacticos', 'peluches'];
@@ -1256,17 +1312,19 @@ Me encantó este juguete de su catálogo:
         seccionDestino.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
+
     window.filtrarPresupuesto = function(r) {
       presupuestoActual = r;
       ['todos', 'rango1', 'rango2', 'rango3', 'rango4'].forEach(rg => {
         const btn = document.getElementById(`btn-precio-${rg}`);
         if(btn) {
           if(rg === r) btn.className = "px-5 py-2 rounded-full text-base font-bold bg-green-500 text-white border-2 border-white scale-105";
-          else btn.className = "px-5 py-2 rounded-full text-base font-bold bg-white/30 text-white hover:bg-white/60 border-2 border-white";
+          else btn.className = "px-5 py-2 rounded-full text-base font-bold bg-white/40 text-purple-950 hover:bg-white/70 border-2 border-white";
         }
       });
       window.renderProductos();
     };
+
     window.loginAdmin = function() {
       if(isAdmin) return alert("Modo administrador activo.");
       const pass = prompt('Contraseña de administrador:');
@@ -1275,11 +1333,13 @@ Me encantó este juguete de su catálogo:
         document.getElementById('adminPanel').classList.remove('hidden');
         document.getElementById('btnAdminLogin').classList.add('hidden');
         window.renderProductos();
+        renderizarTablaRegistrados();
         alert('¡Bienvenido al modo Administrador!');
       } else if(pass !== null) {
         alert('Contraseña incorrecta.');
       }
     };
+
     let productoActualModal = null;
     let anguloActualIndex = 0;
     const modalVista = document.getElementById('modalVista');
@@ -1310,10 +1370,12 @@ Me encantó este juguete de su catálogo:
       modalVista.classList.add('flex');
       setTimeout(() => { modalVista.classList.remove('opacity-0'); document.getElementById('modalVistaContent').classList.remove('scale-95'); }, 10);
     };
+
     window.cambiarAngulo = function(idx) {
       anguloActualIndex = idx;
       window.actualizarAnguloVisual();
     };
+
     window.actualizarAnguloVisual = function() {
       if(!productoActualModal) return;
       const fotos = productoActualModal.imagenes || [];
@@ -1321,11 +1383,13 @@ Me encantó este juguete de su catálogo:
       document.getElementById('thumb0').style.opacity = anguloActualIndex === 0 ? "1" : "0.5";
       document.getElementById('thumb1').style.opacity = anguloActualIndex === 1 ? "1" : "0.5";
     };
+
     window.cerrarModalVista = function() {
       modalVista.classList.add('opacity-0');
       document.getElementById('modalVistaContent').classList.add('scale-95');
       setTimeout(() => { modalVista.classList.add('hidden'); modalVista.classList.remove('flex'); }, 300);
     };
+
     const modalAdminForm = document.getElementById('modalAdminForm');
     const formProducto = document.getElementById('formProducto');
     window.abrirModalAdmin = function(idOrName = null) {
@@ -1351,11 +1415,13 @@ Me encantó este juguete de su catálogo:
       modalAdminForm.classList.add('flex');
       setTimeout(() => { modalAdminForm.classList.remove('opacity-0'); document.getElementById('modalAdminContent').classList.remove('scale-95'); }, 10);
     };
+
     window.cerrarModalAdmin = function() {
       modalAdminForm.classList.add('opacity-0');
       document.getElementById('modalAdminContent').classList.add('scale-95');
       setTimeout(() => { modalAdminForm.classList.add('hidden'); modalAdminForm.classList.remove('flex'); }, 300);
     };
+
     window.guardarProducto = async function(e) {
       e.preventDefault();
       const btn = document.getElementById('btnGuardarProd');
@@ -1415,6 +1481,7 @@ Me encantó este juguete de su catálogo:
         btn.innerText = "Guardar Juguete";
       }
     };
+
     window.eliminarProducto = async function(idOrName) {
       if(!confirm("¿Deseas eliminar este producto?")) return;
       try {
@@ -1427,6 +1494,7 @@ Me encantó este juguete de su catálogo:
       localStorage.setItem('playup_local_prods', JSON.stringify(productos));
       window.renderProductos();
     };
+
     inicializarTienda();
   </script>
 </body>
