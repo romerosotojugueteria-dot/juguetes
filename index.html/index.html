@@ -179,6 +179,11 @@
             <i class="fas fa-clipboard-list text-xl text-yellow-300"></i> Ver Registrados 📋
           </button>
 
+          <!-- BOTÓN AYUDA (EXIGIDO POR EL DOCENTE) -->
+          <button onclick="abrirModalAyuda()" class="bg-gradient-to-r from-teal-400 to-cyan-600 text-white border-2 border-white px-4 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
+            <i class="fas fa-book-reader text-xl text-yellow-300"></i> Ayuda 📘
+          </button>
+
           <button onclick="loginAdmin()" id="btnAdminLogin" class="bg-yellow-400 text-purple-950 border-2 border-white px-5 py-2.5 rounded-2xl text-base font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
             <i class="fas fa-magic"></i> Admin
           </button>
@@ -516,6 +521,62 @@
     </div>
   </div>
 
+  <!-- MODAL: AYUDA / MANUAL DE USO (EXIGIDO POR EL DOCENTE) -->
+  <div id="modalAyuda" onclick="cerrarModalAyudaExterno(event)" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl border-4 border-teal-400 relative max-h-[88vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-4 sticky top-0 bg-white pb-2 z-10 border-b border-teal-100">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-black text-teal-950 flex items-center gap-2">
+            📘 Centro de Ayuda y Guía de Uso
+          </h3>
+          <p class="text-sm font-semibold text-gray-600 mt-0.5">
+            PlayUp Store · Proyecto Académico ECO 480 (UAGRM)
+          </p>
+        </div>
+        <button type="button" onclick="cerrarModalAyuda()" class="text-gray-400 hover:text-red-500 text-3xl">
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-gray-700 text-sm leading-relaxed">
+        <div class="bg-teal-50 p-4 rounded-2xl border border-teal-200">
+          <h4 class="font-black text-teal-950 text-base mb-1">🎯 Propósito del Sitio</h4>
+          <p>PlayUp Store es una plataforma interactiva de exhibición y preventa de juguetes importados y didácticos en Santa Cruz de la Sierra, conectada en tiempo real con Google Sheets y atención inmediata por WhatsApp.</p>
+        </div>
+
+        <div class="bg-sky-50 p-4 rounded-2xl border border-sky-200">
+          <h4 class="font-black text-sky-950 text-base mb-1">🛒 ¿Cómo explorar y pedir juguetes?</h4>
+          <p>1. Toca cualquier <strong>categoría</strong> (Niños, Niñas, Bebés, Didácticos, Peluches) o ajusta tu <strong>presupuesto</strong>.<br>
+          2. Haz clic sobre la foto del juguete para ver su detalle, fotos y código oficial (`PLU-xxx`).<br>
+          3. Pulsa en <strong>"Pedir al WhatsApp"</strong> para enviar tu consulta directa al puesto de atención.</p>
+        </div>
+
+        <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200">
+          <h4 class="font-black text-amber-950 text-base mb-1">📋 Pasos para registrarte</h4>
+          <p>1. Haz clic en el botón superior <strong>"¡Regístrate Aquí!"</strong>.<br>
+          2. Llena las 10 preguntas del formulario oficial y acepta las políticas.<br>
+          3. Recibirás tu <strong>confirmación en pantalla</strong>, un <strong>correo automático de bienvenida</strong> en tu bandeja de entrada y serás redirigido a WhatsApp.</p>
+        </div>
+
+        <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+          <h4 class="font-black text-purple-950 text-base mb-1">🔒 Seguridad y Privacidad de Datos</h4>
+          <p>Los datos ingresados se guardan en una hoja de Google Sheets en modo <strong>«Restringido»</strong>, a la cual únicamente tiene acceso el equipo y el docente evaluador en rol de Lector. Tus datos nunca son compartidos con terceros.</p>
+        </div>
+
+        <div class="bg-gray-100 p-4 rounded-2xl border border-gray-200 text-center">
+          <h4 class="font-black text-gray-900 text-base mb-1">💬 Soporte Técnico del Equipo</h4>
+          <p class="text-xs text-gray-600">Para consultas sobre pedidos o navegación, comunícate con la mesa de atención de PlayUp Store mediante WhatsApp oficial o visita el Puesto 244 en Mercado Nuevo Los Pozos, Santa Cruz de la Sierra.</p>
+        </div>
+      </div>
+
+      <div class="pt-4 text-center">
+        <button onclick="cerrarModalAyuda()" class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-black rounded-2xl shadow hover:scale-102 transition border-2 border-white">
+          ¡Entendido, volver a la tienda!
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL ADMIN: CONFIGURACIÓN DEL FORMULARIO -->
   <div id="modalAdminRegistro" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
     <div class="bg-white rounded-[40px] p-6 md:p-8 w-full max-w-lg shadow-2xl border-4 border-amber-400 relative">
@@ -550,40 +611,40 @@
     </div>
   </div>
 
-  <!-- Modal Detalle Juguete -->
-  <div id="modalVista" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-6 md:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300" id="modalVistaContent">
-      <button type="button" onclick="cerrarModalVista()" class="absolute top-5 right-5 text-gray-500 hover:text-red-500 text-3xl bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-gray-200">
+  <!-- Modal Detalle Juguete (CORREGIDO: Cierra al hacer clic afuera y botón X siempre visible) -->
+  <div id="modalVista" onclick="cerrarModalVistaExterno(event)" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white/95 backdrop-blur-xl rounded-[40px] p-5 sm:p-8 w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 relative border-4 border-yellow-300 max-h-[88vh] overflow-y-auto" id="modalVistaContent">
+      <button type="button" onclick="cerrarModalVista()" class="sticky top-0 float-right text-gray-600 hover:text-red-500 text-2xl bg-white rounded-full w-11 h-11 flex items-center justify-center shadow-lg border-2 border-gray-200 z-50">
         <i class="fas fa-times"></i>
       </button>
       
-      <div class="text-center mb-4 mt-2">
+      <div class="text-center mb-4 mt-1 clear-both">
         <div class="flex items-center justify-center gap-2">
           <span id="detalleCategoriaBadge" class="px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-white shadow-md"></span>
           <span id="detalleCodigoBadge" class="px-4 py-1.5 rounded-full text-xs font-black text-purple-900 bg-yellow-300 border border-yellow-500 shadow"></span>
         </div>
-        <h3 id="detalleNombre" class="text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
+        <h3 id="detalleNombre" class="text-2xl sm:text-3xl md:text-4xl font-black text-purple-900 mt-3 leading-tight"></h3>
       </div>
-      <div class="relative h-72 md:h-80 bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
+      <div class="relative h-60 sm:h-72 md:h-80 bg-gray-100 rounded-[30px] overflow-hidden shadow-inner mb-4 flex items-center justify-center border-4 border-gray-200">
         <img id="imagenPrincipal" src="" alt="Vista del Juguete" class="w-full h-full object-contain bg-white">
       </div>
       <div class="flex justify-center gap-4 mb-4">
-        <button type="button" onclick="cambiarAngulo(0)" id="thumb0" class="w-20 h-20 rounded-2xl overflow-hidden border-4 border-pink-500 shadow-md bg-white">
+        <button type="button" onclick="cambiarAngulo(0)" id="thumb0" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-4 border-pink-500 shadow-md bg-white">
           <img id="imgThumb0" src="" class="w-full h-full object-cover">
         </button>
-        <button type="button" onclick="cambiarAngulo(1)" id="thumb1" class="w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent opacity-60 hover:opacity-100 shadow-md bg-white">
+        <button type="button" onclick="cambiarAngulo(1)" id="thumb1" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-4 border-transparent opacity-60 hover:opacity-100 shadow-md bg-white">
           <img id="imgThumb1" src="" class="w-full h-full object-cover">
         </button>
       </div>
-      <p id="detalleDescripcion" class="text-gray-700 text-lg text-center mb-6 px-4 font-medium leading-relaxed"></p>
-      <div class="flex flex-wrap justify-between items-center gap-4 border-t-2 border-gray-200 pt-4">
+      <p id="detalleDescripcion" class="text-gray-700 text-base sm:text-lg text-center mb-6 px-3 font-medium leading-relaxed"></p>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-t-2 border-gray-200 pt-4">
         <div id="detallePrecio" class="text-3xl md:text-4xl font-black text-pink-600"></div>
-        <div class="flex gap-3">
-          <button type="button" onclick="cerrarModalVista()" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-2xl text-lg font-bold hover:bg-gray-300">
+        <div class="flex gap-2 w-full sm:w-auto">
+          <button type="button" onclick="cerrarModalVista()" class="flex-1 sm:flex-initial bg-gray-200 text-gray-700 px-5 py-2.5 rounded-2xl text-base font-bold hover:bg-gray-300 transition">
             Volver
           </button>
-          <a id="detalleBtnWhatsApp" href="#" target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-7 py-3 rounded-2xl text-lg font-bold hover:scale-105 transition shadow-lg flex items-center gap-2 border-2 border-white">
-            <i class="fab fa-whatsapp text-2xl"></i> ¡Pedir por WhatsApp!
+          <a id="detalleBtnWhatsApp" href="#" target="_blank" class="flex-1 sm:flex-initial bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2.5 rounded-2xl text-base font-bold hover:scale-105 transition shadow-lg flex items-center justify-center gap-2 border-2 border-white">
+            <i class="fab fa-whatsapp text-xl"></i> ¡Pedir por WhatsApp!
           </a>
         </div>
       </div>
@@ -802,13 +863,12 @@
           }
         });
 
-        // Escuchar registrados en tiempo real
         const regRef = collection(db, 'registros_usuarios');
         onSnapshot(regRef, (snapshot) => {
           let lista = [];
           snapshot.forEach(docSnap => lista.push({ id: docSnap.id, ...docSnap.data() }));
           if(lista.length > 0) {
-            registradosList = lista.reverse(); // Más recientes arriba
+            registradosList = lista.reverse();
             localStorage.setItem('playup_local_registrados', JSON.stringify(registradosList));
             renderizarTablaRegistrados();
           }
@@ -958,6 +1018,26 @@
       const m = document.getElementById('modalListaRegistrados');
       m.classList.add('opacity-0');
       setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
+    };
+
+    /* MODAL AYUDA (EXIGIDO POR EL DOCENTE) */
+    window.abrirModalAyuda = function() {
+      const m = document.getElementById('modalAyuda');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+      setTimeout(() => m.classList.remove('opacity-0'), 10);
+    };
+
+    window.cerrarModalAyuda = function() {
+      const m = document.getElementById('modalAyuda');
+      m.classList.add('opacity-0');
+      setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300);
+    };
+
+    window.cerrarModalAyudaExterno = function(e) {
+      if (e.target.id === 'modalAyuda') {
+        window.cerrarModalAyuda();
+      }
     };
 
     function renderizarTablaRegistrados(filtro = "") {
@@ -1127,7 +1207,6 @@
       };
 
       try {
-        // Enviar a Google Sheets
         const urlDestino = configRegistro.scriptUrl;
         if(urlDestino && urlDestino.startsWith("http")) {
           fetch(urlDestino, {
@@ -1138,7 +1217,6 @@
           }).catch(err => console.warn(err));
         }
 
-        // Guardar en Firebase
         let nuevoId = "reg_" + Date.now();
         if(db) {
           try {
@@ -1151,7 +1229,6 @@
           } catch(errFs) {}
         }
 
-        // Agregar localmente a la lista para visualización inmediata
         registradosList.unshift({
           id: nuevoId,
           Nombre: nombre,
@@ -1161,7 +1238,6 @@
         localStorage.setItem('playup_local_registrados', JSON.stringify(registradosList));
         renderizarTablaRegistrados();
 
-        // Armar mensaje WhatsApp
         const consultaTexto = comentario || "Modelos";
         const mensajeWa = `✨ Hola, PlayUp Store 🤖
 ¡Acabo de registrarme en su página! 🚀
@@ -1176,7 +1252,6 @@ Quedo atento a su respuesta. ¡Muchas gracias! ✨🛍️`;
 
         urlWhatsAppPendiente = `https://wa.me/${MI_TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeWa)}`;
 
-        // Cerrar formulario y mostrar ventana de confirmación en pantalla
         document.getElementById('formRegistroCliente').reset();
         window.cerrarModalRegistro();
 
@@ -1186,7 +1261,6 @@ Quedo atento a su respuesta. ¡Muchas gracias! ✨🛍️`;
         modalExito.classList.add('flex');
         setTimeout(() => modalExito.classList.remove('opacity-0'), 10);
 
-        // Auto redirección a WhatsApp tras 2.8 segundos
         temporizadorRedireccion = setTimeout(() => {
           window.redirigirAhoraWhatsApp();
         }, 2800);
@@ -1343,6 +1417,7 @@ Me encantó este juguete de su catálogo:
     let productoActualModal = null;
     let anguloActualIndex = 0;
     const modalVista = document.getElementById('modalVista');
+
     window.abrirModalVista = function(idOrName) {
       const p = productos.find(x => String(x.id) === String(idOrName) || String(x.nombre) === String(idOrName));
       if(!p) return;
@@ -1388,6 +1463,13 @@ Me encantó este juguete de su catálogo:
       modalVista.classList.add('opacity-0');
       document.getElementById('modalVistaContent').classList.add('scale-95');
       setTimeout(() => { modalVista.classList.add('hidden'); modalVista.classList.remove('flex'); }, 300);
+    };
+
+    // Cierre al hacer clic en el fondo oscuro exterior
+    window.cerrarModalVistaExterno = function(e) {
+      if (e.target.id === 'modalVista') {
+        window.cerrarModalVista();
+      }
     };
 
     const modalAdminForm = document.getElementById('modalAdminForm');
@@ -1499,4 +1581,3 @@ Me encantó este juguete de su catálogo:
   </script>
 </body>
 </html>
-
